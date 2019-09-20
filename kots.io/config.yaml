@@ -1,0 +1,37 @@
+---
+baseURL: "http://kots.io/"
+languageCode: "en-us"
+title: "Kots.io"
+theme: "hugo-whisper-theme"
+metadataformat: "yaml"
+canonifyurls: true
+description: "Documentation and knowledgebase for Replicated."
+googleAnalytics: ""
+
+# Hugo configuration
+pygmentsCodeFences: true
+pygmentsStyle: "monokai"
+
+Params:
+  author: "Kots"
+  copyright: "Replicated, Inc"
+  homepage_intro: ""
+  homepage_button_text: "Get started"
+
+  # matomo:
+  #   host: "localhost:4000"
+  #   site: "2"
+
+  favicon: ""
+  pagetitle: "Kots.io"
+  permalink: "#"
+
+menu:
+  main:
+    - Name: "Guides"
+      Weight: 1
+      URL: "/guides/"
+    - Name: "Documentation"
+      Weight: 2
+      URL: "/docs/"
+---
