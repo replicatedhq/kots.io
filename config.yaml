@@ -1,5 +1,5 @@
 ---
-baseURL: "http://kots.io/"
+baseURL: "https://kotsio.netlify.com"
 languageCode: "en-us"
 title: "Kots.io"
 theme: "hugo-whisper-theme"
