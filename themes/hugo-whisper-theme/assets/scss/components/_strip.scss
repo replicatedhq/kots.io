@@ -7,6 +7,16 @@
 .strip-grey {
   background-color: #f4f5fb;
 }
+.strip-pattern-blue {
+  background-image: url("/images/blue-pattern-bkg.png");
+  background-repeat: repeat;
+  background-size: 1279px 479px;
+}
+.strip-pattern-white {
+  background-image: url("/images/white-pattern-bkg.png");
+  background-repeat: repeat;
+  background-size: 1279px 479px;
+}
 .strip-diagonal {
   transform: skewY(5deg);
   padding-bottom: 50px;

@@ -15,8 +15,7 @@ pygmentsStyle: "monokai"
 Params:
   author: "Kots"
   copyright: "Replicated, Inc"
-  homepage_intro: ""
-  homepage_button_text: "Get started"
+  homepage_intro: "Kots is a kubectl plugin to help manage Kubernetes Off-The-Shelf software"
 
   # matomo:
   #   host: "localhost:4000"
@@ -28,10 +27,13 @@ Params:
 
 menu:
   main:
-    - Name: "Guides"
+    - Name: "Guided walkthroughs"
       Weight: 1
       URL: "/guides/"
-    - Name: "Documentation"
+    - Name: "API reference"
       Weight: 2
+      URL: "/api/"
+    - Name: "Documentation"
+      Weight: 3
       URL: "/docs/"
 ---

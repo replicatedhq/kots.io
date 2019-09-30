@@ -1,19 +1,23 @@
 .page-home {
   text-align: center;
-  .title {
-    font-weight: lighter;
-    font-family: $font-family-base;
+  .landing-logo {
+    width: 204px;
+    height: 80px;
+    margin: 0 auto;
+    background-image: url("/images/kots.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
   p {
-    margin: 0 auto;
-    font-size: 1.2rem;
-    font-weight: lighter;
-    margin-bottom: 40px;
+    margin: 30px auto;
+    font-family: $font-family-ubuntu;
+    font-size: 22px;
+    font-weight: 500;
     @include media-breakpoint-up(md) {
       width: 80%;
     }
     @include media-breakpoint-up(lg) {
-      width: 60%;
+      width: 460px;
     }
   }
   .terminal {
