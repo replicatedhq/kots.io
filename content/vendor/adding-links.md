@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
 linktitle: "Adding links to the Admin Console"
-title: Adding Links to the admin Console
+title: Adding Links to the Admin Console
 weight: 20080
 ---
 

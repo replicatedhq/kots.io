@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
 linktitle: "Using kots with a self-hosted image registry"
-title: Self hosted
+title: Self-Hosted Image Registry
 weight: 10010
 ---
 

@@ -1,6 +1,6 @@
 ---
 date: 2019-10-09
 linktitle: "Airgap Builds"
-title: Airgap builds
+title: Creating Airgap Bundles
 weight: 20050
 ---
