@@ -28,6 +28,9 @@ Params:
   favicon: ""
   pagetitle: "Kots.io"
   permalink: "#"
+  mainSections:
+    - vendor
+    - kotsadm
 
 menu:
   main:
