@@ -8,9 +8,13 @@ canonifyurls: true
 description: "Documentation and knowledgebase for Replicated."
 googleAnalytics: ""
 
+
 # Hugo configuration
 pygmentsCodeFences: true
 pygmentsStyle: "monokai"
+
+staticDir:
+    - ./static
 
 Params:
   author: "Kots"
@@ -27,13 +31,13 @@ Params:
 
 menu:
   main:
-    - Name: "Guided walkthroughs"
+    - Name: "Admin Console"
       Weight: 1
-      URL: "/guides/"
-    - Name: "API reference"
+      URL: "/kotsadm/"
+    - Name: "Vendor"
       Weight: 2
-      URL: "/api/"
-    - Name: "Documentation"
+      URL: "/vendor/"
+    - Name: "Reference"
       Weight: 3
-      URL: "/docs/"
+      URL: "/reference/"
 ---
