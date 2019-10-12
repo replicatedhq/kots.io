@@ -31,6 +31,8 @@ Params:
   mainSections:
     - vendor
     - kotsadm
+    - preflight
+    - support-bundle
 
 menu:
   main:
@@ -40,7 +42,13 @@ menu:
     - Name: "Vendor"
       Weight: 2
       URL: "/vendor/"
-    - Name: "Reference"
+    - Name: "Preflight"
       Weight: 3
+      URL: "/preflight/"
+    - Name: "Support Bundle"
+      Weight: 4
+      URL: "/support-bundle/"
+    - Name: "Reference"
+      Weight: 5
       URL: "/reference/"
 ---
