@@ -1,11 +1,11 @@
 ---
-baseURL: "https://kotsio.netlify.com"
+baseURL: "https://kots.io"
 languageCode: "en-us"
 title: "Kots.io"
 theme: "hugo-whisper-theme"
 metadataformat: "yaml"
 canonifyurls: true
-description: "Documentation and knowledgebase for Replicated."
+description: "Documentation for Replicated Kots."
 googleAnalytics: ""
 
 
