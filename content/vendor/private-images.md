@@ -16,9 +16,22 @@ To configure access to your private images, log in to vendor.replicated.com, and
 ![Add External Registry](/images/add-external-registry.png)
 
 
-Your application YAML will reference images that it cannot access. Kots and kotsadm recognize this, and will patch the YAML using Kustomize to change the image name. When kots is attempting to install an application, a HEAD request is made (without authentication) to the registry referenced by the PodSpec. If it’s allowed, no changes will be made to the application. If a 401 is received and authentication is required, kots will assume that this is private image that needs to be proxied through the Replicated registry-proxy service. A patch will be written to the midstream kustomization.yaml to change this image name during deployment.
+Your application YAML will reference images that it cannot access. Kots and kotsadm recognize this, and will patch the YAML using Kustomize to change the image name. When kots is attempting to install an application, it will attempt to load image manifest using the image reference from the PodSpec. If it’s loaded successfully, no changes will be made to the application. If a 401 is received and authentication is required, kots will assume that this is private image that needs to be proxied through the Replicated registry-proxy service. A patch will be written to the midstream kustomization.yaml to change this image name during deployment.
 
-For example, given a private image hosted at quay.io/my-application/api:v1.0.1, a deployment and pod spec may reference it like this:
+For example, given a private image hosted at quay.io/my-org/api:v1.0.1, a deployment and pod spec may reference it like this:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  template:
+    spec:
+      containers:
+        - name: api
+          image: quay.io/my-org/api:v1.0.1
+```
 
 When the application is deployed, kots will detect that it cannot access the image at quay.io and will create a patch in the midstream/kustomization.yaml:
 
@@ -27,12 +40,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 bases:
 - ../../base
 images:
-- name: quay.io/my-application/api:v1.0.1
-  newName: registry.replicated.com/my-application/api:v1.0.1
-  newTag: v1.0.1
+- name: quay.io/my-org/api:v1.0.1
+  newName: proxy.replicated.com/proxy/my-kots-app/quay.io/my-org/api
 ```
 
 This will change that image name everywhere it appears.
 
-In addition, kots will create an imagePullSecret dynamically and automatically at install time. This secret is based on the customer license, and will be used to pull all images from registry.replicated.com
+In addition, kots will create an imagePullSecret dynamically and automatically at install time. This secret is based on the customer license, and will be used to pull all images from proxy.replicated.com
 
+Images hosted at registry.replicated.com will not be rewritten.  However, the same secret will be added to those PodSpecs as well.
