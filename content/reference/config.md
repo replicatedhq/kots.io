@@ -8,6 +8,6 @@ draft: false
 
 The Admin Config config screen reference docs.
 
-[Types](/reference/config/types)  
+[Groups and Items](/reference/config/items)  
 
 [Template Functions](/reference/config/templates)
