@@ -33,7 +33,7 @@ Params:
     - kotsadm
     - preflight
     - support-bundle
-
+    - reference
 menu:
   main:
     - Name: "Admin Console"
