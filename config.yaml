@@ -29,6 +29,7 @@ Params:
   pagetitle: "Kots.io"
   permalink: "#"
   mainSections:
+    - kots-cli
     - vendor
     - kotsadm
     - preflight
@@ -36,12 +37,12 @@ Params:
     - reference
 menu:
   main:
-    - Name: "Admin Console"
+    - Name: "Kots CLI"
       Weight: 1
-      URL: "/kotsadm/"
-    - Name: "Vendor"
+      URL: "/kots-cli/"
+    - Name: "Admin Console"
       Weight: 2
-      URL: "/vendor/"
+      URL: "/kotsadm/"
     - Name: "Preflight"
       Weight: 3
       URL: "/preflight/"
@@ -51,4 +52,7 @@ menu:
     - Name: "Reference"
       Weight: 5
       URL: "/reference/"
+    - Name: "Vendor"
+      Weight: 6
+      URL: "/vendor/"
 ---
