@@ -25,8 +25,9 @@ kind: Collector
 metadata:
  name: application-name
 spec:
- - cluster-info: {}
- - cluster-resources: {}
+ collectors:
+   - clusterInfo: {}
+   - clusterResources: {}
 ```
 
 For a full list of options that can be included in a Kubernetes support bundle, visit the [Collectors](/docs/troubleshoot/kubernetes/collectors/collector-phase/) section.
