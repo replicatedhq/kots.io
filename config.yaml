@@ -39,7 +39,7 @@ menu:
   main:
     - Name: "Kots CLI"
       Weight: 1
-      URL: "/kots-cli/"
+      URL: "/kots-cli/getting-started"
     - Name: "Admin Console"
       Weight: 2
       URL: "/kotsadm/"
