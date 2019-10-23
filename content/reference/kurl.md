@@ -18,7 +18,7 @@ Each addon is listed with all supported keys, and the default for the key, if no
 spec:
   kubernetes:
     version: "1.15.3"
-    serviceCIDR: "10.0.0.0/8"
+    serviceCIDR: "10.96.0.0/12"
 ```
 
 ### Docker
@@ -26,7 +26,7 @@ spec:
 ```yaml
 spec:
   docker:
-    version: "18.09"
+    version: "18.09.8"
     bypassStorageDriverWarnings: false
     hardFailOnLoopback: false
     noCEOnEE: false
@@ -37,7 +37,7 @@ spec:
 ```yaml
 spec:
   registry:
-    version: ""
+    version: "2.7.1"
      
 ```
 
@@ -46,17 +46,19 @@ spec:
 ```yaml
 spec:
   weave:
-    version: ""
-    IPAllocRange: false
+    version: "2.5.2"
+    IPAllocRange: "10.32.0.0/12"
     encryptNetwork: true
 ```
 
 ### Rook
 
+The `cephPoolReplicas` will scale with the number of nodes in the cluster up to a maximum of 3 if unset.
+
 ```yaml
 spec:
   rook:
-    version: ""
+    version: "1.0.4"
     storageClass: "default"
     cephPoolReplicas: 3
 ```
@@ -66,7 +68,7 @@ spec:
 ```yaml
 spec:
   contour:
-    version: ""
+    version: "0.14.0"
 ```
 
 ### Prometheus
@@ -74,7 +76,7 @@ spec:
 ```yaml
 spec:
   prometheus:
-    version: ""
+    version: "0.33.0"
 ```
 
 ### Kotsadm
@@ -82,7 +84,7 @@ spec:
 ```yaml
 spec:
   kotsadm:
-    version: "0.9.12"
+    version: "0.9.9"
     applicationSlug: ""
     uiBindPort: 8800
 ```
