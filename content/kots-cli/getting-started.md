@@ -37,5 +37,8 @@ If you have a copy of an application that was created with kots pull or kots dow
 ### kots admin-console
 If you’ve deployed an application with the admin console, the kots admin-console command will open a proxy so you can connect to the admin console from your machine.
 
+### kots reset-password
+If you've lost the password to the admin console but still have kubectl access, the kots reset-password command will prompt for a new password and upload it to the cluster.
+
 ## Next Steps
 To give kots a try, head over to the Kots Helm guide. If you want to see what it’s like to distribute a kots application, head to the Kots Vendor guide.
