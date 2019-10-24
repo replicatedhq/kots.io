@@ -35,6 +35,7 @@ Params:
     - preflight
     - support-bundle
     - reference
+    - v1beta1
 menu:
   main:
     - Name: "Kots CLI"
