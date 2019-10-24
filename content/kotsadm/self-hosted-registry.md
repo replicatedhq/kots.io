@@ -13,12 +13,12 @@ To install an application into an airgapped network, you must have a Docker imag
 A single Kots application expects to use a single “namespace” in the Docker image registry. The namespace name can be any valid URL-safe string, supplied at installation time.  Keep in mind that registries typically expect namespace to exist before any images can be pushed into it.  Also, ECR does not use namespaces.
 
 Kots has been tested for compatibility with the following registries:
- - Docker Hub
- - Quay
- - ECR
- - GCR
- - kurl.sh
- - Harbor
+- Docker Hub
+- Quay
+- ECR
+- GCR
+- kurl.sh
+- Harbor
 
 It’s expected that the cluster will have the necessary imagePullSecret already provisioned to pull from the airgapped image registry.
 
