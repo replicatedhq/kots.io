@@ -2,6 +2,7 @@
 date: 2019-10-23
 linktitle: "Embedded Kubernetes"
 title: Embedded Kubernetes
+description: "A Kots application can be deployed to an existing cluster or the installer can provision a new cluster with the application."
 weight: 20090
 ---
 
@@ -37,7 +38,7 @@ For add ons that are using `version: "latest"` this will be pinned to the latest
 
 ## Advanced Options
 
-In addition to the standard YAML, you can provide advanced options that will be used as defaults for your installation script. 
+In addition to the standard YAML, you can provide advanced options that will be used as defaults for your installation script.
 
 ```yaml
 apiVersion: kurl.sh/v1beta1

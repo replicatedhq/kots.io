@@ -2,6 +2,7 @@
 date: 2019-10-09
 linktitle: "Kots to Helm"
 title: Distributing Kots Apps as a Helm Chart
+description: "One of the goals of Kots is to allow a developer to distribute a Kubernetes application to various environments, meeting the demands and requirements of the different clusters and workflows. Kots supports online installations, airgap installations, bring-your-own registry installations, and GitOps workflows. In addition, when distributing a Kots application using the Vendor Portal, end customers who want to receive a Helm chart can run a helm install without any additional packaging needed."
 weight: 20040
 ---
 One of the goals of Kots is to allow a developer to distribute a Kubernetes application to various environments, meeting the demands and requirements of the different clusters and workflows. Kots supports online installations, airgap installations, bring-your-own registry installations, and GitOps workflows. In addition, when distributing a Kots application using the Vendor Portal, end customers who want to receive a Helm chart can run a helm install without any additional packaging needed.

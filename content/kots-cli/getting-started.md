@@ -2,6 +2,7 @@
 date: 2019-10-09
 linktitle: "Kots Overview"
 title: Getting Started with Kots
+description: "Kots is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes."
 weight: 20010
 draft: false
 ---
@@ -15,9 +16,9 @@ To start, install Kots using the Krew plugin manager:
 curl https://kots.io/install | bash
 ```
 
-This will give you a new kubectl command.  
+This will give you a new kubectl command.
 ```bash
-kubectl kots --help  
+kubectl kots --help
 ```
 
 ## Kots Commands

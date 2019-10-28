@@ -2,6 +2,7 @@
 date: 2019-10-09
 linktitle: "Adding links to the Admin Console"
 title: Adding Links to the Admin Console
+description: "When distributing an application, it’s helpful to make sure that the installer can easily verify that the application is running. Because networking and ingress is possibly handled differently in each cluster, this makes it difficult to provide a consistent URL at application packaging time, and even likely requires that the cluster operator create firewall rules before they can test the application installation."
 weight: 20080
 ---
 

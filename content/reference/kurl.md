@@ -3,6 +3,7 @@ date: 2019-10-09
 linktitle: "Kurl"
 title: Kubernetes Installers
 weight: 90020
+description: "The Kubernetes Installers (kurl) reference documentation. Each addon is listed with all supported keys, and the default for the key, if not present."
 draft: false
 ---
 
@@ -38,7 +39,7 @@ spec:
 spec:
   registry:
     version: "2.7.1"
-     
+
 ```
 
 ### Weave

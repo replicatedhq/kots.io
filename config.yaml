@@ -8,6 +8,10 @@ canonifyurls: true
 description: "Documentation for Replicated Kots."
 googleAnalytics: ""
 
+# Algoloia search
+algolia:
+  index: "prod_kotsio"
+  appID: "RKUCTRIG38"
 
 # Hugo configuration
 pygmentsCodeFences: true
