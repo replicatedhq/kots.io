@@ -15,9 +15,9 @@ To start, install Kots using the Krew plugin manager:
 curl https://kots.io/install | bash
 ```
 
-This will give you a new kubectl command.  
+This will give you a new kubectl command.
 ```bash
-kubectl kots --help  
+kubectl kots --help
 ```
 
 ## Kots Commands
@@ -36,6 +36,9 @@ If you have a copy of an application that was created with kots pull or kots dow
 
 ### kots admin-console
 If you’ve deployed an application with the admin console, the kots admin-console command will open a proxy so you can connect to the admin console from your machine.
+
+### kots admin-console upgrade
+If you've deployed an application with the admin console, the kots admin-admin console upgrade command will upgrade just the admin console to the latest version. The application can be updated from the admin console, not this command.
 
 ### kots reset-password
 If you've lost the password to the admin console but still have kubectl access, the kots reset-password command will prompt for a new password and upload it to the cluster.
