@@ -8,9 +8,17 @@ weight: 10010
 Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed.
 
 ## Docker Registry
-To install an application into an airgapped network, you must have a Docker image registry that’s available inside the network. Kots will manage rewriting the application image names in all application manifests to read from the on-prem registry, and it will retag and push the images to the on-prem registry.
+To install an application into an airgapped network, you must have a Docker image registry that’s available inside the network. Kots will manage rewriting the application image names in all application manifests to read from the on-prem registry, and it will retag and push the images to the on-prem registry.  If this registry is not anonymous, credentials with `push` permissions will be required as well.
 
-A single Kots application expects to use a single “namespace” in the Docker image registry. The namespace name can be anything that you’d like, supplied at installation time.
+A single Kots application expects to use a single “namespace” in the Docker image registry. The namespace name can be any valid URL-safe string, supplied at installation time.  Keep in mind that registries typically expect namespace to exist before any images can be pushed into it.  Also, ECR does not use namespaces.
+
+Kots has been tested for compatibility with the following registries:
+- Docker Hub
+- Quay
+- ECR
+- GCR
+- kurl.sh
+- Harbor
 
 It’s expected that the cluster will have the necessary imagePullSecret already provisioned to pull from the airgapped image registry.
 
@@ -74,4 +82,3 @@ kubectl kots pull replicated://application-name \
 ```
 
 Follow the same process to deploy the updated manifests, after they’ve been pushed to the artifactory registry.
-
