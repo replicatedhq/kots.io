@@ -11,20 +11,32 @@
       {{ if .IsPage }}
         <li class="{{ if eq .Title $currentNode.Title }}active{{ end }}">
           <a href="{{ .Permalink | relURL }}">
-            {{ .Title }}
+            {{ if .Params.linktitle }}
+              {{ .Params.linktitle }}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
           </a>
         </li>
       {{ else }}
         <li class="is-parent {{ if eq .Title $currentNode.Title }}active{{ end }}">
           <a href="{{ .Permalink | relURL }}">
-            {{ .Title }}
+            {{ if .Params.linktitle }}
+              {{ .Params.linktitle }}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
           </a>
         </li>
         {{ if $currentNode.IsDescendant . }}
           {{ range .Pages }}
             <li class="is-descendant {{ if eq .Title $currentNode.Title }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
-                {{ .Title }}
+                {{ if .Params.linktitle }}
+                  {{ .Params.linktitle }}
+                {{ else }}
+                  {{ .Title }}
+                {{ end }}
               </a>
             </li>
           {{ end }}
