@@ -1,6 +1,7 @@
 ---
 date: "2019-09-30T00:00:00Z"
 lastmod: "2019-09-30T00:00:00Z"
-description: "The Admin Config config screen reference docs."
+title: "Kots.io Reference"
+description: "Kots.io Reference."
 weight: "9"
 ---
