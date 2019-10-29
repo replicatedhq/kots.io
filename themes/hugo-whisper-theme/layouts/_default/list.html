@@ -9,9 +9,7 @@
 </div>
 
 {{ range.Pages }}
-  {{ if not .Page.Params.index }}
-    {{ .Render "summary" }}
-  {{ end }}
+  {{ .Render "summary" }}
 {{ end }}
 
 {{ end }}
