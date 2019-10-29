@@ -1,6 +1,10 @@
 .search {
   position: relative;
 
+  .fa-search {
+    margin-left: 20px;
+  }
+
   .fa-search:hover {
     cursor: pointer;
   }
@@ -89,7 +93,7 @@
       overflow:hidden;
     }
 
-    &:hover {
+    &:hover, &:focus {
       cursor: pointer;
       text-decoration: none;
       background-color: rgba(163, 211, 233, .5);
