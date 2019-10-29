@@ -2,6 +2,7 @@
 date: 2019-10-09
 linktitle: "Embedding Custom Entitlements"
 title: Embedding Custom Entitlements
+description: "All applications created in Replicated Vendor require a valid license file to install. This license file contains some standard, pre-built entitlements, but can also include any custom entitlement fields required by the application. Kots will securely deliver these entitlement values and make them available when building the Kubernetes manifests or at runtime using the titled API"
 weight: 20060
 ---
 

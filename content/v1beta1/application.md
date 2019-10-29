@@ -2,6 +2,7 @@
 date: 2019-10-09
 linktitle: "Application"
 title: Application
+description: "The Application spec contains vendor-supplied metadata about the application."
 weight: 30010
 ---
 
