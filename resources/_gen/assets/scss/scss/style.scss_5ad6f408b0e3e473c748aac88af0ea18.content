@@ -7565,12 +7565,25 @@ p {
     margin: 0;
     padding: 4px 0 4px 0; }
     .docs-menu ul li.active a {
-      color: #5f8dec;
-      font-weight: 400; }
+      color: #326DE6; }
     .docs-menu ul li a {
       color: #303030; }
       .docs-menu ul li a:hover {
         color: #326DE6; }
+
+.docs-menu .active {
+  color: #326DE6;
+  font-weight: bold; }
+
+.docs-menu .is-parent {
+  font-weight: bold; }
+
+.docs-menu .is-page {
+  padding-left: 10px; }
+
+.docs-menu .is-descendant {
+  padding-left: 20px;
+  color: #326DE6; }
 
 .hamburger {
   padding: 10px 0 10px 10px;

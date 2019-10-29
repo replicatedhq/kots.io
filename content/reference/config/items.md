@@ -6,7 +6,6 @@ weight: 90020
 draft: false
 description: "The admin console settings screen configuration is specified as an array configuration
 groups and items."
-displaySidebar: false
 ---
 
 The admin console settings screen configuration is specified as an array configuration
