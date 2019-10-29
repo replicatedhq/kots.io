@@ -7845,6 +7845,8 @@ p {
 
 .search {
   position: relative; }
+  .search .fa-search {
+    margin-left: 20px; }
   .search .fa-search:hover {
     cursor: pointer; }
   .search .search-tooltip {
@@ -7912,13 +7914,13 @@ p {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden; }
-    .search .search-result:hover {
+    .search .search-result:hover, .search .search-result:focus {
       cursor: pointer;
       text-decoration: none;
       background-color: rgba(163, 211, 233, 0.5); }
-      .search .search-result:hover .searchresult-title {
+      .search .search-result:hover .searchresult-title, .search .search-result:focus .searchresult-title {
         color: #323232; }
-      .search .search-result:hover .searchresult-content {
+      .search .search-result:hover .searchresult-content, .search .search-result:focus .searchresult-content {
         color: #323232; }
 
 #search-page-results {

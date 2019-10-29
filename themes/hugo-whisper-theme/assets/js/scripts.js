@@ -149,6 +149,46 @@ if (searchIcon && searchTooltip) {
     });
     searchInput.addEventListener("input", onSearchInput);
 
+    window.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        var KEY_ESCAPE = 27;
+        var KEY_ARROW_UP = 38;
+        var KEY_ARROW_DOWN = 40;
+        var isSearchOpen = searchTooltip.classList.contains("open");
+        if (event.keyCode === KEY_ESCAPE) {
+            searchTooltip.classList.remove("open");
+            document.body.focus();
+            return;
+        }
+
+        var isSearchInputActive = document.activeElement.id === "searchInput";
+        if (isSearchOpen && isSearchInputActive) {
+            if (event.keyCode === KEY_ARROW_DOWN) {
+                var firstResult = document.getElementsByClassName("search-result")[0];
+                if (firstResult) {
+                    firstResult.focus();
+                }
+                return;
+            }
+        }
+
+        var isFocusedOnSearchResult = document.activeElement.classList.contains("search-result");
+        if (isFocusedOnSearchResult) {
+            if (event.keyCode === KEY_ARROW_DOWN) {
+                document.activeElement.nextElementSibling.focus();
+            }
+
+            if (event.keyCode === KEY_ARROW_UP) {
+                var previous = document.activeElement.previousElementSibling;
+                if (previous) {
+                    previous.focus();
+                } else {
+                    document.getElementById("searchInput").focus();
+                }
+            }
+        }
+
+    })
 }
 
 // Only run this JS for the search page
