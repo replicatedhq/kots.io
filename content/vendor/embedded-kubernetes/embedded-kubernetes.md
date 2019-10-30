@@ -1,6 +1,6 @@
 ---
 date: 2019-10-23
-linktitle: "Embedded Kubernetes"
+linktitle: "Overview"
 title: Embedded Kubernetes
 description: "A Kots application can be deployed to an existing cluster or the installer can provision a new cluster with the application."
 weight: 20090

@@ -1,11 +1,11 @@
 {{ $currentNode := . }}
 
 <div class="docs-menu">
-  <h4>
+  <h3>
     <a href="{{ .FirstSection.Permalink }}">
-      {{ .Section | humanize }}
+      {{ .Section | humanize }} Documentation
     </a>
-  </h4>
+  </h3>
   <ul>
     {{ range .FirstSection.Pages }}
       {{ if .IsPage }}

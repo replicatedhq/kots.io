@@ -1,6 +1,6 @@
 ---
 date: 2019-10-09
-linktitle: "Private Images and Registry Credentials"
+linktitle: "Private Images"
 title: Private Images and Registry Credentials
 description: "When packaging and delivering an enterprise application, a common problem is the need to include private Docker images. Most enterprise applications consist of public images (postgres, mysql, redis, elasticsearch) and private images (the application images)."
 weight: 20020

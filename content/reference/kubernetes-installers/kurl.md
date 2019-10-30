@@ -1,10 +1,9 @@
 ---
 date: 2019-10-09
-linktitle: "Kurl"
+linktitle: "Overview"
 title: Kubernetes Installers
-weight: 90020
+weight: 90001
 description: "The Kubernetes Installers (kurl) reference documentation. Each addon is listed with all supported keys, and the default for the key, if not present."
-draft: false
 ---
 
 The Kubernetes Installers (kurl) reference documentation.
