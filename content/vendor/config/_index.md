@@ -4,3 +4,5 @@ lastmod: "2019-09-30T00:00:00Z"
 title: "Creating A Config Screen"
 weight: "2"
 ---
+
+The KOTS Admin Console can prompt for application settings during installation time. The syntax used is powerful and designed to build experiences that validate input.

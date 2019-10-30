@@ -3,7 +3,11 @@
 <div class="docs-menu">
   <h3>
     <a href="{{ .FirstSection.Permalink }}">
-      {{ .Section | humanize }} Documentation
+      {{ if eq .Section "kots-cli" }}
+        KOTS CLI Documentation
+      {{ else }}
+        {{ .Section | humanize }} Documentation
+      {{ end }}
     </a>
   </h3>
   <ul>

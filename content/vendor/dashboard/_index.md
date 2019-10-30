@@ -5,3 +5,5 @@ title: "Customize the Dashboard"
 description: "Customizing the Dashboard"
 weight: "1"
 ---
+
+The KOTS Admin Console can be modified to include application-specific controls and settings.
