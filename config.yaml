@@ -48,11 +48,11 @@ menu:
       URL: "/kots-cli/getting-started"
     - Name: "Admin Console"
       Weight: 2
-      URL: "/kotsadm/"
+      URL: "/kotsadm/self-hosted-registry"
     - Name: "Reference"
       Weight: 3
-      URL: "/reference/"
+      URL: "/reference/kubernetes-installers/kurl"
     - Name: "Vendor"
       Weight: 4
-      URL: "/vendor/"
+      URL: "/vendor/dashboard/open-buttons/"
 ---
