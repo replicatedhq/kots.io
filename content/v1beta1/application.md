@@ -16,13 +16,16 @@ metadata:
 spec:
   title: My Application
   icon: https://support.io/img/logo.png
+  releaseNotes: These are our release notes
+  allowRollback: false
   ports:
     - serviceName: web
       servicePort: 9000
       localPort: 9000
       applicationUrl: "http://web"
-  releaseNotes: These are our release notes
-  allowRollback: false
+  statusInformers:
+    - deployment/my-web-svc
+    - deployment/my-worker
 ```
 
 ## title
@@ -52,3 +55,5 @@ If set, the port to map on the local workstation. If not set, this will be the s
 ### applicationUrl
 This should match a service found in the `k8s.io` Application spec.
 
+## statusInformers
+Resources to monitor and report application status back to the user. In the format `[namespace/]type/name` where namespace is optional.
