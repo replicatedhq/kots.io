@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
 linktitle: "Application Status"
-title: Determining Application State
+title: Determining Application Status
 weight: 20020
 ---
 
