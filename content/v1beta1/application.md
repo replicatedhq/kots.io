@@ -26,6 +26,9 @@ spec:
   statusInformers:
     - deployment/my-web-svc
     - deployment/my-worker
+  graphs:
+    - title: User Signups
+      query: 'sum(user_signup_events_total)'
 ```
 
 ## title
@@ -56,4 +59,27 @@ If set, the port to map on the local workstation. If not set, this will be the s
 This should match a service found in the `k8s.io` Application spec.
 
 ## statusInformers
-Resources to monitor and report application status back to the user. In the format `[namespace/]type/name` where namespace is optional.
+Resources to watch and report application status back to the user. In the format `[namespace/]type/name` where namespace is optional.
+
+## graphs
+Custom graphs to include on your Admin Console application dashboard.
+
+### title
+The graph title.
+
+### query
+The Prometheus query.
+
+### legend
+The legend to use for the query line. Can be templated with each element returned from the Prometheus query. Template escape sequence is `{{}}`.
+
+### queries
+A list of queries containing a query and legend.
+- query: The Prometheus query
+- legend: The legend to use for the query line. Can be templated with each element returned from the Prometheus query. Template escape sequence is `{{}}`.
+
+### yAxisFormat
+The format of the Y axis labels with support for all Grafana [units](https://grafana.com/docs/features/panels/graph/#left-y-right-y). 
+
+### yAxisTemplate
+Y axis labels template. Use `{{ value }}`.
