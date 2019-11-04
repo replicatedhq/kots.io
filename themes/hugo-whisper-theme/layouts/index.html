@@ -29,7 +29,7 @@
           {{ end }}
         </div>
         <div class="button-wrapper">
-          <a class="button primary-button" href="/docs">
+          <a class="button primary-button" href="/kots-cli/getting-started/">
             Get started
           </a>
           <a class="button border-button" href="https://github.com/replicatedhq/kots/releases" target="_blank">
@@ -38,9 +38,20 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="content">
+          {{ if .Content }}
+          {{ .Content }}
+          {{ else }}
+          <p style="margin-bottom:0px; font-size:16px;">Install on your workstation:</p>
+          <p style="margin-top:0px"><code>curl https://kots.io/install | bash</code></p>
+          {{ end }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 {{ if .Site.Params.homepage_image }}
 <div class="strip">
   <div class="container pt-4 pb-4">

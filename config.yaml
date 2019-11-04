@@ -1,13 +1,17 @@
 ---
-baseURL: "https://kotsio.netlify.com"
+baseURL: "https://kots.io"
 languageCode: "en-us"
 title: "Kots.io"
 theme: "hugo-whisper-theme"
 metadataformat: "yaml"
 canonifyurls: true
-description: "Documentation and knowledgebase for Replicated."
+description: "Documentation for Replicated Kots."
 googleAnalytics: ""
 
+# Algoloia search
+algolia:
+  index: "prod_kotsio"
+  appID: "RKUCTRIG38"
 
 # Hugo configuration
 pygmentsCodeFences: true
@@ -20,7 +24,8 @@ Params:
   author: "Kots"
   copyright: "Replicated, Inc"
   homepage_intro: "Kots is a kubectl plugin to help manage Kubernetes Off-The-Shelf software"
-
+  logo:
+    mobile: "/images/kots.svg"
   # matomo:
   #   host: "localhost:4000"
   #   site: "2"
@@ -29,18 +34,25 @@ Params:
   pagetitle: "Kots.io"
   permalink: "#"
   mainSections:
+    - kots-cli
     - vendor
     - kotsadm
-
+    - preflight
+    - support-bundle
+    - reference
+    - v1beta1
 menu:
   main:
-    - Name: "Admin Console"
+    - Name: "Kots CLI"
       Weight: 1
-      URL: "/kotsadm/"
-    - Name: "Vendor"
+      URL: "/kots-cli/getting-started"
+    - Name: "Admin Console"
       Weight: 2
-      URL: "/vendor/"
+      URL: "/kotsadm/self-hosted-registry"
     - Name: "Reference"
       Weight: 3
-      URL: "/reference/"
+      URL: "/reference/kubernetes-installers/kurl"
+    - Name: "Vendor"
+      Weight: 4
+      URL: "/vendor/dashboard/open-buttons/"
 ---
