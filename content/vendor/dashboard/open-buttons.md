@@ -17,7 +17,7 @@ It’s recommended that every application distributed through Kots includes an a
 
 The Application custom resource includes many fields, but the one that we are going to examine in this document is the links:
 
-```
+```yaml
 spec:
   descriptor:
     links: []
@@ -38,7 +38,7 @@ Port is optional, only required to disambiguate the port if a service has more t
 ## Reference in the Kots Application Spec
 Kots apps also have a kots application spec. This spec contains details for Kots to use when installing and running the admin console. This also contains data about the ports.
 
-```
+```yaml
 apiVersion: kots.io/v1beta1
 kind: Application
 metadata:
@@ -56,6 +56,3 @@ spec:
 Here, we define the port mapping that will be used to automatically include the service port as a port-forward when running the kots CLI to connect to the Admin Console.
 
 In this example, we are declaring that the k8s application custom resource will have a link that has a url of “https://sentry”. When this link is added to the dashboard, also `kubectl port-forward svc/sentry 9000:9000` and replace the link as “localhost:9000”. This replacement is exact string match.
-
-
-
