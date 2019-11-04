@@ -5,6 +5,8 @@
     <a href="{{ .FirstSection.Params.redirect }}">
       {{ if eq .Section "kots-cli" }}
         KOTS CLI Documentation
+      {{ else if eq .Section "kotsadm" }}
+        Admin Console Docs
       {{ else }}
         {{ .Section | humanize }} Documentation
       {{ end }}
