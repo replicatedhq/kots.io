@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "index-site": "mkdir -p public & hugo-algolia --all",
-    "index-and-send": "mkdir -p public & hugo-algolia -s --all"
+    "index-site": "hugo-algolia --all",
+    "index-and-send": "hugo-algolia -s --all"
   },
   "dependencies": {
     "algoliasearch": "^3.35.1",
