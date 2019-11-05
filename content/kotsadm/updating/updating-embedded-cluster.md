@@ -8,7 +8,7 @@ draft: false
 
 ### Online Installations
 
-To update the Admin Console when deployed to an embedded cluster, simple re-run the installation script provided by the application developer.
+To update the Admin Console when deployed to an embedded cluster, simply re-run the installation script provided by the application developer.
 
 ```
 curl -sSL https://kurl.sh/supergoodtool | sudo bash
