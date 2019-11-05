@@ -54,5 +54,5 @@ menu:
       URL: "/reference/kubernetes-installers/kurl"
     - Name: "Vendor"
       Weight: 3
-      URL: "/vendor/dashboard/open-buttons/"
+      URL: "/vendor/packaging/packaging-an-app/"
 ---
