@@ -18,6 +18,8 @@ metadata:
 spec:
   kubernetes:
     version: "latest"
+  docker:
+    version: "latest"
   weave:
     version: "latest"
   rook:
