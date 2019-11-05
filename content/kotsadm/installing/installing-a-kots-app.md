@@ -20,7 +20,7 @@ Install the `kots` plugin for `kubectl` using the [instructions on the Getting S
 
 ## Choose Installation Method
 
-Before installing a KOTS application, answer a few questions:
+Before installing a KOTS application, there are a few considerations.
 
 ### Namespace(s)
 During installation, KOTS will prompt for the target namespace to install to. This is the namespace that the Admin Console will be written to, and also where the application will be deployed, unless any manifests have hard-coded namespace names or are overriden using Kustomize. The `kubectl` access used must have read and write access to the namespace. By default, KOTS does not require any access outside of the target namespace, and will not install CRDs or cluster-wide RBAC roles.
