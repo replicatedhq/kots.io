@@ -10,7 +10,7 @@ draft: false
 
 To update the Admin Console when deployed to an embedded cluster, simply re-run the installation script provided by the application developer.
 
-```
+```bash
 curl -sSL https://kurl.sh/supergoodtool | sudo bash
 ```
 
@@ -18,7 +18,7 @@ curl -sSL https://kurl.sh/supergoodtool | sudo bash
 
 To update an airgapped installation, download the new airgap bundle, untar it, and run the install.sh script.
 
-```
+```bash
 curl -SL -o supergoodtool.tar.gz https://kurl.sh/bundle/supergoodtool.tar.gz
 tar xzvf supergoodtool.tar.gz
 cat install.sh | sudo bash -s airgap
