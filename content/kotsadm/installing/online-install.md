@@ -59,7 +59,7 @@ Most KOTS applications include some required and some optional configuration. Th
 ### Preflight Checks
 Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application.
 
-![Prelfight Checks](/images/preflight-checks.png)
+![Preflight Checks](/images/preflight-checks.png)
 
 
 
