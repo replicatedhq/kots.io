@@ -21,7 +21,7 @@ Your application YAML will reference images that it cannot access. Kots and kots
 
 For example, given a private image hosted at quay.io/my-org/api:v1.0.1, a deployment and pod spec may reference it like this:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,7 +36,7 @@ spec:
 
 When the application is deployed, kots will detect that it cannot access the image at quay.io and will create a patch in the midstream/kustomization.yaml:
 
-```
+```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 bases:
 - ../../base
