@@ -12,7 +12,7 @@ The Kubernetes Installers (kurl) reference documentation.
 
 Each addon is listed with all supported keys, and the default for the key, if not present.
 
-### kubernetes
+### Kubernetes
 
 ```yaml
 spec:
