@@ -33,7 +33,7 @@ Preflight failures and warnings do not preclude the upgrade to a new version. Th
 ## Updating
 An update is performed by clicking "Continue" on the preflight checks page, or by clicking the "Deploy" button on the "Version History" tab. At this point, the current cluster will be updated to the new version of the KOTS application and the "Deployed" status will be set on that version.
 
-![Updated Version](/images/updated-version.png)
+![Updated Version](/images/version-history.png)
 
 
 
