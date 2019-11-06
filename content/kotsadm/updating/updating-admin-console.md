@@ -16,4 +16,4 @@ A simple Kots command has been provided to update the Admin Console on an existi
 kubectl kots admin-console upgrade -n <namespace>
 ```
 
-Additional usage information and examples can be found by running the `kubectl kots admin-console upgrade -h` command.
+Additional usage information can be found by running the `kubectl kots admin-console upgrade -h` command.
