@@ -26,8 +26,8 @@
 <body class='page {{ block "body_classes" . }}{{ end }}'>
   {{ partial "main-menu-mobile.html" . }}
   <div class="wrapper">
+    {{ partial "suite-banner" }}
     {{ partial "header.html" . }}
-
     {{ $displaySidebar := false }}
     {{ range .Site.Params.mainSections }}
     {{ if eq $.Section . }}
