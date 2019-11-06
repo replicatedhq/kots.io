@@ -12,6 +12,9 @@ KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The K
 In addition to Kots, the Admin Console (Kotsadm) is another open source component designed to run as an Admin Console along with a Kots application. Kotsadm is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. The Kots plugin can install and configure Kotsadm during installation and upgrade of a Kots application.
 
 ## How To Install
+
+### Easy installation script
+
 To start, install Kots using the Krew plugin manager:
 ```bash
 curl https://kots.io/install | bash
@@ -21,6 +24,16 @@ This will give you a new kubectl command.
 ```bash
 kubectl kots --help
 ```
+
+### Installing without root access
+
+For computers without root access or cannot write to the `/usr/local/bin` directory, the `kots` plugin can be downloaded using the following steps:
+
+1. Download the release for your Operating System from https://github.com/replicatedhq/kots/releases/latest
+1. Unpack the release
+1. Rename the `kots` (or `kots.exe`) executable to `kubectl-kots` (or `kubectl-kots.exe`).
+1. Copy the renamed `kubectl-kots` to anywhere on the PATH.
+
 
 ## Kots Commands
 
