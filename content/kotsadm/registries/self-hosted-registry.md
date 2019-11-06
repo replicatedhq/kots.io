@@ -29,6 +29,7 @@ To start preparing an application for installation onto an airgapped cluster, ru
 For this example, we will assume that the application is available at replicated://application-name and the license file is available in ~/application-license.yaml
 
 ### Assumptions for this demo:
+
 - The workstation cannot access the cluster
 - The workstation CAN access the image registry
 - The image registry is at https://registry.somebigbank.com
@@ -44,6 +45,7 @@ kubectl kots pull replicated://application-name \
 ```
 
 This command will:
+
 1. Download the application manifests for “application-name”, using the license file provided
 1. Store all manifests in ~/application-name/upstream
 1. Create a midstream overlay in ~/application-name/midstream
