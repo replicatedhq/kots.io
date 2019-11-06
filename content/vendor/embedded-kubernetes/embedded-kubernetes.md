@@ -32,7 +32,7 @@ spec:
 
 ## Add Ons
 
-The installer can support various addons. Removing an add on from the spec will remove it from your installer. For a full list of supported add ons, see the [reference documentation](/reference/kurl).
+The installer can support various addons. Removing an add on from the spec will remove it from your installer. For a full list of supported add ons, see the [reference documentation](/reference/kubernetes-installers/kurl/).
 
 ## Versions
 
@@ -61,7 +61,7 @@ spec:
     version: "latest"
 ```
 
-Most add ons support some advanced options. For a full list of these supported options, see the [reference documentation](/reference/kurl).
+Most add ons support some advanced options. For a full list of these supported options, see the [reference documentation](/reference/kubernetes-installers/kurl/).
 
 ## Operating Systems
 
