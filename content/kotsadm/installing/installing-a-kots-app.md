@@ -14,6 +14,8 @@ To start installing a KOTS application, you'll need to have:
 - `kubectl` installed and configured to access the cluster
 - The `kots` plugin.
 
+![KOTS Install](/images/diagram-kots-install.png)
+
 ## Kots Plugin
 
 Install the `kots` plugin for `kubectl` using the [instructions on the Getting Started page](/kots-cli/getting-started/).
