@@ -2,7 +2,7 @@
 
 ## Prerequisites
 1. hugo: Install with `brew install hugo` or `sudo apt-get install hugo`
-2. yarn: Install with `brew install hugo` or `sudo apt-get install hugo`
+2. yarn: Install with `brew install yarn` or `sudo apt-get install yarn`
 3. Set up additional dependencies by running `make install`
 
 ## Running local dev instance
