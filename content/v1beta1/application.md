@@ -18,6 +18,7 @@ spec:
   icon: https://support.io/img/logo.png
   releaseNotes: These are our release notes
   allowRollback: false
+  kubectlVersion: latest
   ports:
     - serviceName: web
       servicePort: 9000
@@ -42,6 +43,9 @@ The release notes for this version. These can also be set when promoting a relea
 
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
+
+## kubectlVersion
+This defaults to `latest`. Set to `1.14` or `1.16` to use a specific version of kubectl to apply your app's yaml.
 
 ## ports
 These are extra ports (additional to the :8800 admin console port) that should be port-forwarded when running the `kots admin-console` command.
