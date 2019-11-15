@@ -45,7 +45,10 @@ The release notes for this version. These can also be set when promoting a relea
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
 
 ## kubectlVersion
-This defaults to `latest`. Set to `1.14.7`, `1.16.1` or a range (like  `<1.17.0`) to use a specific version of kubectl to apply your app's yaml.
+This defaults to `latest`.
+Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
+The latest version within the provided range will be used, falling back to the latest version if no version matches.
+Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
 
 ## ports
 These are extra ports (additional to the :8800 admin console port) that should be port-forwarded when running the `kots admin-console` command.
