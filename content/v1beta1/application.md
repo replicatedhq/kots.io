@@ -46,7 +46,8 @@ This defaults to `false`. Enable to create a "Rollback" button on the end-custom
 
 ## kubectlVersion
 This defaults to `latest`.
-Set to `1.14.9`, `1.16.3` or a range (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
+Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
+The latest version within the provided range will be used, falling back to the latest version if no version matches.
 Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
 
 ## ports
