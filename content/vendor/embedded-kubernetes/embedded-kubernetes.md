@@ -62,10 +62,3 @@ spec:
 ```
 
 Most add ons support some advanced options. For a full list of these supported options, see the [reference documentation](/reference/kubernetes-installers/kurl/).
-
-## Operating Systems
-
-* Ubuntu 18.04
-* Ubuntu 16.04
-* Red Hat Enterprise Linux 7.4 - 7.6
-* CentOS 7.4 - 7.6
