@@ -8,27 +8,25 @@ draft: false
 
 You can check if there are any changes on your license through the "License" tab on the Admin Console.
 
-## Checking for Updates
+## Syncing the license
 
 #### 1. Online licenses
 
-Click the "Check for updates" button at the bottom of the license page to check if there are any updates on your current license. This will only check if there are any changes detected and will not apply those changes automatically.
+Click the "Sync license" button at the bottom of the license page to get the latest updates on your current license. This will update your license and create a new release with the new changes.
 
 ![Online License](/images/online-license-tab.png)
 
+Notes:
+
+- A "License is already up to date" note will appear if no changes are detected.
+- A "License synced successfully" note will appear when the changes are successfully applied.
+
 #### 2. Airgap licenses
-Click the "Upload license" button at the bottom of the license page and select the latest license from your machine. The Admin Console will then check if there are any updates on your current license but will not apply the changes automatically.
+Click the "Upload license" button at the bottom of the license page and select the latest license from your machine. The Admin Console will then check if there are any updates on your current license and will create a new release with the new changes.
 
 ![Airgap License](/images/airgap-license-tab.png)
 
-## Applying Updates
+Notes:
 
-#### Online & Airgap licenses
-
-If there are changes detected on your license, the button text will change to "Apply updates" and a note saying "Updates available" will appear. Click on "Apply updates" to update your license and create a new release with the updated license.
-
-![Apply License Updates](/images/apply-license-updates.png)
-
-A "License is up to date" note will appear when the changes are successfully applied.
-
-![License Is Up To Date](/images/license-up-to-date.png)
+- A "License is already up to date" note will appear if no changes are detected.
+- A "License uploaded successfully" note will appear when the changes are successfully applied.
