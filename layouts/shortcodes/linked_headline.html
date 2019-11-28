@@ -1,0 +1,6 @@
+{{ with $param := .Get 0 }}
+<h2 class="linked-headline" id="{{ $param | urlize }}">
+    <a href="{{ $.Page.RelPermalink }}#{{$param | urlize }}" class="anchor" id="#{{ $param | urlize  }}"></a>
+    {{ $param }}
+</h2>
+{{ end}}

@@ -11,7 +11,7 @@ With minimal additional to the kots.io Application YAML, it is possible to displ
 
 It is necessary to target specific Kubernetes resources for the dashboard to accurately report status. We suggest at least one resource be added. Resources that are currently supported are Deployments, StatefulSets, Services, Ingresses and PersistentVolumeClaims.
 
-## Kots Application Spec
+{{< linked_headline "Kots Application Spec" >}}
 
 To add an informer, simply include the `statusInformers` property in the kots.io Application spec. Status informers are in the format `[namespace/]type/name` where namespace is optional and will default to the current namespace.
 
@@ -26,7 +26,7 @@ spec:
     - deployment/my-worker
 ```
 
-## Resource Statuses
+{{< linked_headline "Resource Statuses" >}}
 
 Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. A [support bundle](/kotsadm/support-bundle/) will include diagnostic information when state "Missing" is encountered.
 
