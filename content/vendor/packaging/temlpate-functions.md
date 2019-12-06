@@ -31,7 +31,7 @@ spec:
         name: api
         env:
           - name: MAX_CONCURRENT_USERS
-            value: 'repl{{ LicenseFieldValue "max_concurrent_users" }}
+            value: 'repl{{ LicenseFieldValue "max_concurrent_users" }}'
 ```
 
 ### A note on `{{repl` vs `repl{{`
@@ -54,7 +54,7 @@ env:
     value: '100'
 ```
 
-But some Kubernetes API fields require integer values, not strings. For example, replica count. **The following YAML is not valid***:
+But some Kubernetes API fields require integer values, not strings. For example, replica count. **The following YAML is not valid**:
 
 ```yaml
 replicas: '{{repl ConfigOption "replicas"}}`
