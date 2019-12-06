@@ -5,7 +5,7 @@ title: Built-In Entitlements
 weight: 20020
 ---
 
-All KOTS applications that are packaged and delivered the the Replicated [Vendor Portal](https://vendor.replicated.com) include some built-in entitlements. The application vendor can specify the values for these fields, but these are reserved field names and are available in every license.
+All KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) include some built-in entitlements. The application vendor can specify the values for these fields, but these are reserved field names and are available in every license.
 
 ### License Expiration Date
 
@@ -26,4 +26,3 @@ All KOTS applications that are packaged and delivered the the Replicated [Vendor
 
 **Field Name**: `isGitOpsSupported`
 **Description**: If a license supports gitops-enablement in the Admin Console, this field will be present and set to `true`. If gitops is not supported, this field is either `false` or missing.
-
