@@ -12,7 +12,7 @@ Kots and the Admin Console can provide a port-forward tunnel that will work more
 
 To do this, when packaging an application, there are a couple of additional steps necessary.
 
-{{< linked_headline "Provide an Application CRD" >}}
+## Provide an Application CRD
 
 It’s recommended that every application distributed through Kots includes an application custom resource as defined by https://github.com/kubernetes-sigs/application. The CRD will not be required, and Kots will still deploy the application, even without the CRD installed. A Kots application that follows best practices will never require cluster admin privileges or any cluster-wide components to be installed.
 
@@ -36,7 +36,7 @@ Service should reference the service name that the application deployed. There�
 
 Port is optional, only required to disambiguate the port if a service has more than one. In this case, reference the “port” field from the service descriptor.
 
-{{< linked_headline "Provide a Kots Application Spec" >}}
+## Provide a Kots Application Spec
 
 Kots apps also have a kots application spec. This spec contains details for Kots to use when installing and running the admin console. This also contains data about the ports.
 
