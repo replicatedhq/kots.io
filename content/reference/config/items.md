@@ -3,9 +3,6 @@ date: 2019-10-09
 linktitle: "Config Items"
 title: Config Items
 weight: 90020
-draft: false
-description: "The admin console settings screen configuration is specified as an array configuration
-groups and items."
 ---
 
 The admin console settings screen configuration is specified as an array configuration
