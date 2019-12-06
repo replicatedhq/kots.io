@@ -33,7 +33,7 @@ This entitlement will look like:
 
 For this example, we will write this value to an environment variable in a pod that is part of an API deployment:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -59,7 +59,7 @@ There is nothing extra needed to access this API. This will be available in all 
 
 To access the entitlements API, here's an example in Javascript ([full API docs are available](/reference/titled)):
 
-```
+```javascript
 import * as rp from "request-promise";
 
 const license = rp({
