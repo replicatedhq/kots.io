@@ -1,0 +1,30 @@
+---
+date: 2019-12-27
+linktitle: "Using Helm Charts"
+title: Using Helm Charts
+weight: 20500
+---
+
+Helm is a popular package manager for Kubernetes applications. Replicated KOTS supports delivering Helm charts as an enterprise application, or including Helm charts as components of an application. A KOTS application can support more than one Helm chart, and can support more than a single instance of any Helm chart.
+
+To include a Helm chart, start by retrieving the chart `.tgz` package. For Helm charts that you don't control, these can be quickly downloaded using the `helm` CLI.
+
+```shell
+helm repo update
+helm fetch stable/postgresql
+```
+
+After running these commands, the latest copy of the Helm chart will be in the current directory, named `chartname-<version>.tgz`. For example, `postgresql-8.1.2.tgz`.
+
+## Adding a Helm Chart to a Replicated application
+
+To add this chart to a Replicated application, create a new release on the [Vendor portal](https://vendor.replicated.com). Once you are editing the release, drop the Helm chart into the file tree. The chart will be added to a new section near the top of the file tree, and the values.yaml, Chart.yaml and a new <chart-name>.yaml file will be created.
+
+### Chart.yaml
+This file is readonly, and extracted from the Helm chart. This is informational for you.
+
+### values.yaml
+This file is readonly, and extracted from the Helm chart. This is informational for you.
+
+### &lt;chart-name&gt;.yaml
+This file is generated automatically when adding a new Chart, and allows you to configure the chart with your application. The reference for this kind is in the [references section](/v1beta1/helmchart).
