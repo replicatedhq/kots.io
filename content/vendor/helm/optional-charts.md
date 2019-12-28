@@ -71,6 +71,8 @@ stringData:
 Let's edit this to add aa conditional statement, rendering either a connection string to the embedded postgres chart, or the user supplied instance, as needed. The logic for this can be thought of as:
 
 ```shell
+## NOTE: This must be all on one line in your application, but it's displayed here on multiple lines for readability.
+## Continue reading to see how this is combined into a single line
 repl{{ if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
   postgres://myapplication:repl{{ ConfigOption "embedded_postgres_password" }}@postgres:5432/mydatabase?sslmode=disable
 repl{{ else }}
