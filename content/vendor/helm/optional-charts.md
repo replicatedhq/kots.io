@@ -52,6 +52,8 @@ spec:
 
 The config screen will look like this:
 
+![Postgres Config Screen](/images/postgres-config-screen.gif)
+
 
 ### Application
 
