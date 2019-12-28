@@ -21,7 +21,7 @@ postgresql:
   #   port: 5432
 ```
 
-When the postgres chart is deployed, the existance of the database key will set the value.  Thw way the Sentry chart is written, it will use the value in `postgresql.postgresDatabase` unless it's *missing*. For reference, see the [workers-deployment.yaml](https://github.com/helm/charts/blob/e64112e0913db99227926b49fa0ae59158c9c9d9/stable/sentry/templates/workers-deployment.yaml#L80) implementation. In order to make this work reliably, we need to be able to dynamically add and remove the `postgresDatabase` key from the `values.yaml`, where it's only present if the user has selected `embedded_postgres`. If the user selects external postgres, we want the Sentry `workers-deployment.yaml` to receive the value that the user provided.
+When the postgres chart is deployed, the existance of the database key will set the value.  The way the Sentry chart is written, it will use the value in `postgresql.postgresDatabase` unless it's *missing*. For reference, see the [workers-deployment.yaml](https://github.com/helm/charts/blob/e64112e0913db99227926b49fa0ae59158c9c9d9/stable/sentry/templates/workers-deployment.yaml#L80) implementation. In order to make this work reliably, we need to be able to dynamically add and remove the `postgresDatabase` key from the `values.yaml`, where it's only present if the user has selected `embedded_postgres`. If the user selects external postgres, we want the Sentry `workers-deployment.yaml` to receive the value that the user provided.
 
 To enable this, you can add an `optionalValues` section to the `kind: HelmChart`, and include a `when` condition to instruct KOTS how to determine if these keys should be merged.
 

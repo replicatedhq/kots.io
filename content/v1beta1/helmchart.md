@@ -71,4 +71,4 @@ The `when` field in `optionalValues` provides a string-based, [template-function
 
 ## builder
 
-The `builder` keys allows for defaults that will be set when Replicated is creating airgap packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.
+The `builder` key allows for defaults that will be set when Replicated is creating airgap packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.
