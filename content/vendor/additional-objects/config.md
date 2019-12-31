@@ -2,7 +2,9 @@
 date: 2019-11-27
 linktitle: "Config"
 title: Config
-weight: 20020
+weight: 20010
 ---
 
-Config object specifications control the presentation of a [custom configuration page](/vendor/config/config-screen/), enabling application developers to specify any required or optional application-specific config settings for the cluster operator to provide at install time, or update those options later through the Admin Console Dashboard.
+When a config spec is included an application, the Admin Console will show a [settings page](/vendor/config/config-screen/) to allow the end user to input data that will be used to build the Kubernetes manifests.
+
+The full reference for this kind is in the [reference section](/v1beta1/config).
