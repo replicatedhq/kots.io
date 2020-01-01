@@ -6,7 +6,7 @@ description: "HelmChart defines an instance of a chart"
 weight: 30050
 ---
 
-Config is the vendor-supplied Config screen and input for template function rendering.
+HelmChart is the vendor-supplied instruction for how KOTS should process a Helm chart to create a single deployable instance of the chart (if multiple deployments of the chart are required, multiple HelmChart CRs are required).
 
 
 ```yaml

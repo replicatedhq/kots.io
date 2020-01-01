@@ -22,11 +22,11 @@ To add this chart to a Replicated application, create a new release on the [Vend
 
 ![Postgres Helm Chart](/images/postgres-helm-chart.png)
 
+### &lt;chart-name&gt;.yaml
+This file is required for chart to be installed. When using the Vendor portal generated automatically when adding a new Chart, and allows you to configure the chart with your application. The reference for this kind is in the [references section](/v1beta1/helmchart).
+
 ### Chart.yaml
-This file is readonly, and extracted from the Helm chart. This is informational for you.
+This file is readonly, and extracted from the Helm chart (as metadata).
 
 ### values.yaml
-This file is readonly, and extracted from the Helm chart. This is informational for you.
-
-### &lt;chart-name&gt;.yaml
-This file is generated automatically when adding a new Chart, and allows you to configure the chart with your application. The reference for this kind is in the [references section](/v1beta1/helmchart).
+This file is readonly, and extracted from the Helm chart (as metadata).
