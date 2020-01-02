@@ -51,7 +51,7 @@ menu:
       URL: "/kotsadm/installing/installing-a-kots-app/"
     - Name: "Reference"
       Weight: 4
-      URL: "/reference/kubernetes-installers/kurl"
+      URL: "/reference/v1beta1/"
     - Name: "Vendor"
       Weight: 3
       URL: "/vendor/packaging/packaging-an-app/"
