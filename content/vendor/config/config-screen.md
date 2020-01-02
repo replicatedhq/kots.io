@@ -8,7 +8,7 @@ weight: 20010
 
 Kots applications can include a robust, custom configuration page. This is a dynamic form that can be used to prompt for, validate and generate inputs that are needed to start the application. During installation, the customer will be directed to this page after uploading a license if there are required fields. For applications that don't have any required fields, this page will be accessible from the Config tab of the Admin Console.
 
-To add a configuration page to your application, add a new Kubernetes manifest to a release that contains the field definitions. Below is a short example of a config screen definition. The API reference docs contain the [full Config language syntax](/reference/config).
+To add a configuration page to your application, add a new Kubernetes manifest to a release that contains the field definitions. Below is a short example of a config screen definition. The API reference docs contain the [full Config language syntax](/reference/v1beta1/config/).
 
 ```yaml
 apiVersion: kots.io/v1beta1

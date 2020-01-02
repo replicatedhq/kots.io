@@ -11,4 +11,4 @@ The `upstream` command interacts with a KOTS application that is installed in an
 kubectl kots upstream upgrade --namespace <namespace> <app-slug>
 ```
 
-Thie above command is functionality equilavlent to clicking the Check For Updates in the Admin Console.
+The above command is functionality equivalent to clicking the Check For Updates in the Admin Console.

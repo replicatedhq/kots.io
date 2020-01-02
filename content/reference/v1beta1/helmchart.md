@@ -3,7 +3,7 @@ date: 2019-12-27
 linktitle: "HelmChart"
 title: HelmChart
 description: "HelmChart defines an instance of a chart"
-weight: 30050
+weight: 70
 ---
 
 HelmChart is the vendor-supplied instruction for how KOTS should process a Helm chart to create a single deployable instance of the chart (if multiple deployments of the chart are required, multiple HelmChart CRs are required).

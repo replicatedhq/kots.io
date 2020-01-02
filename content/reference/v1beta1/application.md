@@ -3,7 +3,7 @@ date: 2019-10-09
 linktitle: "Application"
 title: Application
 description: "The Application spec contains vendor-supplied metadata about the application."
-weight: 30010
+weight: 1
 ---
 
 The `Application` spec contains vendor-supplied metadata about the application.
@@ -86,7 +86,7 @@ A list of queries containing a query and legend.
 - legend: The legend to use for the query line. Can be templated with each element returned from the Prometheus query. Template escape sequence is `{{}}`.
 
 ### yAxisFormat
-The format of the Y axis labels with support for all Grafana [units](https://grafana.com/docs/features/panels/graph/#left-y-right-y). 
+The format of the Y axis labels with support for all Grafana [units](https://grafana.com/docs/features/panels/graph/#left-y-right-y).
 
 ### yAxisTemplate
 Y axis labels template. Use `{{ value }}`.

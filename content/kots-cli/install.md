@@ -5,4 +5,4 @@ title: kots install
 weight: 90100
 ---
 
-The install subcommand will install the application directly to a cluster. By default, kots install will include the admin console to provide a web based management console.
+The install subcommand will install the application directly to a cluster. By default, `kots install` will include the admin console to provide a web based management console.
