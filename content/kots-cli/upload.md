@@ -5,4 +5,4 @@ title: kots upload
 weight: 90140
 ---
 
-If you have a copy of an application that was created with kots pull or kots download, you can upload it back to the Admin Console using the kots upload command.
+If you have a copy of an application that was created with kots pull or kots download, you can upload it back to the Admin Console using the `kots upload` command.
