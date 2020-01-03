@@ -68,9 +68,11 @@ The keys below `values` should map exactly to the keys in your `values.yaml`. On
 
 The `optionalValues` array is provided for advanced use cases to make value overrides completely optional. Not all charts treat `""` and missing as the same value. If it's required to only optionally have a value set, and an empty string does not provide the same functionality as "not set", then use the values here.
 
+See the guide for using [HelmChart optionalValues](/vendor/helm/optional-value-keys/).
+
 ### `optionalValues[].when`
 
-The `when` field in `optionalValues` provides a string-based, [template-function-evaluated](/reference/template-functions/contexts/) method to defer evalulation of the conditional to render time in the customer environment.
+The `when` field in `optionalValues` provides a string-based, [template-function-evaluated](/reference/template-functions/contexts/) method to defer evaluation of the conditional to render time in the customer environment.
 
 ## builder
 

@@ -2,7 +2,7 @@
 date: "2019-11-27T00:00:00Z"
 lastmod: "2019-11-27T00:00:00Z"
 title: "KOTS Custom Resources"
-aliases: [/vendor/additional-objects]
+aliases: [/vendor/additional-objects/]
 weight: "20"
 hideFromList: true
 ---

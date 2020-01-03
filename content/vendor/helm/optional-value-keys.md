@@ -5,7 +5,7 @@ title: Optional Value Keys
 weight: 20540
 ---
 
-Some advanced cases involve writing values to a values file only if there's a value to apply. Helm charts like postgres will not treat an empty value(`""`) the same as the key being missing from the chart.
+Some advanced cases involve writing values to a values file only if there's a value to apply. Helm charts like Postgres will not treat an empty value(`""`) the same as the key being missing from the chart.
 
 This is sometimes needed for applications packaged as a Helm chart that include a reference to another chart in the `requirements.yaml`.
 
