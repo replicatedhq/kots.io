@@ -8,7 +8,8 @@ draft: false
 
 This article refers to installing the Admin Console on an embedded cluster. When running the Admin Console on an existing cluster, refer to the [Installing the Admin Console](/kotsadm/installing/installing-a-kots-app/) documentation.
 
-Refer to the [reference documentation](/reference/kubernetes-installers/kurl/) for a full list of options that may be passed to the install script.
+### Powered by kURL
+Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support. More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs).
 
 ### Online Installations
 
@@ -52,19 +53,9 @@ or
 cat install.sh | sudo bash -s airgap ha
 ```
 
-## Operating Systems
+## System Requirements
 
-* Ubuntu 18.04
-* Ubuntu 16.04
-* Red Hat Enterprise Linux 7.4 - 7.6
-* CentOS 7.4 - 7.6
-
-## Minimum System Requirements
-
-* 2 CPUs per machine for master nodes, 1 CPU for worker nodes
-* 4 GB or more of RAM per machine
-* TCP ports 6443, 6783, and 8800 open
-* UDP ports 6783 and 6784 open
+Supported operating systems and minimum system requirements are [specified by Replicated kURL](https://kurl.sh/docs/install-with-kurl/system-requirements).
 
 ## Joining Nodes
 

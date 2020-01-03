@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: "Overview"
 title: Packaging An Application
-weight: 20010
+weight: 10
 ---
 
 A KOTS application is a Kubernetes application with a few additional Custom Resource Definitions to support application lifecycle management via the `kubectl kots` plugin and the `kotsadm` admin console.  When an application vendor adds Pre-flight, Application, Config, Entitlement, and Support-Bundle specs to their application,  users will have a much-improved experience with installation and day-2 operations.
