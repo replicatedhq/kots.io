@@ -64,6 +64,10 @@ The `values` key allows for values to be changed in the chart, or for a mapping 
 
 The keys below `values` should map exactly to the keys in your `values.yaml`. Only include the keys that you wish to change, these will be merged with the `values.yaml` in the chart archive.
 
+## exclude
+
+The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/helm/optional-charts). During [processing](/vendor/helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
+
 ## optionalValues
 
 The `optionalValues` array is provided for advanced use cases to make value overrides completely optional. Not all charts treat `""` and missing as the same value. If it's required to only optionally have a value set, and an empty string does not provide the same functionality as "not set", then use the values here.
