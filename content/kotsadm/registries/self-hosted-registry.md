@@ -4,6 +4,7 @@ linktitle: "Using self-hosted image registry"
 title: Self-Hosted Image Registry
 description: "Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed."
 weight: 10010
+aliases: [/kotsadm/registries/]
 ---
 
 Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed.

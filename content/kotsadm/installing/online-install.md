@@ -8,8 +8,8 @@ draft: false
 
 The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the Internet. In this scenario, the container images will be pulled from the upstream registries directly.
 
-## kots install
-To start, run the command that was provided by the application vendor.
+## Kots install
+To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/) & then run the command that was provided by the application vendor.
 
 ```shell
 kubectl kots install application-name
@@ -60,6 +60,3 @@ Most KOTS applications include some required and some optional configuration. Th
 Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application.
 
 ![Preflight Checks](/images/preflight-checks.png)
-
-
-
