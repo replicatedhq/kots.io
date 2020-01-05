@@ -37,7 +37,7 @@ For this example, we will assume that the application is available at replicated
 - The workstation already is logged in to the registry
 - The registry namespace “application-name” can be used for this application
 
-```
+```shell
 kubectl kots pull replicated://application-name \
   --license-file ~/application-license-yaml \
   --rewrite-images \
@@ -58,25 +58,25 @@ This command will:
 When this process is finished, the application YAML is ready for deployment. Using the right process to connect to and deploy airgapped manifests:
 
 **Kubernetes 1.14 or later:**
-```
+```shell
 kubectl apply -k ~/application-name/overlays/midstream
 ```
 
 **Kubernetes 1.13 or earlier:**
-```
+```shell
 kustomize build ~/application-name/overlays/midstream | kubectl apply -f -
 ```
 
 ## Updating The Application
 To update the application, you’ll need to retain the ~/application-name directory. If you don’t have it available, connect to the cluster and run:
 
-```
+```shell
 kubectl kots download application-namespace
 ```
 
 Now, change into the application-name directory and run kots pull:
 
-```
+```shell
 cd ~/application-name
 kubectl kots pull replicated://application-name \
   --license-file ~/application-license.yaml \

@@ -42,7 +42,7 @@ At this point, visit http://localhost:8800 to complete the setup of the applicat
 ### Unlock the Admin Console
 ![Secure Console](/images/secure-console.png)
 
-Enter the password provided during the setup, and you'll be redirect to the "Upload License" screen.
+Enter the password provided during the setup, and you'll be redirected to the "Upload License" screen.
 
 ### Provide a License File
 At this point, the Admin Console is still just an admin console without an application. Providing a license file will include the entitlements necessary to pull the manifest and images and start the application.
