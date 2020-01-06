@@ -119,7 +119,7 @@ When you are ready, click "Deploy" to ship the changes.
 
 By default, `kotsadm` is set up for a simple click-to-deploy workflow, to enable quick bootstrapping and testing. Once you've iterated on the values file and you're happy with your yaml, you can [configure gitops](../../gitops) for the chart, so that upstream chart updates will cause new pull requests to be made into a VCS your choice.
 
-Similarly, you can [configure a private registry](../../registries) so that when a new version of the chart requires a new Docker image, kotsadm can
+Similarly, you can [configure a private registry](/kotsadm/registries/self-hosted-registry/) so that when a new version of the chart requires a new Docker image, kotsadm can
 
 - Pull that image from the public internet
 - Tag and push it to your internal registry
