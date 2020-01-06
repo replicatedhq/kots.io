@@ -9,7 +9,7 @@ Kubernetes [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs
 
 A common workaround is to use a content SHA from the job object in the name. This is fine, but a KOTS release can be updated from various events (upstream update, license sync, config update, CLI upload). If the job is already completed, it's an error to re-apply the same job to the cluster again.
 
-When running a cluster using the kotsadm Admin Console, the built-in operator/controller can help be deleting jobs on completion. This allows the same job to be deployed again, and not pollute the namespace with completed jobs.
+When running a cluster using the kotsadm Admin Console, the built-in operator/controller can help by deleting jobs on completion. This allows the same job to be deployed again, and not pollute the namespace with completed jobs.
 
 To enable this, when creating a job object, specify a delete hook policy as an annotation on the job object. The annotation key is always `kots.io/hook-delete-policy`, and there are two possible values (you can use both simultaneously): `hook-succeeded` and `hook-failed`. When this annotation is present and includes `hook-succeeded`, the job will be deleted when it completes succcesfully. If this annotation is present and includes `hook-failed`, the job will be deleted on failure.
 
