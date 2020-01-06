@@ -5,8 +5,11 @@ title: Installing a Helm Chart
 weight: 10030
 draft: false
 ---
+**Alpha Feature:** *Installing and managing Helm charts via Kotsadm is still an Alpha feature, please open [issues](https://github.com/replicatedhq/kots/issues) with any problems you run into.*
 
-The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the Internet. In this scenario, the container images will be pulled from the upstream registries directly.
+Software Vendors interested in delivering a Helm chart to customers should consider [delivering their Helm chart as a KOTS application](/vendor/helm/using-helm-charts/).
+
+This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline). The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the Internet. In this scenario, the container images will be pulled from the upstream registries directly.
 
 **Note** Currently the only supported source for helm charts are public helm repositories support by helm out-of-the-box.
 
@@ -69,7 +72,7 @@ At this point, the application is ready, but has not been deployed yet. You will
 
 ![Dashboard](/images/kotsadm-helm-main-dashboard.png)
 
-From here, navigate to `Version History`, where you will see a single release staged for deployment. 
+From here, navigate to `Version History`, where you will see a single release staged for deployment.
 
 ![Version History](/images/kotsadm-helm-version-history.png)
 
@@ -114,9 +117,9 @@ When you are ready, click "Deploy" to ship the changes.
 
 ### Next Steps: GitOps and Registries
 
-By default, `kotsadm` is set up for a simple click-to-deploy workflow, to enable quick bootstrapping and testing. Once you've iterated on the values file and you're happy with your yaml, you can [configure gitops](../../gitops) for the chart, so that upstream chart updates will cause new pull requests to be made into a VCS your choice. 
+By default, `kotsadm` is set up for a simple click-to-deploy workflow, to enable quick bootstrapping and testing. Once you've iterated on the values file and you're happy with your yaml, you can [configure gitops](../../gitops) for the chart, so that upstream chart updates will cause new pull requests to be made into a VCS your choice.
 
-Similarly, you can [configure a private registry](../../registries) so that when a new version of the chart requires a new Docker image, kotsadm can 
+Similarly, you can [configure a private registry](../../registries) so that when a new version of the chart requires a new Docker image, kotsadm can
 
 - Pull that image from the public internet
 - Tag and push it to your internal registry
