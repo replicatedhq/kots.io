@@ -4,7 +4,8 @@ linktitle: "Application"
 title: Application
 description: "The Application spec contains vendor-supplied metadata about the application."
 weight: 1
-aliases: [/vendor/additional-objects/application]
+aliases: 
+  - /vendor/additional-objects/application
 ---
 
 The KOTS Application custom resource enables features such as branding, release notes, port forwarding, dashboard buttons, app status indicators, and custom graphs.

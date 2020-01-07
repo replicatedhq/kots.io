@@ -3,7 +3,8 @@ date: 2019-11-27
 linktitle: "Support Bundle"
 title: Support Bundle
 weight: 50
-aliases: [/vendor/additional-objects/support-bundle]
+aliases: 
+  - /vendor/additional-objects/support-bundle
 ---
 
 The [Replicated Troubleshoot project](https://github.com/replicatedhq/troubleshoot) provides the Support Bundle diagnostic tool that KOTS integrates deeply with. By providing this custom resources, vendors can collect, redact, and analyze troubleshooting data from a cluster, to help diagnose problems with application deployments. The tool depends on two Custom Resources.
