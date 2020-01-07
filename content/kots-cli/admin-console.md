@@ -17,10 +17,10 @@ kots admin-console upgrade [flags]
 |:----------------------|------|-------------|
 | `upgrade`   | command |  Upgrade the admin console to the latest version |
 | `-h, --help`   |  |          help for admin-console |
-| `--kubeconfig` | string |  the kubeconfig to use (default "/Users/austin/.kube/config") |
-| `-n, --namespace` | string |   the namespace where the admin console is running (default "default") |
+| `--kubeconfig` | string |  the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
+| `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
 
-### Example
+### Examples
 ```bash
 kots admin-console --namespace kots-sentry
 kots admin-console upgrade --namespace kots-sentry

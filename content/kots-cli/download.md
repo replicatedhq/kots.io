@@ -16,10 +16,10 @@ kubectl kots download [app-slug] [flags]
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `--dest` | string |        the directory to store the application in (default "/Users/austin") |
+| `--dest` | string |        the directory to store the application in _(defaults to $HOME)_ |
 | `-h, --help`   |  |           help for download |
-| `--kubeconfig` | string |  the kubeconfig to use (default "/Users/austin/.kube/config") |
-| `-n, --namespace` | string |    the namespace to download from (default "default") |
+| `--kubeconfig` | string |  the kubeconfig to use. _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
+| `-n, --namespace` | string |    the namespace to download from _(default "default")_ |
 | `--overwrite` |   |       overwrite any local files, if present |
 
 ### Example

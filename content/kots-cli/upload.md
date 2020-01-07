@@ -5,7 +5,7 @@ title: kots upload
 weight: 90140
 ---
 
-Upload Kubernetes manifests from the local filesystem to a cluster, creating a new version of the application that can be deployed. When you have a copy of an application that was created with `kots pull` or `kots download`, you can upload it back to the Admin Console using the `kots upload` command. 
+Upload Kubernetes manifests from the local filesystem, creating a new version of the application that can be deployed. When you have a copy of an application that was created with `kots pull` or `kots download`, you can upload it back to the Admin Console using the `kots upload` command. 
 
 ### Usage
 ```bash
@@ -17,9 +17,9 @@ kubectl kots upload [source] [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help`  |       |       help for upload |
-| `--kubeconfig`| string |    the kubeconfig to use (default "/Users/austin/.kube/config") |
+| `--kubeconfig`| string |    the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 | `--name`| string |          the name of the kotsadm application to create |
-| `-n, --namespace`| string |     the namespace to upload to (default "default") |
+| `-n, --namespace`| string |     the namespace to upload to _(default "default")_ |
 | `--slug`| string |          the application slug to use. if not present, a new one will be created |
 | `--upstream-uri`| string |  the upstream uri that can be used to check for updates |
 

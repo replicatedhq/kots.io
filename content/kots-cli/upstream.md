@@ -17,8 +17,8 @@ kubectl kots upstream upgrade [upstream-uri] [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
-| `--kubeconfig`| string |    the kubeconfig to use (default "/Users/austin/.kube/config") |
-| `-n, --namespace`| string |     the namespace to upload to (default "default") |
+| `--kubeconfig`| string |    the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
+| `-n, --namespace`| string |     the namespace to upload to _(default "default")_ |
 
 ### Example
 ```bash

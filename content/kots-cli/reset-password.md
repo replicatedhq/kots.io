@@ -11,13 +11,13 @@ If you’ve deployed an application with the admin console, the `kots reset-pass
 ```bash
 kubectl kots reset-password [namespace] [flags]
 ```
-* _Replace `[namespace]` with the namespace where your KOTS application resides_ 
+* _Replace `[namespace]` with the namespace where the admin console and your KOTS application resides_ 
 * _Provide `[flags]` according to the table below_ 
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help`   |          |  help for reset-password |
-| `--kubeconfig` | string | the kubeconfig to use (default "/Users/austin/.kube/config") |
+| `--kubeconfig` | string | the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 
 
 ### Examples

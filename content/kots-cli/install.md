@@ -18,20 +18,20 @@ kubectl kots install [upstream uri] [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help`         |  |          help for install |
-| `--hostname` | string |          the hostname to that the admin console will be exposed on (default "localhost:8800") |
-| `--image-namespace` | string |   the namespace/org in the docker registry to push images to (required when --rewrite-images is set) |
+| `--hostname` | string |          the hostname to that the admin console will be exposed on _(default "localhost:8800")_ |
+| `--image-namespace` | string |   the namespace/org in the docker registry to push images to _(required when --rewrite-images is set)_|
 | `--include-github`  | |          set up for github login |
 | `--include-ship`    | |         include the shipinit/edit/update and watch components |
-| `--kubeconfig` | string |        the kubeconfig to use (default "/Users/austin/.kube/config") |
+| `--kubeconfig` | string |        the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 | `--license-file` | string |      path to a license file to use when download a replicated app |
-| `--local-path` | string |        specify a local-path to test the behavior of rendering a replicated app locally (only supported on replicated app types currently) |
+| `--local-path` | string |        specify a local-path to test the behavior of rendering a replicated app locally _(only supported on replicated app types currently)_ |
 | `--name` | string |              name of the application to use in the Admin Console |
 | `-n, --namespace` | string |         the namespace to deploy to |
 | `--node-port` | int32 |           the nodeport to assign to the service, when service-type is set to NodePort |
-| `--registry-endpoint` | string | the endpoint of the local docker registry to use when pushing images (required when --rewrite-images is set) |
+| `--registry-endpoint` | string | the endpoint of the local docker registry to use when pushing images _(required when --rewrite-images is set)_ |
 | `--repo` | string |              repo uri to use when installing a helm chart |
 | `--rewrite-images` |  |          set to true to force all container images to be rewritten and pushed to a local registry |
-| `--service-type` | string |      the service type to create (default "ClusterIP") |
+| `--service-type` | string |      the service type to create _(default "ClusterIP")_ |
 | `--set` | strings |                values to pass to helm when running helm template |
 | `--shared-password` | string |   shared password to apply |
 
