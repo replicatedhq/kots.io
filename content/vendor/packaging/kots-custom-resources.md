@@ -2,9 +2,10 @@
 date: "2019-11-27T00:00:00Z"
 lastmod: "2019-11-27T00:00:00Z"
 title: "KOTS Custom Resources"
-aliases: [/vendor/additional-objects/]
 weight: "20"
 hideFromList: true
+aliases: 
+  - /vendor/additional-objects/
 ---
 
 A KOTS application can include several recommended, but optional, [KOTS custom resources](/reference/v1beta1/). These custom resources are packaged as part of the KOTS application, but are not deployed to the cluster. When included, they are consumed by KOTS, the Admin Console (kotsadm) or by other kubectl plugins to control the KOTS application experience.
