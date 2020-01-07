@@ -58,5 +58,11 @@ If you've deployed an application with the admin console, the kots admin-admin c
 ### kots reset-password
 If you've lost the password to the admin console but still have kubectl access, the kots reset-password command will prompt for a new password and upload it to the cluster.
 
+### kots upstream
+Provides wrapper functionality to interface with the upstream source.
+
+### kots version
+Prints the current version of the kots Kubectl plugin and provides a command for updating if a new version is available.
+
 ## Next Steps
 To give kots a try, head over to the Kots Helm guide. If you want to see what it’s like to distribute a kots application, head to the Kots Vendor guide.
