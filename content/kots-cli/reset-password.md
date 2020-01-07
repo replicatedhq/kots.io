@@ -6,3 +6,21 @@ weight: 90160
 ---
 
 If you’ve deployed an application with the admin console, the `kots reset-password` command will change the bcrypted password hash in the cluster, allowing you to log in again.
+
+### Usage
+```bash
+kubectl kots reset-password [namespace] [flags]
+```
+* _Replace `[namespace]` with the namespace where the admin console and your KOTS application resides_ 
+* _Provide `[flags]` according to the table below_ 
+
+| Flag                 | Type | Description |
+|:----------------------|------|-------------|
+| `-h, --help`   |          |  help for reset-password |
+| `--kubeconfig` | string | the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
+
+
+### Examples
+```bash
+kubectl kots reset-password sentry-namespace
+```
