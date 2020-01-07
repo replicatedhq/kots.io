@@ -3,6 +3,8 @@ date: 2019-10-23
 linktitle: "Overview"
 title: Packaging KOTS with Vendor
 weight: 10
+aliases: 
+  - /pagelink/vendor-packaging-kots
 ---
 
 Software vendors with a Kubernetes application, can package their app as a Kubernetes-off-The-Shelf (KOTS) software for distribution to enterprise customers as a modern on-prem, private instance. The packaging process leverages several KOTS components (some optional, some required). For context, Replicated KOTS is made of several purpose built, open source components, but should be thought of in two distinct (but highly integrated) categories.

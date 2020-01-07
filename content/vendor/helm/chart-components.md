@@ -3,6 +3,8 @@ date: 2019-12-27
 linktitle: "Charts As Components"
 title: Charts As Components
 weight: 20520
+aliases: 
+  - /pagelink/vendor-charts-as-components
 ---
 
 When delivering a modern on-prem installable version of an application, there are frequently IaaS components and services that are needed. For example, an application running in the cloud could be using Amazon RDS for Postgres or a managed Elasticsearch cluster. Many components have community-supported Helm charts that can be used as drop-in replacements for these managed services.

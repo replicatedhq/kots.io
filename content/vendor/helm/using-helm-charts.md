@@ -3,6 +3,8 @@ date: 2019-12-27
 linktitle: "Using Helm Charts"
 title: Using Helm Charts
 weight: 20500
+aliases: 
+  - /pagelink/vendor-using-helm-charts
 ---
 
 Helm is a popular package manager for Kubernetes applications. Replicated KOTS supports delivering Helm charts as an enterprise application, or including Helm charts as components of an application. A KOTS application can support more than one Helm chart, and can support more than a single instance of any Helm chart.

@@ -3,6 +3,8 @@ date: 2019-12-06
 linktitle: "Template Functions"
 title: Template Functions
 weight: 20210
+aliases: 
+  - /pagelink/vendor-template-functions
 ---
 
 KOTS applications have access to a rich set of template functions that can be used to render the Kubernetes manifests in the customer's environment.

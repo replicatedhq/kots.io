@@ -4,6 +4,8 @@ linktitle: "Updating a KOTS application"
 title: Updating a KOTS application
 weight: 10010
 draft: false
+aliases: 
+  - /pagelink/admin-console-updating-kots-application
 ---
 
 The simplest way to update a KOTS application is through the "Version History" tab on the Admin Console.

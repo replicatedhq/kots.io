@@ -3,7 +3,9 @@ date: 2019-11-27
 linktitle: "SIG Application"
 title: SIG Application
 weight: 60
-aliases: [/vendor/additional-objects/sig-application]
+aliases: 
+  - /vendor/additional-objects/sig-application
+  - /pagelink/sig-application-spec
 ---
 
 The [Kubernetes SIG Application](https://github.com/kubernetes-sigs/application#kubernetes-applications) spec provides a standard API for creating, viewing, and managing applications. The `spec.descriptor.links` field can be used to [configure buttons on the Admin Console Dashboard](/vendor/dashboard/open-buttons/), linking to application dashboards or landing pages. This custom resource is optional for KOTS applications.

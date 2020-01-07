@@ -3,6 +3,8 @@ date: 2020-01-03
 linktitle: "Helm Processing"
 title: Helm Processing
 weight: 20505
+aliases: 
+  - /pagelink/helm-processing
 ---
 
 The KOTS Helm integration is compatible with both Helm V2 and Helm V3 as it does not rely on Tiller to deploy the chart into the cluster. Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool. KOTS using Helm to create deployable YAML by leveraging the `helm template` command.

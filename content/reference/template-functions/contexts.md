@@ -3,6 +3,8 @@ date: 2019-12-06
 linktitle: "Template Function Contexts"
 title: Template Function Contexts
 weight: 90020
+aliases: 
+  - /pagelink/contexts-template-function
 ---
 
 [Template functions](/vendor/packaging/template-functions/) are grouped into different contexts, depending on the phase of the application lifecycle when the function is available and the context data that is provided.

@@ -3,6 +3,8 @@ date: 2019-11-01
 linktitle: "Dashboard Graphs"
 title: Adding Dashboard Graphs
 weight: 20030
+aliases: 
+  - /pagelink/vendor-adding-dashboard-graphs
 ---
 
 By default, when installing a Kots application into an embedded cluster, the Prometheus monitoring system will be included alongside the Kots application. This will collect valuable metrics about the cluster as well as the application and expose graphs with key metrics on the dashboard of the Admin Console. When running in an existing cluster, it is possible to configure the address of the Prometheus service in the Admin Console.

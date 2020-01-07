@@ -3,6 +3,8 @@ date: 2019-10-09
 linktitle: "Prometheus"
 title: Prometheus
 weight: 10010
+aliases: 
+  - /pagelink/monitoring-prometheus
 ---
 
 Kots includes built-in monitoring functionality for all distributed applications. By default, Kots displays cluster disk usage, pod cpu usage, pod memory usage and pod health graphs on the dashboard page of the Admin Console. Additionally, application developers can choose to expose business and application level metrics and alerts. In order to take advantage of the monitoring functionality, [Prometheus](https://prometheus.io/) will need to be installed in the cluster. If Prometheus is already installed, see the [Existing Prometheus Installations](/kotsadm/monitoring/existing-prometheus/) documentation for more information on configuring an existing Prometheus installation.

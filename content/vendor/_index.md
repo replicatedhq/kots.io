@@ -5,4 +5,6 @@ title: "Vendor Documentation"
 description: "Articles about distributing vendor applications via Kots"
 redirect: /vendor/packaging/packaging-an-app/
 weight: "2"
+aliases: 
+  - /pagelink/section-vendor
 ---

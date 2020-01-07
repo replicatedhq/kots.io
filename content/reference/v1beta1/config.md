@@ -4,7 +4,9 @@ linktitle: "Config"
 title: Config
 description: "Config is the vendor-supplied Config screen and input for template function rendering."
 weight: 10
-aliases: [/reference/config/items]
+aliases: 
+  - /reference/config/items
+  - /pagelink/config-custom-resource
 ---
 
 The Config custom resource can be provided by a vendor to specify a Config screen for collecting customer supplied values and template function rendering.

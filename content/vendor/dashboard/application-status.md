@@ -3,6 +3,8 @@ date: 2019-10-09
 linktitle: "Application Status"
 title: Determining Application Status
 weight: 20020
+aliases: 
+  - /pagelink/vendor-determining-application-status
 ---
 
 With minimal additional to the kots.io Application YAML, it is possible to display application status on the dashboard of the Admin Console.

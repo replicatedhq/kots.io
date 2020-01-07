@@ -3,6 +3,8 @@ date: 2020-01-06
 linktitle: "Optional Resources"
 title: Optional Kubernetes Resources
 weight: 20220
+aliases: 
+  - /pagelink/vendor-optional-kubernetes-resources
 ---
 
 When delivering a configurable KOTS application, the customer-supplied config values may result in optional Kubernetes manifests that are not needed for one environment. A common example of this is when a KOTS application includes a Postgres Statefulset, but provides a config option for the user to choose if they want to run that included Postgres, or bring their own managed or external Postgres instance.

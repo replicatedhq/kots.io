@@ -4,6 +4,8 @@ linktitle: "Updating the Admin Console"
 title: Updating the Admin Console
 weight: 10020
 draft: false
+aliases: 
+  - /pagelink/admin-console-updating
 ---
 
 This article refers to upgrading the Admin Console on an existing cluster. When running the Admin Console on an embedded cluster, refer to the [Updating an Embedded Cluster](/kotsadm/updating/updating-embedded-cluster/) documentation.

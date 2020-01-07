@@ -4,6 +4,8 @@ linktitle: "Online Install"
 title: Online (Internet-Connected) Installation
 weight: 10020
 draft: false
+aliases: 
+  - /pagelink/installing-kots-app-online
 ---
 
 The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the Internet. In this scenario, the container images will be pulled from the upstream registries directly.

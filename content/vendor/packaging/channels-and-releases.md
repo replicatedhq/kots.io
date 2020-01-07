@@ -3,6 +3,8 @@ date: 2019-10-23
 linktitle: "Channels And Releases"
 title: Channels And Releases
 weight: 20020
+aliases: 
+  - /pagelink/vendor-channels-and-releases
 ---
 
 The [Replicated vendor portal](https://vendor.replicated.com) provides you with a location to create and release versions of your application to various release channels. The vendor portal hosts a built-in YAML editor and linter to help you write and validate YAML.

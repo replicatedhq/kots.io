@@ -16,6 +16,8 @@ algolia:
 # Hugo configuration
 pygmentsCodeFences: true
 pygmentsStyle: "monokai"
+permalink: 
+  pagelink: :slug
 
 staticDir:
     - ./static

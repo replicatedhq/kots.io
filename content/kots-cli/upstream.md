@@ -3,6 +3,8 @@ date: 2019-12-16
 linktitle: "upstream"
 title: kots upstream
 weight: 90180
+aliases: 
+  - /pagelink/kots-cli-upstream
 ---
 
 The `upstream` command interacts with a KOTS application that is installed in an Admin Console.

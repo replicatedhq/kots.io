@@ -3,6 +3,8 @@ date: 2019-12-06
 linktitle: "Static Context"
 title: Static Context
 weight: 90030
+aliases: 
+  - /pagelink/static-context-template-function
 ---
 
 ## Mastermind Sprig

@@ -4,6 +4,8 @@ linktitle: "Overview"
 title: Creating A Config Screen
 description: "Kots applications can include a robust, custom configuration page. This is a dynamic form that can be used to prompt for, validate and generate inputs that are needed to start the application. During installation, the customer will be directed to this page after uploading a license if there are required fields. For applications that don't have any required fields, this page will be accessible from the Config tab of the Admin Console."
 weight: 20010
+aliases: 
+  - /pagelink/config-screen-in-admin-console
 ---
 
 Kots applications can include a robust, custom configuration page. This is a dynamic form that can be used to prompt for, validate and generate inputs that are needed to start the application. During installation, the customer will be directed to this page after uploading a license if there are required fields. For applications that don't have any required fields, this page will be accessible from the Config tab of the Admin Console.

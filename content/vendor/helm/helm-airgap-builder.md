@@ -3,6 +3,8 @@ date: 2020-01-03
 linktitle: "Helm Airgap Builder"
 title: Helm Airgap builder
 weight: 20560
+aliases: 
+  - /pagelink/helm-airgap-builder
 ---
 
 For all Replicated Business & Enterprise Plans, Replicated Vendor Portal automatically builds airgap bundles for every promoted release. This is generally done by processing the application YAML manifests and exporting all of the images listed in the manifests and bundling them with the manifests. In order to ensure that a Helm chart based KOTS application is able to be fully built as an airgap package, Replicated needs a `helm template` version of the application manifests that include all optional components/images as `enabled`. This can be tricky for Helm chart based KOTS applications as they might have [optional charts](/optional-charts) that are not included by default.

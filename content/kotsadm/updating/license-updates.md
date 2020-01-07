@@ -4,6 +4,8 @@ linktitle: "License Updates"
 title: Updating a License
 weight: 10040
 draft: false
+aliases: 
+  - /pagelink/admin-console-license-updates
 ---
 
 You can check if there are any changes on your license through the "License" tab on the Admin Console.

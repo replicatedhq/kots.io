@@ -4,6 +4,8 @@ linktitle: "Installing a KOTS application"
 title: Installing a KOTS application
 weight: 10010
 draft: false
+aliases: 
+  - /pagelink/installing-kots-app
 ---
 
 KOTS applications can be installed into various environments and Kubernetes clusters, from airgapped, bare metal Kubernetes installs to managed offering such as EKS, GKE and AKS, and many options in between.

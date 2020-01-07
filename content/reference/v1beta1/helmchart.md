@@ -4,6 +4,8 @@ linktitle: "HelmChart"
 title: HelmChart
 description: "HelmChart defines an instance of a chart"
 weight: 70
+aliases: 
+  - /pagelink/helmchart-custom-resource
 ---
 
 A KOTS HelmChart custom resource enables KOTS to process and [deploy Helm charts as part of a Vendor distributed application](/vendor/helm/using-helm-charts/). HelmChart custom resources are required for KOTS to deploy Helm charts (but not necessary if only raw K8s manifests are being deployed). This spec references a required `.tgz` export of the Helm chart resources and provides the necessary instructions for processing and preparing the chart for deployment.

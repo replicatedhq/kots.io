@@ -3,6 +3,8 @@ date: 2019-12-06
 linktitle: "License Context"
 title: License Context
 weight: 90050
+aliases: 
+  - /pagelink/license-context-template-function
 ---
 
 ## LicenseFieldValue

@@ -3,6 +3,8 @@ date: 2019-12-27
 linktitle: "Optional Charts"
 title: Optional Charts
 weight: 20530
+aliases: 
+  - /pagelink/optional-charts
 ---
 
 Charts can be optionally included in a Replicated KOTS application. By default, an instance of a Helm chart is created for every `apiVersion: kots.io/v1beta` and `kind: HelmChart` that's found in the upstream application manifests.

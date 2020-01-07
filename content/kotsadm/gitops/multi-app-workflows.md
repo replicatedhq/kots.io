@@ -4,6 +4,8 @@ linktitle: "Multi App Workflows"
 title: Pushing Updates to a GitOps Workflow in Multi App Mode
 weight: 10020
 draft: false
+aliases: 
+  - /pagelink/multi-app-workflows
 ---
 
 While the Admin Console is initially configured to receive updates, show the changes and deploy them to the cluster, this process can be changed and converted to use a GitOps workflow instead. When using a GitOps workflow, changes from the Admin Console (config changes, upstream updates, license updates) will be pushed to a private Git repository, where an existing CI/CD process can execute to deliver the manifests to the cluster.

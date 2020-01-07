@@ -3,6 +3,8 @@ date: 2019-12-06
 linktitle: "Config Context"
 title: Config Context
 weight: 90040
+aliases: 
+  - /pagelink/config-context-template-function
 ---
 
 ## ConfigOption
