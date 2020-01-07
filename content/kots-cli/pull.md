@@ -5,7 +5,15 @@ title: kots pull
 weight: 90110
 ---
 
-If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the Kots application.
+If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the Kots application and the Kubernetes manifests. This workflow is necessary when managing a KOTS application without the use of the admin console (kotsadm). 
+
+### Usage
+```bash
+kubectl kots pull [upstream uri] [flags]
+```
+* _Replace `[upstream-uri]` with the URI for your KOTS application._ 
+* _If the KOTS application has been packaged by Replicated Vendor, the `--license-file` flag must be provided._  
+* _Provide `[flags]` according to the table below_ 
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
@@ -23,3 +31,9 @@ If you’d rather use kubectl or another workflow to deploy to your cluster, you
 | `--rootdir` |  string  |  root directory that will be used to write the yaml to (default "/path/") |  
 | `--set`  | strings  |  values to pass to helm when running helm template |  
 | `--shared-password` | string  | shared password to use when deploying the admin console |  
+
+### Example
+```bash
+kubectl kots pull sentry/unstable --license-file ~/license.yaml
+kubectl kots pull helm://stable/elasticsearch
+```
