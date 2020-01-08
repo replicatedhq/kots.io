@@ -28,7 +28,7 @@ spec:
 
 ## Resource Statuses
 
-Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. A [support bundle](/kotsadm/support-bundle/) will include diagnostic information when state "Missing" is encountered.
+Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. A [support bundle](/kotsadm/troubleshooting/support-bundle/) will include diagnostic information when state "Missing" is encountered.
 
 Below is a table of resources that are supported and conditions that contribute to each status:
 

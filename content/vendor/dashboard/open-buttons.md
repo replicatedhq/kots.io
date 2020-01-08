@@ -57,4 +57,4 @@ spec:
 
 Here, we define the port mapping that will be used to automatically include the service port as a port-forward when running the kots CLI to connect to the Admin Console.
 
-In this example, we are declaring that the k8s application custom resource will have a link that has a url of “https://sentry”. When this link is added to the dashboard, also `kubectl port-forward svc/sentry 9000:9000` and replace the link as “localhost:9000”. This replacement is exact string match.
+In this example, we are declaring that the k8s application custom resource will have a link that has a url of “https\://sentry”. When this link is added to the dashboard, also `kubectl port-forward svc/sentry 9000:9000` and replace the link as `localhost:9000`. This replacement is exact string match.

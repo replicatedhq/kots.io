@@ -23,7 +23,7 @@ Install the `kots` plugin for `kubectl` using the [instructions on the Getting S
 Before installing a KOTS application, there are a few considerations.
 
 ### Existing Cluster or Embedded Kubernetes
-KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift etc) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. Most KOTS vendors support both options and require the end customer to determine their preferred method of deployment. This guide will focus on existing cluster installs, with [embedded installations documented separately](/installing-embedded-cluster/).  
+KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift etc) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. Most KOTS vendors support both options and require the end customer to determine their preferred method of deployment. This guide will focus on existing cluster installs, with [embedded installations documented separately](../installing-embedded-cluster/).  
 
 ### Online or Airgap Install
 Most Kubernetes clusters are able to make outbound internet requests (inbound access is never recommended or required). As such, most cluster operators are able to perform an [online installation](../online-install). However, if the target cluster does not have outbound internet access, the application can be delivered through an [airgap install](../airgap-packages/). When choosing this option, the cluster must have access to an image registry. All images will be retagged and pushed to the target registry.

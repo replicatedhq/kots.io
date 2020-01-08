@@ -5,7 +5,7 @@ title: Community Licenses
 weight: 20070
 ---
 
-KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) include a [built-in entitlement](../build-in-entitlements/) to indicate the type of license. One of these options is `community`. This document describes what a Community license is and what happens when using Community licenses in the Admin Console.
+KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) include a [built-in entitlement](/vendor/entitlements/build-in-entitlements/) to indicate the type of license. One of these options is `community`. This document describes what a Community license is and what happens when using Community licenses in the Admin Console.
 
 *Note: Not all accounts support Community Licenses. To enable this feature, contact [support@replicated.com](mailto:support@replicated.com).*
 

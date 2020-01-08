@@ -46,6 +46,6 @@ spec:
 
 ### Prometheus Query
 
-A valid PromQL prometheus query is required in the `query` property. By default an [Embedded Cluster](http://localhost:1313/vendor/embedded-kubernetes/embedded-kubernetes/) exposes the Prometheus [Expression Browser](https://prometheus.io/docs/visualization/browser/) at NodePort 30900. This can be used to aid in constructing queries.
+A valid PromQL prometheus query is required in the `query` property. By default an [Embedded Cluster](/vendor/embedded-kubernetes/embedded-kubernetes/) exposes the Prometheus [Expression Browser](https://prometheus.io/docs/visualization/browser/) at NodePort 30900. This can be used to aid in constructing queries.
 
 More information on querying Prometheus with PromQL can be found [here](https://prometheus.io/docs/prometheus/latest/querying/basics/).

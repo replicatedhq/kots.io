@@ -11,7 +11,7 @@ All template functions are documented in the [template function reference](../..
 
 ## Using Template Functions
 
-To use a template function, include it as a string in the application. A simple example is using a boolean [custom entitlement field](../entitlements/custom-entitlements/) to deliver a value for Max Concurrent Users. This value should be available as an environment variable in a pod.
+To use a template function, include it as a string in the application. A simple example is using a boolean [custom entitlement field](/vendor/entitlements/custom-entitlements/) to deliver a value for Max Concurrent Users. This value should be available as an environment variable in a pod.
 
 Given the custom license field named `max_concurrent_users`, this value can be supplied to the pod environment variable like this:
 
