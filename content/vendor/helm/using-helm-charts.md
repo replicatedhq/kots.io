@@ -2,6 +2,8 @@
 date: 2019-12-27
 linktitle: "Using Helm Charts"
 title: Using Helm Charts
+aliases:
+  - /vendor/helm/
 weight: 20500
 ---
 
