@@ -64,6 +64,8 @@ The `values` key allows for values to be changed in the chart, or for a mapping 
 
 The keys below `values` should map exactly to the keys in your `values.yaml`. Only include the keys that you wish to change, these will be merged with the `values.yaml` in the chart archive.
 
+To exclude a value that's set in the `values.yaml`, set it equal to the string `"null"` (with quotes), in this section. For more options here, check out the [Helm pull request](https://github.com/helm/helm/pull/2648).
+
 ## exclude
 
 The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/helm/optional-charts). During [processing](/vendor/helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
