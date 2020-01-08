@@ -44,11 +44,11 @@ Application name: elasticsearch
 
 Once this has completed, the kots plugin will create a port-forward to the Admin Console interface. The Admin Console API and Web server are exposed over a ClusterIP service in the namespace provided. The port-forward will be active as long as the CLI is running. Pressing Ctrl+C will end the port forward.
 
-Once this has completed, click the link, or visit http://localhost:8800 to complete the setup using the Admin Console web-based UI.
+Once this has completed, click the link, or visit `http://localhost:8800` to complete the setup using the Admin Console web-based UI.
 
 ## Web Based Setup
 
-At this point, visit http://localhost:8800 to complete the setup of the application.
+At this point, visit `http://localhost:8800` to complete the setup of the application.
 
 ### Unlock the Admin Console
 ![Secure Console](/images/secure-console.png)

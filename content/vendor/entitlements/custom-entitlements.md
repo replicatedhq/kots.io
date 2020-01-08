@@ -6,7 +6,7 @@ description: "All applications created in Replicated Vendor require a valid lice
 weight: 20060
 ---
 
-All applications created in Replicated Vendor require a valid license file to install. This license file contains some standard, pre-built entitlements, but can also include any custom entitlement fields required by the application. Kots will securely deliver these entitlement values and make them available when building the Kubernetes manifests or at runtime using the [titled API](/reference/titled).
+All applications created in Replicated Vendor require a valid license file to install. This license file contains some standard, pre-built entitlements, but can also include any custom entitlement fields required by the application. Kots will securely deliver these entitlement values and make them available when building the Kubernetes manifests or at runtime using the titled API.
 
 ## Built-In Entitlement Fields
 All Replicated applications have some built-in entitlement fields that are available:
@@ -57,7 +57,7 @@ When paired with a valid license, a new service and deployment are added to your
 
 There is nothing extra needed to access this API. This will be available in all environments, both airgapped and Internet-connected.
 
-To access the entitlements API, here's an example in Javascript ([full API docs are available](/reference/titled)):
+To access the entitlements API, here's an example in Javascript:
 
 ```javascript
 import * as rp from "request-promise";

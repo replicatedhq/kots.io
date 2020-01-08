@@ -10,7 +10,7 @@ weight: 90040
 func ConfigOption(optionName string) string
 ```
 Returns the value of the config option as a string.
-The config screen and associated options are described [here](/docs/ship/config/overview).
+The config screen and associated options are described [here](/reference/v1beta1/config).
 ```yaml
 '{{repl ConfigOption "hostname" }}'
 ```
