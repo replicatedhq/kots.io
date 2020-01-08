@@ -43,16 +43,20 @@ Params:
     - v1beta1
 menu:
   main:
-    - Name: "Kots CLI"
+    - Identifier: kots-cli
+      Name: Kots CLI
       Weight: 1
-      URL: "/kots-cli/getting-started"
-    - Name: "Admin Console"
+      URL: /kots-cli/getting-started
+    - Identifier: kotsadm
+      Name: Admin Console
       Weight: 2
-      URL: "/kotsadm/installing/installing-a-kots-app/"
-    - Name: "Reference"
+      URL: /kotsadm/installing/installing-a-kots-app/
+    - Identifier: reference
+      Name: Reference
       Weight: 4
-      URL: "/reference/v1beta1/"
-    - Name: "Vendor"
+      URL: /reference/v1beta1/
+    - Identifier: vendor
+      Name: Vendor
       Weight: 3
-      URL: "/vendor/packaging/packaging-an-app/"
+      URL: /vendor/packaging/packaging-an-app
 ---
