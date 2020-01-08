@@ -36,7 +36,7 @@ A KOTS application may be installed in airgap mode on clusters installed online 
 
 Both online and airgapped installations can be configured in high-availability mode.
 When installing a highly available cluster, the script will prompt for a load balancer address.
-The load balancer can be preconfigured by passing in the load-balancer-address=<host:port> flag.
+The load balancer can be preconfigured by passing in the `load-balancer-address=<host:port>` flag.
 This load balancer should be configured to distribute traffic to all healthy control plane nodes in its target list.
 This should be a TCP forwarding load balancer.
 The health check for an apiserver is a TCP check on the port the kube-apiserver listens on (default value :6443).
