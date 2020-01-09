@@ -9,15 +9,14 @@ Opens a proxy so you can connect to the admin console from your machine. Additio
 
 ### Usage
 ```bash
-kots admin-console [flags]
-kots admin-console upgrade [flags]
+kubectl kots admin-console [flags]
+kubectl kots admin-console upgrade [flags]
 ```
 
 * _If `upgrade` is not specified, this command opens a proxy to the admin console. Otherwise, it upgrades the admin console to the latest version._
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `upgrade`   | command |  Upgrade the admin console to the latest version |
 | `-h, --help`   |  |          help for admin-console |
 | `--kubeconfig` | string |  the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 | `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
