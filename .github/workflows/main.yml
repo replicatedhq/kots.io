@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Build HTML
+      uses: srt32/hugo-action@v0.0.3
+      with: 
+        args: -v -s .
     - name: Check HTML
       uses: chabad360/htmlproofer@master
       with:
