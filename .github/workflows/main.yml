@@ -14,7 +14,7 @@ jobs:
       with: 
         args: -v -s .
     - name: Check HTML
-      uses: chabad360/htmlproofer@master
+      uses: austinchambers/htmlproofer@master
       with:
         # The directory to scan
         directory: "./public"
