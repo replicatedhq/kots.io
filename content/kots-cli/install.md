@@ -21,7 +21,6 @@ kubectl kots install [upstream uri] [flags]
 | `--hostname` | string |          the hostname to that the admin console will be exposed on _(default `"localhost:8800"`)_ |
 | `--image-namespace` | string |   the namespace/org in the docker registry to push images to _(required when `--rewrite-images` is set)_|
 | `--include-github`  | |          set up for github login |
-| `--include-ship`    | |         include the shipinit/edit/update and watch components |
 | `--kubeconfig` | string |        the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
 | `--license-file` | string |      path to a license file _(required when `[upstream-uri]` points to a replicated app)_ |
 | `--local-path` | string |        specify a local-path to test the behavior of rendering a replicated app locally _(only supported on replicated app types currently)_ |
