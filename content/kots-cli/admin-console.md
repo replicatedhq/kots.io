@@ -13,6 +13,8 @@ kots admin-console [flags]
 kots admin-console upgrade [flags]
 ```
 
+* _If `upgrade` is not specified, this command opens a proxy to the admin console. Otherwise, it upgrades the admin console to the latest version._
+
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `upgrade`   | command |  Upgrade the admin console to the latest version |
