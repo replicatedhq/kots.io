@@ -11,14 +11,14 @@ The `kots upstream upgrade` fetches the latest version of the upstream applicati
 ```bash
 kubectl kots upstream upgrade [upstream-uri] [flags]
 ```
-* _Replace `[upstream-uri]` with the URI for your KOTS application._ 
+* _Replace `[upstream-uri]` with the URI for your KOTS application (required)._ 
 * _Provide `[flags]` according to the table below_ 
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
-| `--kubeconfig`| string |    the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
-| `-n, --namespace`| string |     the namespace to upload to _(default "default")_ |
+| `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
+| `-n, --namespace`| string |     the namespace to upload to _(default `"default"`)_ |
 
 ### Example
 ```bash

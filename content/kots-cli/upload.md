@@ -11,15 +11,15 @@ Upload Kubernetes manifests from the local filesystem, creating a new version of
 ```bash
 kubectl kots upload [source] [flags]
 ```
-* _Replace `[source]` with a directory containing the manifests of your KOTS application_ 
+* _Replace `[source]` with a directory containing the manifests of your KOTS application (required)._ 
 * _Provide `[flags]` according to the table below_ 
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help`  |       |       help for upload |
-| `--kubeconfig`| string |    the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
+| `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
 | `--name`| string |          the name of the kotsadm application to create |
-| `-n, --namespace`| string |     the namespace to upload to _(default "default")_ |
+| `-n, --namespace`| string |     the namespace to upload to _(default `"default"`)_ |
 | `--slug`| string |          the application slug to use. if not present, a new one will be created |
 | `--upstream-uri`| string |  the upstream uri that can be used to check for updates |
 
