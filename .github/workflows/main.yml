@@ -19,4 +19,4 @@ jobs:
         # The directory to scan
         directory: "./public"
         # The arguments to pass to HTMLProofer
-        arguments: --allow-hash-href --check-html --empty-alt-ignore --url-ignore "/kots.io/css/"
+        arguments: --allow-hash-href --check-html --empty-alt-ignore --url-ignore \"/kots.io/css/\"
