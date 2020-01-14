@@ -1,11 +1,10 @@
 ---
-baseURL: "https://kots.io/"
+baseURL: "https://kots.io"
 languageCode: "en-us"
 title: "Kots.io"
 theme: "hugo-whisper-theme"
 metadataformat: "yaml"
 canonifyurls: true
-relativeurls: true
 description: "Documentation for Replicated Kots."
 googleAnalytics: ""
 
@@ -42,7 +41,6 @@ Params:
     - support-bundle
     - reference
     - v1beta1
-    - release-notes
 menu:
   main:
     - Identifier: kots-cli
@@ -61,8 +59,4 @@ menu:
       Name: Vendor
       Weight: 3
       URL: /vendor/packaging/packaging-an-app
-    - Identifier: "release-notes"
-      Name: "Release Notes"
-      Weight: 5
-      URL: "/vendor/additional-objects"
 ---

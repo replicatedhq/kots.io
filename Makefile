@@ -15,9 +15,3 @@ install:
 .PHONY: dev
 dev:
 	hugo serve --theme hugo-whisper-theme
-
-.PHONY: test
-test:
-	rm -rf public
-	hugo -v -s . 
-	htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"
