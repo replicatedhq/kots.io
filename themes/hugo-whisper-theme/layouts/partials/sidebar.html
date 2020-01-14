@@ -2,7 +2,7 @@
 
 <div class="docs-menu">
   <h3>
-    <a href="{{ .FirstSection.Params.redirect }}">
+    <a href="{{ .FirstSection.Params.redirect | relURL }}">
       {{ if eq .Section "kots-cli" }}
         KOTS CLI Documentation
       {{ else if eq .Section "kotsadm" }}
@@ -25,7 +25,7 @@
         </li>
       {{ else }}
         <li class="is-parent {{ if eq .Title $currentNode.Title }}active{{ end }}">
-          <a href="{{ or .Params.redirect .Permalink }}">
+          <a href="{{ or .Params.redirect .Permalink | relURL }}">
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }}
             {{ else }}
@@ -37,11 +37,7 @@
           {{ range .Pages }}
             <li class="is-descendant {{ if eq .Title $currentNode.Title }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
-                {{ if .Params.linktitle }}
-                  {{ .Params.linktitle }}
-                {{ else }}
-                  {{ .Title }}
-                {{ end }}
+                {{ .Permalink | relURL }}
               </a>
             </li>
           {{ end }}
