@@ -37,7 +37,11 @@
           {{ range .Pages }}
             <li class="is-descendant {{ if eq .Title $currentNode.Title }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
-                {{ .Permalink | relURL }}
+                {{ if .Params.linktitle }}
+                  {{ .Params.linktitle }}	
+                {{ else }}	
+                  {{ .Title }}	
+                {{ end }}
               </a>
             </li>
           {{ end }}
