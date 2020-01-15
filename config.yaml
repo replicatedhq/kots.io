@@ -5,6 +5,7 @@ title: "Kots.io"
 theme: "hugo-whisper-theme"
 metadataformat: "yaml"
 canonifyurls: true
+relativeurls: true
 description: "Documentation for Replicated Kots."
 googleAnalytics: ""
 
