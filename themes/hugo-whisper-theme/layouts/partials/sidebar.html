@@ -14,7 +14,7 @@
   <ul>
     {{ range .FirstSection.Pages }}
       {{ if .IsPage }}
-        <li class="{{ if eq .Title $currentNode.Title }}active{{ end }}">
+        <li class="{{ if eq .File $currentNode.File }}active{{ end }}">
           <a href="{{ .Permalink | relURL }}">
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }}
@@ -24,7 +24,7 @@
           </a>
         </li>
       {{ else }}
-        <li class="is-parent {{ if eq .Title $currentNode.Title }}active{{ end }}">
+        <li class="is-parent {{ if eq .File.Dir $currentNode.File.Dir }}active{{ end }}">
           <a href="{{ or .Params.redirect .Permalink | relURL }}">
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }}
@@ -35,7 +35,7 @@
         </li>
         {{ if $currentNode.IsDescendant . }}
           {{ range .Pages }}
-            <li class="is-descendant {{ if eq .Title $currentNode.Title }}active{{ end }}">
+            <li class="is-descendant {{ if eq .File $currentNode.File }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
                 {{ if .Params.linktitle }}
                   {{ .Params.linktitle }}	
