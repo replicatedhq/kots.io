@@ -32,7 +32,7 @@ For this example, we will assume that the application is available at replicated
 
 - The workstation cannot access the cluster
 - The workstation CAN access the image registry
-- The image registry is at https://registry.somebigbank.com
+- The image registry is at `https://registry.somebigbank.com`
 - The workstation already is logged in to the registry
 - The registry namespace “application-name” can be used for this application
 
@@ -41,7 +41,7 @@ kubectl kots pull replicated://application-name \
   --license-file ~/application-license-yaml \
   --rewrite-images \
   --image-namespace application-name \
-  --registry-endpoint https://registry.somebigbank.com
+  --registry-endpoint `https://registry.somebigbank.com`
 ```
 
 This command will:
