@@ -4,8 +4,6 @@ linktitle: "Using self-hosted image registry"
 title: Self-Hosted Image Registry
 description: "Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed."
 weight: 10010
-aliases: 
-  - /kotsadm/registries/
 ---
 
 Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed.
@@ -34,7 +32,7 @@ For this example, we will assume that the application is available at replicated
 
 - The workstation cannot access the cluster
 - The workstation CAN access the image registry
-- The image registry is at https://registry.somebigbank.com
+- The image registry is at `https://registry.somebigbank.com`
 - The workstation already is logged in to the registry
 - The registry namespace “application-name” can be used for this application
 
@@ -43,7 +41,7 @@ kubectl kots pull replicated://application-name \
   --license-file ~/application-license-yaml \
   --rewrite-images \
   --image-namespace application-name \
-  --registry-endpoint https://registry.somebigbank.com
+  --registry-endpoint `https://registry.somebigbank.com`
 ```
 
 This command will:
