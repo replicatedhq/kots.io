@@ -1,8 +1,8 @@
 ---
 date: 2019-10-09
-linktitle: "Channel Create"
-title: "Create a Channel"
-weight: 90112
+linktitle: "Collector Create"
+title: "Create a Collector"
+weight: 90122
 draft: false
 ---
 
