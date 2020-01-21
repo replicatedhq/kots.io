@@ -18,13 +18,14 @@ replicated release lint --yaml-dir YAML_DIR [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `--yaml-dir` | path | The directory containing yaml application manifests for a Kots release. (**required**) |
+| `--fail-on` | string | The minimum severity of a linting rule to cause a non-zero exit code. Supported values are [info, warn, error, none]. (default is error) |
 | `-h, --help`   |  |          help for admin-console |
 | `--kubeconfig` | string |  the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 | `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
 
 ### Examples
 ```bash
-replicated release lint --yaml-dir ./manifests
+replicated release lint --yaml-dir ./manifests --fail-on error
 RULE                           TYPE    LINE    MESSAGE    
 config-spec                    warn            Missing config spec
 replicas-1                     info    10      Found Replicas 1
