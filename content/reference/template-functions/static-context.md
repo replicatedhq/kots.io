@@ -159,7 +159,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer.
 ```yaml
-'{{repl Add (LicenseFieldValue "maximum_users") 1}}'
+'{{repl Add (ConfigOption "maximum_users") 1}}'
 ```
 
 ## Sub
@@ -172,7 +172,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer.
 ```yaml
-'{{repl Sub (LicenseFieldValue "maximum_users") 1}}'
+'{{repl Sub (ConfigOption "maximum_users") 1}}'
 ```
 
 ## Mult
@@ -198,7 +198,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer and will be rounded down.
 ```yaml
-'{{repl Div (LicenseFieldValue "maximum_users") 2.0}}'
+'{{repl Div (ConfigOption "maximum_users") 2.0}}'
 ```
 
 ## ParseBool
