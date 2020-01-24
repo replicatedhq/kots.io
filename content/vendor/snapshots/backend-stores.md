@@ -15,3 +15,5 @@ All options require a bucket name and permit an optional prefix in the bucket.
 * GCS
 
 By default on embedded clusters the in-cluster Ceph RGW object store is configured as the backend.
+
+If re-using a bucket/prefix, velero will sync the bucket and create local Backup objects for all the snapshots it finds.
