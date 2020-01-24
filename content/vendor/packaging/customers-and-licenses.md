@@ -7,7 +7,7 @@ weight: 20030
 
 Each customer you deploy to via Replicated will need a separate license file for their installation. This license file identifies the customer & application during the installation and update processes. A customer license is created in the Customers section of the [vendor portal](https://vendor.replicated.com). You can manage the values and properties of that customer and license, including custom license fields, by selecting an individual customer.
 
-If you are looking to create or manage custom license fields you can do so in the License Fields section of the vendor portal or via the Vendor License API. License values are used by Replicated to enable/disable various functionality.
+If you are looking to create or manage custom license fields you can do so in the License Fields section of the vendor portal, described in greater detail in the [Custom Entitlements](/vendor/entitlements/custom-entitlements) section. 
 
 
 ### Name (Required)
@@ -28,7 +28,7 @@ By default, licenses will be set to disable airgap installations. By enabling th
 It is important to identify the type of license that is being created, development, trial or paid. Development licenses are designed to be used internally by the development team for testing and integration. Trial licenses should be provided to customers who are on 2-4 week trials of your software. Paid licenses identify the end customer as a paying customer (for which additional information can be provided.)
 
 ### Custom License Fields
-Custom license fields can be set for all licenses. This is useful if specific customer information might change from customer to customer. These fields can be read from both the template functions as well as from the Integration API. Examples of custom license fields are “seats” to limit the number of active users or “hostname” in order to specify the domain that the application can be run on.
+Custom license fields can be set for all licenses. This is useful if specific customer information might change from customer to customer. These fields can be read from both the template functions as well as from Admin Console API. Examples of custom license fields are “seats” to limit the number of active users or “hostname” in order to specify the domain that the application can be run on. See the [Custom Entitlements](/vendor/entitlements/) section for more details. 
 
 ### Archiving Licenses
 When a license is archived in the vendor portal, it will be hidden in the default license search and become read-only. Archival does not affect the utility of license files downloaded before the change. If you wish for them to expire, set an expiration date and policy before archiving. This is a convenience feature for how licenses are displayed in the vendor portal.
