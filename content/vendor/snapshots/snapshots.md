@@ -84,3 +84,13 @@ spec:
           timeout: 3m
           onError: Continue
 ```
+
+#### Hooks
+
+The hooks will be copied from the release's Backup template to the Backup generated and applied by kotsadm.
+It is possible to specify pre-exec hooks to run before the backup and post-exec hooks to run after the backup.
+The recommended usage is to create db dumps to a directory with an empty volume in the pre-exec hook and to remove the dump from that directory in the post-exec hook.
+
+It is not possible to run hooks during restore.
+Use initContainers to load data from db dumps at restore time.
+Note that you will have to place your db dumps in separate pods from your db for databases such as postgres that are required to be running to load a dump.
