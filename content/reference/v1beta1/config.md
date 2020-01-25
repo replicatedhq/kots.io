@@ -255,18 +255,6 @@ Items can be readonly.
           readonly: true
 ```
 
-### `write_once`
-Items with the write_once property set to true will be locked the first time they are set.
-Locked items will appear readonly in the UI and will be ignored if set with `replicatedctl` or imported from a file.
-
-Any operation that sets an item is considered a write and will cause the item to be locked. This includes setting the item value in the UI, importing the value from a file specified in `/etc/replicated.conf` with the `ImportSettingsFrom` key, setting the value with `replicatedctl`, or setting the value with `value_cmd`.
-
-If the item has a `default` it will be locked the first time the user saves settings in the admin console.
-It is recommended to avoid using `default` with `write_once` items.
-
-```yaml
-    write_once: true
-```
 
 ### `affix`
 Items can be affixed left or right. These items will appear in the admin console on the same line. 
