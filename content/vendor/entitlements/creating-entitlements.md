@@ -89,14 +89,15 @@ To return the entitlement value of interest, parse the above response using the 
 ```javascript
 import * as rp from "request-promise";
 
-const license = rp({
+rp({
   uri: "http://kotsadm:3000/license/v1/license",
   json: true
+}).then(license => {
+  const seatCount = license.fields.find((field) => {
+    return field.field === "seat_count";
+  });
+  console.log(seatCount.value);
+}).catch(err => {
+  // Handle error response from `kotsadm`
 });
-
-const seatCount = license.fields.find((field) => {
-  return field.field === "seat_count";
-});
-
-console.log(seatCount.value);
 ```
