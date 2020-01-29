@@ -1,3 +1,60 @@
+/*
+ * Blog name and description
+ */
+ .blog-post-meta {
+  color: #9eabb3;
+  font-size: 14px;
+}
+
+h2.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 42px;
+}
+h1.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 4rem;
+}
+.blog-post-meta {
+  color: #9eabb3;
+  font-size: 14px;
+}
+.blog-post-single {
+  padding: 60px 120px;
+}
+.label {
+  border-radius: 25px !important;
+  color: #fff;
+  padding: .2em .6em .3em;
+  display: inline;
+  font-weight: 400;
+}
+
+.label-grey {
+  background-color: #848586;
+}
+
+.label-orange {
+  background-color: #f1844a;
+}
+
+.label-green {
+  background-color: #7FC65E;
+}
+
+.label-blue {
+  background-color: #5896bb;
+}
+
+h3 .label {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.paginator {
+  text-align: center;
+  width: 100%;
+}
+
 .suite-banner {
   padding: 14px 30px;
   background-color: #073551;
