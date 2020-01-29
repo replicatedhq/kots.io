@@ -11,11 +11,18 @@
         <meta http-equiv="refresh" content="0; url={{ .Params.redirect }}" />
     </head>
 </html>
+{{else if eq .Section "release-notes" }}
+    {{ range .Paginator.Pages }}
+      {{ .Render "li" }}
+    {{ end }}
+    <div class="paginator">
+      {{ template "_internal/pagination.html" . }}
+    </div>
 {{else}}
 <h1 class="title">{{ .Title }}</h1>
 <div class="content">
   {{ .Content }}
 </div>
-{{ end }}
 
+{{ end }}
 {{ end }}
