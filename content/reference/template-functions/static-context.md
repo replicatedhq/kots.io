@@ -15,7 +15,7 @@ The Sprig documentation can be found [here](https://masterminds.github.io/sprig/
 ```go
 func Namespace() string
 ```
-Namespace returns the Kubernetes namespace for the associated pod.
+Namespace returns the Kubernetes namespace that the KOTS application belongs to. 
 ```yaml
 '{{repl Namespace}}'
 ```
