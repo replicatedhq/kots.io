@@ -10,6 +10,16 @@ weight: 90030
 Many of the utility functions provided come from Sprig, a third-party library of Go template functions.
 The Sprig documentation can be found [here](https://masterminds.github.io/sprig/).
 
+
+## Namespace
+```go
+func Namespace() string
+```
+Namespace returns the Kubernetes namespace that the KOTS application belongs to. 
+```yaml
+'{{repl Namespace}}'
+```
+
 ## KubeSeal
 ```go
 func KubeSeal(certData string, namespace string, name string, value string) string
