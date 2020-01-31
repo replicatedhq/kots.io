@@ -41,6 +41,10 @@ spec:
           postgresqlPassword: "repl{{ if ConfigOptionEquals `postgres_type` `external_postgres`}}repl{{ ConfigOption `external_postgres_password`}}repl{{ end}}"
           postgresqlPort: "repl{{ if ConfigOptionEquals `postgres_type` `external_postgres`}}repl{{ ConfigOption `external_postgres_port`}}repl{{ end}}"
 
+  # namespace allows for a chart to be installed in an alternate namespace to
+  # the default
+  namespace: samplechart-namespace
+
   # builder values provide a way to render the chart with all images
   # and manifests. this is used in replicated to create airgap packages
   builder:
@@ -79,6 +83,10 @@ See the guide for using [HelmChart optionalValues](/vendor/helm/optional-value-k
 ### `optionalValues[].when`
 
 The `when` field in `optionalValues` provides a string-based, [template-function-evaluated](/reference/template-functions/contexts/) method to defer evaluation of the conditional to render time in the customer environment.
+
+## namespace
+
+The `namespace` key allows for a chart to be installed in an alternate namespace. If left blank, the namespace will default to the one into which kotsadm is installed. If an alternate namespace is specified, it is required that the namespace exist or is included in your yaml spec.
 
 ## builder
 
