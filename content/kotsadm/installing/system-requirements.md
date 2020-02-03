@@ -18,5 +18,5 @@ Each release of KOTS maintains compatability with the current Kubernetes version
 
 ## Embedded Cluster Installation Requirements
 
-KOTS leverages [kURL](https://kurl.sh/) to embed a new Kubernetes cluster into existing virtual machines. As such, any embedded installation will include additional system requirements (see [kURL System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements)). 
+KOTS leverages [kURL](https://kurl.sh/) to embed a new Kubernetes cluster into existing machines. As such, any embedded installation includes additional system requirements (see [kURL System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements)). 
 
