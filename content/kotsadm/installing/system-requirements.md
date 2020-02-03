@@ -8,17 +8,10 @@ draft: false
 
 This page describes the system requirements for executing and installing KOTS applications. The requirements for command-line-interfaces (such as the [Vendor CLI](/vendor/cli/getting-started) and the [KOTS CLI](/kots-cli/getting-started)) are described separately, and are not subject to these requirements. 
 
-## Supported Operating Systems
-* Ubuntu 16.04 (Kernel version >= 4.15)
-* Ubuntu 18.04 (Recommended)
-* CentOS 7.4, 7.5, 7.6
-* RHEL 7.4, 7.5, 7.6
+## Embedded Cluster Installation Requirements
 
-## Minimum System Requirements 
-* 2 CPUs or more 
-* 4 GB or more of RAM per machine
-* TCP ports 6443 and 6783 open
-* UDP ports 6783 and 6784 open
+KOTS leverages [kURL](https://kurl.sh/) to embed a new Kubernetes cluster into existing virtual machines. As such, any embedded installation will include additional system requirements (see [kURL System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements)). 
+
 
 ## Kubernetes Version Compatibility
 
