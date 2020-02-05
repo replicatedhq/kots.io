@@ -60,9 +60,7 @@ The latest version within the provided range will be used, falling back to the l
 Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
 
 ## kustomizeVersion
-This defaults to `latest`.
-Set to `2.0.3`, `3.5.4` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>3.0.0 <4.0.0`) to use a specific version of kustomize to apply your app's yaml.
-The latest version without the provided range will be used, falling back to the latest version if no version matches.
+This defaults to `latest`, but can be changed to `2.0.3` or `3.5.4` to use a specific version of kustomize to apply your app's yaml.
 Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
 
 ## ports
