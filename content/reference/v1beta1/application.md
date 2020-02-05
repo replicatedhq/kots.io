@@ -4,7 +4,7 @@ linktitle: "Application"
 title: Application
 description: "The Application spec contains vendor-supplied metadata about the application."
 weight: 1
-aliases: 
+aliases:
   - /vendor/additional-objects/application
 ---
 
@@ -27,6 +27,7 @@ spec:
   releaseNotes: These are our release notes
   allowRollback: false
   kubectlVersion: latest
+  kustomizeVersion: latest
   ports:
     - serviceName: web
       servicePort: 9000
@@ -57,6 +58,12 @@ This defaults to `latest`.
 Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
 The latest version within the provided range will be used, falling back to the latest version if no version matches.
 Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
+
+## kustomizeVersion
+This defaults to `latest`.
+Set to `2.0.3`, `3.5.4` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>3.0.0 <4.0.0`) to use a specific version of kustomize to apply your app's yaml.
+The latest version without the provided range will be used, falling back to the latest version if no version matches.
+Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
 
 ## ports
 These are extra ports (additional to the :8800 admin console port) that should be port-forwarded when running the `kots admin-console` command.
