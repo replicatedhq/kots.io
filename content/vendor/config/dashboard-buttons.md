@@ -1,9 +1,11 @@
 ---
 date: 2019-10-09
-linktitle: "Links and Buttons"
-title: Adding Buttons To The Dashboard
+linktitle: "Dashboard Buttons and Links"
+title: Dashboard Buttons and Links
 description: "When distributing an application, it’s helpful to make sure that the installer can easily verify that the application is running. Because networking and ingress is possibly handled differently in each cluster, this makes it difficult to provide a consistent URL at application packaging time, and even likely requires that the cluster operator create firewall rules before they can test the application installation."
-weight: 20010
+weight: 20014
+aliases: 
+  - /vendor/dashboard/open-buttons
 ---
 
 When distributing an application, it’s helpful to make sure that the installer can easily verify that the application is running. Because networking and ingress is possibly handled differently in each cluster, this makes it difficult to provide a consistent URL at application packaging time, and even likely requires that the cluster operator create firewall rules before they can test the application installation.
