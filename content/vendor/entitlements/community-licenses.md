@@ -25,7 +25,7 @@ When a community license is installed, the Admin Console will indicate this to d
 ![Community License Dashboard](/images/community-license-dashboard.png)
 
 
-### Supoprt Bundle
+### Support Bundle
 Because community licenses are not designed to include the same level of support as paid licenses, all support bundles and analysis in the Admin Console will be clearly marked as Community Edition. The same functionality is included in the support bundle and analysis, there is just additional marking to help differentiate.
 
 
