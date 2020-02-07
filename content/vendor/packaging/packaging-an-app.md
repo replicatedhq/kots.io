@@ -1,7 +1,7 @@
 ---
 date: 2019-10-23
 linktitle: "Overview"
-title: Packaging KOTS with Vendor
+title: Packaging KOTS Applications
 weight: 10
 ---
 
