@@ -141,7 +141,7 @@ A `textarea` can specify a `props` that will map into the HTML element directly.
 ```
 
 ### `file`
-A `file` is a special type of form field that renders an [`<input type="file" />`](https://www.w3schools.com/tags/tag_input.asp) HTML element. It has both a value, which holds the file name, and data, the contents of the file. See the [`ConfigOptionData`](hhttps://kots.io/reference/template-functions/config-context/#ConfigOptionData) template function for examples on how to use the file contents in your application.
+A `file` is a special type of form field that renders an [`<input type="file" />`](https://www.w3schools.com/tags/tag_input.asp) HTML element. It has both a value, which holds the file name, and data, the contents of the file. See the [`ConfigOptionData`](/reference/template-functions/config-context/#ConfigOptionData) template function for examples on how to use the file contents in your application.
 
 ```yaml
     - name: certs
