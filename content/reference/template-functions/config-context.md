@@ -24,6 +24,20 @@ Returns the base64 decoded value of a config option.
 '{{repl ConfigOptionData "ssl_key"}}'
 ```
 
+This is often used to provide files as part of a secret or configmap, like this:
+
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-tls-secret
+type: kubernetes.io/tls
+data:
+  tls.crt: '{{repl ConfigOptionData "tls_certificate_file" | Base64Encode }}'
+  tls.key: '{{repl ConfigOptionData "tls_private_key_file" | Base64Encode }}'
+```
+
 ## ConfigOptionEquals
 ```go
 func ConfigOptionEquals(optionName string, expectedValue string) bool
@@ -41,5 +55,3 @@ Returns true if the configuration option value is not equal to the supplied valu
 ```yaml
 '{{repl ConfigOptionNotEquals "http_enabled" "1" }}'
 ```
-
-## ConfigOptionIndex
