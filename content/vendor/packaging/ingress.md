@@ -11,11 +11,11 @@ When delivering a configurable KOTS application, ingress can be challenging as i
 
 The following example includes an Ingress resource with a single host based routing rule. The resource will work in both existing and embedded Kurl clusters.
 
+### Config
+
 A config option `enable_ingress` has been provided to allow the end-user to choose whether or not to enable the Ingress resource. In some clusters a custom Ingress resource may be desired, or no ingress controller may not be available and instead there may be another means preferred to expose a service.
 
 An `annotations` textarea has been made available for the end-user to add additional annotations to the ingress. Here, cluster specific annotations can be added to support a variety of ingress controllers. For example, when using the [ALB ingress controller](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in AWS, it is necessary to include the `kubernetes.io/ingress.class: alb` annotation on your Ingress resource.
-
-### Config
 
 ```yaml
 apiVersion: kots.io/v1beta1
@@ -29,7 +29,7 @@ spec:
       items:
         - name: enable_ingress
           type: bool
-          title: Enable Kuberentes Ingress?
+          title: Enable Kuberentes Ingress
           description: |
             Uncheck this box to disable the Kubernetes Ingress resource.
           default: "1"
@@ -42,9 +42,10 @@ spec:
           when: repl{{ ConfigOptionEquals "enable_ingress" "1" }}
         - name: allow_http
           type: bool
-          title: Allow HTTP?
+          title: Allow Unsecured Access through HTTP
           description: |
             Uncheck this box to disable HTTP traffic between the client and the load balancer.
+          default: "1"
           when: repl{{ ConfigOptionEquals "enable_ingress" "1" }}
         - name: annotations
           type: textarea
@@ -57,14 +58,19 @@ spec:
 
 ### Ingress
 
+For ingress, you must create two separate resources. The first of which will be deployed to existing cluster installations while the second will only be deployed to an embedded Kurl cluster. Both of these resources are selectively excluded with the [`kots.io/exclude` annotation](/vendor/packaging/optional-resources/).
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: example-application-ingress
   annotations:
-    "kots.io/exclude": 'repl{{ or (ConfigOptionEquals "enable_ingress" "1" | not) IsKurl }}'
-    "kubernetes.io/ingress.allow-http": 'repl{{ if ConfigOptionEquals "allow_http" "1" }}truerepl{{ else }}falserepl{{ end }}'repl{{ ConfigOption "annotations" | nindent 4 }}
+    kots.io/exclude: '{{repl or (ConfigOptionEquals "enable_ingress" "1" | not) (ConfigOptionEquals "IsKurl" "1") }}'
+    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'repl{{ ConfigOption "annotations" | nindent 4 }}
+  labels:
+    app: nginx
 spec:
   rules:
     - host: repl{{ or (ConfigOption "hostname") "~" }}
@@ -74,14 +80,19 @@ spec:
             backend:
               serviceName: nginx
               servicePort: 80
----
+```
+
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: example-application-ingress
+  name: example-application-ingress-embedded
   annotations:
-    "kots.io/exclude": 'repl{{ or (ConfigOptionEquals "enable_ingress" "1" | not) (not IsKurl) }}'
-    "kubernetes.io/ingress.allow-http": 'repl{{ if ConfigOptionEquals "allow_http" "1" }}truerepl{{ else }}falserepl{{ end }}'repl{{ ConfigOption "annotations" | nindent 4 }}
+    kots.io/exclude: '{{repl or (ConfigOptionEquals "enable_ingress" "1" | not) (ConfigOptionEquals "IsKurl" "1" | not) }}'
+    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
+    nginx.ingress.kubernetes.io/force-ssl-redirect: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'repl{{ ConfigOption "annotations" | nindent 4 }}
+  labels:
+    app: nginx
 spec:
   tls:
     - hosts:
