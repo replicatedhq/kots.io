@@ -56,7 +56,7 @@ kind: Statefulset
 metadata:
   name: postgresql
   annotations:
-    "kots.io/exclude": repl{{ ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+    "kots.io/exclude": '{{repl ConfigOptionEquals "postgres_type" "embedded_postgres" }}'
   labels:
     app: postgresql
 spec:
