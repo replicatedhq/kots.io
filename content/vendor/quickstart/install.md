@@ -10,8 +10,6 @@ gradient: "kubernetes"
 icon: "replicatedKubernetes"
 ---
 
-# Installing and Testing a Kubernetes Release
-
 This guide will give you first-hand experience installing a Replicated Kubernetes appliance. If you haven't yet created a release, head back to the [Create and Promote as Release](../create-release) guide and complete that first.
 
 Now that we've created a release and promoted it to the Unstable channel, the next step is to create a customer license and use this this license to install the application on a test server.

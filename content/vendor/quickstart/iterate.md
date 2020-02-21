@@ -10,8 +10,6 @@ gradient: "kubernetes"
 icon: "replicatedKubernetes"
 ---
 
-# Iterate and Delivering Updates
-
 This guide will walk you through making a change and delivering an update to an application after it's been deployed. It's assumed you have the environment from parts 1 and 2 of this guide ([creating a release](../create-release) and [installing](../install)). If you haven't completed these guides, head back and finish them first.
 
 Now that we have a Kubernetes cluster running, a common task is to deliver updates. Let's change the number of nginx replicas to show how to deliver an update.
