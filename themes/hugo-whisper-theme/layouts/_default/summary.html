@@ -2,7 +2,7 @@
   {{ if .Params.image }}
   <img alt="{{ .Title }}" src="{{ .Params.image }}" />
   {{ end }}
-  <h2 class="title-summary">
+  <h2 class="title-summary" id="{{.Title | anchorize}}">
     <a href="{{ .Permalink }}">
       {{ .Title }}
     </a>
