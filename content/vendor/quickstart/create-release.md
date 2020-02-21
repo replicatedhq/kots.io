@@ -10,8 +10,6 @@ gradient: "kubernetes"
 icon: "replicatedKubernetes"
 ---
 
-# Create and Promote a Release
-
 When starting and learning the Replicated platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend most of your time. This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with Replicated. If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
 
 This guide will deploy a basic application using Replicated and show you how to deliver an update to that application. The guide isn't going to teach Kubernetes, but will start with a working Kubernetes application.
