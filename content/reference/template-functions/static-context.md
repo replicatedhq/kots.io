@@ -247,27 +247,27 @@ ParseUint returns the unsigned integer value represented by the string with opti
 '{{repl ConfigOption "str_value" | ParseUint }}'
 ```
 
-## GetTLSCert
+## TLSCert
 ```go
-func GetTLSCert(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+func TLSCert(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
-GetTLSCert generates and returns a self-signed certificate identified by `certName`.  The first parameter can be used in the `GetTLSKey` function to retrieve the matching key.
+TLSCert generates and returns a self-signed certificate identified by `certName`.  The first parameter can be used in the `TLSKey` function to retrieve the matching key.
 
-GetTLSCert takes the following parameters
+TLSCert takes the following parameters
 - Unique name that identifies the certificate.  This is a not a part of the returned certificate.
 - Subject’s common name (cn)
 - Optional list of IPs; may be nil
 - Optional list of alternate DNS names; may be nil
 - Cert validity duration in days
 ```yaml
-repl{{ GetTLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+repl{{ TLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
 ```
 
-## GetTLSKey
+## TLSKey
 ```go
-func GetTLSKey(certName string) string
+func TLSKey(certName string) string
 ```
-GetTLSKey returns the key that matches the certificate identified by `certName`.  If certificate with this name does not exist, the function will return an empty string.
+TLSKey returns the key that matches the certificate identified by `certName`.  If certificate with this name does not exist, the function will return an empty string.
 ```yaml
-repl{{ GetTLSKey "my_custom_cert" }}
+repl{{ TLSKey "my_custom_cert" }}
 ```
