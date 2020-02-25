@@ -75,6 +75,22 @@ func LocalRegistryAddress() string
 
 Returns the local registry host or host/namespace that's configured. This will always return everything before the image name and tag.
 
+## LocalRegistryHost
+
+```go
+func LocalRegistryHost() string
+```
+
+Returns the local registry host that's configured. This will include port if one is specified.
+
+## LocalRegistryNamespace
+
+```go
+func LocalRegistryNamespace() string
+```
+
+Returns the local registry namespace that's configured.
+
 ## LocalImageName
 
 ```go
