@@ -7,7 +7,7 @@ weight: 103
 
 KOTS is responsible for delivering and ensuring that all container images (automatically detected and additionalImages) are pushed to the customer's private, internal registry. Additionally, KOTS creates Kustomize patches to rewrite image names and inject image pull secrets to all pods.
 
-KOTS cannot modify pods that are created at runtime by the Operator. To support this all environments, the Operator code should use KOTS functionality to determine the image name and image pull secrets for all pods when they are created.
+KOTS cannot modify pods that are created at runtime by the Operator. To support this in all environments, the Operator code should use KOTS functionality to determine the image name and image pull secrets for all pods when they are created.
 
 There are several template functions available to assist with this. This may require 2 new environment variables to be added to a manager to read these values. The steps to ensure that an Operator is using the correct image names and has the correct image pull secrets in dynamically created pods are:
 
@@ -39,7 +39,7 @@ env:
     value: 'repl{{ LocalImageName "quay.io/orgname/private-image:v1.2.3" }}'
 ```
 
-In the above example, this is a private image, and will always be rewritten. For online installations, this will return `proxy.replicated.com/app-name/private-image:v1.2.3` and for installations with a locally-configured registry it will return `registry.somebigbank.com/my-app-private-image:v.1.2.3`.
+In the above example, this is a private image, and will always be rewritten. For online installations, this will return `proxy.replicated.com/proxy/app-name/quay.io/orgname/private-image:v1.2.3` and for installations with a locally-configured registry it will return `registry.somebigbank.com/org/my-app-private-image:v.1.2.3`.
 
 #### Option 2: Build image names manually
 
