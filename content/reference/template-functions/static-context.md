@@ -15,7 +15,7 @@ The Sprig documentation can be found [here](https://masterminds.github.io/sprig/
 ```go
 func Namespace() string
 ```
-Namespace returns the Kubernetes namespace that the KOTS application belongs to. 
+Namespace returns the Kubernetes namespace that the KOTS application belongs to.
 ```yaml
 '{{repl Namespace}}'
 ```
@@ -245,4 +245,29 @@ func ParseUint(str string, args ...int) uint64
 ParseUint returns the unsigned integer value represented by the string with optional base (default 10).
 ```yaml
 '{{repl ConfigOption "str_value" | ParseUint }}'
+```
+
+## TLSCert
+```go
+func TLSCert(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSCert generates and returns a self-signed certificate identified by `certName`.  The first parameter can be used in the `TLSKey` function to retrieve the matching key.
+
+TLSCert takes the following parameters
+- Unique name that identifies the certificate.  This is a not a part of the returned certificate.
+- Subject’s common name (cn)
+- Optional list of IPs; may be nil
+- Optional list of alternate DNS names; may be nil
+- Cert validity duration in days
+```yaml
+repl{{ TLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
+## TLSKey
+```go
+func TLSKey(certName string) string
+```
+TLSKey returns the key that matches the certificate identified by `certName`.  If certificate with this name does not exist, the function will return an empty string.
+```yaml
+repl{{ TLSKey "my_custom_cert" }}
 ```
