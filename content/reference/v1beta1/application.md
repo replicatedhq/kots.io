@@ -28,6 +28,8 @@ spec:
   allowRollback: false
   kubectlVersion: latest
   kustomizeVersion: latest
+  additionalImages:
+    - jenkins/jenkins:lts
   ports:
     - serviceName: web
       servicePort: 9000
