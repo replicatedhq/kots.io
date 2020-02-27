@@ -48,7 +48,7 @@ env:
 
 ### Determining the imagePullSecret
 
-Private, local images will need to reference an image pull secret to be pulled. The value of the secret's dockerconfigjson is provided in a template function, and the application can write this pull secret as a new secret to the namespace. If the application is deploying the pod to the same namespace as the operator, the pull secert will already exist.
+Private, local images will need to reference an image pull secret to be pulled. The value of the secret's dockerconfigjson is provided in a template function, and the application can write this pull secret as a new secret to the namespace. If the application is deploying the pod to the same namespace as the operator, the pull secret will already exist in the namespace, as a secret named `kotsadm-replicated-registry`.
 
 This template function returns the base64-encoded, docker auth that can be written directly to a secret, and referenced in the imagePullSecrets attribute of the PodSpec.
 
