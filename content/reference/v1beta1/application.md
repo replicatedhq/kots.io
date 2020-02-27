@@ -53,6 +53,9 @@ The release notes for this version. These can also be set when promoting a relea
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
 
+## additionalImages
+An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation. While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
+
 ## kubectlVersion
 This defaults to `latest`.
 Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
