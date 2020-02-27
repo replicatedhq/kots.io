@@ -14,7 +14,7 @@ There are several template functions available to help with this. The workflow t
 
 ### Adding a reference to the local registry
 
-The manager of an operator is normally a Statefulset, but could be a Deployment or another object. Regardless of where the spec is defined, the location of the private images can be read using the [Replicated template functions](https://kots.io/vendor/packaging/template-functions/).
+The manager of an operator is normally a Statefulset, but could be a Deployment or another object. Regardless of where the spec is defined, the location of the private images can be read using the [Replicated template functions](/vendor/packaging/template-functions/).
 
 If an operator only requires one additional image, the easiest way to determine this location is to use the `LocalImageName` function. This will always return the image name to use, whether the customer's environment is configured to use a local registry or not.
 
