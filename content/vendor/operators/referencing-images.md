@@ -2,7 +2,7 @@
 date: 2020-02-27
 linktitle: "Referencing Images"
 title: Referencing Images
-weight: 102
+weight: 103
 ---
 
 While KOTS handles delivering application images (and additional images) to the customer's private, internal registry, the Operator Manager should uses the local image reference when creating a PodSpec.
@@ -60,6 +60,30 @@ metadata:
   namespace: awesomeapps
 data:
   .dockerconfigjson: '{{repl LocalRegistryImagePullSecret }}'
+type: kubernetes.io/dockerconfigjson
+```
+
+This will return an image pull secret for the locally configured registry. Its recommended to pass in the image name to this if your application has both public and private images. This will ensure that installs without a local registry can differentiate between private, proxied and public images.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: myregistrykey-imageone
+  namespace: awesomeapps
+data:
+  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret "elasticsearch:7.6.0" }}'
+type: kubernetes.io/dockerconfigjson
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: myregistrykey-imagetwo
+  namespace: awesomeapps
+data:
+  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret "quay.io/orgname/private-image:v1.2.3" }}'
 type: kubernetes.io/dockerconfigjson
 ```
 
