@@ -271,3 +271,13 @@ TLSKey returns the key that matches the certificate identified by `certName`.  I
 ```yaml
 repl{{ TLSKey "my_custom_cert" }}
 ```
+
+## IsKurl
+```go
+func IsKurl() bool
+```
+IsKurl returns true if running within a kurl-based installation. (Specifically, it checks whether a configmap `kurl-config` exists within `kube-system` and is accessible to the kotsadm pod)
+```yaml
+repl{{ IsKurl }}
+```
+
