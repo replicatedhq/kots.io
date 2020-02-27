@@ -28,6 +28,8 @@ spec:
   allowRollback: false
   kubectlVersion: latest
   kustomizeVersion: latest
+  additionalImages:
+    - jenkins/jenkins:lts
   ports:
     - serviceName: web
       servicePort: 9000
@@ -52,6 +54,9 @@ The release notes for this version. These can also be set when promoting a relea
 
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
+
+## additionalImages
+An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation. While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
 
 ## kubectlVersion
 This defaults to `latest`.
