@@ -24,7 +24,7 @@ spec:
 KOTS supports additional images that are:
 
 - public images: referenced by the docker pullable image name
-- images push to the Replicated Registry: referenced by the registry.replicated.com name
+- images pushed to the Replicated Registry: referenced by the registry.replicated.com name
 - images pushed to another [private, linked registry](https://kots.io/vendor/packaging/private-images/): referenced by the docker pullable name
 
 ## Authentication
