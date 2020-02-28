@@ -83,11 +83,11 @@ metadata:
   name: kotsadm-replicated-registry
   namespace: awesomeapps
 data:
-  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret "elasticsearch:7.6.0" }}'
+  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret }}'
 type: kubernetes.io/dockerconfigjson
 ```
 
-In the above example, the `LocalRegistryImagePullSecret("elasticsearch:7.6.0")` function will return an empty auth array if the installation is not airgapped, does not have a local registry configured, and the `elasticsearch:7.6.0` image is public. If the image is private, the function will return the license-key derived pull secret. And finally, if the installation is using a local registry, the image pull secret will contain the credentials needed to pull from the local registry.
+In the above example, the `LocalRegistryImagePullSecret()` function will return an empty auth array if the installation is not airgapped, does not have a local registry configured, and the `elasticsearch:7.6.0` image is public. If the image is private, the function will return the license-key derived pull secret. And finally, if the installation is using a local registry, the image pull secret will contain the credentials needed to pull from the local registry.
 
 **Example:**
 
