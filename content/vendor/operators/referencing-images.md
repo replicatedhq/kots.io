@@ -98,7 +98,7 @@ metadata:
   name: kotsadm-replicated-registry
   namespace: awesomeapps
 data:
-  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret "quay.io/orgname/private-image:v1.2.3" }}'
+  .dockerconfigjson: '{{repl LocalRegistryImagePullSecret }}'
 type: kubernetes.io/dockerconfigjson
 ```
 
