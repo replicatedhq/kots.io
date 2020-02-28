@@ -276,7 +276,7 @@ repl{{ TLSKey "my_custom_cert" }}
 ```go
 func IsKurl() bool
 ```
-IsKurl returns true if running within a kurl-based installation. (Specifically, it checks whether a configmap `kurl-config` exists within `kube-system` and is accessible to the kotsadm pod)
+IsKurl returns true if running within a kurl-based installation.
 ```yaml
 repl{{ IsKurl }}
 ```
