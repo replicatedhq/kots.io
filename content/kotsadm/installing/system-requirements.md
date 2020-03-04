@@ -16,7 +16,11 @@ Each release of KOTS maintains compatability with the current Kubernetes version
 |:----------------------|------|-------------|
 | 1.11 | 01-22-20 | 1.17, 1.16, and 1.15 |
 | 1.12 | 02-04-20 | 1.17, 1.16, and 1.15 |
-| 1.13 | 02-04-20 | 1.17, 1.16, and 1.15 | 
+| 1.13 | 02-27-20 | 1.17, 1.16, and 1.15 | 
+
+## Existing Cluster Installation Requirements
+
+Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with Replicated. This excludes any specific and additional requirements imposed by software vendor. 
 
 ## Embedded Cluster Installation Requirements
 
