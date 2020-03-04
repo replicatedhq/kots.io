@@ -30,6 +30,8 @@ spec:
   kustomizeVersion: latest
   additionalImages:
     - jenkins/jenkins:lts
+  additionalNamespaces:
+    - "*"
   ports:
     - serviceName: web
       servicePort: 9000
