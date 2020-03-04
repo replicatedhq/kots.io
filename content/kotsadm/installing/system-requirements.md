@@ -16,7 +16,7 @@ Each release of KOTS maintains compatability with the current Kubernetes version
 |:----------------------|------|-------------|
 | 1.11 | 01-22-20 | 1.17, 1.16, and 1.15 |
 | 1.12 | 02-04-20 | 1.17, 1.16, and 1.15 |
-| 1.13 | 02-04-20 | 1.17, 1.16, and 1.15 | 
+| 1.13 | 02-27-20 | 1.17, 1.16, and 1.15 | 
 
 ## Existing Cluster Installation Requirements
 
