@@ -20,9 +20,7 @@ Each release of KOTS maintains compatability with the current Kubernetes version
 
 ## Existing Cluster Installation Requirements
 
-Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. Unless otherwise noted as an exception below, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with Replicated. This excludes any specific and additional requirements imposed by software vendor. 
-
-* _No exceptions noted._
+Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with Replicated. This excludes any specific and additional requirements imposed by software vendor. 
 
 ## Embedded Cluster Installation Requirements
 
