@@ -38,6 +38,5 @@ spec:
     - "*"
 ```
 
-When the wildcard (`"*"`) is listed in `additionalImages`, the KOTS installer will use a ClusterRole and ClusterRoleBinding for the Admin Console. This will ensure that the Admin Console will continue to have permissions to all newly created namespaces, even after the install has finished.
-
+When the wildcard (`"*"`) is listed in `additionalNamespaces`, the KOTS installer will use a ClusterRole and ClusterRoleBinding for the Admin Console. This will ensure that the Admin Console will continue to have permissions to all newly created namespaces, even after the install has finished.
 
