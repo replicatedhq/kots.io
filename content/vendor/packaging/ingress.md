@@ -67,7 +67,7 @@ metadata:
   name: example-application-ingress
   annotations:
     kots.io/exclude: '{{repl or (ConfigOptionEquals "enable_ingress" "1" | not) IsKurl }}'
-    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
+    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" }}'
     nginx.ingress.kubernetes.io/force-ssl-redirect: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
     kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "annotations" | nindent 4 }}
 spec:
@@ -88,7 +88,7 @@ metadata:
   name: example-application-ingress-embedded
   annotations:
     kots.io/exclude: '{{repl or (ConfigOptionEquals "enable_ingress" "1" | not) (not IsKurl) }}'
-    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
+    kubernetes.io/ingress.allow-http: '{{repl ConfigOptionEquals "allow_http" "1" }}'
     nginx.ingress.kubernetes.io/force-ssl-redirect: '{{repl ConfigOptionEquals "allow_http" "1" | not }}'
     kots.io/placeholder: repl{{ printf "'true'" }}repl{{ ConfigOption "annotations" | nindent 4 }}
 spec:
