@@ -1,22 +1,19 @@
 ---
 date: "2018-01-30T04:02:20Z"
 title: "Create a KOTS Release"
-description: ""
 weight: "11001"
 categories: [ "Kubernetes Guide" ]
 index: "guides/kubernetes"
 type: "chapter"
-gradient: "kubernetes"
-icon: "replicatedKubernetes"
 ---
 
-When starting and learning the Replicated platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend most of your time. This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with Replicated. If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
+When getting started with the Replicated platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend a lot of time. This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with KOTS. If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
 
-This guide will deploy a basic application using Replicated and show you how to deliver an update to that application. The guide isn't going to teach Kubernetes, but will start with a working Kubernetes application.
+This guide will deploy a basic application using KOTS and show you how to deliver an update to that application. The guide isn't going to teach Kubernetes, but will start with a working Kubernetes application.
 
 ### Create a New Application
 
-To start, log in (or create a new team) on [vendor.replicated.com](https://vendor.replicated.com) and create a new application. After signing up and activating your account, you will be prompted to create a new application. Give it a name like "Starter kots application" and click the Create application button.
+To start, log in (or create a new team) on [vendor.replicated.com](https://vendor.replicated.com) and create a new application. After signing up and activating your account, you will be prompted to create a new application. Give it a name like "Starter KOTS application" and click the Create application button.
 
 ![Create Application](/images/guides/kots/create-application.png)
 
@@ -28,7 +25,7 @@ You'll should be at the channels page now. This is a list of your release channe
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with Replicated functionality. Once you are familiar with these concepts, you'll probably use our CLI and API to automate this rather than manually edit YAML on this page. The default YAML documents above the white line contain information for Replicated, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. You can learn about those elsewhere but for now let's click the "Save release" button in the bottom right.
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our CLI and API to automate this rather than manually edit YAML on this page. The default YAML documents above the white line contain information for Replicated, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. You can learn about those elsewhere but for now let's click the "Save release" button in the bottom right.
 
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
@@ -40,4 +37,4 @@ Once the release is saved, we should promote it to the Unstable channel to make 
 
 That's all there is to creating and promoting a release in Replicated using Kubernetes.
 
-In the [next guide](../install), we'll walk through creating a license and installing Kubernetes and the guestbook application on a test server.
+In the [next guide](../install), we'll walk through creating a license and installing Kubernetes and a basic nginx application on a test server.
