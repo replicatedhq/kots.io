@@ -47,8 +47,22 @@ h3 .label {
 }
 
 .paginator {
+  display: flex;
   text-align: center;
   width: 100%;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+}
+.page-item {
+  padding: 6px;
+  &.active .page-link {
+    z-index: 1;
+    color: #4A4A4A;
+  }
 }
 
 .suite-banner {
