@@ -1,22 +1,18 @@
 ---
 date: "2018-01-30T04:02:20Z"
 title: "Installing and Testing a Kubernetes Release"
-description: "A guide to installing and testing a Kubernetes appliance and release in Replicated"
 weight: "11002"
 categories: [ "Kubernetes Guide" ]
 index: "guides/kubernetes"
-type: "chapter"
-gradient: "kubernetes"
-icon: "replicatedKubernetes"
 ---
 
-This guide will give you first-hand experience installing a Replicated Kubernetes appliance. If you haven't yet created a release, head back to the [Create and Promote as Release](../create-release) guide and complete that first.
+This guide will give you first-hand experience installing a KOTS application using [kURL](https://kurl.sh) for an embedded Kubernetes cluster. If you haven't yet created a release, head back to the [Create and Promote as Release](../create-release) guide and complete that first.
 
 Now that we've created a release and promoted it to the Unstable channel, the next step is to create a customer license and use this this license to install the application on a test server.
 
 ### Create License
 
-A customer license (downloadable as a `.yaml` file) is required to install any Replicated application. To create a customer license, log in to the [Vendor Portal](https://vendor.replicated.com) and select the Customers link on the left. You will see a screen that says you haven't created any customers. Click the "Create a customer" button to continue.
+A customer license (downloadable as a `.yaml` file) is required to install any KOTS application. To create a customer license, log in to the [Vendor Portal](https://vendor.replicated.com) and select the Customers link on the left. You will see a screen that says you haven't created any customers. Click the "Create a customer" button to continue.
 
 ![Customers](/images/guides/kots/customers.png)
 
@@ -24,7 +20,7 @@ On the Create a new customer page, fill in your name for the Customer name field
 
 ![Create Customer](/images/guides/kots/create-customer.png)
 
-After creating the customer, click the "Download license" link in the upper right corner. This will download file file with your customer name and a `.yaml` extension. This is the license file your customer will need to install your application. When a customer is installing your software you need to send them two things: the KOTS install script and the license file.
+After creating the customer, click the "Download license" link in the upper right corner. This will download the file with your customer name and a `.yaml` extension. This is the license file your customer will need to install your application. When a customer is installing your software you need to send them two things: the KOTS install script and the license file.
 
 ### Create Test Server and Install Replicated
 
@@ -37,7 +33,7 @@ We're going to use the embedded cluster option for this guide. First we will nee
 - Ubuntu 18.04
 - at least 8 GB of RAM
 - 4 CPU cores
-- at least 50GB of disk space
+- at least 100GB of disk space
 
 Next, ssh into the server we just created, and run the install script:
 
@@ -45,9 +41,9 @@ Next, ssh into the server we just created, and run the install script:
 curl -sSL https://kurl.sh/<your-app-name-and-channel> | sudo bash
 ```
 
-This script will install Docker, Kubernetes, and the Replicated management containers.
+This script will install Docker, Kubernetes, and the KOTS admin console containers (kotsadm).
 
-Installation should take about 10-15 minutes.
+Installation should take about 5-10 minutes.
 
 Once the installation script is completed, it will show the URL you can connect to in order to continue the installation.
 
@@ -92,13 +88,13 @@ dmichaels@david-kots-guide:~$
 
 ### Install License
 
-At this point, Replicated and Kubernetes are running, but the application isn't yet. This is also what your customer would be experiencing when installing your application. To complete the installation, visit the URL that the installation script displayed when completed. Replicated automatically provisions a self-signed certificate on every installation and detects what browser is being used in order to show users how to bypass this.
+At this point, kotsadm and Kubernetes are running, but the application isn't yet. This is also what your customer would be experiencing when installing your application. To complete the installation, visit the URL that the installation script displayed when completed. [kurl.sh](https://kurl.sh) KOTS clusters provision a self-signed certificate on every installation and detects what browser is being used in order to show users how to bypass this.
 
-On the next screen, you have the option of uploading a trusted cert and key. For customer installations we recommend using a trusted cert. For this demo let's continue with the Replicated-generated self-signed cert. Click the "skip this step" button.
+On the next screen, you have the option of uploading a trusted cert and key. For production installations we recommend using a trusted cert. For this demo let's continue with the KOTS-generated self-signed cert. Click the "skip this step" button.
 
 ![Console TLS](/images/guides/kots/admin-console-tls.png)
 
-Now the installation needs a license file to continue. Until this point, this server is just running docker, kubernetes, and the Replicated containers. Once we put a license file on it the server will install our application. Click the Upload button and select your `.yaml` file to continue.
+Now the installation needs a license file to continue. Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers. Once we put a license file on it the server will install our application. Click the Upload button and select your `.yaml` file to continue.
 
 ![Upload License](/images/guides/kots/upload-license.png)
 
@@ -106,7 +102,7 @@ The settings page is here with default configuration items. These can be specifi
 
 ![Settings Page](/images/guides/kots/configuration.png)
 
-Preflight checks are designed to ensure this server has the minimum system and software requirements to run the application. By default we include some preflight checks that are expected to fail so that we can see what that will look like for a customer. If you click continue it will warn you but you can still continue no matter what the preflight checks say.
+Preflight checks are designed to ensure this server has the minimum system and software requirements to run the application. By default we include some preflight checks that are expected to fail so that we can see what failing checks might look like for a customer. If you click continue it will warn you but you can still continue.
 
 ![Preflight Checks](/images/guides/kots/preflight.png)
 
