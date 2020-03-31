@@ -1,7 +1,7 @@
 ---
 date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
-title: "Quickstart"
-redirect: "/vendor/quickstart/create-release"
+title: "Guides"
+redirect: "/vendor/guides/quickstart/create-release"
 weight: "2"
 ---

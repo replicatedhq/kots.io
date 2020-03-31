@@ -114,4 +114,8 @@ On the nav bar, there's a link to the application page. Clicking that will show 
 
 ![Cluster](/images/guides/kots/application.png)
 
+### View the application
+
+To view the running Nginx Application, you can head to `http://${INSTANCE_IP}/` with no port, and you should see a basic nginx server running
+
 In the [next guide](../iterate), we'll walk through creating and delivering an update to the application we just installed.
