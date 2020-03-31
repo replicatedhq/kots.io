@@ -18,8 +18,6 @@ Now that we have a KOTS application running, a common task is to deliver updates
 
 On the Releases page of the [Vendor Portal](https://vendor.replicated.com), click the Create Release link on top. Once again, you'll be taken to a YAML editor that shows the contents of the most recently created release. This gives us everything we've done so far, and our task now is to only write the changes needed to increase the number of nginx replicas.
 
-### Change Nginx Replicas
-
 In the release YAML, find the nginx image to change. The line is in the `deployment.yaml` file and looks like:
 
 ```yaml
@@ -27,6 +25,8 @@ replicas: 1
 ```
 
 Change the number to `2` or more.
+
+**Note**: If you've worked ahead and already completed the [CLI setup chapter](/vendor/guides/quickstart/automate), you can make this `replicas` change in your locally checked-out git repo, and publish them with `make release`, then skip to [Update the Test Server](#update-the-test-server).
 
 ### Save and Promote the Release
 
@@ -43,4 +43,4 @@ In the Application or Version History tab click on the Check For Updates button.
 
 Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. This should only take a few seconds to deploy.
 
-Next, head to the [KOTS Documentation](https://kots.io/vendor/packaging/packaging-an-app/) to learn how to prepare your application to deploy on Replicated with Kubernetes.
+Next, you can either check out the [CLI setup guide](/vendor/guides/quickstart/automate) to start managing your KOTS yaml in a git repo with our CLI tools, or you can head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.

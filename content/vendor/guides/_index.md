@@ -11,7 +11,7 @@ End-to-end guides to get you up and running with KOTS quickly.
 
 #### [Quickstart](/vendor/guides/quickstart)
 
-The simplest guide, get going with a simple Nginx application on a single VM.
+The simplest guide, get running quickly with a simple Nginx application on a single VM.
 
 <!-- Coming Soon!
 
