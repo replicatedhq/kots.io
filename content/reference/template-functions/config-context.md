@@ -133,7 +133,7 @@ spec:
 ## HasLocalRegistry
 
 ```go
-func HasLocalRegisrtry() bool
+func HasLocalRegistry() bool
 ```
 
 Returns true if the environment is configured to rewrite images to a local registry. This will be true for airgap installs, and optionally true for online installs.
