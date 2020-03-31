@@ -23,6 +23,6 @@ Template functions in the license context have access to the license data.
 [For a list of all Replicated functions available in the license context, click here.](/reference/template-functions/license-context)
 
 ## kURL Context
-Template functions in the kURL context have access to kurl installation information.
+Template functions in the kURL context have access to kURL installation information.
 
 [For a list of all Replicated functions available in the kURL context, click here.](/reference/template-functions/kurl-context)
