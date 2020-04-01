@@ -6,13 +6,13 @@ categories: [ "Kubernetes Guide" ]
 index: "guides/kubernetes"
 ---
 
-This guide will give you first-hand experience installing a KOTS application using [kURL](https://kurl.sh) for an embedded Kubernetes cluster. If you haven't yet created a release, head back to the [Create and Promote as Release](../create-release) guide and complete that first.
+This guide will give you first-hand experience installing a KOTS application using [kURL](https://kurl.sh) for an embedded Kubernetes cluster. If you haven't yet created a release, head back to the [Create and Promote a Release](../create-release) guide and complete that first.
 
 Now that we've created a release and promoted it to the Unstable channel, the next step is to create a customer license and use this this license to install the application on a test server.
 
 ### Create License
 
-A customer license (downloadable as a `.yaml` file) is required to install any KOTS application. To create a customer license, log in to the [Vendor Portal](https://vendor.replicated.com) and select the Customers link on the left. You will see a screen that says you haven't created any customers. Click the "Create a customer" button to continue.
+A customer license (downloadable as a `.yaml` file) is required to install any KOTS application. To create a customer license, log in to the [Vendor Portal](https://vendor.replicated.com) and select the Customers link on the left. Click the "Create a customer" button to continue.
 
 ![Customers](/images/guides/kots/customers.png)
 
@@ -113,5 +113,12 @@ Click the Application link on the top to see the application running. If you are
 On the nav bar, there's a link to the application page. Clicking that will show you the Kubernetes services that we just deployed.
 
 ![Cluster](/images/guides/kots/application.png)
+
+### View the application
+
+To view the running Nginx Application, you can head to `http://${INSTANCE_IP}/` with no port, and you should see a basic (perhaps familiar) nginx server running:
+
+
+![Cluster](/images/guides/kots/example-nginx.png)
 
 In the [next guide](../iterate), we'll walk through creating and delivering an update to the application we just installed.

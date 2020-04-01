@@ -14,7 +14,7 @@ install:
 
 .PHONY: dev
 dev:
-	hugo serve --theme hugo-whisper-theme
+	hugo serve --theme hugo-whisper-theme --disableFastRender
 
 .PHONY: test
 test:
