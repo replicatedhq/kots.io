@@ -281,3 +281,11 @@ IsKurl returns true if running within a kurl-based installation.
 repl{{ IsKurl }}
 ```
 
+## Distribution
+```go
+func Distribution() string
+```
+Distribution returns the kubernetes distribution detected, such as `kurl`, `openShift` or `eks`.
+```yaml
+repl{{ Distribution }}
+```
