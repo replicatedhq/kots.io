@@ -14,10 +14,12 @@ In this scenario, when a customer chooses to bring their own component, you shou
 By default, if neither of the annotations are present on a resource, the resource will be included. Only one of the following annotations can be present on a resource. If both are present, the `kots.io/exclude` annotation will be applied, and the `kots.io/when` annotation will be ignored.
 
 #### Optionally Exclude A Resource
-`kots.io/exclude: <bool>`: When this is present and evaluates to `true`, the resource will not be included in the kustomization.yaml file and will not be written to disk.
+`kots.io/exclude: '<bool>'`: When this is present and evaluates to `'true'`, the resource will not be included in the kustomization.yaml file and will not be written to disk.
+Kubernetes annotations cannot be booleans and must be strings, so make sure to quote this!
 
 #### Optionally Include A Resource
-`kots.io/when: <bool>`: When this is present and evaluates to `false`, the resource will not be included in the kustomization.yaml file and will not be written to disk.
+`kots.io/when: '<bool>'`: When this is present and evaluates to `'false'`, the resource will not be included in the kustomization.yaml file and will not be written to disk.
+Kubernetes annotations cannot be booleans and must be strings, so make sure to quote this!
 
 
 ## Example
