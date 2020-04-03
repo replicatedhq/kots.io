@@ -2,6 +2,7 @@
 date: 2019-01-23
 linktitle: "Restores"
 title: Restores
+is_alpha: true
 aliases:
   - /vendor/snapshots/
 ---
