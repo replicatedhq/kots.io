@@ -32,6 +32,8 @@
               {{ .Title }}
             {{ end }}
           </a>
+          {{ if .Params.is_alpha }} <span class="prerelease-tag alpha">alpha</span> {{ end }}
+          {{ if .Params.is_beta }} <span class="prerelease-tag beta">beta</span> {{ end }}
         </li>
         {{ if $currentNode.IsDescendant . }}
           {{ range .Pages }}

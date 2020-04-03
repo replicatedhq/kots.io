@@ -2,6 +2,7 @@
 date: 2019-01-23
 linktitle: "Snapshots"
 title: Snapshots
+is_alpha: true
 aliases:
   - /vendor/snapshots/
 ---
