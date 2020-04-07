@@ -13,11 +13,12 @@ End-to-end guides to get you up and running with KOTS quickly.
 
 The simplest guide, get running quickly with a simple Nginx application on a single VM.
 
-<!-- Coming Soon!
 
 #### [Existing Cluster](/vendor/guides/existing-cluster)
 
 Package a simple Nginx application for deployment to a namespace in an existing cluster.
+
+<!-- Coming Soon!
 
 ## Next Steps
 
