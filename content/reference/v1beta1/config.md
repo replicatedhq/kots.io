@@ -3,8 +3,8 @@ date: 2019-10-09
 linktitle: "Config"
 title: Config
 description: "Config is the vendor-supplied Config screen and input for template function rendering."
-weight: 10
-aliases: 
+weight: 2
+aliases:
   - /reference/config/items
 ---
 
@@ -238,7 +238,7 @@ Items can be readonly.
 
 
 ### `affix`
-Items can be affixed left or right. These items will appear in the admin console on the same line. 
+Items can be affixed left or right. These items will appear in the admin console on the same line.
 ```yaml
     affix: left
 ```

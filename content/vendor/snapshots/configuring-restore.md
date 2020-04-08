@@ -1,10 +1,9 @@
 ---
 date: 2019-01-23
-linktitle: "Restores"
-title: Restores
-is_alpha: true
-aliases:
-  - /vendor/snapshots/
+linktitle: "Configuring Restore"
+title: Configuring Restore
+isAlpha: true
+weight: 3
 ---
 
 Click Restore on a snapshot on the `/apps/<slug>/snapshots` page to click a restore.

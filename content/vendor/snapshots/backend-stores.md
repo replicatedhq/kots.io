@@ -1,8 +1,9 @@
 ---
 date: 2019-01-23
-linktitle: "Backend Stores"
-is_alpha: true
-title: Backend Stores
+linktitle: "Compatible Stores"
+isAlpha: true
+weight: 4
+title: Compatible Backend Stores
 ---
 
 Velero uploads backup data to an object store.
