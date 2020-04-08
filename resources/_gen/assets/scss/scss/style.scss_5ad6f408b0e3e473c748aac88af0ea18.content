@@ -7281,17 +7281,20 @@ p {
   color: #4a4a4a;
   font-weight: 400; }
 
-.alpha-tag {
+.prerelease-tag {
   font-weight: 400;
   font-size: 10px;
   line-height: 1;
   letter-spacing: 1px;
   padding: 4px 8px;
-  background-color: #45B451;
   border-radius: 25px;
   color: #ffffff;
   position: relative;
   text-transform: uppercase; }
+  .prerelease-tag.alpha {
+    background-color: #45B451; }
+  .prerelease-tag.beta {
+    background-color: #F9485C; }
 
 .page {
   display: flex;
@@ -7606,7 +7609,7 @@ p {
   padding-left: 20px;
   color: #326DE6; }
 
-.docs-menu .alpha-tag {
+.docs-menu .prerelease-tag {
   margin-left: 6px;
   top: -2px; }
 
@@ -7679,9 +7682,9 @@ p {
   @media (min-width: 768px) {
     .title {
       font-size: 3rem;
-      margin-bottom: 30px; } }
-    .title .alpha-tag {
-      top: -9px; }
+      margin-bottom: 20px; } }
+  .title .prerelease-tag {
+    top: -9px; }
 
 .title-summary {
   font-size: 1.6rem;
@@ -8025,8 +8028,20 @@ h3 .label {
   font-size: 18px; }
 
 .paginator {
+  display: flex;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  justify-content: center; }
+
+.pagination {
+  display: flex;
+  flex-direction: row; }
+
+.page-item {
+  padding: 6px; }
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #4A4A4A; }
 
 .suite-banner {
   padding: 14px 30px;

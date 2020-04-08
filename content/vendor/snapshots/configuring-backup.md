@@ -1,31 +1,32 @@
 ---
 date: 2019-01-23
-linktitle: "Snapshots"
-title: Snapshots
-is_alpha: true
-aliases:
-  - /vendor/snapshots/
+linktitle: "Configuring Backup"
+title: Configuring Backup
+isAlpha: true
+weight: 2
 ---
 
-## Requirements
+There are 2 required steps to enable snapshots in a KOTS application:
+1. Add the [Backup](/reference/v1beta1/backup) resource to your KOTS application
+1. Identify the required volumes to include in the backup
 
-### Application YAML
+## Add A Backup Resource
 
-Enable snapshots in your app with the field `spec.allowSnapshots: true` in your kots.io/v1beta1 Application yaml.
+To enable snapshots, add a Backup resource to the application. The minimal example of this is:
 
-```
+```yaml
 apiVersion: kots.io/v1beta1
-kind: Application
+kind: Backup
 metadata:
-  name: app-slug
-spec:
-  title: App Name
-  allowSnapshots: true
+  name: backup
+spec: {}
 ```
 
-### Customer License
+The above YAML will enable snapshots in all instances of the application. When a snapshot is executed in the Admin Console or by a schedule, it will simply include all annotated volumes as the archive (more on annotating volumes below). This manifest supports the [optional resources](/vendor/packaging/optional-resources/) annotation so that it can be dynamically enabled based on a license field or a config option, if desired.
 
-For each customer license there is an Allow Snapshots checkbox. Both the application yaml and the customer license must have snapshots enabled in order for the Admin Console to display snapshot UI to the user.
+## Identify Volumes
+
+// TODO still below
 
 ### Velero
 

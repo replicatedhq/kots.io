@@ -2,8 +2,8 @@
 date: 2019-11-27
 linktitle: "Preflight"
 title: Preflight
-weight: 40
-aliases: 
+weight: 3
+aliases:
   - /vendor/additional-objects/preflight
 ---
 The [Replicated Troubleshoot project](https://github.com/replicatedhq/troubleshoot) provides a [Preflight spec](https://troubleshoot.sh/docs/preflight/creating/) that KOTS integrates with to make an application's cluster dependencies explicit. This enables KOTS and the Admin Console to provide Cluster Operators with clear feedback on any missing requirements or incompatibilities in the target environment before an application is deployed. This custom resource is optional for KOTS applications.
