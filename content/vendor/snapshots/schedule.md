@@ -1,7 +1,8 @@
 ---
 date: 2019-01-23
 linktitle: "Schedules"
-is_alpha: true
+isAlpha: true
+weight: 5
 title: Schedules
 ---
 

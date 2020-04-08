@@ -2,8 +2,8 @@
 date: "2019-01-23T00:00:00Z"
 lastmod: "2019-01-23T00:00:00Z"
 title: "Snapshots"
-weight: "5"
+weight: 4
 hideFromList: true
-is_alpha: true
-redirect: "/vendor/snapshots/snapshots"
+isAlpha: true
+redirect: "/vendor/snapshots/overview"
 ---
