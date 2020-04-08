@@ -26,37 +26,44 @@ The above YAML will enable snapshots in all instances of the application. When a
 
 ## Identify Volumes
 
-// TODO still below
+By default, no volumes will be included in the backup. Any pod that mounts a volume that should be backed up must also include an annotation listing which volumes to include in the snapshot. The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
 
-### Velero
+For example, in the following Deployment, only one of the volumes will be backed up (pvc-volume). The volume named `scratch` is not included in the backup because its not listed in annotation on the pod spec.
 
-The customer must have [velero](https://velero.io/) installed in the `velero` namespace along with [Restic](https://velero.io/docs/v1.2.0/restic/).
-
-#### Modify default install (this is going away)
-
-The following patches must be applied to the default velero install with the CLI.
-
-Load all provider plugins as initContainers. (Velero deployment only, not applicable to restic daemonset).
-
-[velero deployment](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/deployment.yaml#L20-L34)
-
-Mount secrets volumes in subdirectory
-
-[velero deployment](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/deployment.yaml#L48-L53)
-
-[restic daemonset](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/restic-daemonset.yaml#L20-L31)
-
-Use env vars to point to provider-specific credentials
-
-[velero deployment](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/deployment.yaml#L64-L69)
-
-[restic daemonset](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/restic-daemonset.yaml#L46-L51)
-
-Use provider-specific secret volumes
-
-[velero deployment](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/deployment.yaml#L71-L82)
-
-[restic daemonset](https://github.com/replicatedhq/kURL/blob/master/addons/velero/1.2.0/restic-daemonset.yaml#L68-L73)
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+  labels:
+    app: foo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    metadata:
+      labels:
+        app: foo
+      annotations:
+        backup.velero.io/backup-volumes: pvc-volume
+    spec:
+      containers:
+      - image: k8s.gcr.io/test-webserver
+        name: test-webserver
+        volumeMounts:
+        - name: pvc-volume
+          mountPath: /volume-1
+        - name: scratch
+          mountPath: /volume-2
+      volumes:
+      - name: pvc-volume
+        persistentVolumeClaim:
+          claimName: test-volume-claim
+      - name: scratch
+        emptyDir: {}
+```
 
 
 ## Release YAML Configuration
@@ -123,44 +130,3 @@ The recommended usage is to create db dumps to a directory with an empty volume 
 It is not possible to run hooks during restore.
 Use initContainers to load data from db dumps at restore time.
 Note that you will have to place your db dumps in separate pods from your db for databases such as postgres that are required to be running to load a dump.
-
-### Data
-
-By default snapshots only include API objects, not any data.
-Include a Pod volume in backups by adding the `backup.velero.io/backup-volumes` annotation to the Pod spec.
-This example shows a Pod with a PVC volume and an emptyDir volume snapshotted.
-
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: sample
-  labels:
-    app: foo
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: foo
-  template:
-    metadata:
-      labels:
-        app: foo
-      annotations:
-        backup.velero.io/backup-volumes: pvc-volume,scratch
-    spec:
-      containers:
-      - image: k8s.gcr.io/test-webserver
-        name: test-webserver
-        volumeMounts:
-        - name: pvc-volume
-          mountPath: /volume-1
-        - name: scratch
-          mountPath: /volume-2
-      volumes:
-      - name: pvc-volume
-        persistentVolumeClaim:
-          claimName: test-volume-claim
-      - name: scratch
-        emptyDir: {}
-```
