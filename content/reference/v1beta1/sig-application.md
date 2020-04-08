@@ -2,8 +2,8 @@
 date: 2019-11-27
 linktitle: "SIG Application"
 title: SIG Application
-weight: 60
-aliases: 
+weight: 5
+aliases:
   - /vendor/additional-objects/sig-application
 ---
 

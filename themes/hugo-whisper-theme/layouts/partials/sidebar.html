@@ -42,17 +42,17 @@
               {{ .Title }}
             {{ end }}
           </a>
-          {{ if .Params.is_alpha }} <span class="prerelease-tag alpha">alpha</span> {{ end }}
-          {{ if .Params.is_beta }} <span class="prerelease-tag beta">beta</span> {{ end }}
+          {{ if .Params.isAlpha }} <span class="prerelease-tag alpha">alpha</span> {{ end }}
+          {{ if .Params.isBeta }} <span class="prerelease-tag beta">beta</span> {{ end }}
         </li>
         {{ if $currentNode.IsDescendant . }}
           {{ range .Pages }}
             <li class="is-descendant {{ if eq .File $currentNode.File }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
                 {{ if .Params.linktitle }}
-                  {{ .Params.linktitle }}	
-                {{ else }}	
-                  {{ .Title }}	
+                  {{ .Params.linktitle }}
+                {{ else }}
+                  {{ .Title }}
                 {{ end }}
               </a>
             </li>
