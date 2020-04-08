@@ -3,7 +3,7 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "main" }}
-<h1 class="title" id="{{.Title | anchorize}}">{{.Title}}</h1>
+<h1 class="title">{{.Title}} {{ if .Params.is_alpha }} <span class="alpha-tag">alpha</span> {{ end }}{{ if .Params.is_beta }} <span class="prerelease-tag beta">beta</span> {{ end }}</h1>
 <div class="content {{if .Site.Params.enable_anchor_link}}{{ "anchor-link-enabled" }}{{ end }}">
   {{ if eq .Section "release-notes" }} 
     <p class="blog-post-meta">Released on {{ $.Date.Format "2 Jan 2006" }}{{ if .Params.kubernetes }} &nbsp;&#8226;&nbsp; Support for Kubernetes: {{.Params.kubernetes}}{{end}}</p>
