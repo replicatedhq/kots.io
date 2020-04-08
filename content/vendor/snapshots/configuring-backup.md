@@ -65,68 +65,20 @@ spec:
         emptyDir: {}
 ```
 
+## Application Manifests
 
-## Release YAML Configuration
-
-### Backup
-
-Kotsadm requires exactly one [velero.io/v1/Backup](https://velero.io/docs/v1.2.0/api-types/backup/) resource be included in the release yaml.
-Templates are supported in this file.
-All fields in the metadata are irrelevant.
-This yaml is never applied directly to Kubernetes - it is saved until a backup is triggered.
-After rendering it, kotsadm will pick the `includedNamespaces` and `hooks` fields from the spec.
-No other fields are added to the Backup kotsadm generates and applies.
-
-`spec.includedNamesapces` tells Velero which namespaces should be included in the snapshot.
-If this is not set in the Backup from the release yaml, kotsadm will add its own namespace.
-If the application has hardcocded namespaces into its yaml configs, all those namespaces should be specified in this list.
-
-All objects in included namespaces will be snapshotted, including objects that are not found in release yaml and are dynamically created by other components or manually created by users with kubectl.
-There are two exceptions:
-
-1. If the Backup includes the same namespace that kotsadm is running in, then kotsadm will add a label selector to the Backup spec to exclude all kotsadm objects.
-2. Invidual resources in your release can be excluded from the backup by adding the `velero.io/exclude-from-backup=true` label to them.
-
-#### Example
-
-Below is an example of a Backup that hardcodes a namespace and adds some pre-exec hooks.
+In addition to volume data, Velero will also snapshot all of the Kubernetes objects in the namespace. Any manifest that should not be included in the snapshot should include a `velero.io/exclude-from-backup` label, for example:
 
 ```yaml
-apiVersion: velero.io/v1
-kind: Backup
+apiVersion: apps/v1
+kind: Secret
 metadata:
-  name: backup
-spec:
-  includedNamespaces:
-  - test
-  hooks:
-    resources:
-    - name: echo-hook
-      includedNamespaces:
-      - '*'
-      includedResources:
-      - 'pods'
-      labelSelector:
-        matchLabels:
-          app: example
-          component: nginx
-      pre:
-      - exec:
-          command: ["/bin/bash", "-c", "echo hello"]
-      - exec:
-          command: ["/bin/bash", "-c", "echo $(date) > /scratch/timestamp"]
-      - exec:
-          command: ["/bin/bash", "-c", "head -c 1G </dev/urandom >/scratch/data"]
-          timeout: 3m
-          onError: Continue
+  name: sample
+  labels:
+    velero.io/exclude-from-backup: "true"
+stringData:
+  uri: Secret To Not Include
 ```
 
-#### Hooks
+By default, the KOTS Admin Console will exclude itself from snapshots so that the Admin Console manifests are not included. This is to allow the Admin Console to control the restore process without being interrupted and replaced with a different version.
 
-The hooks will be copied from the release's Backup template to the Backup generated and applied by kotsadm.
-It is possible to specify pre-exec hooks to run before the backup and post-exec hooks to run after the backup.
-The recommended usage is to create db dumps to a directory with an empty volume in the pre-exec hook and to remove the dump from that directory in the post-exec hook.
-
-It is not possible to run hooks during restore.
-Use initContainers to load data from db dumps at restore time.
-Note that you will have to place your db dumps in separate pods from your db for databases such as postgres that are required to be running to load a dump.
