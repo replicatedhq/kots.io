@@ -42,6 +42,7 @@ Params:
     - support-bundle
     - reference
     - v1beta1
+    - release-notes
 menu:
   main:
     - Identifier: kots-cli
@@ -60,4 +61,8 @@ menu:
       Name: Vendor
       Weight: 3
       URL: /vendor/packaging/packaging-an-app
+    - Identifier: release-notes
+      Name: Release Notes
+      Weight: 5
+      URL: /release-notes/
 ---

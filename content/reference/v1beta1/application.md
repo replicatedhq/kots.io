@@ -4,13 +4,13 @@ linktitle: "Application"
 title: Application
 description: "The Application spec contains vendor-supplied metadata about the application."
 weight: 1
-aliases: 
+aliases:
   - /vendor/additional-objects/application
 ---
 
 The KOTS Application custom resource enables features such as branding, release notes, port forwarding, dashboard buttons, app status indicators, and custom graphs.
 
-With ports specified, the kots CLI can establish port-forwarding, to simplify connections to the deployed application.  When [statusInformers](/vendor/dashboard/application-status/#kots-application-spec) are specified, the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use. This CR is optional for KOTS applications.
+With ports specified, the kots CLI can establish port-forwarding, to simplify connections to the deployed application.  When [statusInformers](/vendor/config/application-status/#kots-application-spec) are specified, the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use. This CR is optional for KOTS applications.
 
 There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects).  In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.  In the meantime, enabling features (such as [dashboard buttons to the application](/vendor/dashboard/open-buttons/)) requires the use of both the KOTS Application spec and the SIG Application spec.
 
@@ -27,6 +27,11 @@ spec:
   releaseNotes: These are our release notes
   allowRollback: false
   kubectlVersion: latest
+  kustomizeVersion: latest
+  additionalImages:
+    - jenkins/jenkins:lts
+  additionalNamespaces:
+    - "*"
   ports:
     - serviceName: web
       servicePort: 9000
@@ -52,11 +57,18 @@ The release notes for this version. These can also be set when promoting a relea
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
 
+## additionalImages
+An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation. While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
+
 ## kubectlVersion
 This defaults to `latest`.
 Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
 The latest version within the provided range will be used, falling back to the latest version if no version matches.
 Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
+
+## kustomizeVersion
+This defaults to `latest`, but can be changed to `2.0.3` or `3.5.4` to use a specific version of kustomize to render your app's yaml.
+Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
 
 ## ports
 These are extra ports (additional to the :8800 admin console port) that should be port-forwarded when running the `kots admin-console` command.

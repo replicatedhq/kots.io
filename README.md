@@ -8,5 +8,8 @@
 * Run `hugo -v -s .`
 * Run `htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"`
 
-
+## Create new releases with:
+```bash
+$ hugo new release-notes/<version>.md
+```
 

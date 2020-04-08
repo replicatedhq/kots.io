@@ -10,6 +10,16 @@ weight: 90030
 Many of the utility functions provided come from Sprig, a third-party library of Go template functions.
 The Sprig documentation can be found [here](https://masterminds.github.io/sprig/).
 
+
+## Namespace
+```go
+func Namespace() string
+```
+Namespace returns the Kubernetes namespace that the KOTS application belongs to.
+```yaml
+'{{repl Namespace}}'
+```
+
 ## KubeSeal
 ```go
 func KubeSeal(certData string, namespace string, name string, value string) string
@@ -159,7 +169,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer.
 ```yaml
-'{{repl Add (LicenseFieldValue "maximum_users") 1}}'
+'{{repl Add (ConfigOption "maximum_users") 1}}'
 ```
 
 ## Sub
@@ -172,7 +182,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer.
 ```yaml
-'{{repl Sub (LicenseFieldValue "maximum_users") 1}}'
+'{{repl Sub (ConfigOption "maximum_users") 1}}'
 ```
 
 ## Mult
@@ -198,7 +208,7 @@ If at least one of the operands is a floating point number, the result will be a
 
 If both operands are integers, the result will be an integer and will be rounded down.
 ```yaml
-'{{repl Div (LicenseFieldValue "maximum_users") 2.0}}'
+'{{repl Div (ConfigOption "maximum_users") 2.0}}'
 ```
 
 ## ParseBool
@@ -235,4 +245,47 @@ func ParseUint(str string, args ...int) uint64
 ParseUint returns the unsigned integer value represented by the string with optional base (default 10).
 ```yaml
 '{{repl ConfigOption "str_value" | ParseUint }}'
+```
+
+## TLSCert
+```go
+func TLSCert(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSCert generates and returns a self-signed certificate identified by `certName`.  The first parameter can be used in the `TLSKey` function to retrieve the matching key.
+
+TLSCert takes the following parameters
+- Unique name that identifies the certificate.  This is a not a part of the returned certificate.
+- Subject’s common name (cn)
+- Optional list of IPs; may be nil
+- Optional list of alternate DNS names; may be nil
+- Cert validity duration in days
+```yaml
+repl{{ TLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
+## TLSKey
+```go
+func TLSKey(certName string) string
+```
+TLSKey returns the key that matches the certificate identified by `certName`.  If certificate with this name does not exist, the function will return an empty string.
+```yaml
+repl{{ TLSKey "my_custom_cert" }}
+```
+
+## IsKurl
+```go
+func IsKurl() bool
+```
+IsKurl returns true if running within a kurl-based installation.
+```yaml
+repl{{ IsKurl }}
+```
+
+## Distribution
+```go
+func Distribution() string
+```
+Distribution returns the kubernetes distribution detected, such as `kurl`, `openShift` or `eks`.
+```yaml
+repl{{ Distribution }}
 ```

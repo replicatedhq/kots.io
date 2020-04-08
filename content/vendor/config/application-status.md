@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
 linktitle: "Application Status"
-title: Determining Application Status
-weight: 20020
+title: Application Status
+weight: 20011
+aliases: 
+  - /vendor/dashboard/application-status/
 ---
 
 With minimal additional to the kots.io Application YAML, it is possible to display application status on the dashboard of the Admin Console.
@@ -36,6 +38,6 @@ Below is a table of resources that are supported and conditions that contribute 
 |---|---|---|---|
 | **Deployment** | No replicas are ready | At least 1 replica is ready and less than desired | Ready replicas equals desired replicas |
 | **StatefulSet** | No replicas are ready | At least 1 replica is ready and less than desired | Ready replicas equals desired replicas |
-| **Service** | No endpoints are ready, no load balancer has been assigned | At least one endpoint is ready and less than desired | All desired endpoints are ready, load balancers has been assigned |
-| **Ingress** | No backend service endpoints are ready, no load balancer has been assigned | At least one backend service endpoint is ready and less than desired | All desired backend service endpoints are ready, load balancers has been assigned |
+| **Service** | No endpoints are ready, no load balancer has been assigned | At least one endpoint is ready and less than desired | All desired endpoints are ready, any load balancers have been assigned |
+| **Ingress** | No backend service endpoints are ready, no load balancer has been assigned | At least one backend service endpoint is ready and less than desired | All desired backend service endpoints are ready, any load balancers have been assigned |
 | **PersistentVolumeClaim** | Claim is pending or lost | n/a | Claim is bound |
