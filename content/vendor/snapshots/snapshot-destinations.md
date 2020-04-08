@@ -1,8 +1,8 @@
 ---
 date: 2019-01-23
-linktitle: "Compatible Stores"
+linktitle: "Snapshot Destinations"
 isAlpha: true
-weight: 4
+weight: 5
 title: Compatible Backend Stores
 ---
 
