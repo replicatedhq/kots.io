@@ -15,7 +15,7 @@ There are 2 required steps to enable snapshots in a KOTS application:
 To enable snapshots, add a Backup resource to the application. The minimal example of this is:
 
 ```yaml
-apiVersion: kots.io/v1beta1
+apiVersion: velero.io/v1
 kind: Backup
 metadata:
   name: backup
