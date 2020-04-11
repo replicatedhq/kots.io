@@ -2,8 +2,17 @@
 date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
 title: "Existing Cluster"
-weight: "3"
+weight: "1003"
 ---
+
+The KOTS Embedded Cluster Guide is one of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
+
+It is broken into four sections:
+
+- [Creating a Release](#creating-a-release)
+- [Installing and Testing](#installing-and-testing)
+- [Iterating and Updating](#iterating-and-updating)
+- [Automating Your Workflow](#automating-your-workflow)
 
 ## Creating a Release
 
