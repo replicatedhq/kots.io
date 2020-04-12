@@ -14,24 +14,61 @@ This guide will assume you've already completed one of the [Getting Started Guid
 - [Releasing and Testing](#releasing-and-testing)
 - [Mapping User Input to Helm Values](#mapping-user-input-to-helm-values)
 
-## Adding a Chart to your Application
+### Prerequisites
 
+- You should have completed one of the [Getting Started Guides](../#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
+
+### Accompanying Code Examples
+
+A full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/helm-grafana).
+
+* * *
+
+## Adding a Chart to your Application
 
 ### Getting a Chart Archive
 
 ##### With helm fetch
 
-helm repo add ...
-helm fetch stable/consul
+- helm repo add ...
+- VALIDATE: helm repo ls 
+- helm fetch stable/grafana
+- VALIDATE: tar xOf grafana-5.0.11.tgz grafana/Chart.yaml
 
 ##### With helm package
 
-lorem ipsum
+- git checkout https://github.com/helm/charts
+- cd charts/stable/grafana
+- you can use the latest, but we'll be working off of this commit: `git checkout f2fcadaa5` (just to be sure)
+- helm package .
+- VALIDATE: tar xOf grafana-5.0.11.tgz grafana/Chart.yaml, you should see
+
+```yaml
+apiVersion: v1
+appVersion: 6.7.1
+description: The leading tool for querying and visualizing time series and metrics.
+home: https://grafana.net
+icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+kubeVersion: ^1.8.0-0
+maintainers:
+- email: zanhsieh@gmail.com
+  name: zanhsieh
+- email: rluckie@cisco.com
+  name: rtluckie
+- email: maor.friedman@redhat.com
+  name: maorfr
+name: grafana
+sources:
+- https://github.com/grafana/grafana
+version: 5.0.11
+```
 
 ### Adding the Archive to your manifests
 
 - copy into manifests dir
 - add HelmChart kots kind
+- add adminUser and adminPassword defaults
+- VALIDATE: next step we'll make a release and publish it
 
 * * *
 
@@ -49,15 +86,14 @@ lorem ipsum
 
 ### Choosing Values
 
-
 - go read the chart's values.yaml
 - pick some simple ones to customize
-- We'll use the `replicas` field for consul (yaml)
+- We'll use the `adminUser` and `adminPassword` fields for Grafana (yaml)
 
 ### Create config fields
 
 - open config.yaml
-- Add a section for consul with values (yaml)
+- Add a section for grafana with values (yaml)
 - make a release, test in kotsadm UI (screenshot)
 - but we haven't mapped these into the helm chart yet
 
@@ -65,8 +101,10 @@ lorem ipsum
 
 - open consul.yaml (HelmChart kots kind)
 - add mappings to config options (yaml)
-- make release and test in kotsadm
-- kubectl get pods should show new replicas(terminal output)
+- make release and install in kotsadm
+- update config fields
+- deploy config change
+- navigate to grafana UI, log in with new credentials
 
 * * *
 
@@ -74,6 +112,7 @@ lorem ipsum
 
 You did it! Next steps are:
 
+- If you're using this chart as the primary artifact in your KOTS application, you might want to take an `icon` from the `Chart.yaml` and add it to your kots `Application` CRD.
 - Managing CRDs if you want to use a chart that needs them (advanced guide)
 - Airgap / Helm (advanced guide)
 - Explore Operators (advanced guide)
