@@ -52,16 +52,16 @@ spec:
           # connect to the database every 10 seconds
           command:
             - /bin/sh
-            - -c
+            - -ec
             - |
               while :; do 
+                 sleep 10
+                 PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \ 
                       --user ${DB_USER} \
-                      --password ${DB_PASSWORD} \
                       --dbname ${DB_NAME} \
                       --command 'SELECT NOW()'
-                 sleep 10
               done
           # hard coded for now, we'll wire these up later
           env:
@@ -178,7 +178,7 @@ spec:
           items:
             - name: embedded_postgres
               title: Embedded Postgres
-            - name: external_postgres_inline
+            - name: external_postgres
               title: External Postgres
         - name: embedded_postgres_password
           hidden: true
@@ -354,16 +354,16 @@ spec:
           # connect to the database every 10 seconds
           command:
             - /bin/sh
-            - -c
+            - -ec
             - |
               while :; do 
+                 sleep 10
+                 PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \ 
                       --user ${DB_USER} \
-                      --password ${DB_PASSWORD} \
                       --dbname ${DB_NAME} \
                       --command 'SELECT NOW()'
-                 sleep 10
               done
           # hard coded for now, we'll wire these up later            
           env:
@@ -397,7 +397,7 @@ pg-consumer-77b868d7d8-xdn9v       1/1     Running   0          20s
 postgres-0                         1/1     Running   0          6m22s
 ```
 
-Checking the logs, we can connect now!
+Checking the logs, we can connect now:
 
 ```text
 $ kubectl logs -l app=pg-consumer
@@ -418,21 +418,499 @@ Now that we've configured our application to read from an embedded postgres inst
 
 ## Connecting to an external Database
 
+In this section, we'll expand our configuration section to allow end users to bring their own postgres instance.
+
+### Modifying the Config Screen
+
+Let's update our config screen to allow an end user to input some details about their database. We'll add the following YAML, noting the use of the `when` field to conditionally hide or show fields in the user-facing config screen.
+
+```yaml
+        - name: external_postgres_host
+          title: Postgres Host
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: postgres
+        - name: external_postgres_port
+          title: Postgres Port
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: "5432"
+        - name: external_postgres_user
+          title: Postgres Username
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          required: true
+        - name: external_postgres_password
+          title: Postgres Password
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: password
+          required: true
+        - name: external_postgres_db
+          title: Postgres Database
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: sentry
+```
+
+Your full configuration screen should now look something like
+
+```yaml
+apiVersion: kots.io/v1beta1
+kind: Config
+metadata:
+  name: config-sample
+spec:
+  groups:
+    - name: database
+      title: Database
+      items:
+        - name: postgres_type
+          help_text: Would you like to use an embedded postgres instance, or connect to an external instance that you manage?
+          type: select_one
+          title: Postgres
+          default: embedded_postgres
+          items:
+            - name: embedded_postgres
+              title: Embedded Postgres
+            - name: external_postgres
+              title: External Postgres
+        - name: embedded_postgres_password
+          hidden: true
+          type: password
+          value: "{{repl RandomString 32}}"
+        - name: external_postgres_host
+          title: Postgres Host
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: postgres
+        - name: external_postgres_port
+          title: Postgres Port
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: "5432"
+        - name: external_postgres_user
+          title: Postgres Username
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          required: true
+        - name: external_postgres_password
+          title: Postgres Password
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: password
+          required: true
+        - name: external_postgres_db
+          title: Postgres Database
+          when: '{{repl ConfigOptionEquals "postgres_type" "external_postgres"}}'
+          type: text
+          default: postgres
+```
+
+Let's save this and create a new release. After deploying the release in kotsadm, head to config and set the toggle to "External Postgres" to see the new fields:
+
+![External PG Config](/images/guides/kots/external-pg-config.png)
+
+In order to demonstrate that these are working, let's add some values that we know won't work, and just check to confirm that checking "external postgres" will remove our embedded postgres instance:
+
+
+![External PG Config Fake](/images/guides/kots/external-pg-config-fake.png)
+
+Save these settings, and then you'll be directed back to the Version History page to apply the change:
+
+![Deploy Config Change](/images/guides/kots/deploy-config-change.png)
+
+Once this is deployed, we should see that the postgres statefulset has been removed, and that our sample application is back to failing.
+
+
+```text
+$ kubectl get pod
+NAME                               READY   STATUS    RESTARTS   AGE
+kotsadm-5bbf54df86-8ws98           1/1     Running   0          12m
+kotsadm-api-cbccb97ff-r7mz6        1/1     Running   2          12m
+kotsadm-minio-0                    1/1     Running   0          12m
+kotsadm-operator-84477b5c4-4gmbm   1/1     Running   0          12m
+kotsadm-postgres-0                 1/1     Running   0          12m
+pg-consumer-6bd78594d-n7nmw        0/1     Error     2          29s
+```
+
+You'll note that it is failing, but it is still using our hardcoded environment variables, not the user-entered config. In the next step we'll wire the end-user configuration values into our service.
+
+```text
+$ kubectl logs -l app=pg-consumer
+psql: could not translate host name "postgres" to address: Name or service not known
+```
+
+### Mapping User Inputs
+
+To map the user-supplied configuration, we'll start by expanding our secret we created before, adding fields for additional variables, using `{{repl if ... }}` blocks to switch between embedded/external contexts. To start we'll add a field for hostname, using the yaml `>-` to collapse the multiline string into a single line.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres
+data:
+  DB_PASSWORD: '{{repl ConfigOption "embedded_postgres_password" | Base64Encode }}'
+  DB_HOST: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_host" | Base64Encode }}
+    {{repl end}}
+```
+
+Now that we have the value in our Secret, we can modify our deployment to consume it. Replace 
+
+```yaml
+            - name: DB_HOST
+              value: postgres
+```
+
+with
+
+```yaml
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_HOST
+```
+
+Your full deployment should look something like:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-consumer
+spec:
+  selector:
+    matchLabels:
+      app: pg-consumer
+  template:
+    metadata:
+      labels:
+        app: pg-consumer
+    spec:
+      containers:
+        - name: pg-consumer
+          image: 'postgres:10'
+          # connect to the database every 10 seconds
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 10
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+              done
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_HOST
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              value: postgres
+            - name: DB_NAME
+              value: postgres
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PASSWORD
+```
+
+From here, let's create and deploy a release, and verify that the secret has the customer-provided value, base64 decoding the secret contents
+
+```text
+$ kubectl get secret postgres -o yaml | head -n 4
+apiVersion: v1
+data:
+  DB_HOST: ZmFrZQ==
+  DB_PASSWORD: ajNVWDd1RnRfc0NkVTJqOFU3Q25xUkxRQk5fUlh3RjA=
+```
+
+You can verify we pulled in our user-provided config by base64-decoding the `DB_HOST` field:
+
+```text
+$ echo ZmFrZQ== | base64 --decode
+fake
+```
+
+Checking on our service itself, we can verify that it's now trying to connect to the `fake` hostname instead of `postgres`:
+
+
+
+```text
+$ kubectl logs -lapp=pg-consumer
+psql: could not translate host name "fake" to address: Name or service not known
+```
+
+We'll optionally wire this to a real external postgres database later, but for now we'll proceed to add the rest of the fields.
+
+### Extending this to all fields
+
+Now that we've wired the DB_HOST field all the way through, we'll do the same for the other fields. In the end, your Secret and Deployment should look like:
+
+```yaml
+# postgres-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres
+data:
+  DB_HOST: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_host" | Base64Encode }}
+    {{repl end}}
+  DB_PORT: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "5432" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_port" | Base64Encode }}
+    {{repl end}}
+  DB_USER: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_user" | Base64Encode }}
+    {{repl end}}
+  DB_PASSWORD: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl ConfigOption "embedded_postgres_password" | Base64Encode }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_password" | Base64Encode }}
+    {{repl end}}
+  DB_NAME: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_db" | Base64Encode }}
+    {{repl end}}
+```
+
+```yaml
+# pg-consumer.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-consumer
+spec:
+  selector:
+    matchLabels:
+      app: pg-consumer
+  template:
+    metadata:
+      labels:
+        app: pg-consumer
+    spec:
+      containers:
+        - name: pg-consumer
+          image: 'postgres:10'
+          # connect to the database every 10 seconds
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 10
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+              done
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_NAME
+```
+
+Optionally, you can be extra concise and collapse each individual `env` `valueFrom` into a single `envFrom` `secret` entry:
+
+```yaml
+# pg-consumer.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-consumer
+spec:
+  selector:
+    matchLabels:
+      app: pg-consumer
+  template:
+    metadata:
+      labels:
+        app: pg-consumer
+    spec:
+      containers:
+        - name: pg-consumer
+          image: 'postgres:10'
+          # connect to the database every 10 seconds
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 10
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+              done
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_NAME
+```
+
+
+after deploying this, you should see all fields in the secret:
+
+```text
+$ kubectl get secret postgres -o yaml
+apiVersion: v1
+data:
+  DB_HOST: ZmFrZQ==
+  DB_NAME: ZmFrZQ==
+  DB_PASSWORD: ZXh0cmEgZmFrZQ==
+  DB_PORT: NTQzMjE=
+  DB_USER: ZmFrZQ==
+kind: Secret
+# ...snip...
+```
+
+We can also print the environment in our sample app to verify all the values are piped properly:
+
+```text
+$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+DB_PORT=54321
+DB_NAME=fake
+DB_PASSWORD=extra fake
+DB_HOST=fake
+DB_USER=fake
+```
+
+### Testing Config Changes
+
+Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database. To Start, head to the config screen and input your values:
+
+![Real Postgres Values](/images/guides/kots/real-postgres-values.png)
+
+Let's save and apply this config and check in our pod again:
+
+```text
+$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+DB_PORT=54321
+DB_NAME=fake
+DB_PASSWORD=extra fake
+DB_HOST=fake
+DB_USER=fake
+```
+
+Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed. There are some tricks to make this works, and in the next step we'll implement one of them, but for now we can delete the pod to verify that the configuration is being piped through to our sample application:
+
+```text
+$ kubectl delete pod -lapp=pg-consumer
+pod "pg-consumer-6df9d5d7fd-bd5z6"" deleted
+```
+
+If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it. In either case, once a new pod starts, we can see it should now be loading the correct config:
+
+```text
+$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+DB_PORT=5432
+DB_NAME=postgres
+DB_PASSWORD=<redacted>
+DB_HOST=10.128.0.12
+DB_USER=postgres
+```
+
+### Trigerring restarts on changes
+
+In order to automate this restart on changes, we're going to use a hash of all database parameters to trigger a rolling update whenever database parameters are changed. We'll use a `hidden`, `readonly` field to store this in our config screen:
+
+```yaml
+        - name: external_postgres_confighash
+          hidden: true
+          readonly: true
+          type: text
+          value: '{{repl (sha256 (print (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_db") ))}}'
+```
+
+- By default
+- create hidden readonly config field that is sha256 of all database params
+- add as env var to deployment
+
+### Integrating a real Database
+
+If you'd like at this point, you can integrate a real database
+
+
+<!-- Coming Soon!
+
 * * *
 
-## External: Validating User-supplied Configuration with Preflight Checks
+## Validating User-supplied Configuration with Preflight Checks
 
 * * *
 
-## Embedded: Managing Credentials, Using an InitContainer to wait for the database to be ready
+## Using an InitContainer to Coordinate Workloads
 
-
-* * *
-
-## Eliminating Code duplication with Hidden Config Fields
-
-- lots of duplication
-
-* * *
-
-## Next Steps
+-->
