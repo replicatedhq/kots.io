@@ -3,6 +3,9 @@ date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
 title: "Quickstart"
 weight: "2"
+aliases:
+  - /vendor/quickstart
+  - /vendor/quickstart/create-release
 ---
 
 The KOTS Quickstart is our simplest guide, we'll get running quickly with a simple Nginx application on a single VM.
@@ -27,7 +30,7 @@ You'll should be at the channels page now. This is a list of your release channe
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide). 
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
 
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
@@ -43,7 +46,7 @@ Now that we've got a release promoted, we can walk through creating a license an
 
 * * *
 
-## Installing and Testing 
+## Installing and Testing
 
 This guide will give you first-hand experience installing a KOTS application using [kURL](https://kurl.sh) for an embedded Kubernetes cluster. If you haven't yet created a release, head back to the [Create and Promote a Release](#creating-a-release) chapter and complete that first.
 
