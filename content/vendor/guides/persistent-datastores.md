@@ -49,13 +49,13 @@ spec:
       containers:
         - name: pg-consumer
           image: postgres:10
-          # connect to the database every 10 seconds
+          # connect to the database every 20 seconds
           command:
             - /bin/sh
             - -ec
             - |
               while :; do 
-                 sleep 10
+                 sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \ 
@@ -77,7 +77,7 @@ spec:
               value: postgres
 ```
 
-This app simply connects to the database every 10 seconds and rights the server timestamp to it's container stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes. 
+This app simply connects to the database every 20 seconds and rights the server timestamp to it's container stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes. 
 
 For now we'll hard code the variable values, in the next sections we'll wire these up to the user-provided configuration.
 
@@ -351,13 +351,13 @@ spec:
       containers:
         - name: pg-consumer
           image: 'postgres:10'
-          # connect to the database every 10 seconds
+          # connect to the database every 20 seconds
           command:
             - /bin/sh
             - -ec
             - |
               while :; do 
-                 sleep 10
+                 sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \ 
@@ -594,13 +594,13 @@ spec:
       containers:
         - name: pg-consumer
           image: 'postgres:10'
-          # connect to the database every 10 seconds
+          # connect to the database every 20 seconds
           command:
             - /bin/sh
             - -ec
             - |
               while :; do
-                 sleep 10
+                 sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \
@@ -716,13 +716,13 @@ spec:
       containers:
         - name: pg-consumer
           image: 'postgres:10'
-          # connect to the database every 10 seconds
+          # connect to the database every 20 seconds
           command:
             - /bin/sh
             - -ec
             - |
               while :; do
-                 sleep 10
+                 sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \
@@ -758,7 +758,7 @@ spec:
                   key: DB_NAME
 ```
 
-Optionally, you can be extra concise and collapse each individual `env` `valueFrom` into a single `envFrom` `secret` entry:
+Optionally, you can be extra concise and collapse each individual `env` `valueFrom` into a single `envFrom` `secretRef` entry:
 
 ```yaml
 # pg-consumer.yaml
@@ -778,13 +778,13 @@ spec:
       containers:
         - name: pg-consumer
           image: 'postgres:10'
-          # connect to the database every 10 seconds
+          # connect to the database every 20 seconds
           command:
             - /bin/sh
             - -ec
             - |
               while :; do
-                 sleep 10
+                 sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
                       --port ${DB_PORT} \
@@ -792,32 +792,9 @@ spec:
                       --dbname ${DB_NAME} \
                       --command 'SELECT NOW()'
               done
-          env:
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: DB_PORT
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: DB_USER
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: DB_PASSWORD
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: DB_NAME
+          envFrom:
+          - secretRef:
+              name: postgres
 ```
 
 
@@ -871,7 +848,7 @@ $ kubectl delete pod -lapp=pg-consumer
 pod "pg-consumer-6df9d5d7fd-bd5z6"" deleted
 ```
 
-If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it. In either case, once a new pod starts, we can see it should now be loading the correct config:
+If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it. In either case, once a new pod starts, we should now see it loading the correct config:
 
 ```text
 $ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
@@ -894,13 +871,59 @@ In order to automate this restart on changes, we're going to use a hash of all d
           value: '{{repl (sha256 (print (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_db") ))}}'
 ```
 
-- By default
-- create hidden readonly config field that is sha256 of all database params
-- add as env var to deployment
+The `hidden` flag will hide it from the UI, and the `readonly` flag in this case will cause the value to be re-computed any time an upstream `ConfigOption` value changes.
+
+Next, let's add this as an annotation to our deployment's pod template at `spec.template.metdata.annotations`:
+
+```yaml
+annotations:
+  kots.io/config-hash: '{{repl ConfigOption "external_postgres_confighash"}}'
+```
+
+Your full deployment should now look like
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-consumer
+spec:
+  selector:
+    matchLabels:
+      app: pg-consumer
+  template:
+    metadata:
+      labels:
+        app: pg-consumer
+      annotations:
+        kots.io/config-hash: '{{repl ConfigOption "external_postgres_confighash"}}'
+    spec:
+      containers:
+        - name: pg-consumer
+          image: 'postgres:10'
+          # connect to the database every 20 seconds
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 20
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+              done
+          envFrom:
+            - secretRef:
+                name: postgres
+```
+
 
 ### Integrating a real Database
 
-If you'd like at this point, you can integrate a real database
+If you'd like at this point, you can integrate a real database in your environment, just fill out your configuration fields. You'll know you did it right if your pg-consumer pod can connect!
 
 
 <!-- Coming Soon!
@@ -912,5 +935,9 @@ If you'd like at this point, you can integrate a real database
 * * *
 
 ## Using an InitContainer to Coordinate Workloads
+
+* * *
+
+## Storing Data with Snapshots
 
 -->
