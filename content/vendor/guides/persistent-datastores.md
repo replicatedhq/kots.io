@@ -13,8 +13,6 @@ It is split into 5 sections:
 - [User-Facing Configuration](#user-facing-configuration)
 - [Embedding a Database](#embedding-a-database)
 - [Connecting to an External Database](#connecting-to-an-external-database)
-- [Validating User-supplied Configuration with Preflight Checks](#connecting-to-an-external-database)
-- [Embedded: Managing Credentials and Integrating an InitContainer](#embedded-managing-credentials)
 
 ### Prerequisites
 
@@ -26,8 +24,7 @@ A full example of the code for this guide can be found in the [kotsapps reposito
 
 * * *
 
-
-### The Example Application
+## The Example Application
 
 For demonstration purposes, we'll use a simple app that connects to a postgres database via the `psql` CLI. Once you've finished this guide, you should feel confident replacing it with any Kubernetes workload(s) that need to connect to a database. The deployment we'll use can be seen below:
 
