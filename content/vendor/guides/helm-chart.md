@@ -16,7 +16,7 @@ This guide will assume you've already completed one of the [Getting Started Guid
 
 ### Prerequisites
 
-- You should have completed one of the [Getting Started Guides](../#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
+- You should have completed one of the [Getting Started Guides](/vendor/guides/#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
 
 ### Accompanying Code Examples
 
@@ -116,4 +116,3 @@ You did it! Next steps are:
 - Managing CRDs if you want to use a chart that needs them (advanced guide)
 - Airgap / Helm (advanced guide)
 - Explore Operators (advanced guide)
-
