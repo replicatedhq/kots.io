@@ -15,7 +15,7 @@ The KOTS Quickstart is our simplest guide, we'll get running quickly with a simp
 
 ###### [Existing Cluster](/vendor/guides/existing-cluster)
 
-The KOTS Embedded Cluster Guide is another of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
+The KOTS Existing Cluster Guide is another of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
 
 
 ### Next Steps
