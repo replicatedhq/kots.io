@@ -24,7 +24,7 @@ These guides will assume you've completed one of the previous guides for either 
 
 ###### [Integrate Persistent Datastores](/vendor/guides/persistent-datastores)
 
-In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. We'll explore ways to give your end user the option to either embed an instance with the application, or connect your appplication to an external instance that they will manage. We'll use a PostgreSQL database as an example, configuring an example app to connect.
+In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. We'll explore ways to give your end user the option to either embed an instance with the application, or connect your application to an external cluster that they will manage. We'll use a PostgreSQL database as an example, configuring an example app to connect.
 
 <!-- Coming Soon!
 
