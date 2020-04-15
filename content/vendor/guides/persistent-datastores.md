@@ -258,7 +258,7 @@ spec:
           valueFrom:
             secretKeyRef:
               key: DB_PASSWORD
-              name: postgres-secret
+              name: postgres
         image: postgres:10
         name: postgres
         volumeMounts:
@@ -283,6 +283,7 @@ Finally, lets add a Service object so we can route traffic to our postgres insta
 
 
 ```yaml
+# postgres-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -357,12 +358,12 @@ spec:
                  sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
-                      --port ${DB_PORT} \ 
+                      --port ${DB_PORT} \
                       --user ${DB_USER} \
                       --dbname ${DB_NAME} \
                       --command 'SELECT NOW()'
               done
-          # hard coded for now, we'll wire these up later            
+          # hard coded for now, we'll wire these up later
           env:
             - name: DB_HOST
               value: postgres
@@ -646,7 +647,7 @@ Checking on our service itself, we can verify that it's now trying to connect to
 
 
 ```text
-$ kubectl logs -lapp=pg-consumer
+$ kubectl logs -l app=pg-consumer
 psql: could not translate host name "fake" to address: Name or service not known
 ```
 
@@ -813,7 +814,7 @@ kind: Secret
 We can also print the environment in our sample app to verify all the values are piped properly:
 
 ```text
-$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+$ kubectl exec $(kubectl get pod -l app=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
 DB_PORT=54321
 DB_NAME=fake
 DB_PASSWORD=extra fake
@@ -830,7 +831,7 @@ Now let's make some changes to the database credentials. In this case, we'll use
 Let's save and apply this config and check in our pod again:
 
 ```text
-$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+$ kubectl exec $(kubectl get pod -l app=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
 DB_PORT=54321
 DB_NAME=fake
 DB_PASSWORD=extra fake
@@ -841,14 +842,14 @@ DB_USER=fake
 Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed. There are some tricks to make this works, and in the next step we'll implement one of them, but for now we can delete the pod to verify that the configuration is being piped through to our sample application:
 
 ```text
-$ kubectl delete pod -lapp=pg-consumer
+$ kubectl delete pod -l app=pg-consumer
 pod "pg-consumer-6df9d5d7fd-bd5z6"" deleted
 ```
 
 If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it. In either case, once a new pod starts, we should now see it loading the correct config:
 
 ```text
-$ kubectl exec $(kubectl get pod -lapp=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
+$ kubectl exec $(kubectl get pod -l app=pg-consumer -o jsonpath='{.items[0].metadata.name}' ) -- /bin/sh -c 'printenv | grep DB_'
 DB_PORT=5432
 DB_NAME=postgres
 DB_PASSWORD=<redacted>
@@ -865,7 +866,7 @@ In order to automate this restart on changes, we're going to use a hash of all d
           hidden: true
           readonly: true
           type: text
-          value: '{{repl (sha256 (print (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_db") ))}}'
+          value: '{{repl (sha256sum (print (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_db") ))}}'
 ```
 
 The `hidden` flag will hide it from the UI, and the `readonly` flag in this case will cause the value to be re-computed any time an upstream `ConfigOption` value changes.
