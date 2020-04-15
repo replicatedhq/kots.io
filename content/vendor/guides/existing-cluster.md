@@ -2,8 +2,17 @@
 date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
 title: "Existing Cluster"
-weight: "3"
+weight: "1003"
 ---
+
+The KOTS Existing Cluster Guide is one of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
+
+It is broken into four sections:
+
+- [Creating a Release](#creating-a-release)
+- [Installing and Testing](#installing-and-testing)
+- [Iterating and Updating](#iterating-and-updating)
+- [Automating Your Workflow](#automating-your-workflow)
 
 ## Creating a Release
 
@@ -247,5 +256,4 @@ If you are on a git branch other than `master`, the branch name will be used for
 ### Integrating with CI
 
 This repo contains a [GitHub Actions](https://help.github.com/en/github/automating-your-workflow-with-github-actions/about-github-actions) workflow for ci at `./.github/workflows/main.yml`. You'll need to [configure secrets](https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) for `REPLICATED_APP` and `REPLICATED_API_TOKEN`.
-
 
