@@ -20,7 +20,7 @@ You should have completed one of the [Getting Started Guides](../#getting-starte
 
 ### Accompanying Code Examples
 
-A full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/persistent-datastores).
+A full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/postgres-snapshots).
 
 * * *
 
@@ -33,14 +33,14 @@ For demonstration purposes, we'll use a simple app that connects to a postgres d
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pg-consumer 
+  name: pg-consumer
 spec:
   selector:
     matchLabels:
       app: pg-consumer
   template:
     metadata:
-      labels: 
+      labels:
         app: pg-consumer
     spec:
       containers:
@@ -51,11 +51,11 @@ spec:
             - /bin/sh
             - -ec
             - |
-              while :; do 
+              while :; do
                  sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
-                      --port ${DB_PORT} \ 
+                      --port ${DB_PORT} \
                       --user ${DB_USER} \
                       --dbname ${DB_NAME} \
                       --command 'SELECT NOW()'
@@ -74,15 +74,15 @@ spec:
               value: postgres
 ```
 
-This app simply connects to the database every 20 seconds and rights the server timestamp to it's container stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes. 
+This app simply connects to the database every 20 seconds and rights the server timestamp to it's container stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes.
 
 For now we'll hard code the variable values, in the next sections we'll wire these up to the user-provided configuration.
 
 
 ### Deploying the example application
- 
+
  Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](../quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
- 
+
 ![View Update](/images/guides/kots/view-update.png)
 
 After clicking "Deploy", you should be able to review the logs and see `deployment.apps/pg-consumer created` in `applyStdout`:
@@ -104,7 +104,7 @@ kotsadm-postgres-0                 1/1     Running            0          12m
 pg-consumer-75f49bfb69-mljr6       0/1     CrashLoopBackOff   1          10s
 ```
 
-Checking the logs, we should see a connect error. 
+Checking the logs, we should see a connect error.
 
 ```text
 $ kubectl logs -l app=pg-consumer
@@ -113,7 +113,7 @@ psql: could not translate host name "postgres" to address: Name or service not k
 
 If the `kubectl logs` command hangs, you can try using the `--previous` flag to fetch the logs of the most recent crash:
 
- 
+
 ```text
 $ kubectl logs -l app=pg-consumer --previous
 psql: could not translate host name "postgres" to address: Name or service not known
@@ -180,7 +180,7 @@ spec:
         - name: embedded_postgres_password
           hidden: true
           type: password
-          value: "{{repl RandomString 32}}"          
+          value: "{{repl RandomString 32}}"
 ```
 
 This creates a toggle to allow the user to choose between an embedded or external Postgres instance, and a `hidden` field to generate a unique password for the embedded instance.
@@ -191,7 +191,7 @@ As mentioned in the introduction, a full example of the code for this guide can 
 ### Validating Config Changes
 
 Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. Create a release by pushing a commit to your [starter repo copy](../quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
- 
+
 ![View Update](/images/guides/kots/view-update.png)
 
 Once the update is deployed, we can head over to the Config tab and review our new toggle. You might also notice that we've removed the Ingress settings to simplify things for this guide:
@@ -208,7 +208,7 @@ To implement the embedded Database option, we'll add a Kubernetes [Statefulset](
 
 ### Adding the Secret and StatefulSet
 
-Firse, we'll create a secret to store the root password for our embedded postgres instance. 
+Firse, we'll create a secret to store the root password for our embedded postgres instance.
 
 ```yaml
 # postgres-secret.yaml
@@ -309,7 +309,7 @@ Once you've added the these resources, you can push a new release and update in 
 We should now see an instance of postgres running in our namespace as well. The consumer may still be crashlooping, but we can see the error is different now:
 
 ```text
-$ kubectl logs -l app=pg-consumer 
+$ kubectl logs -l app=pg-consumer
 psql: FATAL:  password authentication failed for user "postgres"
 ```
 
@@ -354,7 +354,7 @@ spec:
             - /bin/sh
             - -ec
             - |
-              while :; do 
+              while :; do
                  sleep 20
                  PGPASSWORD=${DB_PASSWORD} \
                  psql --host ${DB_HOST} \
@@ -399,12 +399,12 @@ Checking the logs, we can connect now:
 
 ```text
 $ kubectl logs -l app=pg-consumer
-              now              
+              now
 -------------------------------
  2020-04-12 17:11:45.019293+00
 (1 row)
 
-              now              
+              now
 -------------------------------
  2020-04-12 17:11:55.072041+00
 (1 row)
@@ -556,7 +556,7 @@ data:
     {{repl end}}
 ```
 
-Now that we have the value in our Secret, we can modify our deployment to consume it. Replace 
+Now that we have the value in our Secret, we can modify our deployment to consume it. Replace
 
 ```yaml
             - name: DB_HOST
@@ -936,6 +936,6 @@ If you'd like at this point, you can integrate a real database in your environme
 
 * * *
 
-## Storing Data with Snapshots
+## Preparing for Disaster Recover with Snapshots
 
 -->
