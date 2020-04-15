@@ -185,7 +185,7 @@ spec:
 
 This creates a toggle to allow the user to choose between an embedded or external Postgres instance, and a `hidden` field to generate a unique password for the embedded instance.
 
-As mentioned in the introduction, a full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/persistent-datastores).
+As mentioned in the introduction, a full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/postgres-snapshots).
 
 
 ### Validating Config Changes
