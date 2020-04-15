@@ -51,3 +51,5 @@ In this guide, we'll explore how you can leverage the wealth of software bundled
 #### [GitOps Workflow](/vendor/guides/gitops)
 
 (Coming soon)
+
+-->
