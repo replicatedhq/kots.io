@@ -57,7 +57,7 @@ It is *strongly* advised that applications be architected to deploy a single app
 
 ### Helm
 
-Helm charts are supported by KOTS but not required. If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/vendor/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
+Helm charts are supported by KOTS but not required. If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
 
 ### Operators
 Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain
