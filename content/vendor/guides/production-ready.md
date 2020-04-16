@@ -82,7 +82,7 @@ A robust support bundle is essential to minimizing back-and-forth when things go
 kubectl get pods --show-labels
 ```
 
-against a running instance to see what labels are used. Once the labels are discoved, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
+against a running instance to see what labels are used. Once the labels are discovered, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
 
 As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an apps's support stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log line in the future and inform an end user of remediation steps.
 
