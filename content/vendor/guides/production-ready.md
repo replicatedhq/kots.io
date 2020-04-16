@@ -76,7 +76,7 @@ Our recommendation is always to enforce licensing with a strong contract, but if
 
 ### Bundling and Analyzing Logs with Support bundle
 
-A robust support bundle is essential to minimizing back-and-forth when things go wrong. At a very minimum every app's support bundle should contain logs for an application's core pods. Usually this will be done with label selectors. To the labels for an application, either inspect the YAML, or run
+A robust support bundle is essential to minimizing back-and-forth when things go wrong. At a very minimum every app's support bundle should contain logs for an application's core pods. Usually this will be done with label selectors. To get the labels for an application, either inspect the YAML, or run
 
 ```shell
 kubectl get pods --show-labels
@@ -190,4 +190,3 @@ This section covers your product requirements from a usage and policy point of v
 - Do you anticipate the need to scale the capacity of $APP up and down during its lifetime?
 
 - What are your requirements around log aggregation? What downstream systems do you need system logs to be piped to?
-
