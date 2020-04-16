@@ -101,7 +101,7 @@ We recommend using a git-based workflow, as presented in the [KOTS starter Repo]
 
 ###### Tagging Releases for Production
 
-In addition to the starter Makefile included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/master/Makefile.advanced) that builds on the basic one. It adds logic for making production releases using git tags. The basic outline is:
+In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/master/Makefile.advanced) that builds on the basic one. It adds logic for making production releases using git tags. The basic outline is:
 
 - On pushes to the `master` branch, create a release on unstable with the name `Unstable-${SHA}`
 - On pushing a git tag, create a release on the beta branch, using the name `Beta-${TAG}` for the release version.
