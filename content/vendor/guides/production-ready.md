@@ -21,7 +21,7 @@ It is split into three parts:
 
 ### Basic Whitelabeling
 
-All applications should be whitelabeled with [a name and an icon](/reference/v1beta1/application/#title). 
+All applications should be whitelabeled with [a title and an icon](/reference/v1beta1/application/#title). 
 
 ### Status Informers
 
