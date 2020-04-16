@@ -105,7 +105,7 @@ In addition to the starter `Makefile` included in the [KOTS starter Repo](https:
 
 - On pushes to the `master` branch, create a release on unstable with the name `Unstable-${SHA}`
 - On pushing a git tag, create a release on the beta branch, using the name `Beta-${TAG}` for the release version.
-- Our recommendation is that these tags be tested, and then the release be manually promoted to the `Stable` channel using https://vendor.replicated.com. The goal in using manual promotion to restrict who can cause new versions to go out to users via RBAC roles in the Vendor Portal.
+- Our recommendation is that these tags be tested, and then the release be manually promoted to the `Stable` channel using [vendor.replicated.com](https://vendor.replicated.com). The goal in using manual promotion to restrict who can cause new versions to go out to users via RBAC roles in the Vendor Portal.
 
 The advandced makefile also includes glue code for utility tasks such as computing new [SemVer](https://semver.org) tags and pushing them.
 
