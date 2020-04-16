@@ -31,6 +31,7 @@ Params:
   #   host: "localhost:4000"
   #   site: "2"
 
+  enable_anchor_link: true
   favicon: ""
   pagetitle: "Kots.io"
   permalink: "#"

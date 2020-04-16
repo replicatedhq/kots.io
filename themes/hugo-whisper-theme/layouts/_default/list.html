@@ -12,15 +12,17 @@
     </head>
 </html>
 {{else if eq .Section "release-notes" }}
+  <div class="content {{if .Site.Params.enable_anchor_link}}{{ "anchor-link-enabled" }}{{ end }}">
     {{ range .Paginator.Pages }}
       {{ .Render "li" }}
     {{ end }}
-    <div class="paginator">
-      {{ template "_internal/pagination.html" . }}
-    </div>
+  </div>
+  <div class="paginator">
+    {{ template "_internal/pagination.html" . }}
+  </div>
 {{else}}
 <h1 class="title" id="{{.Title | anchorize}}">{{.Title}}</h1>
-<div class="content">
+<div class="content {{if .Site.Params.enable_anchor_link}}{{ "anchor-link-enabled" }}{{ end }}">
   {{ .Content }}
 </div>
 
