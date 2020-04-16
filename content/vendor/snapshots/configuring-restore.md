@@ -3,7 +3,7 @@ date: 2019-01-23
 linktitle: "Configuring Restore"
 title: Configuring Restore
 isAlpha: true
-weight: 3
+weight: 4
 ---
 
 Click Restore on a snapshot on the `/apps/<slug>/snapshots` page to click a restore.
