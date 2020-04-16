@@ -26,19 +26,32 @@ These guides will assume you've completed one of the previous guides for either 
 
 In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. We'll explore ways to give your end user the option to either embed an instance with the application, or connect your application to an external cluster that they will manage. We'll use a PostgreSQL database as an example, configuring an example app to connect.
 
+###### [Prepare for Production Deploys](/vendor/guides/production-ready)
+
+This guide is intended as a lightweight checklist to ensure you have explored all the features of KOTS and integrated the ones that will help ensure your end users are most likely to be successful deploying and running your KOTS application
+
 <!-- Coming Soon!
 
 ###### [Package a Helm Chart](/vendor/guides/helm-chart)
 
 In this guide, we'll explore how you can leverage the wealth of software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. We'll use the Consul helm chart as an example in this case.
 
+###### [Integrate Collectors and Analyzers for Troubleshooting](/vendor/guides/troubleshoot-support-bundle)
 
-###### [Managing Customer Entitlements](/vendor/guides/entitlements)
+###### [Add custom Prometheus Graphs](/vendor/guides/prometheus-graphs)
 
-
-###### [Integrate Support Bundles Collectors and Analyzers](/vendor/guides/troubleshoot-collectors-and-analyzers)
+###### [Manage Customer Entitlements](/vendor/guides/entitlements)
 
 ## Advanced
+
+###### [Runtime License Validation](/vendor/guides/runtime-license-validation)
+
+#### [Advanced Embedded Cluster Usage](/vendor/guides/advanced-embedded-cluster)
+
+- locking component versions
+- staging Installer YAMLs through Unstable/Beta/Stable channels
+- manging YAML in git repo
+- preflight checks for embedded components when running in existing cluster (e.g. storageclass)
 
 #### [Airgapped Existing Cluster](/vendor/guides/operator-airgap)
 
