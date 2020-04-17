@@ -21,7 +21,7 @@ It is split into three parts:
 
 ### Basic Whitelabeling
 
-All applications should be whitelabeled with [a title and an icon](/reference/v1beta1/application/#title). 
+All applications should be whitelabeled with [a title and an icon](/reference/v1beta1/application/#title).
 
 ### Status Informers
 
@@ -46,7 +46,7 @@ When deploying with the embedded cluster...
 
 ### Managing Stateful Services
 
-In the [persistent datastores guide](/vendor/guides/persistent-datastores), we review best practices for integrating persistent stores like databases, queues, and caches. Explore ways to give an end user the option to either embed an instance alongside the application, or connect an appplication to an external instance that they will manage. 
+In the [persistent datastores guide](/vendor/guides/persistent-datastores), we review best practices for integrating persistent stores like databases, queues, and caches. Explore ways to give an end user the option to either embed an instance alongside the application, or connect an appplication to an external instance that they will manage.
 
 If you expect to also install stateful services into existing clusters, you'll likely want to expose [preflight analyzers that check for the existence of a storage class](https://troubleshoot.sh/reference/analyzers/storage-class/).
 
@@ -65,11 +65,11 @@ Operators are good for specific use cases, we've written in-depth about them in 
 
 <!-- coming soon, wait for guide
 ### Licensing and Entitlements
-  - how we think about it 
+  - how we think about it
   - basic enforcement
   - advanced enforcement via API
 
-Basic license enforcement comes baked in for free -- expiration 
+Basic license enforcement comes baked in for free -- expiration
 
 Our recommendation is always to enforce licensing with a strong contract, but if you have strict licensing needs, you can always implement [Runtime License Validation](/vendor/guides/runtime-license-validation) in your application. This involves modifying your application code to query an API exposed by KOTS to consume the license payload, and validating the signature in the hot code paths in your application's core business logic.
 -->
@@ -84,7 +84,7 @@ kubectl get pods --show-labels
 
 against a running instance to see what labels are used. Once the labels are discovered, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
 
-As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an apps's support stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log line in the future and inform an end user of remediation steps.
+As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an app's support stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log line in the future and inform an end user of remediation steps.
 
 <!-- coming soon
 For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support-bundle)
@@ -107,15 +107,15 @@ In addition to the starter `Makefile` included in the [KOTS starter Repo](https:
 - On pushing a git tag, create a release on the beta branch, using the name `Beta-${TAG}` for the release version.
 - Our recommendation is that these tags be tested, and then the release be manually promoted to the `Stable` channel using [vendor.replicated.com](https://vendor.replicated.com). The goal in using manual promotion to restrict who can cause new versions to go out to users via RBAC roles in the Vendor Portal.
 
-The advandced makefile also includes glue code for utility tasks such as computing new [SemVer](https://semver.org) tags and pushing them.
+The advanced Makefile also includes glue code for utility tasks such as computing new [SemVer](https://semver.org) tags and pushing them.
 
 * * *
 
 ## Further Reading
 
 - [EnterpriseReady](https://enterpriseready.io) is a great guide for understanding all the dimensions of product that contribute to making your application "enterprise ready".
-<!-- coming soon 
-- [OnPrem.org](https://onprem.org) 
+<!-- coming soon
+- [OnPrem.org](https://onprem.org)
 -->
 - [Appendix A: A Questionnaire for your End Users](#appendix-a-a-questionnaire-for-your-end-users)
 
@@ -133,9 +133,9 @@ When packaging an application, it can useful to get a sense of your environments
 
 This section includes questions about your infrastructure and how you deploy software, both internally written and Commercial Off The Shelf (COTS) applications. If it’s more convenient, limit answers to the scope of the target infrastructure for deploying $APP.
 
-- Do you use any IaaS like AWS, GCP, or Azure? 
+- Do you use any IaaS like AWS, GCP, or Azure?
 
-- If you deploy to a physical datacenter, do you use a Hypervisor like VSphere? 
+- If you deploy to a physical datacenter, do you use a Hypervisor like VSphere?
 
 - Do you ever install on bare metal?
 
