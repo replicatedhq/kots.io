@@ -36,12 +36,12 @@ spec:
     master:
       podAnnotations:
         backup.velero.io/backup-volumes: backup
-        pre.hook.backup.velero.io/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U username -d dbname -h 127.0.0.1 > /scratch/backup.sql"]'
+        pre.hook.backup.velero.io/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U proaction -d proaction -h 127.0.0.1 > /scratch/backup.sql"]'
         pre.hook.backup.velero.io/timeout: 3m
 
       extraVolumes:
         - name: backup
-         `spec.master.annot emptyDir:
+          emptyDir:
             medium: Memory
             sizeLimit: 1Gi
       extraVolumeMounts:
@@ -50,9 +50,9 @@ spec:
 
     global:
       postgresql:
-        postgresqlUsername: username
+        postgresqlUsername: proaction
         postgresqlPassword: "repl{{ ConfigOption `embedded_postgres_password` }}"
-        postgresqlDatabase: dbname
+        postgresqlDatabase: proaction
 
   builder: {}
 
