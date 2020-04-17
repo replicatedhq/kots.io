@@ -12,7 +12,7 @@ It is split into three parts:
 
 - [Implementation Steps](#implementation-steps)
 - [Further Reading](#further-reading)
-- [Appendix A: A Questionnaire for your End Users](#appendix-a-a-questionnaire-for-your-end-users)
+- [Appendix: A Questionnaire for your End Users](#appendix-a-questionnaire-for-your-end-users)
 
 
 * * *
@@ -53,14 +53,16 @@ If you expect to also install stateful services into existing clusters, you'll l
 
 ### Namespaces
 
-It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank. Letting the end user manage namespaces will be the easiest way to reduce friction. The ability to manage namespaces in kotsadm will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is be reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
+It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank.
+
+Letting the end user manage namespaces will be the easiest way to reduce friction. The ability to manage namespaces in kotsadm will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
 
 ### Helm
 
 Helm charts are supported by KOTS but not required. If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
 
 ### Operators
-Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain
+Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
 
 
 <!-- coming soon, wait for guide
@@ -84,7 +86,7 @@ kubectl get pods --show-labels
 
 against a running instance to see what labels are used. Once the labels are discovered, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
 
-As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an app's support stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log line in the future and inform an end user of remediation steps.
+As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an app's troubleshooting stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log lines and inform an end user of remediation steps.
 
 <!-- coming soon
 For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support-bundle)
@@ -92,20 +94,20 @@ For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support
 
 ### Adding Prometheus Graphs
 
-If an application exposes Prometheus metrics, we recommend integrating [Custom Graphs](/vendor/config/dashboard-graphs) to expose deep application metrics to end users.
+If an application exposes Prometheus metrics, we recommend integrating [Custom Graphs](/vendor/config/dashboard-graphs) to expose these metrics to end users.
 
 
 ### Building a Collaborative Workflow
 
-We recommend using a git-based workflow, as presented in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots). This will allow teams to map git branches to channels in the Vendor Portal, and allow multiple team members to seamlessly collaborate across features and releases.
+We recommend using a git-based workflow, as presented in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots). This will allow teams to map git branches to channels in the [Vendor Portal](https://vendor.replicated.com), and allow multiple team members to seamlessly collaborate across features and releases.
 
 ###### Tagging Releases for Production
 
-In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/master/Makefile.advanced) that builds on the basic one. It adds logic for making production releases using git tags. The basic outline is:
+In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/master/Makefile.advanced) that builds on the basic one. It adds logic for making production releases using git tags. The recommended workflow is:
 
 - On pushes to the `master` branch, create a release on unstable with the name `Unstable-${SHA}`
 - On pushing a git tag, create a release on the beta branch, using the name `Beta-${TAG}` for the release version.
-- Our recommendation is that these tags be tested, and then the release be manually promoted to the `Stable` channel using [vendor.replicated.com](https://vendor.replicated.com). The goal in using manual promotion to restrict who can cause new versions to go out to users via RBAC roles in the Vendor Portal.
+- Our recommendation is that these tags be tested, and then the release be manually promoted to the `Stable` channel using [vendor.replicated.com](https://vendor.replicated.com). Using manual promotion allows you to restrict which team members can publish new versions to go out to users via RBAC roles in the Vendor Portal.
 
 The advanced Makefile also includes glue code for utility tasks such as computing new [SemVer](https://semver.org) tags and pushing them.
 
@@ -117,13 +119,13 @@ The advanced Makefile also includes glue code for utility tasks such as computin
 <!-- coming soon
 - [OnPrem.org](https://onprem.org)
 -->
-- [Appendix A: A Questionnaire for your End Users](#appendix-a-a-questionnaire-for-your-end-users)
+- [Appendix: A Questionnaire for your End Users](#appendix-a-questionnaire-for-your-end-users)
 
 * * *
 
-## Appendix A: A Questionnaire for your End Users
+## Appendix: A Questionnaire for your End Users
 
-When packaging an application, it can useful to get a sense of your environments you'll being deploying into. We here provide a short questionnaire that you can copy and customize for distributing to your end users. You can copy this and replace $APP with your application name
+When packaging an application, it can be useful to get a sense of your environments you'll being deploying into. We here provide a short questionnaire that you can copy and customize for distributing to your end users. You can copy this and replace $APP with your application name.
 
 * * *
 
