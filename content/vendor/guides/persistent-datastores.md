@@ -302,7 +302,7 @@ spec:
 
 ### Validating the embedded Database
 
-Once you've added the these resources, you can push a new release and update in kotsadm. You should see the following in the deployment logs:
+Once you've added these resources, you can push a new release and update in kotsadm. You should see the following in the deployment logs:
 
 ![Embedded PG Deployed](/images/guides/kots/embedded-pg-deployed.png)
 
@@ -839,7 +839,7 @@ DB_HOST=fake
 DB_USER=fake
 ```
 
-Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed. There are some tricks to make this works, and in the next step we'll implement one of them, but for now we can delete the pod to verify that the configuration is being piped through to our sample application:
+Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed. There are some tricks to make this work, and in the next step we'll implement one of them, but for now we can delete the pod to verify that the configuration is being piped through to our sample application:
 
 ```text
 $ kubectl delete pod -l app=pg-consumer
@@ -857,7 +857,7 @@ DB_HOST=10.128.0.12
 DB_USER=postgres
 ```
 
-### Trigerring restarts on changes
+### Triggering restarts on changes
 
 In order to automate this restart on changes, we're going to use a hash of all database parameters to trigger a rolling update whenever database parameters are changed. We'll use a `hidden`, `readonly` field to store this in our config screen:
 
