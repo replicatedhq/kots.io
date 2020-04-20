@@ -857,7 +857,7 @@ DB_HOST=10.128.0.12
 DB_USER=postgres
 ```
 
-### Trigerring restarts on changes
+### Triggering restarts on changes
 
 In order to automate this restart on changes, we're going to use a hash of all database parameters to trigger a rolling update whenever database parameters are changed. We'll use a `hidden`, `readonly` field to store this in our config screen:
 
