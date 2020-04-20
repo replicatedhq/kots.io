@@ -302,7 +302,7 @@ spec:
 
 ### Validating the embedded Database
 
-Once you've added the these resources, you can push a new release and update in kotsadm. You should see the following in the deployment logs:
+Once you've added these resources, you can push a new release and update in kotsadm. You should see the following in the deployment logs:
 
 ![Embedded PG Deployed](/images/guides/kots/embedded-pg-deployed.png)
 
