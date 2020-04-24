@@ -6,10 +6,10 @@ deps-proofer:
 
 
 .PHONY: deps
-deps: upstream_version = $(shell  curl --silent --location --fail --output /dev/null --write-out %{url_effective} https://github.com/gohugoio/hugo/releases/tag/v0.68.3 | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+$$')
+deps: upstream_version = "v0.68.3"
 deps: dist = $(shell echo `uname` | tr '[:upper:]' '[:lower:]')
 deps: cli_version = ""
-deps: cli_version = $(shell [[ -x deps/hugo ]] && deps/hugo version | grep version | head -n1 | cut -d: -f2 | tr -d , | tr -d '"' | tr -d " " )
+deps: cli_version = $(shell [[ -x deps/hugo ]] && deps/hugo version | sed 's/\-/ /g' | sed 's/\// /g' | awk '{print $$5}' )
 
 deps:
 	: CLI Local Version $(cli_version)
@@ -21,9 +21,9 @@ deps:
 	   echo '-> Downloading Hugo CLI to ./deps '; \
 	   mkdir -p deps/; \
 	   if [[ "$(dist)" == "darwin" ]]; then \
-	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_0.68.3_macOS-64bit.tar.gz; \
+	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/$(upstream_version)/hugo_0.68.3_macOS-64bit.tar.gz; \
 	   else \
-	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_0.68.3_Linux-64bit.tar.gz; \
+	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/$(upstream_version)/hugo_0.68.3_Linux-64bit.tar.gz; \
 	   fi; \
 	   tar xvzf hugo.tar.gz -C deps; \
 	 fi;
