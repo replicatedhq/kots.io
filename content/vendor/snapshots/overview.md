@@ -2,7 +2,7 @@
 date: 2019-01-23
 linktitle: "Overview"
 title: Snapshots
-isAlpha: true
+isBeta: true
 weight: 1
 aliases:
   - /vendor/snapshots/

@@ -2,7 +2,7 @@
 date: 2019-01-23
 linktitle: "Configuring Backup"
 title: Configuring Backup
-isAlpha: true
+isBeta: true
 weight: 2
 ---
 

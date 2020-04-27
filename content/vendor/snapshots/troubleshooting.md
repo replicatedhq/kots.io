@@ -2,11 +2,11 @@
 date: 2020-04-10
 linktitle: "Troubleshooting"
 title: Troubleshooting
-isAlpha: true
+isBeta: true
 weight: 7
 ---
 
-Sometimes things are working right and an installation is not able to start a backup or complete a restore. This document offers some solutions to common problems.
+Sometimes things are working right and an installation is not able to start a backup or complete a restore. This document offers some solutions to common problems. When a snapshot fails, a support bundle will be collected and stored automatically. Because this is a point-in-time collection of all logs and system state at the time of the failed snapshot, this is a good place to view the logs.
 
 ## Velero is crashing
 

@@ -2,19 +2,18 @@
 date: 2019-01-23
 linktitle: "Backup Hooks"
 title: Backup Hooks
-isAlpha: true
+isBeta: true
 weight: 3
 ---
 
 For many application workloads, additional processing or scripts need to be run before and/or after a backup is taken to prepare the system for a backup. Velero has support for this, using [Hooks](https://velero.io/docs/master/hooks/).
 
-Some common examples of how a Hook `spec.master.annotcan be used to create successful backups are:
+Some common examples of how a Hook can be used to create successful backups are:
 - Run `pg_dump` to export a postgres database prior to backup
 - Lock a file before running a backup, and unlock immediately after
 - Delete tmp files that should not be backed up
 
 Backup hooks should be run inside the container that contains the data to back up.
-
 
 ## Examples
 A common pattern of applications is to include and want to back up a Postgres database. Postgres is easy to include from a Helm chart, and the following HelmChart kind can be used to configure Postgres for backups. An exaplanation of the configuration follows the YAML.
