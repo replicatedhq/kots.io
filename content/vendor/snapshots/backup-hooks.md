@@ -40,7 +40,7 @@ spec:
 
       extraVolumes:
         - name: backup
-         `spec.master.annot emptyDir:
+          emptyDir:
             medium: Memory
             sizeLimit: 1Gi
       extraVolumeMounts:
