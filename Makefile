@@ -18,7 +18,7 @@ deps:
 	@echo '-> Downloading Hugo CLI to ./deps '; \
 	mkdir -p deps/; \
 	if [[ "$(distname)" == "Windows" ]]; then \
-	  wget -O hugo.zip $(url).zip; \
+	  wget --no-check-certificate -O hugo.zip $(url).zip; \
 	  unzip hugo.zip -d deps; \
 	else \
 	  wget -O hugo.tar.gz $(url).tar.gz; \
