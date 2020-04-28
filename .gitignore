@@ -17,3 +17,5 @@ logs
 
 hugo
 deps/
+resources/_gen
+hugo.tar.gz
