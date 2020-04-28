@@ -2,9 +2,9 @@ SHELL := /bin/bash -o pipefail
 
 # Only try to run commands in deps directory if present
 ifneq ($(wildcard deps/.),)
-DIR := deps/
+HUGO := deps/hugo
 else
-DIR := 
+HUGO := hugo
 endif
 
 .PHONY: deps
@@ -40,13 +40,13 @@ install:
 .PHONY: dev 
 dev: 
 	# If $(DEPS) are available via `make deps` use those executables. Otherwise, rely on executables to already be installed. 
-	$(DIR)hugo serve --theme hugo-whisper-theme
+	$(HUGO) serve --theme hugo-whisper-theme
 
 .PHONY: test
 test: 
 	rm -rf public
 	# Use hugo dependencies via `make deps`, if available. Otherwise use OS install of Hugo.
-	$(DIR)hugo -v -s .
+	$(HUGO) -v -s .
 	
 	# Run htmlproofer 3.15.0, if installed. Can be installed with `gem install --user-install html-proofer -v 3.15.0`
 	-htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"
