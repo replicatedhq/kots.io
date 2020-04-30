@@ -8,10 +8,10 @@ HUGO := hugo
 endif
 
 .PHONY: deps
+
 deps: upstream_version = v0.68.3
 deps: distname = $(shell dist=$$(echo `uname` | head -c7 | sed 's/Darwin/macOS/g' | sed 's/MSYS_NT/Windows/g'); if [[ "$$dist" = "" ]]; then echo Windows; else echo $$dist; fi)
 deps: url = "https://github.com/gohugoio/hugo/releases/download/$(upstream_version)/hugo_extended_$(subst v,,$(upstream_version))_$(distname)-64bit"
-
 deps:
 	: Distribution $(distname)
 	: Hugo Download Url $(url)
@@ -24,6 +24,7 @@ deps:
 	  wget -O hugo.tar.gz $(url).tar.gz; \
 	  tar xvzf hugo.tar.gz -C deps; \
 	fi
+
 
 .PHONY: index-site
 index-site:
@@ -45,8 +46,10 @@ dev:
 .PHONY: test
 test: 
 	rm -rf public
+
 	# Use hugo dependencies via `make deps`, if available. Otherwise use OS install of Hugo.
 	$(HUGO) -v -s .
 	
 	# Run htmlproofer 3.15.0, if installed. Can be installed with `gem install --user-install html-proofer -v 3.15.0`
 	-htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"
+

@@ -5,9 +5,7 @@ title: "Package a Helm Chart"
 weight: "1005"
 ---
 
-In this guide, we'll explore how you can leverage software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. We'll use the Consul helm chart as an example in this case.
-
-This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) and set up a local git repo to manage your application.
+In this guide, we'll explore how you can leverage software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. We'll use the Grafana helm chart as an example in this case. The guide is divided into three parts:
 
 - [Adding a Chart to your Application](#adding-a-chart-to-your-application)
 - [Releasing and Testing](#releasing-and-testing)
@@ -15,7 +13,7 @@ This guide will assume you've already completed one of the [Getting Started Guid
 
 ### Prerequisites
 
-- You should have completed one of the [Getting Started Guides](/vendor/guides/#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
+This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) including having running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests. We'll assume this is checked out in `~/helm-grafana`.
 
 ### Accompanying Code Examples
 
@@ -33,7 +31,7 @@ We can get the Helm Chart archive in a couple of ways, either using `helm fetch`
 
 Add a Helm repo
 
-```shell
+```text
 $ helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
 "stable" has been added to your repositories
@@ -41,12 +39,12 @@ $ helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
 Verify the repo has been added
 
-```shell
+```text
 $ helm repo ls
 
 NAME    URL
 stable  https://kubernetes-charts.storage.googleapis.com
-``` 
+```
 
 For this example we'll fetch the grafana helm chart
 
@@ -64,7 +62,7 @@ git clone git@github.com:helm/charts.git
 
 Helm package the Grafana install.
 
-```shell
+```text
 $ helm package charts/stable/grafana
 
 Successfully packaged chart and saved it to: ~/grafana-5.0.13.tgz
@@ -74,7 +72,7 @@ Successfully packaged chart and saved it to: ~/grafana-5.0.13.tgz
 
 From `Chart.yaml` get the `name` and `version`, we'll need these for the next step when creating the `HelmChart` kots kind.
 
-```shell
+```text
 $ tar -xOf grafana-5.0.13.tgz grafana/Chart.yaml
 
 ...
@@ -91,6 +89,9 @@ cp grafana-5.0.13.tgz ~/helm-grafana/manifests/
 ```
 
 Create `HelmChart` kots kind file and use the `name` and `version` from previous step for `name` and `chartVersion`, respectively.
+
+
+
 ```shell
 cat <<EOF >>~/helm-grafana/manifests/grafana.yaml
 apiVersion: kots.io/v1beta1
@@ -107,6 +108,8 @@ spec:
 EOF
 ```
 
+You may have noticed that we have also used this opportunity to set just two of the values for this chart: `adminUser` and `adminPassword`. We'll hardcode them to `admin`/`admin` for now, but we'll make these user-configurable later.
+
 * * *
 
 ## Releasing and Testing
@@ -114,9 +117,8 @@ EOF
 Make a new release with the Helm chart in your kots app.
 
 ```shell
-$ cd ~/helm-grafana
-
-$ make release
+cd ~/helm-grafana
+make release
 ```
 
 Go to `kotsadm` and click on `Version history -> Check for updates`. Once the update is available click on `Deploy`.
@@ -124,10 +126,10 @@ Go to `kotsadm` and click on `Version history -> Check for updates`. Once the up
 ![Helm Chart Check for Updates 1](/images/guides/kots/helm-chart-check-for-updates-1.png)
 
 
-Verify Grafana chart is deployed
+From here, we can verify that the Grafana chart is deployed
 
-```shell
-$kubectl get po
+```text
+$ kubectl get po
 
 NAME                                READY   STATUS              RESTARTS   AGE
 grafana-db9df67f6-vfdnd             0/1     ContainerCreating   0          5s
@@ -139,7 +141,7 @@ The chart by default doesn't have an `Ingress` but we can use `port-forward` for
 kubectl port-forward service/grafana 8080:80
 ```
 
-Login to Grafana UI via `http://localhost:8080`
+Log in to the Grafana UI via `http://localhost:8080`, using the `admin/admin` password pair we created in the our via Helm values.
 
 ![Helm Chart Grafana Login](/images/guides/kots/helm-chart-grafana-login.png)
 
@@ -147,14 +149,14 @@ Login to Grafana UI via `http://localhost:8080`
 
 ## Mapping Config Screen to Helm Values
 
-Kots allows you to map the [config screen](/vendor/config/config-screen) to Helm `values.yaml` file.
+Kots allows you to map the [config screen](/vendor/config/config-screen) to the Helm `values.yaml` file.
 
 ### Choosing Values
 
-Read the `values.yaml` to find a few values.
+To start, we can read the `values.yaml` to find a few values.
 
 ```shell
-tar -xOf grafana-5.0.13.tgz grafana/values.yaml
+tar -xOf ~/helm-grafana/manifests/grafana-5.0.13.tgz grafana/values.yaml
 ```
 
 In this example we used `adminUser` and `adminPassword`.
@@ -189,16 +191,16 @@ spec:
           default: 'admin'
 ```
 
-To test this `make release` and go to the kotsadm `Config` screen.
+To test this, run `make release`, update the new version, and go to the kotsadm `Config` screen.
 ![Helm Chart Grafana Config Screen](/images/guides/kots/helm-chart-grafana-config-screen.png)
 
-Now lets map these values to the Helm Chart.
+For now, these fields will have no effect. Next, we'll map these user-supplied values to Helm Chart values.
 
 ### Map to Helm Chart
 
 In `~/helm-grafana/manifests/grafana.yaml` update `values` with the `ConfigOption` template function.
 
-```shell
+```diff
 @@ -7,5 +7,5 @@
      name: grafana
      chartVersion: 5.0.13
@@ -209,13 +211,10 @@ In `~/helm-grafana/manifests/grafana.yaml` update `values` with the `ConfigOptio
 +    adminPassword: "repl{{ ConfigOption `admin_password`}}"
 ```
 
-Make the `config.yaml` release
-```shell
-make release
-```
 
-Before deploying check the value of the secret
-```shell
+Before deploying let's quickly check the value of the secret, so we can confirm it changed
+
+```text
 $ kubectl get secret grafana -o yaml
 
 apiVersion: v1
@@ -225,12 +224,18 @@ data:
 ...
 ```
 
+Next, we can make a release and get ready to test it out
+
+```shell
+make release
+```
+
 Deploy the new release
 ![Helm Chart Check for Updates 2](/images/guides/kots/helm-chart-check-for-updates-2.png)
 
 Update the User and Password fields in kotsadm `Config` and verify the `grafana` secret got updated.
 
-```shell
+```text
 $ kubectl get secret grafana -o yaml
 
 apiVersion: v1
