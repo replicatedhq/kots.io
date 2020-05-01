@@ -1,10 +1,9 @@
 ---
 date: 2019-10-09
 linktitle: "Getting Started"
-title: Getting Started with Kots
+title: Getting Started with KOTS
 description: "KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes."
-weight: 20010
-draft: false
+weight: 1
 ---
 
 KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes.

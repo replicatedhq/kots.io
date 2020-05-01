@@ -5,7 +5,7 @@ title: "release create"
 weight: 90120
 ---
 
-Create a new release using a collection of YAML application manifests. 
+Create a new release using a collection of YAML application manifests.
 
 ### Usage
 ```bash
@@ -24,8 +24,6 @@ replicated release create --yaml-dir YAML_DIR [flags]
 | `--required` |  |          When used with --promote <channel>, marks this release as required during upgrades. |
 | `--version` string | When used with --promote <channel>, sets the version label for the release in this channel |
 | `-h, --help`   |  |          help for admin-console |
-| `--kubeconfig` | string |  the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
-| `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
 
 ### Examples
 ```bash
