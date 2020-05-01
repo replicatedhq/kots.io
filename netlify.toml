@@ -27,3 +27,9 @@
   to = "https://velero.io/docs/v1.3.2/supported-providers/"
   status = 301
   force = true
+
+  [[redirects]]
+  from = "/kotsadm/snapshots/basic-install/"
+  to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
+  status = 301
+  force = true
