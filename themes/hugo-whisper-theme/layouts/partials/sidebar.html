@@ -39,7 +39,9 @@
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }}
             {{ else }}
-              {{ .Title }}
+              {{ if not .Params.isHidden }}
+                {{ .Title }}
+              {{ end }}
             {{ end }}
           </a>
           {{ if .Params.isAlpha }} <span class="prerelease-tag alpha">alpha</span> {{ end }}
