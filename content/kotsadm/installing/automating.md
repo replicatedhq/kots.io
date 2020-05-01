@@ -6,7 +6,8 @@ weight: 10035
 draft: false
 ---
 
-Starting with KOTS 1.15.0, it's possible to automate a KOTS installation to an existing cluster (non-airgap) by providing a license file and the application configuration values when running `kots install`. When these values are provided, they are written as ConfigMaps to the cluster, and the Admin Console will find these and process them to complete the installation.
+Starting with KOTS 1.15.0, it's possible to automate a KOTS installation to an existing cluster (non-airgap) by providing a license file and the application configuration values when running `kots install`.
+When these values are provided, they are written as ConfigMaps to the cluster, and the Admin Console will find these and process them to complete the installation.
 
 ### License File
 
@@ -23,7 +24,11 @@ Will install the Admin Console to the `app-name` namespace, and when starting, t
 
 ### Config Values
 
-Many applications need configuration. It's possible to also supply the config values at installation time using the `--config-values` flag. To do this, create a local YAML file that contains all of the config values. The easist way to get the format of this file is to use `kubectl kots download --decrypt-password-values`. When KOTS downloads the application from the cluster using this command, a file will be written to `upstream/userdata/config.yaml`. This file will be:
+Many applications need configuration. It's possible to also supply the config values at installation time using the `--config-values` flag.
+To do this, create a local YAML file that contains all of the config values.
+The easist way to get a template to start from is to use `kubectl kots download --decrypt-password-values` from an already running instance of the application.
+When KOTS downloads the application from the cluster using this command, a file will be written to `upstream/userdata/config.yaml`.
+This file will be:
 
 ```yaml
 apiVersion: kots.io/v1beta1
@@ -31,7 +36,9 @@ kind: ConfigValues
 ...
 ```
 
-All password type items will be decrypted and the value will be stored in `valuePlaintext`. All non-password type config items will have their value stored in `value`. When this file is uploaded, any `valuePlaintext` will be re-encrypted if the matching config item is a type password.
+All password type items will be decrypted and the value will be stored in `valuePlaintext`.
+All non-password type config items will have their value stored in `value`.
+When this file is uploaded, any `valuePlaintext` will be re-encrypted if the matching config item is a type password.
 
 ## Example
 
