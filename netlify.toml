@@ -1,0 +1,35 @@
+[[redirects]]
+  from = "/kotsadm/snapshots/"
+  to = "https://velero.io"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kotsadm/snapshots/troubleshooting/"
+  to = "https://velero.io/docs/master/troubleshooting/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kotsadm/snapshots/restic/"
+  to = "https://velero.io/docs/v1.3.2/restic/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kotsadm/snapshots/restic-troubleshooting/"
+  to = "https://velero.io/docs/master/restic/#troubleshooting"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kotsadm/snapshots/supported-providers/"
+  to = "https://velero.io/docs/v1.3.2/supported-providers/"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/kotsadm/snapshots/basic-install/"
+  to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
+  status = 301
+  force = true
