@@ -27,6 +27,22 @@ replicated enterprise policy create [flags]
 
 ### Examples
 
+Create a new file `crd.rego` with this content:
+```plaintext
+# warn if a kind is CustomResourceDefinition
+lint[output] {
+  file := files[_]
+  file.content.kind == "CustomResourceDefinition"
+  output := {
+    "rule": "custom-resource-definition",
+    "type": "warn",
+    "message": "CRDs are not encouraged",
+    "path": file.path
+  }
+}
+```
+
+Run the following command to create the policy:
 ```bash
 replicated enterprise policy create --name "CRDs" --description "CRDs are not encouraged" --policy-file crd.rego
 ID                             NAME
