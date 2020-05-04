@@ -7,7 +7,7 @@ weight: 20220
 
 When delivering a configurable KOTS application, the customer-supplied config values may result in optional Kubernetes manifests that are not needed for one environment. A common example of this is when a KOTS application includes a Postgres Statefulset, but provides a config option for the user to choose if they want to run that included Postgres, or bring their own managed or external Postgres instance.
 
-In this scenario, when a customer chooses to bring their own component, you should not deploy the Postgres Statefulset. This can be can be accomplished using the Replicated [template functions](../template-functions/) and Kubernetes annotations in the related components.
+In this scenario, when a customer chooses to bring their own component, you should not deploy the Postgres Statefulset. This can be can be accomplished using the Replicated [template functions](/reference/template-functions/) and Kubernetes annotations in the related components.
 
 ## Annotations
 
