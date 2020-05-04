@@ -28,7 +28,7 @@
   <div class="wrapper">
     {{ partial "suite-banner" }}
     {{ partial "header.html" . }}
-    {{ $displaySidebar := false }}
+    {{ $displaySidebar := true }}
     {{ range .Site.Params.mainSections }}
     {{ if eq $.Section . }}
     {{ $displaySidebar = true }}
