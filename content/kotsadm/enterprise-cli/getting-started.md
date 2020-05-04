@@ -65,3 +65,30 @@ docker run replicated/vendor-cli --help
 ```
 
 For simplicity, we will represent usage assuming the CLI has been downloaded and installed to the desktop. 
+
+## Authentication
+
+Initialize authentication by creating a new organization or an auth request that can be used to join an existing organization.
+
+### To create a new organization:
+```bash
+replicated enterprise auth init --create-org "Some Big Bank"
+
+Organization has been created successfully with the following ID: 1bGmd2sGVVpbsTKcnT0gLLeS6QH
+```
+
+### To join an existing organization:
+```bash
+replicated enterprise auth init
+
+Your authentication request has been submitted. Please contact your organization or 
+Replicated at support@replicated.com to complete this request with the following code: SHA256:SzK7n2nrC4igO+wGo+ncaYRICpH0AEoCRPuFUe1mUKI
+```
+
+Contact the organization you want to join and provide them with the code (fingerprint) from the `auth init` step above. Then, that organization can approve the request by running this command:
+
+```bash
+replicated enterprise auth approve --fingerprint "SHA256:SzK7n2nrC4igO+wGo+ncaYRICpH0AEoCRPuFUe1mUKI"
+
+Authentication request approved successfully
+```
