@@ -74,7 +74,7 @@ KOTS can be installed either into an existing Kubernetes cluster or as an embedd
 
 ![Installation Methods](/images/guides/kots/installation-methods.png)
 
-Installing KOTS on Existing cluster is very similar to using an [embedded cluster](../quickstart#installing-and-testing), except instead of bringing a plain VM we will use a pre-built Kubernetes cluster and deploy your KOTS app into a namespace.
+Installing KOTS on Existing cluster is very similar to using an [embedded cluster](/vendor/guides/quickstart#installing-and-testing), except instead of bringing a plain VM we will use a pre-built Kubernetes cluster and deploy your KOTS app into a namespace.
 
 In this example we will launch a GKE cluster using `gcloud` CLI, but you can use any cluster for which you have `kubectl` access.
 
