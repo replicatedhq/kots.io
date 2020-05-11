@@ -67,28 +67,26 @@ Let's download this bundle onto a jumpbox which has internet access.
 * To download the kURL bundle for the `Stable` channel.
 ```shell
 export REPLICATED_APP=<app_slug>
-curl -LS https://k8s.kurl.sh/bundle/${REPLICATED_APP}.tar.gz -o ${REPLICATED_APP}.tar
+curl -LS https://k8s.kurl.sh/bundle/${REPLICATED_APP}.tar.gz -o ${REPLICATED_APP}.tar.gz
 ```
 
 * To download the kURL bundle for all other channels, use the suffix `-<channel_name>`.
 ```shell
 export REPLICATED_APP=<app_slug>
 export REPLICATED_CHANNEL=<channel_name>
-curl -LS https://k8s.kurl.sh/bundle/${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar.gz -o ${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar
+curl -LS https://k8s.kurl.sh/bundle/${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar.gz -o ${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar.gz
 ```
 
-kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
-
-* `scp` the `.tar` file from the jumpbox to the airgapped node.
+* `scp` the `.tar.gz` file from the jumpbox to the airgapped node.
 ```shell
 export AIRGAP_PRIVATE_IP=<airgap_private_ip>
-scp ${REPLICATED_APP}.tar ${AIRGAP_PRIVATE_IP}:~
+scp ${REPLICATED_APP}.tar.gz ${AIRGAP_PRIVATE_IP}:~
 ```
 
 * Next, SSH into the airgapped node and untar the bundle.
 ```shell
 export REPLICATED_APP=<app_slug>
-tar -xvf ${REPLICATED_APP}.tar
+tar -zxvf ${REPLICATED_APP}.tar.gz
 ```
 
 * Install bundle with `airgap` flag, which will ensure kURL will only pull images from local source and not from online.
