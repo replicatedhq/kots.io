@@ -21,16 +21,19 @@ curl -sSL https://kurl.sh/supergoodtool | sudo bash
 
 ### Airgapped Installations
 
-To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script.
+To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script. You can construct the URL for the bundle by prefixing the URL path with `/bundle` and adding `.tar.gz` to the end.
 
 ```bash
-curl -SL -o supergoodtool.tar.gz https://kurl.sh/bundle/supergoodtool.tar.gz
-tar xzvf supergoodtool.tar.gz
+curl -SL -o supergoodtool.tar https://kurl.sh/bundle/supergoodtool.tar.gz
+tar xvf supergoodtool.tar
 cat install.sh | sudo bash -s airgap
 ```
 
 Note that the airgapped installer is not the same as an [airgapped application package](/kotsadm/installing/airgap-packages/).
 A KOTS application may be installed in airgap mode on clusters installed online and vice versa.
+
+There kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
+
 
 ### HA Installations
 
