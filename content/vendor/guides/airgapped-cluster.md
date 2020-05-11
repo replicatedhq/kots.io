@@ -76,7 +76,8 @@ export REPLICATED_APP=<app_slug>
 export REPLICATED_CHANNEL=<channel_name>
 curl -LS https://k8s.kurl.sh/bundle/${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar.gz -o ${REPLICATED_APP}-${REPLICATED_CHANNEL}.tar
 ```
-**Note**: There is a bug in kURL which incorrectly uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
+
+kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
 
 * `scp` the `.tar` file from the jumpbox to the airgapped node.
 ```shell
