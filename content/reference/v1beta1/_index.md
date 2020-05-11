@@ -16,5 +16,6 @@ A KOTS application can include several recommended, but optional, custom resourc
 | troubleshoot.replicated.com/v1beta1 | [Preflight](/reference/v1beta1/preflight) | Define custom Preflight Checks for an application version |
 | troubleshoot.replicated.com/v1beta1 | [Analyzer](https://troubleshoot.sh/reference/analyzers/overview/) | Define custom support bundle analyzers to run in the Admin Console |
 | troubleshoot.replicated.com/v1beta1 | [Collector](https://troubleshoot.sh/reference/collectors/overview/) | Define custom data to include in a support bundle |
+| troubleshoot.replicated.com/v1beta1 | [Redactor](https://troubleshoot.sh/reference/redactors/overview/) | Define custom redactors that apply to support bundle contents. Only configurable via the admin console |
 | app.k8s.io/v1beta1 | [Application](/reference/v1beta1/sig-application) | Define metadata about the application |
 | kots.io/v1beta1 | [HelmChart](/reference/v1beta1/helmchart/) | Identifies an instantiation of a Helm Chart |
