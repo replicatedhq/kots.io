@@ -2,7 +2,7 @@
 date: 2019-10-09
 linktitle: "System Requirements"
 title: "System Requirements for KOTS Apps"
-weight: 10012
+weight: 2
 draft: false
 ---
 
@@ -24,15 +24,15 @@ This includes support against all patch releases of the corrersponding Kubernete
 
 ## Existing Cluster Installation Requirements
 
-Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. 
+Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster.
 Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with Replicated.
 This excludes any specific and additional requirements imposed by software vendor.
 
-Root access is *not* required for installations to existing clusters. 
+Root access is *not* required for installations to existing clusters.
 
 ## Embedded Cluster Installation Requirements
 
 KOTS leverages [kURL](https://kurl.sh/) to embed a new Kubernetes cluster into existing machines.
 As such, any embedded installation includes additional system requirements (see [kURL System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements)).
 
-Root access *is* required when for embedded cluster installations. 
+Root access *is* required when for embedded cluster installations.

@@ -2,9 +2,8 @@
 date: 2019-10-09
 linktitle: "Installing a Helm Chart"
 title: Installing a Helm Chart
-weight: 10030
+weight: 5
 isAlpha: true
-draft: false
 ---
 **Alpha Feature:** *Installing and managing Helm charts via Kotsadm is still an Alpha feature, please open [issues](https://github.com/replicatedhq/kots/issues) with any problems you run into.*
 

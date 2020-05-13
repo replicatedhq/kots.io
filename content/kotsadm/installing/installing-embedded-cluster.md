@@ -2,8 +2,7 @@
 date: 2019-11-18
 linktitle: "Installing an Embedded Cluster"
 title: Installing an Embedded Cluster
-weight: 10040
-draft: false
+weight: 8
 ---
 
 This article refers to installing the Admin Console on an embedded cluster. When running the Admin Console on an existing cluster, refer to the [Installing the Admin Console](/kotsadm/installing/installing-a-kots-app/) documentation.

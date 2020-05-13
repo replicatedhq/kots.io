@@ -2,8 +2,7 @@
 date: 2019-10-09
 linktitle: "Installing a KOTS application"
 title: Installing a KOTS application
-weight: 10010
-draft: false
+weight: 1
 ---
 
 KOTS applications can be installed into various environments and Kubernetes clusters, from airgapped, bare metal Kubernetes installs to managed offering such as EKS, GKE and AKS, and many options in between.
@@ -23,7 +22,7 @@ Install the `kots` plugin for `kubectl` using the [instructions on the Getting S
 Before installing a KOTS application, there are a few considerations.
 
 ### Existing Cluster or Embedded Kubernetes
-KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift etc) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. Most KOTS vendors support both options and require the end customer to determine their preferred method of deployment. This guide will focus on existing cluster installs, with [embedded installations documented separately](/kotsadm/installing/installing-embedded-cluster/).  
+KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift etc) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. Most KOTS vendors support both options and require the end customer to determine their preferred method of deployment. This guide will focus on existing cluster installs, with [embedded installations documented separately](/kotsadm/installing/installing-embedded-cluster/).
 
 ### Online or Airgap Install
 Most Kubernetes clusters are able to make outbound internet requests (inbound access is never recommended or required). As such, most cluster operators are able to perform an [online installation](/kotsadm/installing/online-install). However, if the target cluster does not have outbound internet access, the application can be delivered through an [airgap install](/kotsadm/installing/airgap-packages/). When choosing this option, the cluster must have access to an image registry. All images will be retagged and pushed to the target registry.

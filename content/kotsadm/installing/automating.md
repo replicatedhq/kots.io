@@ -2,7 +2,7 @@
 date: 2020-04-27
 linktitle: "Automating An Install"
 title: Automating An Install
-weight: 10035
+weight: 6
 draft: false
 ---
 
