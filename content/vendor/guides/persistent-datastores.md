@@ -16,7 +16,7 @@ It is split into 5 sections:
 
 ### Prerequisites
 
-You should have completed one of the [Getting Started Guides](../#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
+You should have completed one of the [Getting Started Guides](/vendor/guides/#getting-started), this guide assumes you have a running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests.
 
 ### Accompanying Code Examples
 
@@ -81,7 +81,7 @@ For now we'll hard code the variable values, in the next sections we'll wire the
 
 ### Deploying the example application
 
- Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](../quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
+ Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
 
@@ -190,7 +190,7 @@ As mentioned in the introduction, a full example of the code for this guide can 
 
 ### Validating Config Changes
 
-Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. Create a release by pushing a commit to your [starter repo copy](../quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
+Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. Create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
 

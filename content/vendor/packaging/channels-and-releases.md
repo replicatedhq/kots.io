@@ -8,7 +8,7 @@ weight: 20020
 The [Replicated vendor portal](https://vendor.replicated.com) provides you with a location to create and release versions of your application to various release channels. The vendor portal hosts a built-in YAML editor and linter to help you write and validate YAML.
 
 ## Promoting Releases
-Once a release is ready to be installed, the release can be promoted to one or more release channels. More details can be found in our [Promote Releases documentation](../promoting-releases).
+Once a release is ready to be installed, the release can be promoted to one or more release channels. More details can be found in our [Promote Releases documentation](/vendor/packaging/promoting-releases).
 
 ## Manage Release Channels
 By default, there are 3 release channels: Stable, Beta and Unstable. When you first log in to Replicated and select the Channels tab, you’ll see these default release channels created. You can delete, edit or create new channels at any time. The channels Replicated creates by default are commonly used for:

@@ -2,8 +2,8 @@
 date: 2019-11-27
 linktitle: "Support Bundle"
 title: Support Bundle
-weight: 50
-aliases: 
+weight: 4
+aliases:
   - /vendor/additional-objects/support-bundle
 ---
 

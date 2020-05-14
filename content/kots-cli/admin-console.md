@@ -15,10 +15,11 @@ kubectl kots admin-console upgrade [flags]
 
 * _If `upgrade` is not specified, this command opens a proxy to the admin console. Otherwise, it upgrades the admin console to the latest version._
 
+This command supports all [global flags](/kots-cli/global-flags/) and also:
+
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help`   |  |          help for admin-console |
-| `--kubeconfig` | string |  the kubeconfig to use _(default is $KUBECONFIG. If unset, then $HOME/.kube/config)_ |
 | `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
 
 ### Examples

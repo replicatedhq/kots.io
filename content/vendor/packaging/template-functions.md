@@ -7,7 +7,7 @@ weight: 20210
 
 KOTS applications have access to a rich set of template functions that can be used to render the Kubernetes manifests in the customer's environment.
 
-All template functions are documented in the [template function reference](../../../reference/template-functions) section of these docs.
+All template functions are documented in the [template function reference](/reference/template-functions) section of these docs.
 
 ## Using Template Functions
 

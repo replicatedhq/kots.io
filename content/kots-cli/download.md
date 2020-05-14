@@ -12,14 +12,17 @@ Retrieves a copy of the application manifests from the cluster, and store them i
 kubectl kots download [app-slug] [flags]
 ```
 
-* _Replace `[app-slug]` with the "slug" of your KOTS application (required)._ 
-* _Provide `[flags]` according to the table below_ 
+* _Replace `[app-slug]` with the "slug" of your KOTS application (required)._
+* _Provide `[flags]` according to the table below_
+
+This command supports all [global flags](/kots-cli/global-flags/) and also:
+
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `--dest` | string |        the directory to store the application in _(defaults to `$HOME`)_ |
+| `--decrypt-password-values` | bool | decrypt password values to plaintext |
+| `--dest` | string |        the directory to store the application in _(defaults to current working dir)_ |
 | `-h, --help`   |  |           help for download |
-| `--kubeconfig` | string |  the kubeconfig to use. _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
 | `-n, --namespace` | string |    the namespace to download from _(default `"default"`)_ |
 | `--overwrite` |   |       overwrite any local files, if present |
 
