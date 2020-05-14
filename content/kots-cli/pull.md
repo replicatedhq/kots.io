@@ -24,6 +24,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--exclude-admin-console` |  bool  |  set to true to exclude the admin console _(only valid when `[upstream-uri]` points to a replicated app)_ |
 | `--exclude-kots-kinds` |  bool  | set to true to exclude rendering kots custom objects to the base directory _(default `true`)_ |
 | `-h, --help`  |          |  help for pull |
+| `--helm-version` | string | the Helm version with which to render the Helm Chart _(default `"v2"`)_ |
 | `--image-namespace` |  string  |  the namespace/org in the docker registry to push images to _(required when `--rewrite-images` is set)_ |
 | `--license-file` |  string |   path to a license file _(required when `[upstream-uri]` points to a replicated app)_ |
 | `--local-path` |  string   |   specify a local-path to pull a locally available replicated app _(only valid when `[upstream-uri]` points to a replicated app)_ |
@@ -38,5 +39,5 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 ### Example
 ```bash
 kubectl kots pull sentry/unstable --license-file ~/license.yaml
-kubectl kots pull helm://stable/elasticsearch
+kubectl kots pull helm://stable/elasticsearch --helm-version v3
 ```
