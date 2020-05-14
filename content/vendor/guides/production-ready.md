@@ -111,6 +111,13 @@ In addition to the starter `Makefile` included in the [KOTS starter Repo](https:
 
 The advanced Makefile also includes glue code for utility tasks such as computing new [SemVer](https://semver.org) tags and pushing them.
 
+<!--
+### Docker Image Tagging
+
+TODO: best practices about using static tags, not pushing tags, etc
+
+-->
+
 * * *
 
 ## Further Reading

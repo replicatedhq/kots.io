@@ -20,9 +20,11 @@ deps:
 	if [[ "$(distname)" == "Windows" ]]; then \
 	  wget --no-check-certificate -O hugo.zip $(url).zip; \
 	  unzip hugo.zip -d deps; \
+	  rm hugo.zip
 	else \
 	  wget -O hugo.tar.gz $(url).tar.gz; \
 	  tar xvzf hugo.tar.gz -C deps; \
+	  rm hugo.tar.gz
 	fi
 
 
@@ -38,18 +40,18 @@ index-and-send:
 install:
 	yarn --pure-lockfile
 
-.PHONY: dev 
-dev: 
-	# If dependencies are available via `make deps` use those executables. Otherwise, rely on executables to already be installed. 
+.PHONY: dev
+dev:
+	# If dependencies are available via `make deps` use those executables. Otherwise, rely on executables to already be installed.
 	$(HUGO) serve --theme hugo-whisper-theme
 
 .PHONY: test
-test: 
+test:
 	rm -rf public
 
 	# Use hugo dependencies via `make deps`, if available. Otherwise use OS install of Hugo.
 	$(HUGO) -v -s .
-	
+
 	# Run htmlproofer 3.15.0, if installed. Can be installed with `gem install --user-install html-proofer -v 3.15.0`
 	-htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"
 

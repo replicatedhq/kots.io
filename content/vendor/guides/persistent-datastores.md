@@ -914,8 +914,7 @@ spec:
                       --command 'SELECT NOW()'
               done
           envFrom:
-            - secretRef:
-                name: postgres
+            - secretRef: postgres
 ```
 
 
@@ -924,8 +923,348 @@ spec:
 If you'd like at this point, you can integrate a real database in your environment, just fill out your configuration fields. You'll know you did it right if your pg-consumer pod can connect!
 
 
-<!-- Coming Soon!
+For the remainder of this guide, we'll continue to use the embedded postgres option, but if you have a Postgres instance spun up, the rest of these steps should work with an external database as well.
 
+* * *
+
+## Performing Data Migrations
+
+As soon as you've got a datastore up and running, the next step is often to apply some migrations
+
+### Managing Schemas
+
+- many options
+- we'll use schemahero in operatorless mode
+- there's a good thread from May 2020 with lots of options
+
+- we'll create a table with (id, username, email)
+
+To start, we'll create a directory for our migrations image and create a Dockerfile for it:
+
+```text
+$ ls
+Makefile manifests README.md
+```
+
+```shell
+$ mkdir migrations-image
+```
+
+Then, we'll add the following at `migrations-image/Dockerfile`
+
+```dockerfile
+FROM schemahero/schemahero:0.8.2
+ADD --chown=schemahero:schemahero ./tables ./tables
+```
+
+Next, we'll create a `Table` objecta in the same directory:
+
+```text
+$ mkdir migrations-image/tables
+```
+
+And add the following at `migrations-image/tables/users.yaml`
+
+```yaml
+apiVersion: schemas.schemahero.io/v1alpha3
+kind: Table
+metadata:
+  name: users
+spec:
+  database: pg-consumer
+  name: users
+  schema:
+    postgres:
+      primaryKey: [id]
+      columns:
+        - name: id
+          type: serial
+        - name: name
+          type: varchar(255)
+        - name: email
+          type: varchar(255)
+```
+
+### Building and Pushing the Migrations Image
+
+Next, let's build the docker image, setting `REPLICATED_APP` per the [CLI setup guide](/vendor/guides/quickstart#automating-your-workflow) if you haven't already:
+
+```shell
+export REPLICATED_APP=my-app-slug
+```
+
+We'll use the Replicated Registry at `registry.replicated.com` for this example, but if you've followed the [instructions for connecting an external private registry](https://kots.io/vendor/packaging/private-images/) like GCR, ECR, Docker Hub, Quay, Gitlab, or ACR, you can push to that location instead.
+
+To use the Replicated Registry, first log in, using your [vendor.replicated.com](vendor.replicated.com) login credentials:
+
+```shell
+docker login registry.replicated.com
+```
+
+We'll build and push the image with a 1.0.0 tag.
+
+```shell
+docker build -t registry.replicated.com/${REPLICATED_APP}/migrations:1.0.0 migrations-image
+docker push registry.replicated.com/${REPLICATED_APP}/migrations:1.0.0
+```
+
+Verify the push succeeded by ensuring a subsequent `docker pull` works:
+
+```shell
+docker pull registry.replicated.com/${REPLICATED_APP}/migrations:1.0.0
+```
+
+If you've pushed an image to the Replicated Registry, you can also verify this by checking in [vendor.replicated.com](https://vendor.replicated.com) under the "Images" section:
+
+![migrations-image-replicated-registry](/images/guides/kots/migrations-image-replicated-registry.png)
+
+Again, we'll be using [Schemahero](https://schemahero.io) to manage migrations, but any docker image that connects to a database to manage tables can be used here, including Rails migrations, Liquibase, Django, etc. 
+
+### Creating a Kubernetes Job to Run the Migration
+
+Next we'll configure a [Kubernetes Job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) to run this image and create our tables. Jobs are ideal for this sort of work because they capture a workload that is intended to run once, retrying until successful completion. We'll add the following Job, including a [post-success hook](https://kots.io/vendor/packaging/cleaning-up-jobs/) to clean up the job after it runs.
+
+We'll start by creating this Job in the `manifests` folder at `manifests/migrations-job.yaml`, using the [schemahero operatorless example](https://schemahero.io/docs/advanced/operatorless-mode/) as a starting point:
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pg-migrations
+  annotations:
+    "kots.io/hook-delete-policy": "hook-succeeded, hook-failed"
+spec:
+  template:
+    spec:
+      volumes:
+        - name: migrations
+          emptyDir:
+            medium: Memory
+      restartPolicy: OnFailure
+      initContainers:
+        - image: registry.replicated.com/my-app-slug/migrations:1.0.0
+          name: migrations-plan
+          volumeMounts:
+            - name: migrations
+              mountPath: /migrations
+          args: ["plan"]
+          env:
+            - name: SCHEMAHERO_DRIVER
+              value: postgres
+            - name: SCHEMAHERO_SPEC_FILE
+              value: /tables
+            - name: SCHEMAHERO_OUT
+              value: /migrations/plan.yaml
+            - name: SCHEMAHERO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: SCHEMAHERO_URI
+      containers:
+        - image: registry.replicated.com/my-app-slug/migrations:1.0.0
+          name: migrations-apply
+          volumeMounts:
+            - name: migrations
+              mountPath: /migrations
+          args: ["apply"]
+          env:
+            - name: SCHEMAHERO_DRIVER
+              value: postgres
+            - name: SCHEMAHERO_DDL
+              value: /migrations/plan.yaml
+            - name: SCHEMAHERO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: SCHEMAHERO_URI
+```
+
+Note that you'll have to modify the `image` fields to match the URL your migrations image was pushed to. You'll notice we're referencing our `postgres` secret to pull a field `SCHEMAHERO_URI` for connecting to the database, so let's update our secret. Since Schemahero uses a full connection string rather than separate fields for user, password, etc, we'll need a new field that combines all the other inputs we presented to the end user:
+
+```yaml
+  SCHEMAHERO_URI: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode (printf "postgresql://postgres:%s@postgres:5432/postgres?connect_timeout=10&sslmode=disable" (ConfigOption "embedded_postgres_password")) }}
+    {{repl else}}
+      {{repl Base64Encode (printf "postgresql://%s:%s@%s:%s/%s?connect_timeout=10&sslmode=disable" (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_db")) }}
+    {{repl end}}
+```
+
+At this point, your full secret should look like
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres
+data:
+  DB_HOST: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_host" | Base64Encode }}
+    {{repl end}}
+  DB_PORT: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "5432" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_port" | Base64Encode }}
+    {{repl end}}
+  DB_USER: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_user" | Base64Encode }}
+    {{repl end}}
+  DB_PASSWORD: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl ConfigOption "embedded_postgres_password" | Base64Encode }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_password" | Base64Encode }}
+    {{repl end}}
+  DB_NAME: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode "postgres" }}
+    {{repl else}}
+      {{repl ConfigOption "external_postgres_db" | Base64Encode }}
+    {{repl end}}
+  SCHEMAHERO_URI: >-
+    {{repl if ConfigOptionEquals "postgres_type" "embedded_postgres" }}
+      {{repl Base64Encode (printf "postgresql://postgres:%s@postgres:5432/postgres?connect_timeout=10&sslmode=disable" (ConfigOption "embedded_postgres_password")) }}
+    {{repl else}}
+      {{repl Base64Encode (printf "postgresql://%s:%s@%s:%s/%s?connect_timeout=10&sslmode=disable" (ConfigOption "external_postgres_user") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_password") (ConfigOption "external_postgres_host") (ConfigOption "external_postgres_port") (ConfigOption "external_postgres_db")) }}
+    {{repl end}}
+```
+
+Now, let's create a release and install it in kotsadm to verify that this job is running correctly. Once it's deployed, you should see the following output from `kubectl`:
+
+```text
+$ kubectl get pod | grep pg-migrations
+migrations-dxq4p                    0/1     Completed   0          14s
+```
+
+Note that the output of `kubectl get job` will likely be empty, because of the [post-run hook we added to delete the job on success](#creating-a-kubernetes-job-to-run-the-migration). If you have trouble getting the Job working, you may find it useful to remove this annotation temporarily to avoid the Job being deleted on failure. 
+
+In this case, we can check the logs of the pod to verify the query that was executed:
+
+```text
+$ kubectl logs -l job-name=pg-migrations
+Executing query "create table \"users\" (\"id\" serial, \"name\" character varying (255), \"email\" character varying (255), primary key (\"id\"));"
+```
+
+
+### Modifying the consumer to validate our tables exist
+
+Next, we'll add another `SELECT` statement to our `pg-consumer.yaml` deployment to verify that the table was created properly, adding a second command to our `while` loop that runs `SELECT * from users`:
+
+```yaml
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 20
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT * from users;'
+              done
+```
+
+Full YAML should now look like:
+
+```yaml
+# pg-consumer.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-consumer
+spec:
+  selector:
+    matchLabels:
+      app: pg-consumer
+  template:
+    metadata:
+      labels:
+        app: pg-consumer
+      annotations:
+        kots.io/config-hash: '{{repl ConfigOption "external_postgres_confighash"}}'
+    spec:
+      containers:
+        - name: pg-consumer
+          image: postgres:10
+          # connect to the database every 20 seconds
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              while :; do
+                 sleep 20
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT NOW()'
+
+                 PGPASSWORD=${DB_PASSWORD} \
+                 psql --host ${DB_HOST} \
+                      --port ${DB_PORT} \
+                      --user ${DB_USER} \
+                      --dbname ${DB_NAME} \
+                      --command 'SELECT * from users;'
+              done
+          envFrom:
+            - secretRef:
+                name: postgres
+```
+
+From here, let's make another release and we can check the logs of the updated container:
+
+```text
+$ kubectl logs -l app=pg-consumer
+              now
+-------------------------------
+ 2020-05-15 13:23:53.235023+00
+(1 row)
+
+ id | name | email
+----+------+-------
+(0 rows)
+
+              now
+-------------------------------
+ 2020-05-15 13:24:13.345152+00
+(1 row)
+
+ id | name | email
+----+------+-------
+(0 rows)
+```
+
+### Next Steps
+
+As an exercise, you could try creating some logic to create a separate Job that runs the psql CLI to insert some
+static data, for example, you might use the `postgres:10` image we use in `pg-consumer` and try to run the following SQL:
+
+```shell
+psql --host ${DB_HOST} \
+  --port ${DB_PORT} \
+  --user ${DB_USER} \
+  --dbname ${DB_NAME} \
+  --command 'INSERT INTO users (name, email) VALUES ('Admin', 'admin@example.com') ON CONFLICT DO NOTHING'
+```
+
+<!-- Coming Soon!
 * * *
 
 ## Validating User-supplied Configuration with Preflight Checks
@@ -933,6 +1272,9 @@ If you'd like at this point, you can integrate a real database in your environme
 * * *
 
 ## Using an InitContainer to Coordinate Workloads
+
+
+### Adding a support collector 
 
 * * *
 
