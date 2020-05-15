@@ -995,7 +995,7 @@ export REPLICATED_APP=my-app-slug
 
 We'll use the Replicated Registry at `registry.replicated.com` for this example, but if you've followed the [instructions for connecting an external private registry](https://kots.io/vendor/packaging/private-images/) like GCR, ECR, Docker Hub, Quay, Gitlab, or ACR, you can push to that location instead.
 
-To use the Replicated Registry, first log in, using your [vendor.replicated.com](vendor.replicated.com) login credentials:
+To use the Replicated Registry, first log in, using your [vendor.replicated.com](https://vendor.replicated.com) login credentials:
 
 ```shell
 docker login registry.replicated.com
