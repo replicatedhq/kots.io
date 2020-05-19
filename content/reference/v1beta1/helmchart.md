@@ -26,7 +26,7 @@ spec:
   exclude: "repl{{ ConfigOptionEquals `include_chart` `include_chart_no`}}"
 
   # helmVersion identifies the Helm Version used to render the Chart. Default is v2.
-  helmVersion: v3
+  helmVersion: v2
 
   # values are used in the customer environment, as a pre-render step
   # these values will be supplied to helm template
