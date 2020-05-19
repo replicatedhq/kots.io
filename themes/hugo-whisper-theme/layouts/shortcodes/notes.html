@@ -1,4 +1,4 @@
-<div>
-  <h3><span class="label label-grey">Notes</span></h3>
+<div class="admonition note">
+  <p class="admonition-title">{{ .Get "title" }}</p>
   <p>{{ printf "%s" .Inner | markdownify }}</p>
 </div>

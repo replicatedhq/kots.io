@@ -1,3 +1,56 @@
+
+/* shortcode callouts / notes / warnings */
+.admonition {
+  background-color: #2a98cb;
+  padding: 16px 24px;
+  border-radius: 6px;
+  margin: 30px 0;
+}
+
+.admonition.warning {
+  background-color: #f9b84e;
+}
+.admonition p {
+  color: #ffffff !important;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.admonition code {
+  color: #222 !important;
+}
+.admonition a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.admonition p.admonition-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  position: relative;
+}
+.admonition p.admonition-title::before {
+  content: "";
+  background-image: url("/images/main_spritesheet.svg");
+  background-repeat: no-repeat;
+  background-size: initial;
+  display: inline-block;
+  background-position: -70px -79px;
+  width: 13px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+.admonition.warning p.admonition-title::before {
+  background-position: -72px -158px;
+  width: 18px;
+  height: 17px;
+}
+
 .content {
   -webkit-font-smoothing: antialiased;
   .highlight {
