@@ -5,7 +5,7 @@ title: "Existing Cluster"
 weight: "1003"
 ---
 
-The KOTS Existing Cluster Guide is one of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
+The KOTS Existing Cluster Guide is one of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy).
 
 It is broken into four sections:
 
@@ -16,7 +16,7 @@ It is broken into four sections:
 
 ## Creating a Release
 
-When getting started with the Replicated platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend a lot of time. This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with KOTS. If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
+When getting started with the KOTS platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend a lot of time. This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with KOTS. If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
 
 This guide will deploy a basic application using KOTS and show you how to deliver an update to that application. The guide isn't going to teach Kubernetes, rather it will start with a minimal Kubernetes application that deploys a single replica of [nginx](https://www.nginx.com).
 
@@ -34,11 +34,11 @@ You should be at the channels page now. This is a list of your release channels,
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide). 
+You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
 
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
-The default YAML documents above the white line contain information for Replicated, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. You can learn about those [in the reference docs](/reference/v1beta1) but for now let's click the "Save release" button in the bottom right.
+The default YAML documents above the white line contain information for KOTS, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. You can learn about those [in the reference docs](/reference/v1beta1) but for now let's click the "Save release" button in the bottom right.
 
 ### Save and Promote Release
 
@@ -50,7 +50,7 @@ Now that we've got a release promoted, we can walk through creating a license an
 
 * * *
 
-## Installing and Testing 
+## Installing and Testing
 
 This guide will give you first-hand experience installing a KOTS application using an existing Kubernetes cluster. If you haven't yet created a release, head back to the [Create and Promote a Release](#creating-a-release) guide and complete that first.
 
@@ -68,11 +68,11 @@ On the Create a new customer page, fill in your name for the Customer name field
 
 After creating the customer, click the "Download license" link in the upper right corner. This will download the file with your customer name and a `.yaml` extension. This is the license file your customer will need to install your application. When a customer is installing your software you need to send them two things: the KOTS install script and the license file.
 
-### Create Kubernetes Cluster and Install Replicated
+### Create Kubernetes Cluster and Install KOTS
 
 KOTS can be installed either into an existing Kubernetes cluster or as an embedded cluster. You can see the installation options at the bottom of each channel on the Channels page.
 
-![Installation Methods](/images/guides/kots/installation-methods.png)
+![Installation Methods](/images/guides/kots/installation-methods-existing.png)
 
 Installing KOTS on Existing cluster is very similar to using an [embedded cluster](/vendor/guides/quickstart#installing-and-testing), except instead of bringing a plain VM we will use a pre-built Kubernetes cluster and deploy your KOTS app into a namespace.
 
@@ -217,11 +217,12 @@ export REPLICATED_API_TOKEN=...
 
 `REPLICATED_APP` should be set to the app slug from the Settings page:
 
-![Replicated App](https://github.com/replicatedhq/replicated-starter-kots/raw/master/doc/REPLICATED_APP.png)
+![View Update](/images/guides/kots/REPLICATED_APP.png)
 
 Next, create an API token from the [Teams and Tokens](https://vendor.replicated.com/team/tokens) page:
 
-![Replicated App](https://github.com/replicatedhq/replicated-starter-kots/raw/master/doc/REPLICATED_API_TOKEN.png)
+![View Update](/images/guides/kots/REPLICATED_API_TOKEN_1.png)
+![View Update](/images/guides/kots/REPLICATED_API_TOKEN_2.png)
 
 Ensure the token has "Write" access or you'll be unable create new releases. Once you have the values,
 set them in your environment.
@@ -239,7 +240,7 @@ make list-releases
 
 #### Iterating on your release
 
-Once you've made changes to `replicated.yaml`, you can push a new release to a channel with
+Once you've made changes to one or more files in your `manifests` directory, you can push a new release to a channel with
 
 ```shell
 make release
@@ -256,4 +257,5 @@ If you are on a git branch other than `master`, the branch name will be used for
 ### Integrating with CI
 
 This repo contains a [GitHub Actions](https://help.github.com/en/github/automating-your-workflow-with-github-actions/about-github-actions) workflow for ci at `./.github/workflows/main.yml`. You'll need to [configure secrets](https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) for `REPLICATED_APP` and `REPLICATED_API_TOKEN`.
+
 
