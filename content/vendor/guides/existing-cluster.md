@@ -217,12 +217,12 @@ export REPLICATED_API_TOKEN=...
 
 `REPLICATED_APP` should be set to the app slug from the Settings page:
 
-![View Update](/images/guides/kots/REPLICATED_APP.png)
+![REPLICATED_APP](/images/guides/kots/REPLICATED_APP.png)
 
 Next, create an API token from the [Teams and Tokens](https://vendor.replicated.com/team/tokens) page:
 
-![View Update](/images/guides/kots/REPLICATED_API_TOKEN_1.png)
-![View Update](/images/guides/kots/REPLICATED_API_TOKEN_2.png)
+![REPLICATED_API_TOKEN](/images/guides/kots/REPLICATED_API_TOKEN_1.png)
+![REPLICATED_API_TOKEN](/images/guides/kots/REPLICATED_API_TOKEN_2.png)
 
 Ensure the token has "Write" access or you'll be unable create new releases. Once you have the values,
 set them in your environment.
