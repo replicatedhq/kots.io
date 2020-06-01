@@ -39,15 +39,17 @@ You'll should be at the channels page now. This is a list of your release channe
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
 
-**Note:** since this guide is intended as a "Hello, World" example, we'll skip editing the YAML and just proceed with the defaults.
+{{< notes title="Quickstart" >}}
+Since this guide is intended as a "Hello, World" example, we'll skip editing the YAML right now and just proceed with the defaults. We'll make some changes later on in this guide.
+{{< /notes >}}
 
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
 
-
 The default YAML documents above the white line contain information for KOTS, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. You can learn about those [in the reference docs](/reference/v1beta1) but for now let's click the "Save release" button in the bottom right.
+
 
 
 ### Save and Promote Release
