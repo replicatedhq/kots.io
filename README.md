@@ -13,3 +13,17 @@
 $ hugo new release-notes/<version>.md
 ```
 
+## Create shortcodes
+```bash
+{{< notes title="Note Title" >}}
+This is a note.
+{{< /notes >}}
+
+{{< warning title="Warning Title" >}}
+This is a warning.
+{{< /warning >}}
+
+{{< callout >}}
+This is a callout.
+{{< /callout >}}
+```
