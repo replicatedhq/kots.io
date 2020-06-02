@@ -289,3 +289,21 @@ Distribution returns the kubernetes distribution detected, such as `kurl`, `open
 ```yaml
 repl{{ Distribution }}
 ```
+
+## HTTPProxy
+```go
+func HTTPProxy() string
+```
+HTTPProxy returns the address of the proxy that kotsadm is configured to use.
+```yaml
+repl{{ HTTPProxy }}
+```
+
+## NoProxy
+```go
+func NoProxy() string
+```
+NoProxy returns the comma-separated list of no-proxy addresses that kotsadm is configured to use.
+```yaml
+repl{{ NoProxy }}
+```
