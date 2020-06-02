@@ -265,11 +265,11 @@ repl{{ TLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "ba
 
 ## TLSKey
 ```go
-func TLSKey(certName string) string
+func TLSKey(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
-TLSKey returns the key that matches the certificate identified by `certName`.  If certificate with this name does not exist, the function will return an empty string.
+TLSKey returns the key that matches the certificate identified by `certName`.  The rest of the arguments are the same as in `TLSCert` and, if specified, must have the same values.  If they are omitted and the certificate with this name does not exist, the function will return an empty string.
 ```yaml
-repl{{ TLSKey "my_custom_cert" }}
+repl{{ TLSKey "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
 ```
 
 ## IsKurl
