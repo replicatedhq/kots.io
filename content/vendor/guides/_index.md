@@ -5,17 +5,19 @@ title: "Guides"
 weight: "2"
 ---
 
-End-to-end guides to get you up and running with KOTS quickly.
+End-to-end interactive guides to get you familiar with using the KOTS platform.
 
 ### Getting Started
 
+These "Hello World" guides will help you get an end-to-end KOTS installation running quickly.
+
 ###### [Quickstart](/vendor/guides/quickstart)
 
-The KOTS Quickstart is our simplest guide, we'll get running quickly with a simple Nginx application in Kubernetes using a single VM. 
+The KOTS Quickstart is our simplest guide, we'll get running quickly with a simple Nginx application in Kubernetes using a single VM.
 
 ###### [Existing Cluster](/vendor/guides/existing-cluster)
 
-The KOTS Existing Cluster Guide is another of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy). 
+The KOTS Existing Cluster Guide is another of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy).
 
 
 ### Next Steps
@@ -25,6 +27,16 @@ These guides will assume you've completed one of the previous guides for either 
 ###### [Integrate Persistent Datastores](/vendor/guides/persistent-datastores)
 
 In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. We'll explore ways to give your end user the option to either embed an instance with the application, or connect your application to an external cluster that they will manage. We'll use a PostgreSQL database as an example, configuring an example app to connect.
+
+###### [Airgapped Cluster](/vendor/guides/airgapped-cluster)
+
+The KOTS Airgapped Cluster is an advanced guide that shows how to install a KOTS app in an Airgapped environment.
+
+
+###### [CI/CD Integration](/vendor/guides/ci-cd-integration)
+
+The KOTS CI/CD Integration guide is an advanced workflow that allows you to use a similar workflow to KOTS Starter GitHub Actions but for your own internal git repository and CI/CD systems like GitHub, GitLab, CircleCI, TravisCI, Jenkins, etc.
+
 
 ###### [Prepare for Production Deploys](/vendor/guides/production-ready)
 
