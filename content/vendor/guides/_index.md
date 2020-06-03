@@ -35,7 +35,7 @@ The KOTS Airgapped Cluster is an advanced guide that shows how to install a KOTS
 
 ###### [CI/CD Integration](/vendor/guides/ci-cd-integration)
 
-The KOTS CI/CD Integration guide is an advanced workflow that allows you to use a similar workflow to [Kots Starter GitHub Actions](https://github.com/replicatedhq/replicated-starter-kots/blob/master/.github/workflows/main.yml#L21) but for your own internal git repository and CI/CD systems like GitHub, GitLab, CircleCI, TravisCI, Jenkins, etc.
+The KOTS CI/CD Integration guide is an advanced workflow that allows you to use a similar workflow to KOTS Starter GitHub Actions but for your own internal git repository and CI/CD systems like GitHub, GitLab, CircleCI, TravisCI, Jenkins, etc.
 
 
 ###### [Prepare for Production Deploys](/vendor/guides/production-ready)
