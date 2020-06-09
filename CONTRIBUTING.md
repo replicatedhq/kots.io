@@ -23,6 +23,16 @@ When contributing to the KOTS documentation, please consider the following writi
 
 **No:** Here I have used the Go playground to validate the regular expression.
 
+- ### Use allow/deny instead of whitelist/blacklist
+**Yes:** The following IP addresses should be added to the firewall allow-list.
+
+**No:** The following IP addresses should be whitelisted.
+
+- ### Use primary/secondary instead of master/slave when describing systems
+**Yes:** Run the primary redis instance.
+
+**No:** Run the redis master instance.
+
 - ### Do not reference relative time from when the document was written.
 **Yes:** KOTS 1.15.0 includes a new feature to...
 
