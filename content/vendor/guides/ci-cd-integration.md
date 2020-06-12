@@ -141,7 +141,7 @@ You can also check out a real-world [Helm Chart](https://github.com/replicatedhq
 
 - Configure your CI/CD to run the following `make` command on push
 ```shell
-make --directory=kots helm-release
+make -C kots release
 ```
 
 - Verify release in [vendor.replicated.com](https://vendor.replicated.com).
