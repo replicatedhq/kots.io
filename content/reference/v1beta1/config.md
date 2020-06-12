@@ -14,14 +14,14 @@ The admin console settings screen configuration is specified as an array configu
 
 ## Groups
 
-Groups map to links within the left sidebar navigation. Groups are comprised of a `name`,
-`title`, `description` and an array of items.
+Groups are comprised of a `name`, `title`, `description` and an array of items.
 
 ```yaml
-config:
-- name: authentication
-  title: Authentication
-  description: Configure application authentication below.
+spec:
+  groups:
+  - name: authentication
+    title: Authentication
+    description: Configure application authentication below.
 ```
 
 ## Items

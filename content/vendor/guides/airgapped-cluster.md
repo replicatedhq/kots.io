@@ -11,14 +11,14 @@ It is broken into a few sections:
 
 - [Download Airgap Bundle and License](#download-airgap-bundle-and-license)
 - [Embedded kURL Cluster](#embedded-kurl-cluster)
-- [Existing Kubernetes Cluster](#existing-kubernetes-cluster)
+- [Icon in Base64](#icon-in-base64)
 - [Upload Airgap Bundle and License](#upload-airgap-bundle-and-license)
 - [Automatically Build Bundles](#automatically-build-bundles)
 - [Upload New Bundle](#upload-new-bundle)
 
 ## Download Airgap Bundle and License
 
-For both the [Embedded](/vendor/guides/airgapped-cluster/#embedded-kurl-cluster) and [Existing](/vendor/guides/airgapped-cluster/#existing-kubernetes-cluster) clusters you will need the following:
+For [Embedded](/vendor/guides/airgapped-cluster/#embedded-kurl-cluster) kURL clusters you will need the following:
 
 **`.airgap` bundle**: This file contains app specific files like Kubernetes YAML and Docker images. You can view its contents with `tar -zxvf`.
 
@@ -107,35 +107,33 @@ ssh -N -L 8800:${AIRGAP_PRIVATE_IP}:8800 ${JUMPBOX_PUBLIC_IP}
 
 * * *
 
-## Existing Kubernetes Cluster
+## Icon in Base64
 
-Installing into an airgapped existing kubernetes cluster is a similar experience to an [online existing cluster](/vendor/guides/existing-cluster) install. There is no kURL bundle needed for existing installs because the expectation is for the systems administrator to install and maintain the Kubernetes components of their EKS, GKE, AKS, OpenShift, etc. clusters.
+In an Airgap environment, if the `icon` uses a URL, it would not be able to display because the image is fetched at the time the page is rendered. In Airgap you need to convert the `png` file into `base64` to be used for the image.
 
-### Install via kubectl
+### Converting Icon to Base64
 
-* Once you have your context configured to the airgapped kubernetes cluster, run `kubectl kots install` to install the open source Admin Console components.
+Fetch the image using `curl`, then use `base64` to encode the image.
 
 ```shell
-$ kubectl kots install <your-app-name-and-channel>
-
-Enter the namespace to deploy to: <your-app-name-and-channel>
-  • Deploying Admin Console
-    • Creating namespace ✓
-    • Waiting for datastore to be ready ✓
-Enter a new password to be used for the Admin Console: ••••••••
-  • Waiting for Admin Console to be ready ✓
-
-  • Press Ctrl+C to exit
-  • Go to http://localhost:8800 to access the Admin Console
+curl -LSs https://sentry-brand.storage.googleapis.com/sentry-glyph-black.png | base64
 ```
+You can verify this works in your browser by prefixing the stream with `data:image/png;base64,<encoded_base64_stream>` and putting it in the address bar (where the URL would generally go).
 
-* The Admin Console is port forwarded with `kubectl port-forward` internally which can be accessed via `http://localhost:8800`.
+### Using the Encoded Icon
+
+Once the base64 encoded string is copied, replace the `icon` URL with the base64 encoded string and prefix it with `data:image/png;base64,<encoded_base64_stream>` similar to above when you accessed it via the browser.
+
+```yaml
+spec:
+  icon: data:image/png;base64,<encoded_base64_stream>
+```
 
 * * *
 
 ## Upload Airgap Bundle and License
 
-Once you have the open source components installed for either [Embedded](/vendor/guides/airgapped-cluster/#embedded-kurl-cluster) or [Existing](/vendor/guides/airgapped-cluster/#existing-kubernetes-cluster), login to the Admin Console using the password from the installation.
+Once you have the open source components installed for the [Embedded](/vendor/guides/airgapped-cluster/#embedded-kurl-cluster), login to the Admin Console using the password from the installation.
 
 ![Airgap Login](/images/guides/kots/airgap-login.png)
 
