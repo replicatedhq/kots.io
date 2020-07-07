@@ -5,7 +5,7 @@ title: "CI/CD Integration"
 weight: "1007"
 ---
 
-The KOTS CI/CD Integration guide is an advanced workflow that allows you to use a similar workflow to [Kots Starter GitHub Actions](https://github.com/replicatedhq/replicated-starter-kots/blob/master/.github/workflows/main.yml#L21) but for your own internal git repository and CI/CD systems like GitHub, GitLab, CircleCI, TravisCI, Jenkins, etc.
+The KOTS CI/CD Integration guide is an advanced workflow that allows you to use a similar workflow to [Kots Starter GitHub Actions](https://github.com/replicatedhq/replicated-starter-kots/blob/main/.github/workflows/main.yml#L21) but for your own internal git repository and CI/CD systems like GitHub, GitLab, CircleCI, TravisCI, Jenkins, etc.
 
 It is broken into three sections:
 
