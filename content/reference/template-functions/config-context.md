@@ -30,18 +30,30 @@ Returns the base64 decoded value of a config option.
 '{{repl ConfigOptionData "ssl_key"}}'
 ```
 
-This is often used to provide files as part of a secret or configmap, like this:
+This can be used to provide files as part of a ConfigMap, like this:
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tls-config
+data:
+    TLS_CRT: '{{repl ConfigOptionData "tls_certificate_file" }}'
+    TLS_KEY: '{{repl ConfigOptionData "tls_private_key_file" }}'
+```
 
+To use the files in a Secret, which requires base64 encoded value, use `ConfigOption`:
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: my-tls-secret
+  name: tls-secret
 type: kubernetes.io/tls
 data:
-  tls.crt: '{{repl ConfigOptionData "tls_certificate_file" | Base64Encode }}'
-  tls.key: '{{repl ConfigOptionData "tls_private_key_file" | Base64Encode }}'
+  tls.crt: '{{repl ConfigOption "tls_certificate_file" }}'
+  tls.key: '{{repl ConfigOption "tls_private_key_file" }}'
 ```
+
+Learn more about [using TLS certs](/vendor/packaging/using-tls-certs) in KOTS.
 
 ## ConfigOptionEquals
 
