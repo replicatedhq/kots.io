@@ -37,7 +37,6 @@ and `type` properties. Specific item types can including new types.
 - `password`
 - `text`
 - `textarea`
-- `select`
 - `select_many`
 - `select_one`
 
