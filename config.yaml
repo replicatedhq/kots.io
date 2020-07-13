@@ -24,7 +24,7 @@ staticDir:
 Params:
   author: "Kots"
   copyright: "Replicated, Inc"
-  homepage_intro: "Kots is a kubectl plugin to help manage Kubernetes Off-The-Shelf software"
+  homepage_intro: "Kots is a kubectl plugin and admin console to help manage Kubernetes Off-The-Shelf software"
   logo:
     mobile: "/images/kots.svg"
   # matomo:
