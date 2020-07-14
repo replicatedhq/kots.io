@@ -25,10 +25,15 @@ This includes support against all patch releases of the corrersponding Kubernete
 ## Existing Cluster Installation Requirements
 
 Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. 
-Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with Replicated.
+Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with KOTS.
 This excludes any specific and additional requirements imposed by software vendor.
 
-Root access is *not* required for installations to existing clusters. 
+In additional to a valid Kubernetes version, KOTS requires an existing [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to be available in the cluster.
+
+Root access on nodes or workstations is *not* required for installations to existing clusters. To perform an install, the user executing `kubectl kots install` will need either
+
+- Existing namespace, and an RBAC binding that allows the `kubectl`-ing user to create workloads, ClusterRoles, and ClusterRoleBindings
+- cluster-admin permissions to create namespaces and assign RBAC roles across the cluster
 
 ## Embedded Cluster Installation Requirements
 
