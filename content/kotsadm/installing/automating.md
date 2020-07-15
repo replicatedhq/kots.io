@@ -45,7 +45,7 @@ When this file is uploaded, any `valuePlaintext` will be re-encrypted if the mat
 Given the information above, and a config file named `configvalues.yaml`, a license file named `license.yaml`, the following command might be used to automate the installation of an application:
 
 ```shell
-kuebctl kots install app-name \
+kubectl kots install app-name \
   --namespace app-name \
   --shared-password password \
   --license-file ./license.yaml \
