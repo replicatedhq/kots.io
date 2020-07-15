@@ -25,4 +25,4 @@ Kots has been tested for compatibility with the following registries:
 - Amazon Elastic Container Registry (ECR)
 - Google Container Registry (GCR)
 - Harbor
-
+- Sonatype Nexus
