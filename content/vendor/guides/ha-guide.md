@@ -5,7 +5,31 @@ title: "Package a Helm Chart"
 weight: "1005"
 ---
 
-In this guide, we'll explore how you can leverage software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. We'll use the Grafana helm chart as an example in this case. The guide is divided into three parts:
+In this guide, we'll walk through the steps nescessary to stand up a 3 node Kubernetes cluster, all as Mater nodes to provide High Availability.
+
+As with the rest of the guides, this is meant as a 'hello world' example to help get you familiared the process of standing up an HA cluster.
+
+At a high level, the process of setting up an HA cluster consists of the following:
+
+- Procuring the (virtual) hardware
+- Setting up and configuring a Load Balancer 
+- Run the Kots installer on the first node and deploy the application.
+- Wait and verify that the 1 node deployment worked.
+- Run command on remaining nodes to join the cluster.
+- Verify that the nescessary pods are now running on the two new nodes
+
+To verify that the HA cluster is in fact 'Highly Available' we will perform two tests:
+
+- Deleting Pods and verifying that they get scheduled approprietly
+- Shutting off a node and ensure that the remaining 2-node cluster is still stable.
+
+There are a few things to keep in mind about this guide:
+
+- All VMs are going to be generated using Google Cloud. 
+- The Load Balancer we'll use for this exercise is HA Proxy. 
+- We'll use a sample Python Flask applicaation that includes a Postgres StatefulSet
+
+
 
 - [Adding a Chart to your Application](#adding-a-chart-to-your-application)
 - [Releasing and Testing](#releasing-and-testing)
