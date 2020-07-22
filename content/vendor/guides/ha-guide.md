@@ -1,7 +1,7 @@
 ---
 date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
-title: "Package a Helm Chart"
+title: "Deploy an HA Cluster"
 weight: "1005"
 ---
 
@@ -11,8 +11,8 @@ As with the rest of the guides, this is meant as a 'hello world' example to help
 
 At a high level, the process of setting up an HA cluster consists of the following:
 
-- Procuring the (virtual) hardware
-- Setting up and configuring a Load Balancer 
+- [Procuring the (virtual) hardware](#provisioning-the-virtual-hardware)
+- [Setting up and configuring a Load Balancer](#setting-up--configuring-a-load-balancer)
 - Run the Kots installer on the first node and deploy the application.
 - Wait and verify that the 1 node deployment worked.
 - Run command on remaining nodes to join the cluster.
@@ -27,123 +27,148 @@ There are a few things to keep in mind about this guide:
 
 - All VMs are going to be generated using Google Cloud. 
 - The Load Balancer we'll use for this exercise is HA Proxy. 
-- We'll use a sample Python Flask applicaation that includes a Postgres StatefulSet
-
-
-
-- [Adding a Chart to your Application](#adding-a-chart-to-your-application)
-- [Releasing and Testing](#releasing-and-testing)
-- [Mapping Config Screen to Helm Values](#mapping-config-screen-to-helm-values)
+- The sample application has a database component as described [here]() .
 
 ### Prerequisites
 
-This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) including having running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests. We'll assume this is checked out in `~/helm-grafana`.
+This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) including having an application to deploy. Depending on your use cases you'd like to test with the HA cluster, you may need to provide your own application.
 
-### Accompanying Code Examples
+You may also choose to use the sample application described below.
 
-A full example of the code for this guide can be found in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/helm-grafana).
+### Sample Application
 
-* * *
+The KOTS application we'll use in this guide is available in the [kotsapps repository] (TODO - here). 
 
-## Adding a Chart to your Application
+The application consists of two components:
 
-### Getting a Chart Archive
+- Python Flask App Deployment - This flask application contains 'routes' to help test connecting, reading and writing to a database. 
+- Postgres StatefulSet - This is the database the for the flask application.
 
-We can get the Helm Chart archive in a couple of ways, either using `helm fetch` or `helm package`.
+A full description of the application is available in the repository.
 
-##### Using helm fetch
+## Provisioning the (Virtual) Hardware
 
-Add a Helm repo
+For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HA Proxy. The remaining 3 VMs will be the 3 Master Nodes for our cluster. 
 
-```text
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com
+### Provisioning the HA Proxy VM
 
-"stable" has been added to your repositories
-```
-
-Verify the repo has been added
-
-```text
-$ helm repo ls
-
-NAME    URL
-stable  https://kubernetes-charts.storage.googleapis.com
-```
-
-For this example we'll fetch the grafana helm chart
+For the VM that will host HA Proxy, a bare bones VM should suffice as we will only use it to route traffic. As an example, the command below creates a VM instance with enough juice to run HA Proxy, at least for testing purposes:
 
 ```shell
-helm fetch stable/grafana
+gcloud compute instances create app-direct-ha-proxy  --boot-disk-size=10GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-1
 ```
 
-##### Using helm package
+In the command output, you should note the public and internal IP address. The public address of this VM is what we'll use to connect to both the Kots Admin Application console, the application's UI and pgAdmin. We'll use the interal IP address when we install KOTS in HA mode.
 
-Clone the upstream `helm/charts` repo.
+If you'd like to explore HA Proxy requirements for heavier workloads, please check HA Proxy's [documentation](https://www.haproxy.com/documentation/hapee/2-0r1/installation/getting-started/os-hardware/)
+
+
+### Provisioning the cluster VMs
+
+Like with the HA Proy VM, keep the [kots System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements) in mind when provisioning the VMs that will form the cluster. The command below creates a VM that meets those requirements, at least for testing purposes.
 
 ```shell
-git clone git@github.com:helm/charts.git
+gcloud compute instances create app-direct-node-01 --boot-disk-size=200GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-4
+```
+To create the remaining nodes, simply run the same command but increment the node number (i.e., "app-direct-node-02").
+
+Also note the VMs public and private ip addresses as each VM is provisioned. We'll use the internal ip addresses in the HA Proxy to configure traffic accordingly.
+
+## Setting Up & Configuring a Load Balancer
+
+The main purpose of the load balancer is to direct traffic to the proper node. All end-user interactions (i.e., access the web UI of the deployed application) should go through the load balancer.
+
+For this guide, HA Proxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HA Proxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'. 
+
+Here are the high level steps we'll take to install & configure HA Proxy.
+
+We will:
+- Create the config file in our home folder using our favorite editor.
+- Use SCP to copy the file in the VM running HA Proxy.
+- Install Ha Proxy.
+- Copy the config file to the proper location.
+- Restart HA Proxy. 
+
+Note that another way of accomplishing this is by conneting to the instance via SSH and creating the file and editing from the command line inside the VM.
+
+To create the config file, use the editor of your choice and call it 'haproxy.cfg'. For the purposes of this exercise, we'll create the file in our home folder. Below is an example config file for the sample application. Keep in mind the following when creating your file:
+
+- IP addresses below will not work as the VMs were destroyed a long time ago. Replace these with the internal IP addresses of your VMs. 
+- If you used a different naming convention for your instance names, you will need to replace 'app-direct-node-0(123)' with your instance names.
+- There are two entries specific to the Application, one for each component (app-direct-frontend/backend & postgres frontend/backend). If you are using a different application, adjust based on the endpoints you want to access through the load balancer. The remaining entries are for the KOTs UI and API and should be left as-is other than the instance names and ip addresses
+
+```code
+global
+defaults
+   timeout client          60s
+   timeout server          60s
+   timeout connect         60s
+#############################################################
+listen stats
+   bind *:8080
+   mode http
+   stats enable
+   stats uri /
+   stats hide-version
+#############################################################
+frontend app-direct-frontend
+   mode tcp
+   bind    *:80
+   default_backend app-direct-backend
+backend app-direct-backend
+   mode                    tcp
+   balance roundrobin
+   option tcp-check
+   server app-direct-node01 node-01-ip:80 check
+   server app-direct-node02 10.240.0.39:80 check
+   server app-direct-node03 10.240.0.71:80 check
+#############################################################
+frontend postgres-frontend
+   mode tcp
+   bind    *:5432
+   default_backend postgres-backend
+backend postgres-backend
+   mode                    tcp
+   balance roundrobin
+   option tcp-check
+   server app-direct-node01 10.240.0.37:5432 check
+   server app-direct-node02 10.240.0.39:5432 check
+   server app-direct-node03 10.240.0.71:5432 check
+#############################################################
+frontend replicated-frontend
+   mode tcp
+   bind    *:8800
+   default_backend replicated-backend
+backend replicated-backend
+   mode                    tcp
+   balance roundrobin
+   option tcp-check
+   server app-direct-node01 10.240.0.37:8800 check
+   server app-direct-node02 10.240.0.39:8800 check
+   server app-direct-node03 10.240.0.71:8800 check
+###########################################################
+frontend kube-api-frontend
+   mode tcp
+   bind    *:6443
+   default_backend kube-api-backend
+backend kube-api-backend
+   mode                    tcp
+   balance roundrobin
+   option tcp-check
+   server app-direct-node01 10.240.0.37:6443 check
+   server app-direct-node02 10.240.0.39:6443 check
+   server app-direct-node03 10.240.0.71:6443 check
+
 ```
 
-Helm package the Grafana install.
+For more details on the structure of the config file, please refer to the HA Proxy [documentation](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 
-```text
-$ helm package charts/stable/grafana
-
-Successfully packaged chart and saved it to: ~/grafana-5.0.13.tgz
-```
-
-##### Verify Helm chart
-
-From `Chart.yaml` get the `name` and `version`, we'll need these for the next step when creating the `HelmChart` kots kind.
-
-```text
-$ tar -xOf grafana-5.0.13.tgz grafana/Chart.yaml
-
-...
-name: grafana
-...
-version: 5.0.13
-```
-
-### Adding the Archive to your manifests
-
-Copy the helm chart archive to kots app
 ```shell
-cp grafana-5.0.13.tgz ~/helm-grafana/manifests/
+gcloud compute scp haproxy.cfg app-direct-ha-proxy:~/
 ```
 
-Create `HelmChart` kots kind file and use the `name` and `version` from previous step for `name` and `chartVersion`, respectively.
 
 
-
-```shell
-cat <<EOF >>~/helm-grafana/manifests/grafana.yaml
-apiVersion: kots.io/v1beta1
-kind: HelmChart
-metadata:
-  name: grafana
-spec:
-  chart:
-    name: grafana
-    chartVersion: 5.0.13
-  values:
-    adminUser: 'admin'
-    adminPassword: 'admin'
-EOF
-```
-
-You may have noticed that we have also used this opportunity to set just two of the values for this chart: `adminUser` and `adminPassword`. We'll hardcode them to `admin`/`admin` for now, but we'll make these user-configurable later.
-
-* * *
-
-## Releasing and Testing
-
-Make a new release with the Helm chart in your kots app.
-
-```shell
-cd ~/helm-grafana
-make release
-```
 
 Go to `kotsadm` and click on `Version history -> Check for updates`. Once the update is available click on `Deploy`.
 
