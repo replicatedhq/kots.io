@@ -2,7 +2,7 @@
 date: "2020-02-20T00:00:00Z"
 lastmod: "2020-02-20T00:00:00Z"
 title: "Using TLS certs"
-weight: "1009"
+weight: "20226"
 ---
 
 Embedded [kURL](https://kurl.sh) clusters create a `kotsadm-tls` secret which can reused by other Kubernetes resources.
