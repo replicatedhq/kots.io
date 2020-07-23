@@ -150,7 +150,6 @@ Returns a random string with the desired length and charset.
 Provided charsets must be Perl formatted and match individual characters.
 If no charset is provided, `[_A-Za-z0-9]` will be used.
 
-Each time that this function is called, it will return a different value.
 ```yaml
 '{{repl RandomString 64}}'
 ```
@@ -158,6 +157,13 @@ Or for a total of 64 `a`s and `b`s:
 ```yaml
 '{{repl RandomString 64 "[ab]" }}'
 ```
+
+Each time that this function is called, the behavior changes based on the [hidden](/reference/v1beta1/config/#hidden) and [readonly](/reference/v1beta1/config/#readonly) properties.
+
+- To generate `RandomString` value that is **persistent** between Config changes, use it in conjuction with `hidden` property set to `true`. The `value` is not shown in HTML, hence it cannot be modified.
+- To generate `RandomString` value that is **ephemeral** between Config changes, use it in conjuction with `readonly` property set to `true`. The `value` is shown in HTML but the it cannot be modified.
+- If `hidden` and `readonly` are not set or set to `false`, the `value` is **persistent** between Config changes but it can also be modified in HTML.
+- If both `hidden` and `readonly` are set to `true`, the `value` is not shown in HTML but it is **ephemeral** between Config changes and not modifiable.
 
 ## Add
 ```go

@@ -225,6 +225,10 @@ Items can be hidden. They will not be visible if hidden.
           value: "{{repl RandomString 40}}"
 ```
 
+When used in conjunction with [RandomString](/reference/template-functions/static-context/#randomstring)
+- If set to `true`, the `value` is **persistent** between Config changes but it **cannot** be modified because its not visible in HTML.
+- If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because it is visible in HTML.
+
 ### `readonly`
 Items can be readonly.
 ```yaml
@@ -235,6 +239,9 @@ Items can be readonly.
           readonly: true
 ```
 
+When used in conjunction with [RandomString](/reference/template-functions/static-context/#randomstring)
+- If set to `true`, the `value` is **ephemeral** between Config changes. It **cannot** be modified because it is greyed out in HTML.
+- If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because its not greyed out in HTML.
 
 ### `affix`
 Items can be affixed left or right. These items will appear in the admin console on the same line.
