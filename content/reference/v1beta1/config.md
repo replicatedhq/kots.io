@@ -24,6 +24,8 @@ spec:
     description: Configure application authentication below.
 ```
 
+**Note:** `description` is only supported in `groups`, see `help_text` property for `items`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
+
 ## Items
 
 Items map to input fields and belong to a single group. All items should have `name`, `title`
@@ -49,7 +51,6 @@ The `bool` input type should use a "0" or "1" to set the value
       items:
       - name: http_enabled
         title: HTTP Enabled
-        help_text: When enabled we will listen to http
         type: bool
         default: "0"
 ```
@@ -209,7 +210,6 @@ An item can be recommended. This item will bear the tag "recommended" in the adm
       items:
       - name: http_enabled
         title: HTTP Enabled
-        help_text: When enabled we will listen to http
         type: bool
         default: "0"
         recommended: true
@@ -247,4 +247,15 @@ When used in conjunction with [RandomString](/reference/template-functions/stati
 Items can be affixed left or right. These items will appear in the admin console on the same line.
 ```yaml
     affix: left
+```
+
+### `help_text`
+This is similar to `description` but for `items`. This property can show a helpful message below `title`. **[Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.**
+```yaml
+    - name: toggles
+      items:
+      - name: http_enabled
+        title: HTTP Enabled
+        help_text: When enabled we will listen to http
+        type: bool
 ```
