@@ -21,6 +21,8 @@ This includes support against all patch releases of the corrersponding Kubernete
 | 1.13 | 2020-02-27 | 1.17, 1.16, and 1.15 |
 | 1.14 | 2020-03-31 | 1.17, 1.16, and 1.15 |
 | 1.15 | 2020-05-01 | 1.18, 1.17, and 1.16 |
+| 1.16 | 2020-06-01 | 1.18, 1.17, and 1.16 |
+| 1.17 | 2020-07-14 | 1.18, 1.17, and 1.16 |
 
 ## Existing Cluster Installation Requirements
 

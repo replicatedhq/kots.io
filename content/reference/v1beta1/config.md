@@ -250,7 +250,7 @@ Items can be affixed left or right. These items will appear in the admin console
 ```
 
 ### `help_text`
-This is similar to `description` but for `items`. This property can show a helpful message below `title`. **[Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.**
+This is similar to `description` but for `items`. This property can show a helpful message below `title`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.
 ```yaml
     - name: toggles
       items:
