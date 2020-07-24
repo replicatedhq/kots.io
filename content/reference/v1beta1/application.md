@@ -87,13 +87,6 @@ This should match a service found in the `k8s.io` Application spec.
 
 ## statusInformers
 Resources to watch and report application status back to the user. In the format `[namespace/]type/name` where namespace is optional.
-Entries support template functions. For example, a specific status informer can be excluded based on an application config value like so:
-
-```yaml
-statusInformers:
-    - deployment/my-web-svc
-    - '{{repl if ConfigOptionEquals "option" "value"}}deployment/my-worker{{repl else}}{{repl end}}'
-```
 
 ## graphs
 Custom graphs to include on your Admin Console application dashboard.
