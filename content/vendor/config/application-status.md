@@ -28,14 +28,6 @@ spec:
     - deployment/my-worker
 ```
 
-Entries also support template functions. For example, a specific status informer can be excluded based on an application config value like so:
-
-```yaml
-statusInformers:
-    - deployment/my-web-svc
-    - '{{repl if ConfigOptionEquals "option" "value"}}deployment/my-worker{{repl else}}{{repl end}}'
-```
-
 ## Resource Statuses
 
 Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. A [support bundle](/kotsadm/troubleshooting/support-bundle/) will include diagnostic information when state "Missing" is encountered.
