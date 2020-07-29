@@ -18,7 +18,7 @@ metadata:
 spec:
   descriptor:
     icons:
-      - src: "https://kots.io/images/kots-logo@2x.png"
+      - src: "https://kots.io/images/kotsadm-logo-large@2x.png"
         type: "image/png"
 ```
 
