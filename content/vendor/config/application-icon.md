@@ -16,10 +16,8 @@ kind: Application
 metadata:
   name: my-application
 spec:
-  descriptor:
-    icons:
-      - src: "https://kots.io/images/kotsadm-logo-large@2x.png"
-        type: "image/png"
+  title: My Application
+  icon: https://kots.io/images/kotsadm-logo-large@2x.png
 ```
 
 ## Proper logo size
