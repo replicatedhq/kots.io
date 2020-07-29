@@ -3,7 +3,7 @@ date: 2020-07-28
 linktitle: "Custom Application Icon"
 title: Customize Application Icon
 description: "Selecting the right logo is a big part of making sure that your brand is reflected properly in th Kots Admin Console. Here we will go over some tips for adding a 'proper' logo to your application YAML file."
-weight: 20010
+weight: 20029
 ---
 
 Selecting the right logo is important to making sure that brands are reflected properly in the Kots Admin Console. Here we will go over some tips for adding a 'proper' logo to an application YAML file.
