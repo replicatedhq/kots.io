@@ -16,3 +16,10 @@ In addition to the default functionality that Velero provides, KOTS provides a d
 
 Finally, KOTS exposes hooks that can be used to inject scripts to execute both [before and after a backup](/vendor/snapshots/configuring-backup) and [before and after a restore](/vendor/snapshots/configuring-restore).
 
+## Velero version compatibility
+
+| KOTS Version | Velero Version |
+|------|-------------|
+| 1.15 | 1.2.0 |
+| 1.16 | 1.2.0 |
+| 1.17 | 1.2.0 |
