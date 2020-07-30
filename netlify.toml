@@ -33,3 +33,9 @@
   to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/vendor/helm/helm-v3/"
+  to = "/vendor/helm/helm-processing/"
+  status = 301
+  force = true
