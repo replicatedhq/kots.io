@@ -176,7 +176,7 @@ Next, remove the machine's public IP. We'll use the kubeconfig from this server 
 gcloud compute instances delete-access-config ${AIRGAP_CLUSTER}
 ```
 
-verify that internet access was disabled by ssh'ing via the jump box and trying to curl kubernetes.io. We'll forward the agent so that we can ssh the airgapped cluster without moving keys around
+Verify that internet access was disabled by ssh'ing via the jump box and trying to curl kubernetes.io. We'll forward the agent so that we can ssh the airgapped cluster without moving keys around
 
 ```shell script
 gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- \
