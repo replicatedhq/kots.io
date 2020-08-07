@@ -196,7 +196,7 @@ Once you're satisfied the instance has no outbound connectivity, you can Ctrl+C 
 
 #### Final Workstation Setup
 
-Finally, let's verify our docker client on the workstation and make sure we have kubectl access properly configured before we do the full installation. We'll do this by ssh'ing the workstation via the jump box
+Finally, let's verify our docker client on the workstation and make sure we have kubectl access properly configured before we do the full installation. We'll do this by ssh'ing to the workstation via the jump box.
 
 ###### Docker
 
