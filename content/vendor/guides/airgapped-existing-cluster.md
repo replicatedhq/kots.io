@@ -165,7 +165,7 @@ docker tag busybox ${CLUSTER_PUBLIC_IP}:32000/busybox
 docker push ${CLUSTER_PUBLIC_IP}:32000/busybox
 ```
 
-you may need to also add an `insecure-registy` entry to your workstation to allow pushing/pulling via http instead of https. If you're testing using docker-for-mac, you can add this via the setttings:
+You may need to also add an `insecure-registy` entry to your workstation to allow pushing/pulling via http instead of https. If you're testing using docker-for-mac, you can add this via the setttings:
 
 ![insecure registry](/images/guides/kots/airgap-existing-dfm-insecure-registry.png)
 
