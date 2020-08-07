@@ -64,7 +64,7 @@ In this guide, we'll explore how you can leverage the wealth of software bundled
 
 This guide covers an end-to-end example of deploying to an airgapped existing cluster with KOTS.
 It walks through all the steps to create an airgapped environment in GCP, including the Kubernetes cluster setup, Docker Registry configuration, local workstation setup, and a jump box / bastion for accessing the airgapped instances.
-Our goal will be to mimicking an end-customers "existing cluster" setup.
+Our goal will be to mimick an end-customers "existing cluster" setup.
 Once set up, we walk through the steps for validating the airgap and doing a KOTS installation to the "existing cluster" environment.
 
 <!-- Coming Soon!
