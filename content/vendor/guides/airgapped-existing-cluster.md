@@ -217,7 +217,7 @@ gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- \
   "ssh ${AIRGAP_WORKSTATION} 'cat /etc/docker/daemon.json'"
 ```
 
-you should see
+After executing the above, you should see the following: 
 
 ```text
 cat: /etc/docker/daemon.json: No such file or directory
