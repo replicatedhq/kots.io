@@ -183,7 +183,7 @@ gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- \
   "ssh ${AIRGAP_CLUSTER} 'curl -v https://kubernetes.io'"
 ```
 
-this command should hang, and you might see something with `Network is unreachable`:
+This command should hang, and you might see something with `Network is unreachable`:
 
 ```text
   0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0*   Trying 2607:f8b0:4001:c05::64...
