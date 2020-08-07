@@ -11,7 +11,7 @@ This is an advanced guide that shows how to install a KOTS app in an Existing Cl
 
 This guide most importantly presents a set of steps for creating a full environment in GCP, including:
 
-- An airgapped instance running vanilla Kubernetes (no KOTS)
+- An airgapped instance running vanilla Kubernetes (without KOTS)
 - An airgapped workstation instance from which we'll run the deployment
 - An online "jump box" that will represent a DMZ that has scp or sneakernet access to the airgapped VMs
 
