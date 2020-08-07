@@ -240,7 +240,7 @@ gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- \
   "ssh ${AIRGAP_WORKSTATION} -- docker image ls"
 ```
 
-and you see
+Once docker is ready, you should see the following: 
 
 ```shell script
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
