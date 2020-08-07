@@ -274,7 +274,7 @@ Status: Downloaded newer image for 10.240.0.100:32000/busybox:latest
 
 ###### Kubectl
 
-next, ssh into the airgapped worksation and grab the `admin.conf` from the cluster and run a few kubectl commands to ensure its working
+Next, ssh into the airgapped worksation and grab the `admin.conf` from the cluster and run a few kubectl commands to ensure its working:
 
 ```shell script
 gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- "ssh -A ${AIRGAP_WORKSTATION}"
