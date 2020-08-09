@@ -11,7 +11,7 @@ In this guide, we'll walk through the steps neede to take enable Kubernete's hig
 
 As with the rest of the guides, this is meant as a 'hello world' example to help get you familiarized with the process of standing up a highly available Kubernetes cluster using the Replicated toolset. The architecture we will follow is presented below:
 
-![Architecture](/images/guides/kots/ha-cluster-hl-arch.png)
+![Architecture](/images/guides/kots/ha-cluster-architecture.png)
 
 The diagram shows 4 Virtual Machines (VMs) running on Google Cloud Platform (GCP), with one of them used solely as a load balancer. Note that there aren't any requirements to use GCP. You can follow along with VMs provisioned on a different cloud provider or on premise.
 
@@ -67,7 +67,7 @@ To stand up the cluster, we will be following the these steps:
 - [Procuring the (virtual) hardware](#provisioning-the-virtual-hardware)
 - [Setting up and configuring a Load Balancer](#setting-up--configuring-a-load-balancer)
 - [Run the Kots installer on the first node and deploy the application](#run-the-kots-installer--deploy-application)
-- [Verify the Deployment](#Verify-the-Deployment)
+- [Verify the Deployment](#verify-the-deployment)
 - [Add Remaining Nodes to the Cluster](#adding-remaining-nodes-to-cluster)
 - [Verify Pods Are Running on All Nodes](#verify-pods-are-running-on-all-nodes)
 
@@ -321,7 +321,7 @@ There are various testing scenarios for an HA Cluster. For starters we are focus
 
 ## Pre-Requisites
 
-This section assumes you followed the above steps in order and are using the sample application. Since we are testing data retention, make sure to use the routes described in the [Verify the Deployment](#Verify-the-Deployment) section.
+This section assumes you followed the above steps in order and are using the sample application. Since we are testing data retention, make sure to use the routes described in the [Verify the Deployment](#verify-the-deployment) section.
 
 To verify that data is not lost, use pgAdmin as described above. Simply run the query again, and should be presented with the same results. You should also have a separate terminal in which to run:
 
