@@ -20,6 +20,9 @@ The KOTS Quickstart is our simplest guide, we'll get running quickly with a simp
 The KOTS Existing Cluster Guide is another of our simplest guides. 
 We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy).
 
+###### [CLI Quickstart](/vendor/guides/cli-quickstart)
+
+Power users who already have their Kubernetes YAML handy and prefer to work from the CLI will want to start here. This guide will walk you through managing your YAML or Helm chart in KOTS with our CLI tools.
 
 ### Next Steps
 

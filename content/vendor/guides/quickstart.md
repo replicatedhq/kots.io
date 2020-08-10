@@ -253,8 +253,15 @@ You can click on that to view what has changed in the yaml.
 
 ![View Update](/images/guides/kots/view-update.png)
 
-Clicking the "Deploy" button will apply the new YAML which will change the number of nginx replicas. 
-This should only take a few seconds to deploy.
+Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. 
+This should only take a few seconds to deploy. 
+You can verify this on the server by running
+
+```
+kubectl get pod -l app=nginx
+```
+
+and you should see at least two pods running.
 
 Next, you can either check out the [CLI setup guide](#automating-your-workflow) to start managing your KOTS yaml in a git repo with our CLI tools, or you can head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.
 
