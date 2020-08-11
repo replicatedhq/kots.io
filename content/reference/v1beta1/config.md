@@ -256,6 +256,6 @@ This is similar to `description` but for `items`. This property can show a helpf
       items:
       - name: http_enabled
         title: HTTP Enabled
-        help_text: When enabled we will listen to http
+        help_text: Check to enable the HTTP listener
         type: bool
 ```
