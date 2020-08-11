@@ -24,6 +24,8 @@ spec:
     description: Configure application authentication below.
 ```
 
+**Note:** `description` is only supported in `groups`, see `help_text` property for `items`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
+
 ## Items
 
 Items map to input fields and belong to a single group. All items should have `name`, `title`
@@ -49,7 +51,6 @@ The `bool` input type should use a "0" or "1" to set the value
       items:
       - name: http_enabled
         title: HTTP Enabled
-        help_text: When enabled we will listen to http
         type: bool
         default: "0"
 ```
@@ -209,7 +210,6 @@ An item can be recommended. This item will bear the tag "recommended" in the adm
       items:
       - name: http_enabled
         title: HTTP Enabled
-        help_text: When enabled we will listen to http
         type: bool
         default: "0"
         recommended: true
@@ -225,6 +225,10 @@ Items can be hidden. They will not be visible if hidden.
           value: "{{repl RandomString 40}}"
 ```
 
+When used in conjunction with a function that generates a value, for example [RandomString](/reference/template-functions/static-context/#randomstring)
+- If set to `true`, the `value` is **persistent** between Config changes but it **cannot** be modified because its not visible in HTML.
+- If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because it is visible in HTML.
+
 ### `readonly`
 Items can be readonly.
 ```yaml
@@ -235,9 +239,23 @@ Items can be readonly.
           readonly: true
 ```
 
+When used in conjunction with a function that generates value, for example [RandomString](/reference/template-functions/static-context/#randomstring)
+- If set to `true`, the `value` is **ephemeral** between Config changes. It **cannot** be modified because it is greyed out in HTML.
+- If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because its not greyed out in HTML.
 
 ### `affix`
 Items can be affixed left or right. These items will appear in the admin console on the same line.
 ```yaml
     affix: left
+```
+
+### `help_text`
+This is similar to `description` but for `items`. This property can show a helpful message below `title`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.
+```yaml
+    - name: toggles
+      items:
+      - name: http_enabled
+        title: HTTP Enabled
+        help_text: Check to enable the HTTP listener
+        type: bool
 ```
