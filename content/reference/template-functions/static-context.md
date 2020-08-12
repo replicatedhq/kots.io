@@ -278,6 +278,37 @@ TLSKey returns the key that matches the certificate identified by `certName`.  T
 repl{{ TLSKey "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
 ```
 
+## TLSCACert
+```go
+func TLSCACert(caName string, daysValid int) string
+```
+TLSCACert generates and returns a CA certificate that can be used as a CA to sign other certificates.
+
+TLSCACert takes the following parameters
+- Subject’s common name (cn)
+- Cert validity duration in days
+```yaml
+repl{{ TLSCACert "foo.com" 365 }}
+```
+
+## TLSCertFromCA
+```go
+func TLSCertFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSCertFromCA generates and returns a certificate signed by the CA identified by `caName`.  The rest of the arguments are the same as in `TLSCert`.
+```yaml
+repl{{ TLSCertFromCA "foo.com" "my_custom_cert" "bar.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
+## TLSKeyFromCA
+```go
+func TLSKeyFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSKeyFromCA generates and returns a key that matches the certificate returned by `TLSCertFromCA`.  The arguments are the same as in `TLSCertFromCA` and their values must match.
+```yaml
+repl{{ TLSKeyFromCA "foo.com" "my_custom_cert" "bar.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
 ## IsKurl
 ```go
 func IsKurl() bool
