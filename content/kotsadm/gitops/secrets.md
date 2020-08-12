@@ -14,7 +14,7 @@ KOTS 1.18 introduces an integration with [SealedSecrets](https://github.com/bitn
 To enable this integration, a Secret with specific labels must be deployed to the same namespace as the Admin Console. This secret must contain the SealedSecrets public key and will be used by KOTS to replace all Secret objects created by the application and by the Admin Console.
 
 This secret should be manually deployed to the same namespace as the KOTS Admin Console.
-There is not currently functionality to automate or use the Admin Console UI to configure this functionality.
+There is currently no way to automate or use the Admin Console UI to configure this functionality.
 The secret can be named anything unique that does not conflict with application secrets. The labels in this example YAML are important and must remain.
 
 ```yaml
