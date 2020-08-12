@@ -29,6 +29,10 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--set` | strings |                values to pass to helm when running helm template |
 | `--shared-password` | string |   shared password to apply |
 | `--config-values` | string |  path to a manifest containing config values (must be apiVersion: kots.io/v1beta1, kind: ConfigValues |
+| `--http-proxy` | string | sets HTTP_PROXY environment variable in all KOTS Admin Console components |
+| `--https-proxy` | string | sets HTTPS_PROXY environment variable in all KOTS Admin Console components |
+| `--no-proxy` | string | sets NO_PROXY environment variable in all KOTS Admin Console components |
+| `--copy-proxy-env` | bool | copy proxy environment variables from current environment into all KOTS Admin Console components |
 
 ### Examples
 ```bash
