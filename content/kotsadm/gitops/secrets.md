@@ -11,7 +11,7 @@ Application manifests often contain secrets and sensitive information that shoul
 
 KOTS 1.18 introduces an integration with [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets) to encrypt secrets before commiting. This integration is currently alpha and subject to change in future releases of KOTS.
 
-To enable this integration, a Secret with specific labels must be deployed to the same namespace as the Admin Console. This secret must contain the SealedSecrets public key and will be used be KOTS to replace all Secret objects created by the application and by the Admin Console.
+To enable this integration, a Secret with specific labels must be deployed to the same namespace as the Admin Console. This secret must contain the SealedSecrets public key and will be used by KOTS to replace all Secret objects created by the application and by the Admin Console.
 
 This secret should be manually deployed to the same namespace as the KOTS Admin Console.
 There is not currently functionality to automate or use the Admin Console UI to configure this functionality.
