@@ -71,7 +71,7 @@ Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and
 This defaults to `latest`, but can be changed to `2.0.3` or `3.5.4` to use a specific version of kustomize to render your app's yaml.
 Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
 
-## requireMinimalRBACPrivilges
+## requireMinimalRBACPrivileges
 When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding. For more information, see the [RBAC](/vendor/packaging/rbac) documentation.
 
 ## ports
