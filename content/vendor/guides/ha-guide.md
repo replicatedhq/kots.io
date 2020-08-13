@@ -37,7 +37,7 @@ There are a few things to keep in mind about this guide:
 
 ### Sample Application
 
-The KOTS application we'll use in this guide is available in the [kotsapps repository] (TODO - here). 
+The KOTS application we'll use in this guide is available in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/app-direct). 
 
 The application consists of two components:
 

@@ -42,6 +42,10 @@ The KOTS CI/CD Integration guide is an advanced workflow that allows you to use 
 
 This guide is intended as a lightweight checklist to ensure you have explored all the features of KOTS and integrated the ones that will help ensure your end users are most likely to be successful deploying and running your KOTS application
 
+###### [Deploy an HA Cluster](/vendor/guides/ha-cluster)
+
+This guide is intented to guide the reader in setting up a basic 3 master node Kubernetes cluster in an [Embedded Cluster](/vendor/guides/quickstart) scenario for learning and testing purposes.
+
 <!-- Coming Soon!
 
 ###### [Package a Helm Chart](/vendor/guides/helm-chart)
