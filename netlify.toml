@@ -6,7 +6,7 @@
 
 [[redirects]]
   from = "/kotsadm/snapshots/troubleshooting/"
-  to = "https://velero.io/docs/master/troubleshooting/"
+  to = "https://velero.io/docs/main/troubleshooting/"
   status = 301
   force = true
 
@@ -18,7 +18,7 @@
 
 [[redirects]]
   from = "/kotsadm/snapshots/restic-troubleshooting/"
-  to = "https://velero.io/docs/master/restic/#troubleshooting"
+  to = "https://velero.io/docs/main/restic/#troubleshooting"
   status = 301
   force = true
 
