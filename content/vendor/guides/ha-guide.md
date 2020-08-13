@@ -5,7 +5,8 @@ title: "Deploy an HA Cluster"
 weight: "1005"
 ---
 
-In this guide, we'll walk through the steps neede to take enable Kubernete's high availability capabilities with a cluster installed by Kurl and managed by Kots. This only applies to 'embedded' cluster installs using Kurl.
+In this guide, we'll walk through the steps needed to take enable Kubernetes' high availability capabilities with a cluster installed by kURL and managed by KOTS. 
+This only applies to 'embedded' cluster installs using Kurl.
 
 ## Objective
 
