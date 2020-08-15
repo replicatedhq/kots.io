@@ -5,7 +5,7 @@ title: kots install
 weight: 90100
 ---
 
-Installs the KOTS application and the admin console (kotsadm) directly to a cluster. The `kots install` command pulls Kubernetes manifests from the remote upstream, deploys the manifests to the specified cluster, installs the admin console, and sets up port forwarding to make the kotsadm admin console accessible.
+Installs the KOTS application and the Admin Console directly to a cluster. The `kots install` command pulls Kubernetes manifests from the remote upstream, deploys the manifests to the specified cluster, installs the admin console, and sets up port forwarding to make the kotsadm Admin Console accessible.
 
 ### Usage
 ```bash

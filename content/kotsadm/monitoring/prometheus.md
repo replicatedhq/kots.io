@@ -5,13 +5,13 @@ title: Prometheus
 weight: 10010
 ---
 
-Kots includes built-in monitoring functionality for all distributed applications. By default, Kots displays cluster disk usage, pod cpu usage, pod memory usage and pod health graphs on the dashboard page of the Admin Console. Additionally, application developers can choose to expose business and application level metrics and alerts. In order to take advantage of the monitoring functionality, [Prometheus](https://prometheus.io/) will need to be installed in the cluster. If Prometheus is already installed, see the [Existing Prometheus Installations](/kotsadm/monitoring/existing-prometheus/) documentation for more information on configuring an existing Prometheus installation.
+Kots includes built-in monitoring functionality for all distributed applications. By default, Kots displays cluster disk usage, pod cpu usage, pod memory usage, and pod health graphs on the dashboard page of the Admin Console. Additionally, application developers can choose to expose business and application level metrics and alerts. In order to take advantage of the monitoring functionality, [Prometheus](https://prometheus.io/) will need to be installed in the cluster. If Prometheus is already installed, see the [Existing Prometheus Installations](/kotsadm/monitoring/existing-prometheus/) documentation for more information on configuring an existing Prometheus installation.
 
 ![Admin Console Dashboard](/images/kotsadm-dashboard-graph.png)
 
 ### About Prometheus
 
-Prometheus is an open-source systems monitoring and alerting toolkit. Prometheus features a multi-dimensional data model with time series data and a flexible query language to leverage this dimensionality. Prometheus's components include the main Prometheus server which scrapes and stores time series data and an alertmanager to handle alerts. More information on Promethus can be found in the [official documentation](https://prometheus.io/docs/introduction/overview/).
+Prometheus is an open-source systems monitoring and alerting toolkit. Prometheus features a multi-dimensional data model with time series data and a flexible query language to leverage this dimensionality. Prometheus's components include the main Prometheus server which scrapes and stores time series data, and an alertmanager to handle alerts. More information on Promethus can be found in the [official documentation](https://prometheus.io/docs/introduction/overview/).
 
 ### Installing Prometheus
 
@@ -65,6 +65,6 @@ In addition to the [Prometheus Expression Browser](https://prometheus.io/docs/vi
 
 ### Alerting
 
-Alerting with Prometheus is separated into two parts. Alerting rules in Prometheus servers send alerts to an Alertmanager. The Alertmanager then manages those alerts, including silencing, inhibition, aggregation and sending out notifications via methods such as email, on-call notification systems, and chat platforms.
+Alerting with Prometheus is separated into two parts. Alerting rules in Prometheus servers send alerts to an Alertmanager. The Alertmanager then manages those alerts, including silencing, inhibition, aggregation, and sending out notifications via methods such as email, on-call notification systems, and chat platforms.
 
 For more information on how to configure Alertmanager, see [the configuration documentation](https://prometheus.io/docs/alerting/configuration/).

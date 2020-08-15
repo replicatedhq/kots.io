@@ -2,7 +2,7 @@
 date: 2019-10-09
 linktitle: "Single App Workflows"
 title: Pushing Updates to a GitOps Workflow in Single App Mode
-weight: 10020
+weight: 1
 draft: false
 ---
 

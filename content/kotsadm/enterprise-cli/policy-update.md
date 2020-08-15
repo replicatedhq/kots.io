@@ -6,7 +6,7 @@ weight: 90132
 draft: false
 ---
 
-update an existing policy
+Update an existing policy
 
 ### Synopsis
 

@@ -9,4 +9,4 @@ Kots needs to be aware of the address of the Prometheus instance within the clus
 
 ![Configuring Prometheus](/images/kotsadm-dashboard-configureprometheus.png)
 
-By default, Kots displays cluster disk usage, pod cpu usage, pod memory usage and pod health graphs on the dashboard page of the Admin Console. Additionally, application developers can choose to expose business and application level metrics and alerts. In all cases, the metrics built into Kots will be exposed automatically to Prometheus and any existing Web UI or Visualization tool such as [Grafana](https://prometheus.io/docs/visualization/grafana/).
+By default, Kots displays cluster disk usage, pod cpu usage, pod memory usage, and pod health graphs on the dashboard page of the Admin Console. Additionally, application developers can choose to expose business and application level metrics and alerts. In all cases, the metrics built into Kots will be exposed automatically to Prometheus, and any existing Web UI or Visualization tool such as [Grafana](https://prometheus.io/docs/visualization/grafana/).

@@ -49,10 +49,10 @@ At this point, the Admin Console is still just an admin console without an appli
 
 ![Upload License](/images/upload-license.png)
 
-Once the license file is installed, if airgap installations are enabled, an option will be presented to proceed with an airgapped setup. For instructions on performing an airgapped setup, [read the airgap doc](/kotsadm/installing/airgap-packages). For now, this walk through will continue with an online installation.
+Once the license file is installed, if airgapped installations are enabled, an option will be presented to proceed with an airgapped setup. For instructions on performing an airgapped setup, [read the airgapped doc](/kotsadm/installing/airgap-packages). For now, this walk through will continue with an online installation.
 
 ### Config Screen
-Most KOTS applications include some required and some optional configuration. This is used to build the final, deployable Kubernetes manifests for the application. The config screen of the setup will prompt for initial values to use in the application. These can be changed later, but must be completed to continue.
+Most KOTS applications include some required and some optional configuration. This is used to build the final deployable Kubernetes manifests for the application. The config screen of the setup will prompt for initial values to use in the application. These can be changed later, but must be completed to continue.
 
 ![Initial Config](/images/initial-config.png)
 

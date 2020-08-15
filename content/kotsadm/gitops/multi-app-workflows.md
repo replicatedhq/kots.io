@@ -2,7 +2,7 @@
 date: 2019-10-09
 linktitle: "Multi App Workflows"
 title: Pushing Updates to a GitOps Workflow in Multi App Mode
-weight: 10020
+weight: 2
 draft: false
 ---
 

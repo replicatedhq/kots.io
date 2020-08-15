@@ -1,18 +1,18 @@
 ---
 date: 2019-10-09
-linktitle: "Airgap Packages"
-title: Installing from an Airgap Package
+linktitle: "Airgapped Packages"
+title: Installing from an Airgapped Package
 weight: 10030
 draft: false
 ---
 
-When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster. This feature is only available for licenses that have the airgap feature enabled.
+When installing an application from an airgapped package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster. This feature is only available for licenses that have the airgapped feature enabled.
 
 ## Kots install
 This section only applies to installing the Admin Console into an existing Kubernetes cluster.  See [this](https://kots.io/kotsadm/installing/installing-embedded-cluster/) document for embedded installations with kURL.
 
 Begin by [installing the Kots CLI kubectl plugin](/kots-cli/getting-started/).
-The Admin Console can be installed using the KOTS plugin and the airgap package that can be downloaded from the [release assets](https://github.com/replicatedhq/kots/releases) named `kotsadm.tar.gz`.
+The Admin Console can be installed using the KOTS plugin and the airgapped package that can be downloaded from the [release assets](https://github.com/replicatedhq/kots/releases) named `kotsadm.tar.gz`.
 The asset version must match the KOTS CLI version, which can be determined by running:
 
 ```shell
@@ -53,10 +53,10 @@ Pressing Ctrl+C will end the port forward.
 
 Once this message is displayed visit `http://localhost:8800` to complete the application setup using the Admin Console.
 
-![Airgap Bundle](/images/airgap-install.png)
+![Airgapped Bundle](/images/airgap-install.png)
 
-### Upload Airgap Bundle
-The software vendor should have delivered a `.airgap` bundle to be used on this screen. The bundle contains the container images and manifests. Choose the bundle and click continue to start processing.
+### Upload Airgapped Bundle
+The software vendor should have delivered a `.airgapped` bundle to be used on this screen. The bundle contains the container images and manifests. Choose the bundle and click continue to start processing.
 
 ![Airgap Uploading](/images/airgap-uploading.png)
 
