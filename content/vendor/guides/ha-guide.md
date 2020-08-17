@@ -120,7 +120,7 @@ Note that another way of accomplishing this is by connecting to the instance via
 
 To create the config file, use the editor of your choice and call it 'haproxy.cfg'. For the purposes of this exercise, we'll create the file in our home folder. Below is an example config file for the sample application. Keep in mind the following when creating your file:
 
-- IP addresses below will not work as the VMs were destroyed a long time ago. Replace these with the internal IP addresses of your VMs. 
+- Replace any IP addresses with the internal IP addresses of your VMs. 
 - If you used a different naming convention for your instance names, you will need to replace 'app-direct-node-0(123)' with your instance names.
 - There are two entries specific to the Application, one for each component (app-direct-frontend/backend & postgres frontend/backend). If you are using a different application, adjust based on the endpoints you want to access through the load balancer. The remaining entries are for the KOTs UI and API and should be left as-is other than the instance names and ip addresses
 
