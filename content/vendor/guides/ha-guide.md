@@ -241,7 +241,7 @@ This process will take several minutes as it will install Kubernetes as well as 
 
 ![Output](/images/guides/kots/ha-cluster-install-output.png)
 
-Highlighted in red in the screenshot above are first the Kots Admin URL and password to login. Also highlighted are the commands to run on other nodes to join the cluster. In this exercise we are not going to run these commands yet and instead continue deploying the application. The commands to join the cluster are also available in the Kots Admin UI, which we will cover later in this guide.
+Highlighted in red in the screenshot above are the Kots Admin URL and password to login. Also highlighted are the commands to run on other nodes to join the cluster. In this exercise we are not going to run these commands yet and instead continue deploying the application. The commands to join the cluster are also available in the Kots Admin UI, which we will cover later in this guide.
 
 Next, we are going to log in to Kots Admin to complete the install and deploy the application. Since this guide assumes you have a level of familiarity with Kots, we are not going to go into detail on every step to get the application deployed.
 
