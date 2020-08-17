@@ -116,7 +116,7 @@ We will:
 - Copy the config file to the proper location.
 - Restart HA Proxy. 
 
-Note that another way of accomplishing this is by conneting to the instance via SSH and creating the file and editing from the command line inside the VM.
+Note that another way of accomplishing this is by connecting to the instance via SSH and creating the file and editing from the command line inside the VM.
 
 To create the config file, use the editor of your choice and call it 'haproxy.cfg'. For the purposes of this exercise, we'll create the file in our home folder. Below is an example config file for the sample application. Keep in mind the following when creating your file:
 
