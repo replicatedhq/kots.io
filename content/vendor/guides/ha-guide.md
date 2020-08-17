@@ -235,7 +235,7 @@ However, in order to enable High Availability we are going to add the '-s ha' [a
 curl -sSL https://k8s.kurl.sh/appdirect-unstable | sudo bash -s ha
 ```
 
-When you include the '-s ha' option, you will be promoted right away for the load balancer address. As shown in the figure below, we are providing the 'internal' IP address. This address is used by the Kubernetes services in the nodes to talk to each other. Using a public IP addresses addds extra layers that are not needed. 
+When you include the '-s ha' option, you will be prompted right away for the load balancer address. As shown in the figure below, we are providing the 'internal' IP address. This address is used by the Kubernetes services in the nodes to talk to each other. Using a public IP address would add extra layers that are not needed. 
 
 This process will take several minutes as it will install Kubernetes as well as the Application Administration toolset. Once it is finished, you should see something similar as shown below:
 
