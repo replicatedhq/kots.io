@@ -5,7 +5,7 @@ title: Defining Additional Images
 weight: 101
 ---
 
-To ensure that images will be available locally, KOTS finds all images defined in the application manifests and includes them in airgap bundles. During the install or update workflow, KOTS will collect these images from the airgapped bundle (if airgapped) or from the internet (if online), retag and push all of the images to customer-defined registry.
+To ensure that images will be available locally, KOTS finds all images defined in the application manifests and includes them in airgap bundles. During the install or update workflow, KOTS will collect these images from the airgap bundle (if airgapped) or from the internet (if online), retag and push all of the images to customer-defined registry.
 
 If there are required images that are not defined in any of the Kubernetes manifests, these should be listed in the `additionalImages` attribute of the [Application](/reference/v1beta1/application/) spec.
 

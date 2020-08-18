@@ -97,4 +97,4 @@ The `namespace` key allows for a chart to be installed in an alternate namespace
 
 ## builder
 
-The `builder` key allows for defaults that will be set when Replicated is creating airgapped packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.
+The `builder` key allows for defaults that will be set when Replicated is creating airgap packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.
