@@ -312,7 +312,7 @@ exit
 
 #### Installing
 
-We'll follow the instructions at [Installing from an Airgapped Package](https://kots.io/kotsadm/installing/airgapped-packages/).
+We'll follow the instructions at [Installing from an Airgap Package](https://kots.io/kotsadm/installing/airgap-packages/).
 
 Let's start by downloading the `kots` plugin and the airgap bundle to our workstation:
 
