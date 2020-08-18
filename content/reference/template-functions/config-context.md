@@ -157,4 +157,4 @@ spec:
 func HasLocalRegistry() bool
 ```
 
-Returns true if the environment is configured to rewrite images to a local registry. This will be true for airgap installs, and optionally true for online installs.
+Returns true if the environment is configured to rewrite images to a local registry. This will be true for airgapped installs, and optionally true for online installs.

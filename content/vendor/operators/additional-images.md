@@ -5,7 +5,7 @@ title: Defining Additional Images
 weight: 101
 ---
 
-To ensure that images will be available locally, KOTS finds all images defined in the application manifests and includes them in airgap bundles. During the install or update workflow, KOTS will collect these images from the airgap bundle (if airgapped) or from the internet (if online), retag and push all of the images to customer-defined registry.
+To ensure that images will be available locally, KOTS finds all images defined in the application manifests and includes them in airgap bundles. During the install or update workflow, KOTS will collect these images from the airgapped bundle (if airgapped) or from the internet (if online), retag and push all of the images to customer-defined registry.
 
 If there are required images that are not defined in any of the Kubernetes manifests, these should be listed in the `additionalImages` attribute of the [Application](/reference/v1beta1/application/) spec.
 
@@ -29,4 +29,4 @@ KOTS supports additional images that are:
 
 ## Authentication
 
-When creating the airgap bundle or performing an online install, KOTS will ensure that private images are available, without sharing registry credentials with the installation. Airgap packages include the image layers in the bundle, and online installs will rewrite externally hosted private images to be pulled from proxy.replicated.com. When the installation sends credentials to proxy.replicated.com or registry.replicated.com, the credentials are based on the customer license file, and the credentials stop working when the license expires.
+When creating the airgapped bundle or performing an online install, KOTS will ensure that private images are available, without sharing registry credentials with the installation. Airgapped packages include the image layers in the bundle, and online installs will rewrite externally hosted private images to be pulled from [proxy.replicated.com](https://proxy.replicated.com). When the installation sends credentials to [proxy.replicated.com](https://proxy.replicated.com) or [registry.replicated.com](https://registry.replicated.com), the credentials are based on the customer license file, and the credentials stop working when the license expires.

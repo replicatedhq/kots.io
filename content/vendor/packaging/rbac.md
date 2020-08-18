@@ -36,7 +36,7 @@ When this is set, the KOTS installer will create a Role and RoleBinding, grantin
 Without access to cluster-scoped resources, some Preflight Checks and Support Bundle collectors will not be able to read the resources.
 These tools will continue to function, but will return less data.
 In this situation, the Admin Console will present an option for the user to either proceeed with limited data or a command to execute the Preflight Checks or Support Bnudle remotely, using the user's RBAC authorizations.
-Additionally, the namespace-scoped permission doesnot currently grant access to the `velero` namespace.
+Additionally, the namespace-scoped permission does not currently grant access to the `velero` namespace.
 Applications that are using the [snapshots](/vendor/snapshots/overview) functionality should continue to use cluster-scoped access at this time.
 
 ### Operators and multiple namespaces

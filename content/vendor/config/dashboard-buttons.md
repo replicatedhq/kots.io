@@ -8,7 +8,7 @@ aliases:
   - /vendor/dashboard/open-buttons
 ---
 
-When distributing an application, it’s helpful to make sure that the installer can easily verify that the application is running. Because networking and ingress is possibly handled differently in each cluster, this makes it difficult to provide a consistent URL at application packaging time, and even likely requires that the cluster operator create firewall rules before they can test the application installation.
+When distributing an application, it’s helpful to make sure that the installer can easily verify that the application is running. Because networking and ingress is possibly handled differently in each cluster, this makes it difficult to provide a consistent URL at application packaging time, and even likely requires that the cluster operator creates firewall rules before they can test the application installation.
 
 Kots and the Admin Console can provide a port-forward tunnel that will work more consistently to provide an easy way for the cluster operator to open one or more links directly to the application before ingress and firewalls are configured.
 
@@ -59,4 +59,4 @@ spec:
 
 Here, we define the port mapping that will be used to automatically include the service port as a port-forward when running the kots CLI to connect to the Admin Console.
 
-In this example, we are declaring that the k8s application custom resource will have a link that has a url of “https\://sentry”. When this link is added to the dashboard, also `kubectl port-forward svc/sentry 9000:9000` and replace the link as `localhost:9000`. This replacement is exact string match.
+In this example, we are declaring that the k8s application custom resource will have a link that has a url of “https\://sentry”. When this link is added to the dashboard, also `kubectl port-forward svc/sentry 9000:9000`, and replace the link as `localhost:9000`. This replacement is exact string match.

@@ -101,7 +101,7 @@ helm repo update
 helm fetch stable/postgresl
 ```
 
-After dropping this file into the file tree in the [Vendor Portal](https://vendor.replicated.com), a new file named `postgresql.yaml` is created. This will be already set to to reference the .tgz file you uploaded.
+After dropping this file into the file tree in the [Vendor Portal](https://vendor.replicated.com), a new file named `postgresql.yaml` is created. This will be already set to to reference the `.tgz` file you uploaded.
 Let's add a mapping to the `values` key so that it uses the password we've created and also we should add an `exclude` attribute to the chart to specify that it should only be included when the user has selected embedded postgres.
 
 ```yaml

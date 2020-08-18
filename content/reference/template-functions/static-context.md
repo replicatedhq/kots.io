@@ -331,7 +331,7 @@ repl{{ Distribution }}
 ```go
 func HTTPProxy() string
 ```
-HTTPProxy returns the address of the proxy that kotsadm is configured to use.
+HTTPProxy returns the address of the proxy that the Admin Console is configured to use.
 ```yaml
 repl{{ HTTPProxy }}
 ```
@@ -340,7 +340,7 @@ repl{{ HTTPProxy }}
 ```go
 func NoProxy() string
 ```
-NoProxy returns the comma-separated list of no-proxy addresses that kotsadm is configured to use.
+NoProxy returns the comma-separated list of no-proxy addresses that the Admin Console is configured to use.
 ```yaml
 repl{{ NoProxy }}
 ```

@@ -55,7 +55,7 @@ If you expect to also install stateful services into existing clusters, you'll l
 
 It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. Most notably, it allows you to run with minimal Kubernetes permissions, which can reduce friction when an app runs as a tenant in a large cluster. Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank.
 
-Letting the end user manage namespaces will be the easiest way to reduce friction. The ability to manage namespaces in kotsadm will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
+Letting the end user manage namespaces will be the easiest way to reduce friction. The ability to manage namespaces in the Admin Console will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
 
 
 ```yaml
@@ -92,7 +92,7 @@ spec:
 Helm charts are supported by KOTS but not required. If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
 
 ### Operators
-Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
+Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general, we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
 
 
 <!-- coming soon, wait for guide
@@ -108,7 +108,7 @@ Our recommendation is always to enforce licensing with a strong contract, but if
 
 ### Bundling and Analyzing Logs with Support bundle
 
-A robust support bundle is essential to minimizing back-and-forth when things go wrong. At a very minimum every app's support bundle should contain logs for an application's core pods. Usually this will be done with label selectors. To get the labels for an application, either inspect the YAML, or run
+A robust support bundle is essential to minimizing back-and-forth when things go wrong. At a very minimum, every app's support bundle should contain logs for an application's core pods. Usually this will be done with label selectors. To get the labels for an application, either inspect the YAML, or run
 
 ```shell
 kubectl get pods --show-labels

@@ -15,11 +15,11 @@ All KOTS applications that are packaged and delivered through the Replicated [Ve
 
 **Description**: If a license has an expiration date, the expiration date will be included in the license here. The date is encoded in ISO 8601 format (e.g., `2026-01-23T00:00:00Z`). If a license does not expire, this field will be missing.
 
-### Airgap Support
+### Airgapped Support
 
-**Field Name**: `isAirgapSupported`
+**Field Name**: `isAirgappedSupported`
 
-**Description**: If a license supports airgap installations, this field will be present and set to `true`. If airgap is not supported, this field will be missing.
+**Description**: If a license supports airgapped installations, this field will be present and set to `true`. If airgapped is not supported, this field will be missing.
 
 ### License Type
 

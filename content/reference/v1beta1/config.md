@@ -10,7 +10,7 @@ aliases:
 
 The Config custom resource can be provided by a vendor to specify a Config screen for collecting customer supplied values and template function rendering.
 
-The admin console settings screen configuration is specified as an array configuration groups and items.
+The Admin Console settings screen configuration is specified as an array configuration groups and items.
 
 ## Groups
 
@@ -84,7 +84,7 @@ The `heading` type allows you to display a group heading as a subelement within 
 ### `select`
 Types `select_one` and `select_many` are special cases. These types must have nested items
 that act as options. These types will be displayed as radio buttons (`select_one`) or
-checkboxes (`select_many`) in the admin console. **Currently, the `select_many` item type is not supported**
+checkboxes (`select_many`) in the Admin Console. **Currently, the `select_many` item type is not supported**
 
 At this time these two control types do not support the `title` field.
 
@@ -204,7 +204,7 @@ The settings UI will update right away when a field used in a when clause is upd
 ```
 
 ### `recommended`
-An item can be recommended. This item will bear the tag "recommended" in the admin console. **Presently only works for boolean and text field types**
+An item can be recommended. This item will bear the tag "recommended" in the Admin Console. **Presently only works for boolean and text field types**
 ```yaml
     - name: toggles
       items:
@@ -244,7 +244,7 @@ When used in conjunction with a function that generates value, for example [Rand
 - If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because its not greyed out in HTML.
 
 ### `affix`
-Items can be affixed left or right. These items will appear in the admin console on the same line.
+Items can be affixed left or right. These items will appear in the Admin Console on the same line.
 ```yaml
     affix: left
 ```

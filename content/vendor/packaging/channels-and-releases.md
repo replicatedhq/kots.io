@@ -11,7 +11,7 @@ The [Replicated vendor portal](https://vendor.replicated.com) provides you with 
 Once a release is ready to be installed, the release can be promoted to one or more release channels. More details can be found in our [Promote Releases documentation](/vendor/packaging/promoting-releases).
 
 ## Manage Release Channels
-By default, there are 3 release channels: Stable, Beta and Unstable. When you first log in to Replicated and select the Channels tab, you’ll see these default release channels created. You can delete, edit or create new channels at any time. The channels Replicated creates by default are commonly used for:
+By default, there are 3 release channels: Stable, Beta and Unstable. When you first log in to Replicated and select the Channels tab, you’ll see these default release channels created. You can delete, edit, or create new channels at any time. The channels Replicated creates by default are commonly used for:
 
 ### Unstable
 The Unstable channel is designed for you to constantly push releases to, much in the same way that you continuously deploy new versions to your cloud product. This is the channel that your development environment should have a license assigned to. This channel is designed to be internal and for testing, not for your customers to be licensed against.

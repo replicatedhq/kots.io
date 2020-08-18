@@ -60,10 +60,10 @@ spec:
 The `chart` key allows for a mapping between the data in this definition and the chart archive itself. More than one `kind: HelmChart` can reference a single chart archive, if different settings are needed.
 
 ### `chart.name`
-The name of the chart. This must match the `name` field from a Chart.yaml in a .tgz chart archive that's also included in the release.
+The name of the chart. This must match the `name` field from a `Chart.yaml` in a `.tgz` chart archive that's also included in the release.
 
 ### `chart.chartVersion`
-The version of the chart. This must match the `version` field from a Chart.yaml in a .tgz chart archive that's also included in the release.
+The version of the chart. This must match the `version` field from a `Chart.yaml` in a `.tgz` chart archive that's also included in the release.
 
 ## helmVersion
 
@@ -97,4 +97,4 @@ The `namespace` key allows for a chart to be installed in an alternate namespace
 
 ## builder
 
-The `builder` key allows for defaults that will be set when Replicated is creating airgap packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.
+The `builder` key allows for defaults that will be set when Replicated is creating airgapped packages. This is an opportunity to ensure that all YAML and images are rendered "on" so they are included.

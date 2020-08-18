@@ -22,4 +22,4 @@ When a release is promoted it should be given a version label and detailed relea
 - It is possible to change a license value to have updates automatically installed when detected by the running instance.
 - License values are synced with the values set in the vendor portal when the customer syncs the license.
 - Releases will not be editable after being promoted to a channel.
-- Release notes, version numbers, the required status may be edited after promotion by visiting the channel’s history.
+- Release notes, version numbers, and the required status may be edited after promotion by visiting the channel’s history.

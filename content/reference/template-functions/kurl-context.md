@@ -15,7 +15,7 @@ KurlBool, KurlInt, KurlString, and KurlOption all take a string yamlPath as a pa
 This path is the path from the yaml spec, and is delineated between addon and subfield by a period ’.’.
 For example, the kURL Kubernetes version can be accessed as `{{repl KurlString “Kubernetes.Version” }}`.
 
-KurlBool, KurlInt, KurlString respectively return a bool, integer and string value.
+KurlBool, KurlInt, KurlString respectively return a bool, integer, and string value.
 If used on a valid field but with the wrong type these will return the falsly value for their type, false, 0, and “string” respectively. The `KurlOption` function will convert all bool, int, and string fields to string.
 All functions will return falsy values if there is nothing at the yamlPath specified, or if these functions are run in a cluster with no installer CRD (i.e. Not a kURL cluster).
 
