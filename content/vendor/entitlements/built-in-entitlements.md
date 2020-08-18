@@ -17,7 +17,7 @@ All KOTS applications that are packaged and delivered through the Replicated [Ve
 
 ### Airgapped Support
 
-**Field Name**: `isAirgapSupported`
+**Field Name**: `isAirgappedSupported`
 
 **Description**: If a license supports airgapped installations, this field will be present and set to `true`. If airgapped is not supported, this field will be missing.
 

@@ -29,6 +29,10 @@ An error occurred: some backup storage locations are invalid: backup store for l
 
 #### Invalid top-level directories
 
+<<<<<<< HEAD
+=======
+Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database. To start, head to the onfig screen and input your values:
+>>>>>>> More typo fixes
 Another commonly seen problem in Velero starting is a reconfigured or re-used bucket. When configuring Velero to use a bucket, the bucket cannot contain other data, or else Velero will crash.  In this case, the error in the velero logs will be:
 
 ```shell
