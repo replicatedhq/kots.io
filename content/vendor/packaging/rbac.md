@@ -42,9 +42,9 @@ Applications that are using the [snapshots](/vendor/snapshots/overview) function
 ### Operators and multiple namespaces
 
 It is possible to use namespace-scoped access for Operators and multi-namespace applications.
-During the installation, if there are `additionalNamespaces` specified in the aplication manifest, Roles and RoleBindings will be created to give the Admin Console access to all namespaces specified.
+During the installation, if there are `additionalNamespaces` specified in the application manifest, Roles and RoleBindings will be created to give the Admin Console access to all namespaces specified.
 
-To enable namespace-scoped acess for an application:
+To enable namespace-scoped access for an application:
 
 ```yaml
 apiVersion: kots.io/v1beta1
