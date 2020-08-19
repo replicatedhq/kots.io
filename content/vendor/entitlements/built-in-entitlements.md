@@ -33,6 +33,51 @@ All KOTS applications that are packaged and delivered through the Replicated [Ve
 
 **Description**: If a license supports gitops-enablement in the Admin Console, this field will be present and set to `true`. If gitops is not supported, this field is either `false` or missing.
 
+### License Sequence
+
+**Field Name**: `licenseSequence`
+
+**Description**: Every time a license is updated, its sequence number is incremented.  This value represents the license sequence that client currently has.
+
+### License Signature
+
+**Field Name**: `signature`
+
+**Description**: The base64 encoded license signature.  This value will change when license is updated.
+
+### App Slug
+
+**Field Name**: `appSlug`
+
+**Description**: Application slug value.  This value never changes.
+
+### Channel Name
+
+**Field Name**: `channelName`
+
+**Description**: Current channel name from which releases will be downloaded.
+When channel changes, the latest release of that will be downloaded on the next update check.
+
+### Customer Name
+
+**Field Name**: `customerName`
+
+**Description**: The name of this customer/license.
+
+### API Endpoint
+
+**Field Name**: `endpoint`
+
+**Description**: The endpoint that Admin Console will use to sync license and download updates.
+This will usually be `https://replicated.app`.
+
+case "licenseID", "licenseId":
+### License ID
+
+**Field Name**: `licenseID`, `licenseId`
+
+**Description**: ID of the installed license.  This value never changes.
+
 ## Using Built-In Fields
 
 Built-In entitlement fields are referenced the nearly the same as you would for [Custom Entitlement Fields](/vendor/entitlements/custom-entitlements).  

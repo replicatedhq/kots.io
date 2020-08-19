@@ -60,3 +60,15 @@ Most KOTS applications include some required and some optional configuration. Th
 Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application.
 
 ![Preflight Checks](/images/preflight-checks.png)
+
+### Proxies
+
+When installing behind a proxy, Admin Console needs to be able to use the proxy to communicate with the APIs on the internet as well as local services.
+Both [kots install](/kots-cli/install/) and [kots pull](/kots-cli/pull/) commands provide arguments to specify proxy settings for the Admin Console containers.
+If either `http-proxy` or `https-proxy` is specified, `no-proxy` should also be specified.  The `no-proxy` string should include all localhost addresses as well as the local network and Kubernetes cluster CIDRs.
+For example:
+```bash
+kubectl kots install app --http-proxy http://10.128.0.3:3128 \
+  --no-proxy localhost,127.0.0.1,10.0.0.0/8,10.138.0.82
+```
+If `copy-proxy-env` flag is specified, proxy settings will be read from the environment of the shell where the kots command is running.
