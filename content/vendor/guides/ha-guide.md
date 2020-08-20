@@ -104,7 +104,7 @@ Also note the VMs public and private ip addresses as each VM is provisioned. We'
 
 ### Setting Up & Configuring a Load Balancer
 
-The main purpose of the load balancer is to direct traffic to the proper node. All end-user interactions (i.e., access the web UI of the deployed application) should go through the load balancer.
+The main purpose of the load balancer is to give us a single point of access. All end-user interactions (i.e., access the web UI of the deployed application) should go through the load balancer.
 
 For this guide, HA Proxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HA Proxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'. 
 
