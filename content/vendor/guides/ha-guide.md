@@ -353,7 +353,7 @@ The next command will test the stability of the cluster when a node is removed. 
 
 To simulate a node becoming unresponsive or simply crashed, you can simply stop the VM corresponding to the node. You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes. 
 
-In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute or less for ekco to detect the node being evicted, and the remainig time is for Postgres to start up on a new node.
+In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node.
 
 
 ## Troubleshooting
