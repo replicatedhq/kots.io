@@ -56,7 +56,7 @@ Once this message is displayed visit `http://localhost:8800` to complete the app
 ![Airgap Bundle](/images/airgap-install.png)
 
 ### Upload Airgap Bundle
-The software vendor should have delivered a `.airgapped` bundle to be used on this screen. The bundle contains the container images and manifests. Choose the bundle and click continue to start processing.
+The software vendor should have delivered a `.airgap` bundle to be used on this screen. The bundle contains the container images and manifests. Choose the bundle and click continue to start processing.
 
 ![Airgap Uploading](/images/airgap-uploading.png)
 
