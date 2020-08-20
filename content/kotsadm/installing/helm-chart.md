@@ -10,9 +10,9 @@ draft: false
 
 Software Vendors interested in delivering a Helm chart to customers should consider [delivering their Helm chart as a KOTS application](/vendor/helm/using-helm-charts/).
 
-This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline). The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the Internet. In this scenario, the container images will be pulled from the upstream registries directly.
+This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline). The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the internet. In this scenario, the container images will be pulled from the upstream registries directly.
 
-**Note** Currently the only supported source for helm charts are public helm repositories support by helm out-of-the-box.
+**Note:** Currently the only supported source for helm charts are public helm repositories support by helm out-of-the-box.
 
 ## Kots install
 To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/) & then run a `kots install` command to pull the chart and prepare it for deployment. In the example, we'll use the `elasticsearch` chart from the `stable` helm repository.
@@ -57,12 +57,14 @@ At this point, visit `http://localhost:8800` to complete the setup of the applic
 Enter the password provided during the setup, and you'll be redirect to the "Upload License" screen.
 
 ### Config Screen
-Most KOTS applications include some required and some optional configuration. This is used to build the final, deployable Kubernetes manifests for the application. The config screen of the setup will prompt for initial values to use in the application. These can be changed later, but must be completed to continue. Note that this section is optional, and depends whether the Helm chart maintainer has included the `kots.io/v1beta` `Config` custom resource. In either case, you will still be able to [edit the values.yaml](#viewing-files-and-configuring-chart-values) before deploying the application.
+Most KOTS applications include some required and some optional configuration. This is used to build the final deployable Kubernetes manifests for the application. The config screen of the setup will prompt for initial values to use in the application. These can be changed later, but must be completed to continue. Note that this section is optional, and depends whether the Helm chart maintainer has included the `kots.io/v1beta` `Config` custom resource. In either case, you will still be able to [edit the values.yaml](#viewing-files-and-configuring-chart-values) before deploying the application.
 
 ![Initial Config](/images/initial-config.png)
 
 ### Preflight Checks
-Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application. **Note** as with the `Config` custom resource, not all community Helm charts will include a `kots.io/v1beta` `Preflight` specification, in which case this page will be skipped.
+Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application. 
+
+**Note:** As with the `Config` custom resource, not all community Helm charts will include a `kots.io/v1beta` `Preflight` specification, in which case this page will be skipped.
 
 ![Preflight Checks](/images/preflight-checks.png)
 

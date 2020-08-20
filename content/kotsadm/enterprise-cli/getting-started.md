@@ -7,7 +7,7 @@ weight: 90100
 draft: false
 ---
 
-The Replicated Enterprise CLI is a command-line interface that helps enterprises manage their channels, policies and installers.
+The Replicated Enterprise CLI is a command-line interface that helps enterprises manage their channels, policies, and installers.
 
 ## Prerequisites
 

@@ -42,7 +42,7 @@ Keep this file on your local laptop from where you will be accessing the Admin C
 
 ### Airgap License
 
-Next lets download the license. To download the airgap license, go to `[App Name] -> Customer -> [Customer Name]`.
+Next lets download the license. To download the airgapped license, go to `[App Name] -> Customer -> [Customer Name]`.
 
 ![Airgap Customers](/images/guides/kots/airgap-customers.png)
 
@@ -50,7 +50,7 @@ Next lets download the license. To download the airgap license, go to `[App Name
 
 ![Airgap Download License](/images/guides/kots/airgap-download-license.png)
 
-* When the customer is modified the license will change as well with the new Airgap entitlement, so you need to re-download the license with the new entitlements. Click on `Download license` to fetch the airgapped enabled yaml license.
+* When the customer is modified the license will change as well with the new Airgapped entitlement, so you need to re-download the license with the new entitlements. Click on `Download license` to fetch the airgapped enabled yaml license.
 
 ## Embedded kURL Cluster
 
@@ -109,7 +109,7 @@ ssh -N -L 8800:${AIRGAP_PRIVATE_IP}:8800 ${JUMPBOX_PUBLIC_IP}
 
 ## Icon in Base64
 
-In an Airgap environment, if the `icon` uses a URL, it would not be able to display because the image is fetched at the time the page is rendered. In Airgap you need to convert the `png` file into `base64` to be used for the image.
+In an Airgapped environment, if the `icon` uses a URL, it would not be able to display because the image is fetched at the time the page is rendered. In Airgapped, you need to convert the `png` file into `base64` to be used for the image.
 
 ### Converting Icon to Base64
 
@@ -160,7 +160,7 @@ Once the bundle is uploaded the Preflights checks will commence. Once all checks
 
 ## Automatically Build Bundles
 
-When creating new releases you might have noticed you have to click the `Build` button everytime a new release is made. By default only `Stable` and `Beta` channels automatically build `.airgap` bundles on new releases. For other channels you need to enable the flag to build bundles automatically.
+When creating new releases, you might have noticed you have to click the `Build` button everytime a new release is made. By default only `Stable` and `Beta` channels automatically build `.airgap` bundles on new releases. For other channels, you need to enable the flag to build bundles automatically.
 
 * To enable, go to `[App Name] -> Channels -> [Channel Name]` and click on `Edit` channel icon.
 

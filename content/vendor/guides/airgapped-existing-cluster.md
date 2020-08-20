@@ -5,7 +5,7 @@ title: "Airgapped Existing Cluster"
 weight: "1020"
 ---
 
-This is an advanced guide that shows how to install a KOTS app in an Existing Cluster environment where the workstation and the cluster have no outbound internet connectivity ("airgap"). This guide will assume you've already completed the [Existing Cluster Quickstart](/vendor/guides/existing-cluster) to set up a non-airgapped cluster.   We'll be doing what the Terraform Enterprise team refers to as Modern Airgap or "2019 Airgap" in [How Hashicorp delivers On-prem with Replicated](https://blog.replicated.com/hashicorp-recording/)
+This is an advanced guide that shows how to install a KOTS app in an Existing Cluster environment where the workstation and the cluster have no outbound internet connectivity ("airgapped"). This guide will assume you've already completed the [Existing Cluster Quickstart](/vendor/guides/existing-cluster) to set up a non-airgapped cluster.   We'll be doing what the Terraform Enterprise team refers to as Modern Airgapped or "2019 Airgapped" in [How Hashicorp delivers On-prem with Replicated](https://blog.replicated.com/hashicorp-recording/)
 
 > We usually deliver 2019 Airgap, which is essentially an AWS VPC without an internet gateway.
 
@@ -440,7 +440,7 @@ Now, open `localhost:${PORT}` in your browser and you should get to the kotsadm 
 
 ### Troubleshooting
 
-If you run into issues, you may be able to use the bundled support-bundle tool to collect a very helpful diagnostic bundle. This will only be usable once the cluster is up and you have the `admin.conf` kubeconfig on the airgap workstation.
+If you run into issues, you may be able to use the bundled support-bundle tool to collect a very helpful diagnostic bundle. This will only be usable once the cluster is up and you have the `admin.conf` kubeconfig on the airgapped workstation.
 
 You will also need to download the support-bundle plugin and move it to the airgapped workstation
 

@@ -12,7 +12,7 @@ aliases:
 
 KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) use per-customer licenses to install. Each of these licenses uniquely identifies the customer, defines their release channel, and defines _entitlement information_ about the customer.  
 
-KOTS securely delivers these entitlement values to the application, and makes them available in the Kubernetes manifests or at runtime using the kotsadm license API.
+KOTS securely delivers these entitlement values to the application, and makes them available in the Kubernetes manifests or at runtime using the Admin Console license API.
 
 ## Built-In Entitlement Fields
 See [Built-In Entitlements](/vendor/entitlements/built-in-entitlements), for a list of the entitlement fields that are included by default for every license.  
@@ -70,7 +70,7 @@ spec:
 ```
 
 ### Querying Entitlements at Runtime
-The Admin Console (kotsadm) runs on the customer's cluster, and provides real-time entitlement information through the through the `/license/v1/license` endpoint. To query entitlements at runtime, simply execute an http response to the following location: `http://kotsadm:3000/license/v1/license`
+The Admin Console runs on the customer's cluster, and provides real-time entitlement information through the through the `/license/v1/license` endpoint. To query entitlements at runtime, simply execute an http response to the following location: `http://kotsadm:3000/license/v1/license`
 
 The response will be returned in YAML format. For example: 
 ```javascript

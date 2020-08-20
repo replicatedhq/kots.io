@@ -6,9 +6,9 @@ description: "KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf s
 weight: 1
 ---
 
-KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes.
+KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support, and upgrade process of third party software in Kubernetes.
 
-In addition to Kots, the Admin Console (Kotsadm) is another open source component designed to run as an Admin Console along with a Kots application. Kotsadm is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. The Kots plugin can install and configure Kotsadm during installation and upgrade of a Kots application.
+KOTS includes an Admin Console that runs alongside the application. The Admin Console is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. The Kots plugin will install and configure the Admin Console during installation and upgrade of a Kots application.
 
 ## How To Install
 
@@ -43,7 +43,7 @@ The install subcommand will install the application directly to a cluster. By de
 If you’d rather use kubectl or another workflow to deploy to your cluster, you can run kots pull to create a directory on your workstation with the Kots application
 
 ### kots download
-Once an application is running and has the Admin Console (kotsadm) deployed with it, you can run kots download to retreive a copy of the application manifests from the cluster, and store them in a specific directory structure on your workstation.
+Once an application is running and has the Admin Console deployed with it, you can run kots download to retreive a copy of the application manifests from the cluster, and store them in a specific directory structure on your workstation.
 
 ### kots upload
 If you have a copy of an application that was created with kots pull or kots download, you can upload it back to the Admin Console using the kots upload command.

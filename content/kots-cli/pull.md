@@ -5,7 +5,7 @@ title: kots pull
 weight: 90110
 ---
 
-If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the Kots application and the Kubernetes manifests. This workflow is necessary when managing a KOTS application without the use of the admin console (kotsadm).
+If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the Kots application and the Kubernetes manifests. This workflow is necessary when managing a KOTS application without the use of the Admin Console.
 
 ### Usage
 ```bash

@@ -81,7 +81,7 @@ For now we'll hard code the DB variable values, in the next sections we'll wire 
 
 ### Deploying the example application
 
- Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
+ Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
 
@@ -130,7 +130,7 @@ The core of this guide will be around how give your end users the option to eith
 1. Bring their own PostgreSQL instance for your app to connect to
 1. Use an "embedded" database bundled in with the application
 
-The first step here is to present that option to the user, then we'll walk through implementing each scenario in KOTS. The `kots.io/v1beta1` `Config` resource controls what configuration options are presented to the end user. If you followed one of the Getting Started guides, you probably have a `config.yaml` in your manifests that looks something like this:
+The first step here is to present that option to the user, then we'll walk through implementing each scenario in KOTS. The `kots.io/v1beta1` `Config` resource controls what configuration options are presented to the end user. If you followed one of the "Getting Started" guides, you probably have a `config.yaml` in your manifests that looks something like this:
 
 ```yaml
 apiVersion: kots.io/v1beta1
@@ -190,11 +190,11 @@ As mentioned in the introduction, a full example of the code for this guide can 
 
 ### Validating Config Changes
 
-Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. Create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to your kotsadm instance and click "Check for Updates" on the Version History tab to pull the new release:
+Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. Create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `make release` locally. Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
 
-Once the update is deployed, we can head over to the Config tab and review our new toggle. You might also notice that we've removed the Ingress settings to simplify things for this guide:
+Once the update is deployed, we can head over to the "Config" tab and review our new toggle. You might also notice that we've removed the Ingress settings to simplify things for this guide:
 
 ![Database Config](/images/guides/kots/database-config.png)
 
@@ -208,7 +208,7 @@ To implement the embedded Database option, we'll add a Kubernetes [Statefulset](
 
 ### Adding the Secret and StatefulSet
 
-Firse, we'll create a secret to store the root password for our embedded postgres instance.
+First, we'll create a secret to store the root password for our embedded postgres instance.
 
 ```yaml
 # postgres-secret.yaml
@@ -302,7 +302,7 @@ spec:
 
 ### Validating the embedded Database
 
-Once you've added these resources, you can push a new release and update in kotsadm. You should see the following in the deployment logs:
+Once you've added these resources, you can push a new release and update in the Admin Console. You should see the following in the deployment logs:
 
 ![Embedded PG Deployed](/images/guides/kots/embedded-pg-deployed.png)
 
@@ -503,16 +503,16 @@ spec:
           default: postgres
 ```
 
-Let's save this and create a new release. After deploying the release in kotsadm, head to config and set the toggle to "External Postgres" to see the new fields:
+Let's save this and create a new release. After deploying the release in the Admin Console, head to "Config" and set the toggle to "External Postgres" to see the new fields:
 
 ![External PG Config](/images/guides/kots/external-pg-config.png)
 
-In order to demonstrate that these are working, let's add some values that we know won't work, and just check to confirm that checking "external postgres" will remove our embedded postgres instance:
+In order to demonstrate that these are working, let's add some values that we know won't work, and just check to confirm that checking "External Postgres" will remove our embedded postgres instance:
 
 
 ![External PG Config Fake](/images/guides/kots/external-pg-config-fake.png)
 
-Save these settings, and then you'll be directed back to the Version History page to apply the change:
+Save these settings, and then you'll be directed back to the "Version History" page to apply the change:
 
 ![Deploy Config Change](/images/guides/kots/deploy-config-change.png)
 
@@ -530,7 +530,7 @@ kotsadm-postgres-0                 1/1     Running   0          12m
 pg-consumer-6bd78594d-n7nmw        0/1     Error     2          29s
 ```
 
-You'll note that it is failing, but it is still using our hardcoded environment variables, not the user-entered config. In the next step we'll wire the end-user configuration values into our service.
+You'll note that it is failing, but it is still using our hardcoded environment variables, not the user-entered config. In the next step, we'll wire the end-user configuration values into our service.
 
 ```text
 $ kubectl logs -l app=pg-consumer
@@ -824,7 +824,7 @@ DB_USER=fake
 
 ### Testing Config Changes
 
-Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database. To Start, head to the config screen and input your values:
+Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database. To start, head to the "Config" screen and input your values:
 
 ![Real Postgres Values](/images/guides/kots/real-postgres-values.png)
 

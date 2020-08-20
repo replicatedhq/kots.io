@@ -29,4 +29,4 @@ KOTS supports additional images that are:
 
 ## Authentication
 
-When creating the airgap bundle or performing an online install, KOTS will ensure that private images are available, without sharing registry credentials with the installation. Airgap packages include the image layers in the bundle, and online installs will rewrite externally hosted private images to be pulled from proxy.replicated.com. When the installation sends credentials to proxy.replicated.com or registry.replicated.com, the credentials are based on the customer license file, and the credentials stop working when the license expires.
+When creating the airgap bundle or performing an online install, KOTS will ensure that private images are available, without sharing registry credentials with the installation. Airgap packages include the image layers in the bundle, and online installs will rewrite externally hosted private images to be pulled from `proxy.replicated.com`. When the installation sends credentials to `proxy.replicated.com` or `registry.replicated.com`, the credentials are based on the customer license file, and the credentials stop working when the license expires.

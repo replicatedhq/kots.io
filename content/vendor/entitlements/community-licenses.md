@@ -11,10 +11,10 @@ KOTS applications that are packaged and delivered through the Replicated [Vendor
 
 ## Community vs Other License Types
 
-A Replicated KOTS application includes some built-in entitlements and addditional support from the application vendor. Community enabled licenses work the same as any other license, with a few small exceptions:
+A Replicated KOTS application includes some built-in entitlements, and addditional support from the application vendor. Community enabled licenses work the same as any other license, with a few small exceptions:
 
-### No Airgap Support
-Community licenses cannot support airgap installations.
+### No Airgapped Support
+Community licenses cannot support airgapped installations.
 
 ### No Expiration
 Community licenses cannot include an expiration date.

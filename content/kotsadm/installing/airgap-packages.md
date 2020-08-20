@@ -6,7 +6,7 @@ weight: 10030
 draft: false
 ---
 
-When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster. This feature is only available for licenses that have the airgap feature enabled.
+When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster. This feature is only available for licenses that have the airgapped feature enabled.
 
 ## Kots install
 This section only applies to installing the Admin Console into an existing Kubernetes cluster.  See [this](https://kots.io/kotsadm/installing/installing-embedded-cluster/) document for embedded installations with kURL.

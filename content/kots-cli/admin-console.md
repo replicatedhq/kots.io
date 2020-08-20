@@ -5,7 +5,7 @@ title: kots admin-console
 weight: 90150
 ---
 
-Opens a proxy so you can connect to the admin console from your machine. Additionally, you may use `kots admin-console upgrade` to upgrade the admin console to the latest version. Requires a running KOTS application with the Admin Console (kotsadm).
+Opens a proxy so you can connect to the admin console from your machine. Additionally, you may use `kots admin-console upgrade` to upgrade the admin console to the latest version. Requires a running KOTS application with the Admin Console.
 
 
 ### Usage

@@ -5,7 +5,7 @@ title: Template Function Contexts
 weight: 90020
 ---
 
-[Template functions](/vendor/packaging/template-functions/) are grouped into different contexts, depending on the phase of the application lifecycle when the function is available and the context data that is provided. Static, Config and License contexts are available everywhere, while kURL context functions are not available on the config page.
+[Template functions](/vendor/packaging/template-functions/) are grouped into different contexts, depending on the phase of the application lifecycle when the function is available and the context data that is provided. Static, Config, and License contexts are available everywhere, while kURL context functions are not available on the config page.
 
 ## Static Context
 Template functions in the static context can be used in any YAML, at any time. The static context also includes the [Masterminds Sprig](http://masterminds.github.io/sprig/) function library.

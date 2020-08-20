@@ -10,7 +10,7 @@ Sometimes things are working right and an installation is not able to start a ba
 
 ## Velero is crashing
 
-If velero is crashing and not starting, some common causes are:
+If Velero is crashing and not starting, some common causes are:
 
 #### Invalid cloud credentials
 
@@ -29,7 +29,7 @@ An error occurred: some backup storage locations are invalid: backup store for l
 
 #### Invalid top-level directories
 
-Another commonly seen problem in Velero starting is a reconfigured or re-used bucket. When configuring velero to use a bucket, the bucket cannot contain other data, or else velero will crash.  In this case, the error in the velero logs will be:
+Another commonly seen problem in Velero starting is a reconfigured or re-used bucket. When configuring Velero to use a bucket, the bucket cannot contain other data, or else Velero will crash.  In this case, the error in the velero logs will be:
 
 ```shell
 time="2020-04-10T14:12:42Z" level=info msg="Checking existence of namespace" logSource="pkg/cmd/server/server.go:337" namespace=velero

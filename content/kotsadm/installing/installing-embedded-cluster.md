@@ -30,7 +30,7 @@ cat install.sh | sudo bash -s airgap
 ```
 
 Note that the airgapped installer is not the same as an [airgapped application package](/kotsadm/installing/airgap-packages/).
-A KOTS application may be installed in airgap mode on clusters installed online and vice versa.
+A KOTS application may be installed in airgapped mode on clusters installed online and vice versa.
 
 kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
 

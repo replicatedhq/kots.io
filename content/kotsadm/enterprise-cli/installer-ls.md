@@ -10,7 +10,7 @@ Lists enterprise installers
 
 ### Synopsis
 
-lists all installers that have been created
+Lists all installers that have been created
 
 ### Usage
 ```bash

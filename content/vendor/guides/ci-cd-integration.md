@@ -75,7 +75,7 @@ make release
 
 ## Helm Chart
 
-The steps below show how to modify a repo containing a Helm chart to be deployable as a KOTS App. This section assumes you've completed the [Packaging a Helm Chart](/vendor/guides/helm-chart) guide and are familiar with how KOTS processes Helm charts as part of an Application.
+The steps below show how to modify a repo containing a Helm chart to be deployable as a KOTS App. This section assumes you've completed the [Packaging a Helm Chart](/vendor/guides/helm-chart) guide, and are familiar with how KOTS processes Helm charts as part of an application.
 
 - Start from a basic Helm Chart structure, which could look something like this
 

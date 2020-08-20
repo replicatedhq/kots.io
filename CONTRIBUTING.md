@@ -85,6 +85,13 @@ Use`<h2>` tags to separate page content. If there's a need for another `<h1>`, c
 **No:** A Kots application can include...
 **No:** A kots application can include...
 
+- ### When referring to airgapped enviornments, use "airgapped" not "airgap" unless refering to a bundle.
+**Yes :** The airgap bundle is finished.
+**Yes :** It's and airgapped server.
+
+**No:** The airgapped bundle is finished.
+**No :** It's an airgap server.
+
 - ### The product and the company are named Replicated (with a capital R).
 **Yes:** How to install Replicated.
 

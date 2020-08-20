@@ -60,10 +60,10 @@ spec:
 The `chart` key allows for a mapping between the data in this definition and the chart archive itself. More than one `kind: HelmChart` can reference a single chart archive, if different settings are needed.
 
 ### `chart.name`
-The name of the chart. This must match the `name` field from a Chart.yaml in a .tgz chart archive that's also included in the release.
+The name of the chart. This must match the `name` field from a `Chart.yaml` in a `.tgz` chart archive that's also included in the release.
 
 ### `chart.chartVersion`
-The version of the chart. This must match the `version` field from a Chart.yaml in a .tgz chart archive that's also included in the release.
+The version of the chart. This must match the `version` field from a `Chart.yaml` in a `.tgz` chart archive that's also included in the release.
 
 ## helmVersion
 

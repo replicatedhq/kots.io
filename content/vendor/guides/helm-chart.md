@@ -198,7 +198,7 @@ For now, these fields will have no effect. Next, we'll map these user-supplied v
 
 ### Map to Helm Chart
 
-In `~/helm-grafana/manifests/grafana.yaml` update `values` with the `ConfigOption` template function.
+In `~/helm-grafana/manifests/grafana.yaml`, update `values` with the `ConfigOption` template function.
 
 ```diff
 @@ -7,5 +7,5 @@

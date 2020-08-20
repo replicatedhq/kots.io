@@ -2,7 +2,7 @@
 date: 2020-08-12
 linktitle: "Secrets"
 title: Managing Secrets with GitOps
-weight: 10040
+weight: 3
 isAlpha: true
 ---
 
