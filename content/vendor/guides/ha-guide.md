@@ -23,7 +23,6 @@ The guide is broken into two parts. The [first part](#part-i---setting-up-the-cl
 There are a few things to keep in mind about this guide:
 
 - All VMs are going to be created in Google Cloud Platform (GCP) but nothing in this guide is dependent on GCP specific services. 
-- The examples in this guide used ephemeral resources.
 - The Load Balancer we'll use for this exercise is HA Proxy. 
 - The sample application has a database component as described [here](#sample-application), which will help us validate data retention in of our testing scenarios.
 
@@ -51,15 +50,18 @@ A full description of the application is available in the repository.
 
 If you want to follow this example, but with your own application, you may need to modify the Kubernetes Installer to use [ekco](https://kurl.sh/docs/add-ons/ekco). For the purposes of this guide, EKCO can be thought of as a helper service that helps 'move' scheduled pods from a node that is down to ones that are up.
 
-In your Kubernetes installer, add the following under spec:
+To add EKCO to your Kubernetes installer, follow the steps below. If you are not familiar with the Kubernetes installer, review [this blog](https://blog.replicated.com/kurl-with-replicated-kots/) first to get familiar with the process.
 
-```code
-  ekco:
-    version: latest
-    nodeUnreachableToleration: 1m
-```
+#### Adding EKCO to Embedded Installs
 
-Then make sure to promote the installer to same channel(s) that you are promoting your app.
+1. In your Kubernetes installer, add the following under spec:
+
+   ```code
+      ekco:
+        version: latest
+        nodeUnreachableToleration: 1m
+   ```
+2. Promote the installer to same the channel(s) where you have promoted your application's releases.
 
 ## Part I - Setting Up the Cluster
 
