@@ -6,7 +6,8 @@ weight: "1009"
 draft: false
 ---
 
-This guide is intended as a lightweight checklist to ensure you have explored all the features of KOTS and integrated the ones that will help ensure your end users are most likely to be successful deploying and running your KOTS application. This guide is intended to grow as more features are integrated and documented in KOTS.
+This guide is intended as a lightweight checklist to ensure you have explored all the features of KOTS and integrated the ones that will help ensure your end users are most likely to be successful deploying and running your KOTS application. 
+This guide is intended to grow as more features are integrated and documented in KOTS.
 
 It is split into three parts:
 
@@ -34,7 +35,8 @@ If an application is guaranteed not to introduce backwards-incompatible versions
 
 ### Adding Preflight Checks
 
-Adding preflight checks to validate an end user's environment is a great way to streamline initial installations and greatly reduce the number of support escalations when installing an application. There are a number of basic examples for checking CPU, memory, and disk capacity under the [Node Resources Analyzer](https://troubleshoot.sh/reference/analyzers/node-resources/).
+Adding preflight checks to validate an end user's environment is a great way to streamline initial installations and greatly reduce the number of support escalations when installing an application. 
+There are a number of basic examples for checking CPU, memory, and disk capacity under the [Node Resources Analyzer](https://troubleshoot.sh/reference/analyzers/node-resources/).
 
 
 <!-- coming soon, wait for guide
@@ -46,16 +48,20 @@ When deploying with the embedded cluster...
 
 ### Managing Stateful Services
 
-In the [persistent datastores guide](/vendor/guides/persistent-datastores), we review best practices for integrating persistent stores like databases, queues, and caches. Explore ways to give an end user the option to either embed an instance alongside the application, or connect an appplication to an external instance that they will manage.
+In the [persistent datastores guide](/vendor/guides/persistent-datastores), we review best practices for integrating persistent stores like databases, queues, and caches. 
+Explore ways to give an end user the option to either embed an instance alongside the application, or connect an appplication to an external instance that they will manage.
 
 If you expect to also install stateful services into existing clusters, you'll likely want to expose [preflight analyzers that check for the existence of a storage class](https://troubleshoot.sh/reference/analyzers/storage-class/).
 
 
 ### Namespaces
 
-It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. Most notably, it allows you to run with minimal Kubernetes permissions, which can reduce friction when an app runs as a tenant in a large cluster. Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank.
+It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. 
+Most notably, it allows you to run with minimal Kubernetes permissions, which can reduce friction when an app runs as a tenant in a large cluster. 
+Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank.
 
-Letting the end user manage namespaces will be the easiest way to reduce friction. The ability to manage namespaces in the Admin Console will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
+Letting the end user manage namespaces will be the easiest way to reduce friction. 
+The ability to manage namespaces in the Admin Console will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
 
 
 ```yaml
@@ -89,10 +95,13 @@ spec:
 
 ### Helm
 
-Helm charts are supported by KOTS but not required. If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
+Helm charts are supported by KOTS but not required. 
+If for applications that are already packaged using helm, then the helm support in KOTS can help get an app packaged faster. 
+If an application does not presently use helm, there's no requirement to use helm, as the KOTS built-in templating includes much of the same functionality, and the Admin Console includes a deep [kustomize.io integration](/kotsadm/updating/patching-with-kustomize) to greatly reduce the amount of templating required by app maintainers in the first place.
 
 ### Operators
-Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). In general, we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
+Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). 
+In general, we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
 
 
 <!-- coming soon, wait for guide
@@ -108,15 +117,20 @@ Our recommendation is always to enforce licensing with a strong contract, but if
 
 ### Bundling and Analyzing Logs with Support bundle
 
-A robust support bundle is essential to minimizing back-and-forth when things go wrong. At a very minimum, every app's support bundle should contain logs for an application's core pods. Usually this will be done with label selectors. To get the labels for an application, either inspect the YAML, or run
+A robust support bundle is essential to minimizing back-and-forth when things go wrong. 
+At a very minimum, every app's support bundle should contain logs for an application's core pods. 
+Usually this will be done with label selectors. To get the labels for an application, either inspect the YAML, or run
 
 ```shell
 kubectl get pods --show-labels
 ```
 
-against a running instance to see what labels are used. Once the labels are discovered, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
+against a running instance to see what labels are used. 
+Once the labels are discovered, a [logs collector](https://troubleshoot.sh/reference/collectors/pod-logs/) can be used to include logs from these pods in a bundle. 
+Depending on the complexity of an app's labeling schema, you may need a few different declarations of the `logs` collector.
 
-As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an app's troubleshooting stack. For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log lines and inform an end user of remediation steps.
+As common issues are encountered in the field, it will make sense to add not only collectors but also analyzers to an app's troubleshooting stack. 
+For example, when an error in a log file is discovered that should be surfaced to an end user in the future, a simple [Text Analyzer](https://troubleshoot.sh/reference/analyzers/regex/) can detect specific log lines and inform an end user of remediation steps.
 
 <!-- coming soon
 For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support-bundle)
@@ -129,11 +143,14 @@ If an application exposes Prometheus metrics, we recommend integrating [Custom G
 
 ### Building a Collaborative Workflow
 
-We recommend using a git-based workflow, as presented in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots). This will allow teams to map git branches to channels in the [Vendor Portal](https://vendor.replicated.com), and allow multiple team members to seamlessly collaborate across features and releases.
+We recommend using a git-based workflow, as presented in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots). 
+This will allow teams to map git branches to channels in the [Vendor Portal](https://vendor.replicated.com), and allow multiple team members to seamlessly collaborate across features and releases.
 
 ###### Tagging Releases for Production
 
-In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/main/Makefile.advanced) that builds on the basic one. It adds logic for making production releases using git tags. The recommended workflow is:
+In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/main/Makefile.advanced) that builds on the basic one. 
+It adds logic for making production releases using git tags. 
+The recommended workflow is:
 
 - On pushes to the `master` branch, create a release on unstable with the name `Unstable-${SHA}`
 - On pushing a git tag, create a release on the beta branch, using the name `Beta-${TAG}` for the release version.
@@ -155,7 +172,9 @@ The advanced Makefile also includes glue code for utility tasks such as computin
 
 ## Appendix: A Questionnaire for your End Users
 
-When packaging an application, it can be useful to get a sense of your environments you'll being deploying into. We here provide a short questionnaire that you can copy and customize for distributing to your end users. You can copy this and replace $APP with your application name.
+When packaging an application, it can be useful to get a sense of your environments you'll being deploying into. 
+We here provide a short questionnaire that you can copy and customize for distributing to your end users. 
+You can copy this and replace $APP with your application name.
 
 * * *
 
@@ -163,7 +182,8 @@ When packaging an application, it can be useful to get a sense of your environme
 
 #### Your Infrastructure
 
-This section includes questions about your infrastructure and how you deploy software, both internally written and Commercial Off The Shelf (COTS) applications. If it’s more convenient, limit answers to the scope of the target infrastructure for deploying $APP.
+This section includes questions about your infrastructure and how you deploy software, both internally written and Commercial Off The Shelf (COTS) applications. 
+If it’s more convenient, limit answers to the scope of the target infrastructure for deploying $APP.
 
 - Do you use any IaaS like AWS, GCP, or Azure?
 

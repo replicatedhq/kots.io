@@ -7,7 +7,9 @@ aliases:
   - /vendor/dashboard/graphs
 ---
 
-By default, when installing a Kots application into an embedded cluster, the Prometheus monitoring system will be included alongside the Kots application. This will collect valuable metrics about the cluster as well as the application and expose graphs with key metrics on the dashboard of the Admin Console. When running in an existing cluster, it is possible to configure the address of the Prometheus service in the Admin Console.
+By default, when installing a Kots application into an embedded cluster, the Prometheus monitoring system will be included alongside the Kots application. 
+This will collect valuable metrics about the cluster as well as the application and expose graphs with key metrics on the dashboard of the Admin Console. 
+When running in an existing cluster, it is possible to configure the address of the Prometheus service in the Admin Console.
 
 ![Graphs](/images/kotsadm-dashboard-graph.png)
 
@@ -15,7 +17,8 @@ By default, metrics graphs that are included monitor cluster disk usage, pod cpu
 
 ### Kots Application Spec
 
-To add custom graphs, use the `graphs` property of the kots.io Application spec. A minimal graph includes only a title and a Prometheus query:
+To add custom graphs, use the `graphs` property of the kots.io Application spec. 
+A minimal graph includes only a title and a Prometheus query:
 
 ```yaml
 apiVersion: kots.io/v1beta1
@@ -48,6 +51,8 @@ spec:
 
 ### Prometheus Query
 
-A valid PromQL prometheus query is required in the `query` property. By default an [Embedded Cluster](/vendor/embedded-kubernetes/embedded-kubernetes/) exposes the Prometheus [Expression Browser](https://prometheus.io/docs/visualization/browser/) at NodePort 30900. This can be used to aid in constructing queries.
+A valid PromQL prometheus query is required in the `query` property. 
+By default an [Embedded Cluster](/vendor/embedded-kubernetes/embedded-kubernetes/) exposes the Prometheus [Expression Browser](https://prometheus.io/docs/visualization/browser/) at NodePort 30900. 
+This can be used to aid in constructing queries.
 
 More information on querying Prometheus with PromQL can be found [here](https://prometheus.io/docs/prometheus/latest/querying/basics/).

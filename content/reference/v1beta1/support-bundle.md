@@ -7,9 +7,11 @@ aliases:
   - /vendor/additional-objects/support-bundle
 ---
 
-The [Replicated Troubleshoot project](https://github.com/replicatedhq/troubleshoot) provides the Support Bundle diagnostic tool that KOTS integrates deeply with. By providing this custom resources, vendors can collect, redact, and analyze troubleshooting data from a cluster, to help diagnose problems with application deployments. The tool depends on two Custom Resources.
+The [Replicated Troubleshoot project](https://github.com/replicatedhq/troubleshoot) provides the Support Bundle diagnostic tool that KOTS integrates deeply with. 
+By providing this custom resources, vendors can collect, redact, and analyze troubleshooting data from a cluster, to help diagnose problems with application deployments. 
+The tool depends on two Custom Resources.
 
-A [Collector Spec](https://troubleshoot.sh/reference/collectors/overview/) defines the data to be collected and included in the .tar.gz bundle.
+A [Collector Spec](https://troubleshoot.sh/reference/collectors/overview/) defines the data to be collected and included in the tar.gz bundle.
 
 An [Analyzer Spec](https://troubleshoot.sh/reference/analyzers/overview/) defines how to interpret and present the collected data to the application operator.
 

@@ -5,7 +5,8 @@ title: kots upstream
 weight: 90180
 ---
 
-The `kots upstream upgrade` fetches the latest version of the upstream application. It is functionality equivalent to clicking the Check For Updates in the Admin Console.
+The `kots upstream upgrade` fetches the latest version of the upstream application. 
+It is functionality equivalent to clicking the "Check For Updates" in the Admin Console.
 
 ### Usage
 ```bash

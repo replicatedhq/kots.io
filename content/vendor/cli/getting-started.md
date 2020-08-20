@@ -28,7 +28,8 @@ You’ll need to set up two environment variables to interact with https://vendo
 * `REPLICATED_API_TOKEN` should be set to a token created at https://vendor.replicated.com/team/tokens.
 ![Vendor API Token](/images/vendor-team-token.png)
 
-Ensure the token has “Write” access or you’ll be unable create new releases. Once you have the values, set them in your environment. 
+Ensure the token has “Write” access or you’ll be unable create new releases. 
+Once you have the values, set them in your environment. 
 
 For Linux/Mac environments: 
 ```bash

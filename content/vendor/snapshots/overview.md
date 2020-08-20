@@ -8,7 +8,8 @@ aliases:
   - /vendor/snapshots/
 ---
 
-An important part of the lifecycle of an application is backup and restore. A KOTS application can optionally include manifest that define how to execute a snapshot and how to restore a previous snapshot.
+An important part of the lifecycle of an application is backup and restore. 
+A KOTS application can optionally include manifest that define how to execute a snapshot and how to restore a previous snapshot.
 
 To enable Snapshots, KOTS uses the [Velero open source project](https://velero.io/). Velero is a mature, fully-featured application that can back up Kubernetes manifests and persistent volumes.
 

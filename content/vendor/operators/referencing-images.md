@@ -5,21 +5,27 @@ title: Referencing Images
 weight: 103
 ---
 
-KOTS is responsible for delivering and ensuring that all container images (automatically detected and additionalImages) are pushed to the customer's private, internal registry. Additionally, KOTS creates Kustomize patches to rewrite image names and inject image pull secrets to all pods.
+KOTS is responsible for delivering and ensuring that all container images (automatically detected and additionalImages) are pushed to the customer's private, internal registry. 
+Additionally, KOTS creates Kustomize patches to rewrite image names and inject image pull secrets to all pods.
 
-KOTS cannot modify pods that are created at runtime by the Operator. To support this in all environments, the Operator code should use KOTS functionality to determine the image name and image pull secrets for all pods when they are created.
+KOTS cannot modify pods that are created at runtime by the Operator. 
+To support this in all environments, the Operator code should use KOTS functionality to determine the image name and image pull secrets for all pods when they are created.
 
-There are several template functions available to assist with this. This may require 2 new environment variables to be added to a manager to read these values. The steps to ensure that an Operator is using the correct image names and has the correct image pull secrets in dynamically created pods are:
+There are several template functions available to assist with this. 
+This may require 2 new environment variables to be added to a manager to read these values. 
+The steps to ensure that an Operator is using the correct image names and has the correct image pull secrets in dynamically created pods are:
 
 1. Add a new environment variables to the Manager Pod so that the Manager knows the location of the private registry, if one is set.
 2. Add a new environment variable to the Manager Pod so that the Manager also knows the `imagePullSecret` that's needed to pull the local image.
 
 ### Adding a reference to the local registry
 
-The manager of an operator is often a `Statefulset`, but could be a `Deployment` or another kind. Regardless of where the spec is defined, the location of the private images can be read using the [Replicated template functions](/vendor/packaging/template-functions/).
+The manager of an operator is often a `Statefulset`, but could be a `Deployment` or another kind. 
+Regardless of where the spec is defined, the location of the private images can be read using the [Replicated template functions](/vendor/packaging/template-functions/).
 
 #### Option 1: Define each image
-If an operator only requires one additional image, the easiest way to determine this location is to use the `LocalImageName` function. This will always return the image name to use, whether the customer's environment is configured to use a local registry or not.
+If an operator only requires one additional image, the easiest way to determine this location is to use the `LocalImageName` function. 
+This will always return the image name to use, whether the customer's environment is configured to use a local registry or not.
 
 **Example:**
 
@@ -29,7 +35,8 @@ env:
     value: 'repl{{ LocalImageName "elasticsearch:7.6.0" }}'
 ```
 
-For online installations (no local registry), this will be written with no changes -- the variable will contain `elasticsearch:7.6.0`. For installations that are airgapped or have a locally-configured registry, this will be rewritten as the locally referencable image name (i.e. `registry.somebigbank.com/my-app/elasticsearch:7.6.0`).
+For online installations (no local registry), this will be written with no changes -- the variable will contain `elasticsearch:7.6.0`. 
+For installations that are airgapped or have a locally-configured registry, this will be rewritten as the locally referencable image name (i.e. `registry.somebigbank.com/my-app/elasticsearch:7.6.0`).
 
 **Example:**
 
@@ -57,7 +64,11 @@ env:
 
 ### Determining the imagePullSecret
 
-Private, local images will need to reference an image pull secret to be pulled. The value of the secret's `.dockerconfigjson` is provided in a template function, and the application can write this pull secret as a new secret to the namespace. If the application is deploying the pod to the same namespace as the operator, the pull secret will already exist in the namespace, as a secret named `kotsadm-replicated-registry`. KOTS will create this secret automatically, but only in the namespace that the operator is running in. It's the responsibility of the application developer (the Operator code) to ensure that this secret is present in any namespace that new pods will be deployed to.
+Private, local images will need to reference an image pull secret to be pulled. 
+The value of the secret's `.dockerconfigjson` is provided in a template function, and the application can write this pull secret as a new secret to the namespace. 
+If the application is deploying the pod to the same namespace as the operator, the pull secret will already exist in the namespace, as a secret named `kotsadm-replicated-registry`. 
+KOTS will create this secret automatically, but only in the namespace that the operator is running in. 
+It's the responsibility of the application developer (the Operator code) to ensure that this secret is present in any namespace that new pods will be deployed to.
 
 This template function returns the base64-encoded, docker auth that can be written directly to a secret, and referenced in the `imagePullSecrets` attribute of the PodSpec.
 
@@ -72,7 +83,9 @@ data:
 type: kubernetes.io/dockerconfigjson
 ```
 
-This will return an image pull secret for the locally configured registry. Its recommended to pass in the image name to this if your application has both public and private images. This will ensure that installs without a local registry can differentiate between private, proxied and public images.
+This will return an image pull secret for the locally configured registry. 
+Its recommended to pass in the image name to this if your application has both public and private images. 
+This will ensure that installs without a local registry can differentiate between private, proxied and public images.
 
 **Example:**
 
@@ -87,7 +100,9 @@ data:
 type: kubernetes.io/dockerconfigjson
 ```
 
-In the above example, the `LocalRegistryImagePullSecret()` function will return an empty auth array if the installation is not airgapped, does not have a local registry configured, and the `elasticsearch:7.6.0` image is public. If the image is private, the function will return the license-key derived pull secret. And finally, if the installation is using a local registry, the image pull secret will contain the credentials needed to pull from the local registry.
+In the above example, the `LocalRegistryImagePullSecret()` function will return an empty auth array if the installation is not airgapped, does not have a local registry configured, and the `elasticsearch:7.6.0` image is public. 
+If the image is private, the function will return the license-key derived pull secret. 
+And finally, if the installation is using a local registry, the image pull secret will contain the credentials needed to pull from the local registry.
 
 **Example:**
 
@@ -102,7 +117,8 @@ data:
 type: kubernetes.io/dockerconfigjson
 ```
 
-The above example will always return an image pull secret. For installations without a local registry, it will be the Replicated license secret, and for installations with a local regisrtry, it will be the local registry.
+The above example will always return an image pull secret. 
+For installations without a local registry, it will be the Replicated license secret, and for installations with a local regisrtry, it will be the local registry.
 
 ## Using the local registry at runtime
 

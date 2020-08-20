@@ -5,7 +5,8 @@ title: "Airgapped Cluster"
 weight: "1006"
 ---
 
-The KOTS Airgapped Cluster guide is an advanced guide that shows how to install a KOTS app in an Airgapped environment. This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) to set up a non-airgapped cluster.
+The KOTS Airgapped Cluster guide is an advanced guide that shows how to install a KOTS app in an Airgapped environment. 
+This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) to set up a non-airgapped cluster.
 
 It is broken into a few sections:
 
@@ -20,9 +21,11 @@ It is broken into a few sections:
 
 For [Embedded](/vendor/guides/airgapped-cluster/#embedded-kurl-cluster) kURL clusters you will need the following:
 
-**`.airgap` bundle**: This file contains app specific files like Kubernetes YAML and Docker images. You can view its contents with `tar -zxvf`.
+**`.airgap` bundle**: This file contains app specific files like Kubernetes YAML and Docker images. 
+You can view its contents with `tar -zxvf`.
 
-**Airgap License**: The Airgapped license enables you to install `.airgap` bundle. Without this enabled you will not be able to use the `.airgap` bundle.
+**Airgap License**: The Airgapped license enables you to install `.airgap` bundle. 
+Without this enabled you will not be able to use the `.airgap` bundle.
 
 During the installation process you'll be asked to upload both of these files, so lets download the `.airgap` bundle and license from [vendor.replicated.com](https://vendor.replicated.com).
 
@@ -50,11 +53,14 @@ Next lets download the license. To download the airgapped license, go to `[App N
 
 ![Airgap Download License](/images/guides/kots/airgap-download-license.png)
 
-* When the customer is modified the license will change as well with the new Airgapped entitlement, so you need to re-download the license with the new entitlements. Click on `Download license` to fetch the airgapped enabled yaml license.
+* When the customer is modified the license will change as well with the new Airgapped entitlement, so you need to re-download the license with the new entitlements. 
+Click on `Download license` to fetch the airgapped enabled yaml license.
 
 ## Embedded kURL Cluster
 
-Embedded clusters also need a thrid file in addition to the `.airgap` bundle and License file. The kURL bundle provides the open source components to run the cluster: Docker, Kubernetes, KOTS Adm, Weave, Contour, Rook, Registry and a number of other [add-ons](https://kurl.sh/add-ons). The kURL bundle is kept separate from the `.airgap` app bundle for a few reasons.
+Embedded clusters also need a thrid file in addition to the `.airgap` bundle and License file. 
+The kURL bundle provides the open source components to run the cluster: Docker, Kubernetes, KOTS Adm, Weave, Contour, Rook, Registry and a number of other [add-ons](https://kurl.sh/add-ons). 
+The kURL bundle is kept separate from the `.airgap` app bundle for a few reasons.
 
 * The kURL bundle can get quite large, this enables you to update your app with a smaller bundle size.
 
@@ -95,7 +101,8 @@ tar -zxvf ${REPLICATED_APP}.tar.gz
 cat install.sh | sudo bash -s airgap
 ```
 
-* Once the install is completed, save the output at the end. Thereafter you should access the Admin Console via `http://<airgap_private_ip>:8800` to continue the installation from the browser to upload the `.airgap` bundle and License file.
+* Once the install is completed, save the output at the end. 
+Thereafter you should access the Admin Console via `http://<airgap_private_ip>:8800` to continue the installation from the browser to upload the `.airgap` bundle and License file.
 
 * If you do not have direct access to the airgap private IP, you can access it via SSH tunnel using the jumpbox's public IP. Once the tunnel is up you can access the Admin Console via `http://localhost:8800`.
 
@@ -109,7 +116,8 @@ ssh -N -L 8800:${AIRGAP_PRIVATE_IP}:8800 ${JUMPBOX_PUBLIC_IP}
 
 ## Icon in Base64
 
-In an Airgapped environment, if the `icon` uses a URL, it would not be able to display because the image is fetched at the time the page is rendered. In Airgapped, you need to convert the `png` file into `base64` to be used for the image.
+In an Airgapped environment, if the `icon` uses a URL, it would not be able to display because the image is fetched at the time the page is rendered. 
+In Airgapped, you need to convert the `png` file into `base64` to be used for the image.
 
 ### Converting Icon to Base64
 
@@ -152,7 +160,8 @@ Once you have the open source components installed for the [Embedded](/vendor/gu
 
 ![Airgap Upload Bundle](/images/guides/kots/airgap-upload-bundle.png)
 
-Once the bundle is uploaded the Preflights checks will commence. Once all checks pass the app will with automatically deployed.
+Once the bundle is uploaded the Preflights checks will commence. 
+Once all checks pass the app will with automatically deployed.
 
 ![Airgap Bundle Progress](/images/guides/kots/airgap-bundle-progress.png)
 
@@ -160,7 +169,9 @@ Once the bundle is uploaded the Preflights checks will commence. Once all checks
 
 ## Automatically Build Bundles
 
-When creating new releases, you might have noticed you have to click the `Build` button everytime a new release is made. By default only `Stable` and `Beta` channels automatically build `.airgap` bundles on new releases. For other channels, you need to enable the flag to build bundles automatically.
+When creating new releases, you might have noticed you have to click the `Build` button everytime a new release is made. 
+By default only `Stable` and `Beta` channels automatically build `.airgap` bundles on new releases. 
+For other channels, you need to enable the flag to build bundles automatically.
 
 * To enable, go to `[App Name] -> Channels -> [Channel Name]` and click on `Edit` channel icon.
 
@@ -176,7 +187,8 @@ When creating new releases, you might have noticed you have to click the `Build`
 
 When automatic builds are enabled, you should be able to push a release and wait a few mins for the bundle to build (depending on the number of images) and download the new `.airgap` bundle to make an update to your app.
 
-After the first install, subsequent releases can be uploaded from `Version history`. Download a new bundle from [previous step](/vendor/guides/airgapped-cluster/#download-airgap-bundle-and-license).
+After the first install, subsequent releases can be uploaded from `Version history`. 
+Download a new bundle from [previous step](/vendor/guides/airgapped-cluster/#download-airgap-bundle-and-license).
 
 ### Upload New Version
 

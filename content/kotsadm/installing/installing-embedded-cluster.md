@@ -6,10 +6,12 @@ weight: 10040
 draft: false
 ---
 
-This article refers to installing the Admin Console on an embedded cluster. When running the Admin Console on an existing cluster, refer to the [Installing the Admin Console](/kotsadm/installing/installing-a-kots-app/) documentation.
+This article refers to installing the Admin Console on an embedded cluster. 
+When running the Admin Console on an existing cluster, refer to the [Installing the Admin Console](/kotsadm/installing/installing-a-kots-app/) documentation.
 
 ### Powered by kURL
-Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support. More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs).
+Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support. 
+More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs).
 
 ### Online Installations
 
@@ -21,7 +23,8 @@ curl -sSL https://kurl.sh/supergoodtool | sudo bash
 
 ### Airgapped Installations
 
-To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script. You can construct the URL for the bundle by prefixing the above online URL path with `/bundle` and adding `.tar.gz` to the end.
+To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script. 
+You can construct the URL for the bundle by prefixing the above online URL path with `/bundle` and adding `.tar.gz` to the end.
 
 ```bash
 curl -SL -o supergoodtool.tar https://kurl.sh/bundle/supergoodtool.tar.gz

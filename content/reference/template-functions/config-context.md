@@ -94,7 +94,8 @@ Returns true if the configuration option value is not equal to the supplied valu
 func LocalRegistryAddress() string
 ```
 
-Returns the local registry host or host/namespace that's configured. This will always return everything before the image name and tag.
+Returns the local registry host or host/namespace that's configured. 
+This will always return everything before the image name and tag.
 
 ## LocalRegistryHost
 
@@ -102,7 +103,8 @@ Returns the local registry host or host/namespace that's configured. This will a
 func LocalRegistryHost() string
 ```
 
-Returns the local registry host that's configured. This will include port if one is specified.
+Returns the local registry host that's configured. 
+This will include port if one is specified.
 
 ## LocalRegistryNamespace
 
@@ -118,7 +120,9 @@ Returns the local registry namespace that's configured.
 func LocalImageName(remoteImageName string) string
 ```
 
-This is a wrapper around other functions. Given a `remoteImageName` rewrite it so that it references the local registry. If no local registry is set, the `remoteImageName` is returned.
+This is a wrapper around other functions. 
+Given a `remoteImageName` rewrite it so that it references the local registry. 
+If no local registry is set, the `remoteImageName` is returned.
 
 ## LocalRegistryImagePullSecret
 
@@ -126,7 +130,9 @@ This is a wrapper around other functions. Given a `remoteImageName` rewrite it s
 func LocalRegistryImagePullSecret() string
 ```
 
-Returns the base64 encoded local registry image pull secret value. This is often needed when an operator is deploying images to a namespace that is not managed by KOTS. Image pull secrets must be present in the namespace of the pod.
+Returns the base64 encoded local registry image pull secret value. 
+This is often needed when an operator is deploying images to a namespace that is not managed by KOTS. 
+Image pull secrets must be present in the namespace of the pod.
 
 ```yaml
 apiVersion: v1
@@ -157,4 +163,5 @@ spec:
 func HasLocalRegistry() bool
 ```
 
-Returns true if the environment is configured to rewrite images to a local registry. This will be true for airgapped installs, and optionally true for online installs.
+Returns true if the environment is configured to rewrite images to a local registry. 
+This will be true for airgapped installs, and optionally true for online installs.

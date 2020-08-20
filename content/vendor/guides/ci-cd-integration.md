@@ -39,7 +39,8 @@ Follow the steps below if you are just working with plain-YAML kubernetes API ob
 
 - Make a copy of [manifests](https://github.com/replicatedhq/replicated-automation/tree/master/vendor/nginx-app/manifests) directory from the KOTS starter repo and place it in your internal repo's root directory.
 
-- Replace the files in `manifests/app` with the files in `k8s`. Sub directories are supported as well, so `k8s` directory can be put anywhere inside `manifests`.
+- Replace the files in `manifests/app` with the files in `k8s`. 
+Sub directories are supported as well, so `k8s` directory can be put anywhere inside `manifests`.
 
 - In the root directory of the internal repository add this `Makefile`
 
@@ -75,7 +76,8 @@ make release
 
 ## Helm Chart
 
-The steps below show how to modify a repo containing a Helm chart to be deployable as a KOTS App. This section assumes you've completed the [Packaging a Helm Chart](/vendor/guides/helm-chart) guide, and are familiar with how KOTS processes Helm charts as part of an application.
+The steps below show how to modify a repo containing a Helm chart to be deployable as a KOTS App. 
+This section assumes you've completed the [Packaging a Helm Chart](/vendor/guides/helm-chart) guide, and are familiar with how KOTS processes Helm charts as part of an application.
 
 - Start from a basic Helm Chart structure, which could look something like this
 

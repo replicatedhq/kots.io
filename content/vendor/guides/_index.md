@@ -17,7 +17,8 @@ The KOTS Quickstart is our simplest guide, we'll get running quickly with a simp
 
 ###### [Existing Cluster](/vendor/guides/existing-cluster)
 
-The KOTS Existing Cluster Guide is another of our simplest guides. We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy).
+The KOTS Existing Cluster Guide is another of our simplest guides. 
+We'll get running quickly with a simple Nginx application on an existing cluster in GKE (or another cluster you have handy).
 
 
 ### Next Steps
@@ -26,7 +27,9 @@ These guides will assume you've completed one of the previous guides for either 
 
 ###### [Integrate Persistent Datastores](/vendor/guides/persistent-datastores)
 
-In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. We'll explore ways to give your end user the option to either embed an instance with the application, or connect your application to an external cluster that they will manage. We'll use a PostgreSQL database as an example, configuring an example app to connect.
+In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. 
+We'll explore ways to give your end user the option to either embed an instance with the application, or connect your application to an external cluster that they will manage. 
+We'll use a PostgreSQL database as an example, configuring an example app to connect.
 
 ###### [Airgapped Cluster](/vendor/guides/airgapped-cluster)
 

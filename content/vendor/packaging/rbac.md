@@ -5,7 +5,9 @@ title: Kubernetes RBAC
 weight: 20240
 ---
 
-When a KOTS application is installed, [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) resources are created to allow the Admin Console to manage the application. By default, the Admin Console will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces. This behavior can be controlled by editing the [application](/reference/v1beta1/application/) manifest.
+When a KOTS application is installed, [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) resources are created to allow the Admin Console to manage the application. 
+By default, the Admin Console will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces. 
+This behavior can be controlled by editing the [application](/reference/v1beta1/application/) manifest.
 
 ## Cluster-scoped access
 

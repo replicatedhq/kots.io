@@ -104,4 +104,5 @@ When certs expire they can be reuploaded, here are the instructions on [Uploadin
 
 ### Existing Cluster
 
-The expectation when using an existing cluster is for the end customer to bring their own Ingress Controller such as Contour or Istio and upload their own `kubernetes.io/tls` secret. Here is an [Ingress with TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) example.
+The expectation when using an existing cluster is for the end customer to bring their own Ingress Controller such as Contour or Istio and upload their own `kubernetes.io/tls` secret. 
+Here is an [Ingress with TLS](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) example.

@@ -6,7 +6,8 @@ weight: 90112
 draft: false
 ---
 
-Create a new customer in your app and associate customer to a channel. Customer information returned on success. 
+Create a new customer in your app and associate customer to a channel. 
+Customer information returned on success. 
 
 ### Usage
 ```bash
