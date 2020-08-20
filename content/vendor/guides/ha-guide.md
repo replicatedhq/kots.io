@@ -274,17 +274,19 @@ kubectl get pods --all-namespaces -o wide
 ```
 
 
-The output will show you all the pods running on all namespaces and on which node. Since we only have a one node cluster, all pods should be running on node 1. Check the status of the pods to make sure there are no issues.
+The output will show you all the pods running on all namespaces. The output also shows you the node that each pod is currently running on, which will come in handy during this exercise. Since we only have a one node cluster, all pods should be running on node 1. Check the status of the pods to make sure there are no issues.
 
 ![AllPods](/images/guides/kots/ha-cluster-all-pods-one-node.png)
 
 If you are following along, you should be able to access the application by browsing to http://<ip-address-of-ha-proxy>. The sample app uses flask 'routes' to call various methods to interact with Postgres. To test if it can write to the database, use the  `/sql-check`   route which will check connection to the default database and list the databases that are available to the 'postgres' user. To write to the database, first use the `/sql-create` route which creates a database (appdiretdb) with a table (tblrecords) in it. Finally, use the `/sql-add` route to add a row the table with the timestamp. Once the database and table are created, simply use this route to add more records to the database.
 
-To verify that the data is in fact being written to Postgres, install pgAdmin and create a connection to the database using the Load Balancer's IP address. Once conneted, you should see the database and table. To retrieve records you can run a new query like this:
+To verify that the data is in fact being written to Postgres, use the Postgres client of your choice. The screenshots included in this guide are from pgAdmin with a connection to the database using the Load Balancer's IP address. 
+
+Once connected using the client of your choice, you can retrieve the records by running a query like this:
 
 `SELECT * FROM tblrecords`
 
-You should see records for each time that the /sql-add route is accessed. Below is a screenshot of what it should look like:
+You should see records for each time that the /sql-add route is accessed. Below is a screenshot of what it looks like pgAdmin:
 
 ![pgAdmin](/images/guides/kots/ha-cluster-pg-admin.png)
 
