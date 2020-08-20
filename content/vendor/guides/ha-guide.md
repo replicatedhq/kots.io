@@ -292,16 +292,23 @@ You should see records for each time that the /sql-add route is accessed. Below 
 
 ### Adding Remaining Nodes to Cluster
 
-Under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node. 
+To add the remaining nodes to the clusters, follow these steps:
 
+#### Get the Command to Join the Cluster
+
+Under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node. 
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-cluster-mgmt.png)
 
-To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Master nodes. For our exercise we will add Master nodes to give us a proper HA cluster.
+To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Master nodes. For our exercise we will add Master nodes to give us a proper HA cluster, so we will copy that command.
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-add-node-cmd.png)
 
-Copy the command and then ssh into nodes 02 & 03 and paste the command and hit enter. This should run a process similar to the initial install of the cluster and will take a few minutes. Once it is finished you should see something similar to the output below:
+#### SSH into the Nodes & Run the Command
+
+SSH into both nodes and run the commands by pasting it into the terminals.
+
+This should run a process similar to the initial install of the cluster and will take a few minutes. Once it is finished you should see something similar to the output below:
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-node-joined.png)
 
