@@ -318,7 +318,7 @@ The output should show that other than the default namespace, there are pods run
 
 # Part II: Testing Scenarions & Troubleshooting
 
-There are various testing scenarios for an HA Cluster. For starters we are focusing on data retention/loss scenario. The sample application is already configured to write to the embedded Postgres StatefulSet.
+There are various testing scenarios for an HA Cluster. For starters we are focusing on the data retention/loss scenario. The sample application is already configured to write to the embedded Postgres StatefulSet.
 
 ## Pre-Requisites
 
