@@ -247,7 +247,7 @@ Next, we are going to log in to Kots Admin to complete the install and deploy th
 
 ![Log-In](/images/guides/kots/ha-cluster-log-in.png)
 
-Log in to the Aplication Administration Console using the address and password from the install. Once you have logged in using the provided password, you will need to provide a license. The license is generated in the Vendor Portal and this guide assumes you already know how to do this. There are no options that need to be enabled or turned on in order to support an HA cluster, so if you already have a devlopment license, it should work for this exercise.
+Log in to the Aplication Administration Console using the address and password from the install. Once you have logged in using the provided password, you will need to provide a license. The license is generated in the Vendor Portal and this guide assumes you already know how to do this. There are no options that need to be enabled or turned on in order to support an HA cluster, so if you already have a development license, it should work for this exercise.
 
 ![Add-License](/images/guides/kots/ha-cluster-add-license.png)
 
