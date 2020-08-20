@@ -49,7 +49,7 @@ A full description of the application is available in the repository.
 
 ### Configuring Ekco
 
-If you want to follow this example, but with your own application, you may need to modify the Kubernetes Installer to use [ekco](https://kurl.sh/docs/add-ons/ekco). Ekco is basically a helper service that helps 'move' scheduled pods from a node that is down to ones that are up.
+If you want to follow this example, but with your own application, you may need to modify the Kubernetes Installer to use [ekco](https://kurl.sh/docs/add-ons/ekco). For the purposes of this guide, EKCO can be thought of as a helper service that helps 'move' scheduled pods from a node that is down to ones that are up.
 
 In your Kubernetes installer, add the following under spec:
 
