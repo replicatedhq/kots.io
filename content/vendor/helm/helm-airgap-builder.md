@@ -9,7 +9,7 @@ For all Replicated Business & Enterprise Plans, Replicated Vendor Portal automat
 
 To solve this problem, the KOTS [HelmChart custom resource](/reference/v1beta1/helmchart/) contains a `builder` attribute for vendors to provide values that will `helm template` to the full manifest.
 
-The values passed in `builder` should be the bare minimum [Helm Values](https://helm.sh/docs/chart_template_guide/values_files/) to be able to template out the Helm chart so that it will have the correct image tags. Upon promotion to a release channel, on the back-end Airgapped Builder will, template the chart with the builder values, render the resulting YAML manifests and export any images referenced to build the airgap package. 
+The values passed in `builder` should be the bare minimum [Helm Values](https://helm.sh/docs/chart_template_guide/values_files/) to be able to template out the Helm chart so that it will have the correct image tags. Upon promotion to a release channel, on the back-end Airgap Builder will, template the chart with the builder values, render the resulting YAML manifests and export any images referenced to build the airgap package. 
 
 ## Builder Attribute
 ```yaml
