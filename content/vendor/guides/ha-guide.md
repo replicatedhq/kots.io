@@ -386,21 +386,23 @@ This appeared to be more of an OS issue, so I deleted this pod. When the new one
 
 ### Postgres unable to mount to data directory
 
-In some occassions when you shut down the node that Postgres is running on, you may run into a situation where the new pod that gets scheduled on one of the remaining nodes is not able to come up due to volume mount issues. Running `kubectl describe` on the Postgres pod may show an error like the following:
+On one occassions when I shut down the node that Postgres was running on, the new pod that that got scheduled on one of the remaining nodes was not able to come up due to volume mount issues. I ran `kubectl describe` on the Postgres pod and saw the following error:
 
 ![PostgresDesribe](/images/guides/kots/ha-cluster-postgres-describe.png)
 
-The first thing to check is to ensure you have followed the [configuring ekco] section. Ekco helps with ensuring that any resources that were running on the stopped node are properly deleted and moved to a different node. Without ekco, the claim on the PVC associated to the Postgres pod that was running on the stopped node sometimes doesn't get properly cleared and when the new pod gets scheduled on another node, it is not able to lay a claim to the volume.
+It turned out that I did not have my EKCO configuration set up correctly. To resolve the issue, I updated my Kubernetes installer as described in the [configuring ekco](#configuring-ekco) section. 
 
 ### Other Persistent Data Issues
 
-The default configuration of the Kurl installer includes the [rook add-on](https://kurl.sh/docs/add-ons/rook), which creates and manages a [Ceph cluster](https://docs.ceph.com/docs/master/rados/) along with a storage class for provisioning Persistent Volume Claims (PVCs). If you are running into other issues with persistent storage, following are some helpful commands to check the health of ceph in your cluster. Keep in mind that the screenshots below show a `healthy` cluster that has all nodes up and running. 
+The default configuration of the Kurl installer includes the [rook add-on](https://kurl.sh/docs/add-ons/rook), which creates and manages a [Ceph cluster](https://docs.ceph.com/docs/master/rados/) along with a storage class for provisioning Persistent Volume Claims (PVCs). If you are running into other issues with persistent storage, following are some commands that were helpful when I ran into the issues mentioned above. 
+
+These commands check the health of ceph in your cluster. Keep in mind that the screenshots below show a `healthy` cluster that has all nodes up and running. 
 
 All related pods are runnning in the rook-ceph namespace, and a are good place to start to troubleshoot any issues. By running `kubectl get pods -n rook-ceph` you should get an output similar to the one below:
 
 ![PostgresDesribe](/images/guides/kots/ha-cluster-rook-ceph-pods.png)
 
-One thing to note here is that you will see pods running on all three nodes. Orchestrating all of the data accross all nodes is the `rook-ceph-operator-...` pod. To troubleshoot issues, we'll need to exec into this pod in order to run some commands. For example, to exec into the pod on the screenshot above, I would run `kubectl exec -it rook-ceph-operator-6fbfdccc57-p477z`. As you exec into the pod, you may see a few errors but you can igonre them.
+One thing to note here is that you will see pods running on all three nodes. Orchestrating all of the data accross all nodes is the `rook-ceph-operator-...` pod. To troubleshoot issues, we'll need to exec into this pod in order to run some commands. For example, to exec into the pod on the screenshot above, I would run `kubectl exec -it rook-ceph-operator-6fbfdccc57-p477z`. 
 
 The check the status of ceph, run `ceph status`:
 
@@ -422,4 +424,4 @@ The guide covers a basic 3 node HA cluster. However, there are other layers of c
 
 - Add worker nodes to the cluster and run the same tests.
 - Set up https access 
-- Setting up Postgres in HA mode and compare down time against a single Postgres deployment.
+- Set up Postgres in HA mode and compare down time against a single Postgres deployment.
