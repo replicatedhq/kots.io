@@ -23,7 +23,7 @@ The guide is broken into two parts. The [first part](#part-i---setting-up-the-cl
 There are a few things to keep in mind about this guide:
 
 - All VMs are going to be created in Google Cloud Platform (GCP) but nothing in this guide is dependent on GCP specific services. 
-- The Load Balancer we'll use for this exercise is HA Proxy. 
+- The Load Balancer we'll use for this exercise is [HAProxy](http://www.haproxy.org/). 
 - The sample application has a database component as described [here](#sample-application), which will help us validate data retention in of our testing scenarios.
 
 ## Prerequisites
@@ -76,11 +76,11 @@ To stand up the cluster, we will be following the these steps:
 
 ### Provisioning the (Virtual) Hardware
 
-For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HA Proxy. The remaining 3 VMs will be the 3 Master Nodes for our cluster. 
+For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HAProxy. The remaining 3 VMs will be the 3 Master Nodes for our cluster. 
 
-### Provisioning the HA Proxy VM
+### Provisioning the HAProxy VM
 
-For the VM that will host HA Proxy, a bare bones VM should suffice as we will only use it to route traffic. As an example, the command below creates a VM instance with enough juice to run HA Proxy, at least for testing purposes:
+For the VM that will host HAProxy, a bare bones VM should suffice as we will only use it to route traffic. As an example, the command below creates a VM instance with enough juice to run HAProxy, at least for testing purposes:
 
 ```shell
 gcloud compute instances create app-direct-ha-proxy  --boot-disk-size=10GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-1
@@ -88,7 +88,7 @@ gcloud compute instances create app-direct-ha-proxy  --boot-disk-size=10GB --lab
 
 In the command output, you should note the public and internal IP address. The public address of this VM is what we'll use to connect to both the Kots Admin Application console, the application's UI and pgAdmin. We'll use the interal IP address when we install KOTS in HA mode.
 
-If you'd like to explore HA Proxy requirements for heavier workloads, please check HA Proxy's [documentation](https://www.haproxy.com/documentation/hapee/2-0r1/installation/getting-started/os-hardware/)
+If you'd like to explore HAProxy requirements for heavier workloads, please check HAProxy's [documentation](https://www.haproxy.com/documentation/hapee/2-0r1/installation/getting-started/os-hardware/)
 
 
 ### Provisioning the cluster VMs
@@ -100,23 +100,23 @@ gcloud compute instances create app-direct-node-01 --boot-disk-size=200GB --labe
 ```
 To create the remaining nodes, simply run the same command but increment the node number (i.e., "app-direct-node-02").
 
-Also note the VMs public and private ip addresses as each VM is provisioned. We'll use the internal ip addresses in the HA Proxy to configure traffic accordingly.
+Also note the VMs public and private ip addresses as each VM is provisioned. We'll use the internal ip addresses in the HAProxy configuration in the next step.
 
 ### Setting Up & Configuring a Load Balancer
 
 The main purpose of the load balancer is to give us a single point of access. All end-user interactions (i.e., access the web UI of the deployed application) should go through the load balancer.
 
-For this guide, HA Proxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HA Proxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'. 
+For this guide, HAProxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HAProxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'. 
 
-Here are the high level steps we'll take to install & configure HA Proxy.
+Here are the high level steps we'll take to install & configure HAProxy.
 
 We will:
 
 - Create the config file in our home folder using our favorite editor.
-- Use SCP to copy the file in the VM running HA Proxy.
-- Install Ha Proxy.
+- Use SCP to copy the file in the VM running HAProxy.
+- Install HAProxy.
 - Copy the config file to the proper location.
-- Restart HA Proxy. 
+- Restart HAProxy. 
 
 Note that another way of accomplishing this is by connecting to the instance via SSH and creating the file and editing from the command line inside the VM.
 
@@ -190,7 +190,7 @@ backend kube-api-backend
 
 ```
 
-For more details on the structure of the config file, please refer to the HA Proxy [documentation](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
+For more details on the structure of the config file, please refer to the HAProxy [documentation](https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/)
 
 To copy the config file into the VM, we are going to use scp. The command below will copy it to your home folder on the VM.
 
@@ -198,7 +198,7 @@ To copy the config file into the VM, we are going to use scp. The command below 
 gcloud compute scp haproxy.cfg app-direct-ha-proxy:~/
 ```
 
-Now we install Ha Proxy using apt. 
+Now we install HAProxy using apt. 
 
 
 ```shell
@@ -213,7 +213,7 @@ sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.bak
 sudo mv ~/haproxy.cfg /etc/haproxy/haproxy.cfg
 ```
 
-Last step is to restart Ha Proxy
+Last step is to restart HAProxy
 
 ```shell
 sudo systemctl restart haproxy
