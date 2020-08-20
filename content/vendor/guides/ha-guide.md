@@ -335,24 +335,26 @@ There are various testing scenarios for an HA Cluster. For starters we are focus
 
 This section assumes you followed the above steps in order and are using the sample application. Since we are testing data retention, make sure to use the routes described in the [Verify the Deployment](#verify-the-deployment) section.
 
-To verify that data is not lost, use pgAdmin as described above. Simply run the query again, and should be presented with the same results. You should also have a separate terminal in which to run:
+To verify that data is not lost, you will need a postgres client. As mentioned already in thid guide, you can use the Postgres client of your choice. The screenshots in this guide are from pgAdmin. 
+
+To observe how the pods are scheduled as we conduct our test scenarions, ssh into Node 1 and run:
 
 ```shell
 watch -d 'kubectl get pods --all-namespaces -o wide'
 ```
 
-The above command will display all of the pods in the cluster and on which node they are running on. By using `watch -d` the output will automatically get refreshed so you can watch pod activity as you delete pods and node.
+By using `watch -d` the output will automatically get refreshed so you can watch pod activity as you delete pods and node.
 
 ## Deleting a Pod
 
-If you followed along with the steps and sample application, you should see that the Postres pod is running on Node 01. In this test, we are going to delete the Postgres pod. The expected result is that a new pod will be scheduled (possibly on another node) and all the data in the database will be retained and not lost.
+If you followed along with the steps and sample application, you should see that the Postgres pod is running on Node 1. In this test, we are going to delete the Postgres pod. The expected result is that a new pod will be scheduled (possibly on another node) and all the data in the database will be retained and not lost.
 
-To delete the Postgres pod deployed with the sample app, run the following command:
+To delete the Postgres pod deployed with the sample app, ssh into one of the Nodes, and run the following command:
 
 ```shell
 kubectl delete pod app-direct-postgresql-0
 ```
-This command will schedule a new pod and then terminate the existing one. Verify that the new pod is up and running and check that the data is still there by using pgAdmin. You can also use the various routes in the sample app to verify database connectivity from the app.
+This command will schedule a new pod and then terminate the existing one. You can verify this on the terminal where you ran the watch command. After the Postgres is back up and runing, verify that the data is there by either using the `/sql-check` route in the sample application or a Postgres client.
 
 ## Shutting Down a Node
 
@@ -362,14 +364,15 @@ The next command will test the stability of the cluster when a node is removed. 
 
 - As described in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/architecture/nodes/#condition), there is a default 5 minute timeout duration. This means that there will be 5 minutes between the time the node goes down and that Kubernetes will finally decide that the node is not coming back and will schedule pods on this node to another node.
 
-To simulate a node becoming unresponsive or simply crashed, you can simply stop the VM corresponding to the node. You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes. 
+To simulate a node becoming unresponsive or simply crashed, you can simply stop the VM corresponding to the node. The only caveat here is that you are not running the watch command on the node you are planning to take down. 
+
+You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes. 
 
 In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node.
 
-
 ## Troubleshooting
 
-While the above process has been tested several times and tested succesfully the retention of data, there were a couple of issues that you may run into and are documented below
+As you go through this exercise, you may run into some of the issues below:
 
 ### Postgres pod will not come up after deleting the pod
 
