@@ -382,7 +382,7 @@ The first thing to check is to ensure you have followed the [configuring ekco] s
 
 The default configuration of the Kurl installer includes the [rook add-on](https://kurl.sh/docs/add-ons/rook), which creates and manages a [Ceph cluster](https://docs.ceph.com/docs/master/rados/) along with a storage class for provisioning Persistent Volume Claims (PVCs). If you are running into other issues with persisitent storage, following are some helpul commands to check the health of ceph in your cluster. Keep in mind that the screenshots below show a `healthy` cluster that has all nodes up and running. 
 
-All related pods are runnning in the rook-ceph namespace, and a good place to start to troubleshoot any issues. By running `kubectl get pods -n rook-ceph` you should get an output similar to the one below:
+All related pods are runnning in the rook-ceph namespace, and a are good place to start to troubleshoot any issues. By running `kubectl get pods -n rook-ceph` you should get an output similar to the one below:
 
 ![PostgresDesribe](/images/guides/kots/ha-cluster-rook-ceph-pods.png)
 
