@@ -406,6 +406,6 @@ To get another look at the OSDs, run `ceph osd tree`
 
 The guide covers a basic 3 node HA cluster. However, there are other layers of complexity that could be added depending on your use case:
 
-- Add worker nodes to the cluster and run same tests.
+- Add worker nodes to the cluster and run the same tests.
 - Set up https access 
 - Setting up Postgres in HA mode and compare down time against a single Postgres deployment.
