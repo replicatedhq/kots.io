@@ -293,7 +293,7 @@ Under Cluster Management you can view the status of the embedded cluster. At thi
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-cluster-mgmt.png)
 
-To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Master nodes. For our exercise we will add Master nodes to give us a proper HA solution.
+To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Master nodes. For our exercise we will add Master nodes to give us a proper HA cluster.
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-add-node-cmd.png)
 
