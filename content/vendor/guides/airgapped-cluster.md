@@ -5,7 +5,7 @@ title: "Airgapped Cluster"
 weight: "1006"
 ---
 
-The KOTS Airgapped Cluster is an advanced guide that shows how to install a KOTS app in an Airgapped environment. This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) to set up a non-airgapped cluster.
+The KOTS Airgapped Cluster guide is an advanced guide that shows how to install a KOTS app in an Airgapped environment. This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) to set up a non-airgapped cluster.
 
 It is broken into a few sections:
 

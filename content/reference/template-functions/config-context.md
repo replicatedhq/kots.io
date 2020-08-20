@@ -18,29 +18,50 @@ The config screen and associated options are described [here](/reference/v1beta1
 '{{repl ConfigOption "hostname" }}'
 ```
 
+`ConfigOption` returns the base64 **encoded** value of the `file` config option.
+
+```yaml
+'{{repl ConfigOption "ssl_key"}}'
+```
+
+To use files in a Secret, use `ConfigOption`:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tls-secret
+type: kubernetes.io/tls
+data:
+  tls.crt: '{{repl ConfigOption "tls_certificate_file" }}'
+  tls.key: '{{repl ConfigOption "tls_private_key_file" }}'
+```
+
+Learn more about [using TLS certs](/vendor/packaging/using-tls-certs) in KOTS.
+
 ## ConfigOptionData
 
 ```go
 func ConfigOptionData(fileName string) string
 ```
 
-Returns the base64 decoded value of a config option.
+`ConfigOptionData` returns the base64 **decoded** value of the `file` config option.
 
 ```yaml
 '{{repl ConfigOptionData "ssl_key"}}'
 ```
 
-This is often used to provide files as part of a secret or configmap, like this:
-
+To use files in a ConfigMap, use `ConfigOptionData`:
 ```yaml
 apiVersion: v1
-kind: Secret
+kind: ConfigMap
 metadata:
-  name: my-tls-secret
-type: kubernetes.io/tls
+  name: tls-config
 data:
-  tls.crt: '{{repl ConfigOptionData "tls_certificate_file" | Base64Encode }}'
-  tls.key: '{{repl ConfigOptionData "tls_private_key_file" | Base64Encode }}'
+  tls.crt: |
+    {{repl ConfigOptionData "tls_certificate_file" | nindent 4 }}
+
+  tls.key: |
+    {{repl ConfigOptionData "tls_private_key_file" | nindent 4 }}
 ```
 
 ## ConfigOptionEquals

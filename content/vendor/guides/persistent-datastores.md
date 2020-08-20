@@ -74,9 +74,9 @@ spec:
               value: postgres
 ```
 
-This app simply connects to the database every 20 seconds and rights the server timestamp to it's container stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes.
+This app simply connects to the database every 20 seconds and writes the server timestamp to stdout. Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. Later, you can change these environment variable names to whatever format your application consumes.
 
-For now we'll hard code the variable values, in the next sections we'll wire these up to the user-provided configuration.
+For now we'll hard code the DB variable values, in the next sections we'll wire these up to the user-provided configuration.
 
 
 ### Deploying the example application

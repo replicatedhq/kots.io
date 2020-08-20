@@ -35,6 +35,10 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--rootdir` |  string  |  root directory that will be used to write the yaml to _(default `"/path/"`)_ |
 | `--set`  | strings  |  values to pass to helm when running helm template |
 | `--shared-password` | string  | shared password to use when deploying the admin console |
+| `--http-proxy` | string | sets HTTP_PROXY environment variable in all KOTS Admin Console components |
+| `--https-proxy` | string | sets HTTPS_PROXY environment variable in all KOTS Admin Console components |
+| `--no-proxy` | string | sets NO_PROXY environment variable in all KOTS Admin Console components |
+| `--copy-proxy-env` | bool | copy proxy environment variables from current environment into all KOTS Admin Console components |
 
 ### Example
 ```bash

@@ -150,7 +150,6 @@ Returns a random string with the desired length and charset.
 Provided charsets must be Perl formatted and match individual characters.
 If no charset is provided, `[_A-Za-z0-9]` will be used.
 
-Each time that this function is called, it will return a different value.
 ```yaml
 '{{repl RandomString 64}}'
 ```
@@ -158,6 +157,13 @@ Or for a total of 64 `a`s and `b`s:
 ```yaml
 '{{repl RandomString 64 "[ab]" }}'
 ```
+
+Each time that this function is called, the behavior changes based on the [hidden](/reference/v1beta1/config/#hidden) and [readonly](/reference/v1beta1/config/#readonly) properties.
+
+- To generate a `RandomString` value that is **persistent** between Config changes, use it in conjunction with `hidden` property set to `true`. The `value` is not shown in HTML, hence it cannot be modified.
+- To generate a `RandomString` value that is **ephemeral** between Config changes, use it in conjunction with `readonly` property set to `true`. The `value` is shown in HTML but the it cannot be modified.
+- If `hidden` and `readonly` are not set or set to `false`, the `value` is **persistent** between Config changes but it can also be modified in HTML.
+- If both `hidden` and `readonly` are set to `true`, the `value` is not shown in HTML but it is **ephemeral** between Config changes and not modifiable.
 
 ## Add
 ```go
@@ -270,6 +276,37 @@ func TLSKey(certName string, cn string, ips []interface{}, alternateDNS []interf
 TLSKey returns the key that matches the certificate identified by `certName`.  The rest of the arguments are the same as in `TLSCert` and, if specified, must have the same values.  If they are omitted and the certificate with this name does not exist, the function will return an empty string.
 ```yaml
 repl{{ TLSKey "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
+## TLSCACert
+```go
+func TLSCACert(caName string, daysValid int) string
+```
+TLSCACert generates and returns a CA certificate that can be used as a CA to sign other certificates.
+
+TLSCACert takes the following parameters
+- Subject’s common name (cn)
+- Cert validity duration in days
+```yaml
+repl{{ TLSCACert "foo.com" 365 }}
+```
+
+## TLSCertFromCA
+```go
+func TLSCertFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSCertFromCA generates and returns a certificate signed by the CA identified by `caName`.  The rest of the arguments are the same as in `TLSCert`.
+```yaml
+repl{{ TLSCertFromCA "foo.com" "my_custom_cert" "bar.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
+```
+
+## TLSKeyFromCA
+```go
+func TLSKeyFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
+```
+TLSKeyFromCA generates and returns a key that matches the certificate returned by `TLSCertFromCA`.  The arguments are the same as in `TLSCertFromCA` and their values must match.
+```yaml
+repl{{ TLSKeyFromCA "foo.com" "my_custom_cert" "bar.com" (list "10.0.0.1" "10.0.0.2") (list "bar.com" "bat.com") 365 }}
 ```
 
 ## IsKurl

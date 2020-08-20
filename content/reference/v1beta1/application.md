@@ -28,6 +28,7 @@ spec:
   allowRollback: false
   kubectlVersion: latest
   kustomizeVersion: latest
+  requireMinimalRBACPrivileges: false
   additionalImages:
     - jenkins/jenkins:lts
   additionalNamespaces:
@@ -70,6 +71,9 @@ Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and
 This defaults to `latest`, but can be changed to `2.0.3` or `3.5.4` to use a specific version of kustomize to render your app's yaml.
 Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
 
+## requireMinimalRBACPrivileges
+When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding. For more information, see the [RBAC](/vendor/packaging/rbac) documentation.
+
 ## ports
 These are extra ports (additional to the :8800 admin console port) that should be port-forwarded when running the `kots admin-console` command.
 
@@ -87,6 +91,13 @@ This should match a service found in the `k8s.io` Application spec.
 
 ## statusInformers
 Resources to watch and report application status back to the user. In the format `[namespace/]type/name` where namespace is optional.
+Entries support template functions. For example, a specific status informer can be excluded based on an application config value like so:
+
+```yaml
+statusInformers:
+    - deployment/my-web-svc
+    - '{{repl if ConfigOptionEquals "option" "value"}}deployment/my-worker{{repl else}}{{repl end}}'
+```
 
 ## graphs
 Custom graphs to include on your Admin Console application dashboard.

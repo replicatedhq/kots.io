@@ -42,9 +42,11 @@ The KOTS CI/CD Integration guide is an advanced workflow that allows you to use 
 
 This guide is intended as a lightweight checklist to ensure you have explored all the features of KOTS and integrated the ones that will help ensure your end users are most likely to be successful deploying and running your KOTS application
 
+
 ###### [Deploy an HA Cluster](/vendor/guides/ha-cluster)
 
 This guide is intented to guide the reader in setting up a basic 3 master node Kubernetes cluster in an [Embedded Cluster](/vendor/guides/quickstart) scenario for learning and testing purposes.
+
 
 <!-- Coming Soon!
 
@@ -58,8 +60,19 @@ In this guide, we'll explore how you can leverage the wealth of software bundled
 
 ###### [Manage Customer Entitlements](/vendor/guides/entitlements)
 
+-->
+
+
 ## Advanced
 
+#### [Airgapped Existing Cluster](/vendor/guides/airgapped-existing-cluster)
+
+This guide covers an end-to-end example of deploying to an airgapped existing cluster with KOTS.
+It walks through all the steps to create an airgapped environment in GCP, including the Kubernetes cluster setup, Docker Registry configuration, local workstation setup, and a jump box / bastion for accessing the airgapped instances.
+Our goal will be to mimick an end-customers "existing cluster" setup.
+Once set up, we walk through the steps for validating the environment is airgapped and the steps to perform a KOTS installation to the "existing cluster" environment.
+
+<!-- Coming Soon!
 ###### [Runtime License Validation](/vendor/guides/runtime-license-validation)
 
 #### [Advanced Embedded Cluster Usage](/vendor/guides/advanced-embedded-cluster)
@@ -69,7 +82,6 @@ In this guide, we'll explore how you can leverage the wealth of software bundled
 - manging YAML in git repo
 - preflight checks for embedded components when running in existing cluster (e.g. storageclass)
 
-#### [Airgapped Existing Cluster](/vendor/guides/operator-airgap)
 
 #### [Deploy an Operator to an airgapped cluster](/vendor/guides/operator-airgap)
 

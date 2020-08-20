@@ -6,7 +6,7 @@
 
 [[redirects]]
   from = "/kotsadm/snapshots/troubleshooting/"
-  to = "https://velero.io/docs/master/troubleshooting/"
+  to = "https://velero.io/docs/main/troubleshooting/"
   status = 301
   force = true
 
@@ -18,7 +18,7 @@
 
 [[redirects]]
   from = "/kotsadm/snapshots/restic-troubleshooting/"
-  to = "https://velero.io/docs/master/restic/#troubleshooting"
+  to = "https://velero.io/docs/main/restic/#troubleshooting"
   status = 301
   force = true
 
@@ -31,5 +31,11 @@
   [[redirects]]
   from = "/kotsadm/snapshots/basic-install/"
   to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/helm/helm-v3/"
+  to = "/vendor/helm/helm-processing/"
   status = 301
   force = true
