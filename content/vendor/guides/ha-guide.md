@@ -22,9 +22,9 @@ The guide is broken into two parts. The [first part](#part-i---setting-up-the-cl
 
 There are a few things to keep in mind about this guide:
 
-- All VMs are going to be created in Google Cloud Platform (GCP) but nothing in this guide is dependent on GCP specific services. 
+- While the VMs are going to be created in Google Cloud Platform (GCP), nothing in this guide is dependent on GCP specific services. 
 - The Load Balancer we'll use for this exercise is [HAProxy](http://www.haproxy.org/). 
-- The sample application has a database component as described [here](#sample-application), which will help us validate data retention in of our testing scenarios.
+- The sample application has a database component as described [here](#sample-application), which will help us validate data retention in our testing scenarios.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ There are a few things to keep in mind about this guide:
 
 - In the example commands and screenshots, we are using a sample application called 'AppDirect'. Please refer to the [Sample Application](#sample-application) section for more details if you wish to follow along and use it.
 
-- This is an advanced topic, so this guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started), and have already a level of familiarity with the Replicated tool set.
+- This is an advanced topic, so this guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started), and have already a level of familiarity with Replicated.
 
 
 ### Sample Application
@@ -61,15 +61,15 @@ To add EKCO to your Kubernetes installer, follow the steps below. If you are not
         version: latest
         nodeUnreachableToleration: 1m
    ```
-2. Promote the installer to same the channel(s) where you have promoted your application's releases.
+2. Promote the installer to same channel(s) where you have promoted your application's releases.
 
 ## Part I - Setting Up the Cluster
 
-To stand up the cluster, we will be following the these steps:
+To stand up the cluster, we will be following these steps:
 
 - [Procuring the (virtual) hardware](#provisioning-the-virtual-hardware)
 - [Setting up and configuring a Load Balancer](#setting-up--configuring-a-load-balancer)
-- [Run the Kots installer on the first node and deploy the application](#run-the-kots-installer--deploy-application)
+- [Run the KOTS installer on the first node and deploy the application](#run-the-kots-installer--deploy-application)
 - [Verify the Deployment](#verify-the-deployment)
 - [Add Remaining Nodes to the Cluster](#adding-remaining-nodes-to-cluster)
 - [Verify Pods Are Running on All Nodes](#verify-pods-are-running-on-all-nodes)
@@ -86,14 +86,14 @@ For the VM that will host HAProxy, a bare bones VM should suffice as we will onl
 gcloud compute instances create app-direct-ha-proxy  --boot-disk-size=10GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-1
 ```
 
-In the command output, you should note the public and internal IP address. The public address of this VM is what we'll use to connect to both the Kots Admin Application console, the application's UI and pgAdmin. We'll use the interal IP address when we install KOTS in HA mode.
+In the command output, you should note the public and internal IP address. The public address of this VM is what we'll use to connect to both the KOTS Admin Console, the application's UI and a Postgres client of your choice. We'll also use the interal IP address when we install KOTS in HA mode.
 
-If you'd like to explore HAProxy requirements for heavier workloads, please check HAProxy's [documentation](https://www.haproxy.com/documentation/hapee/2-0r1/installation/getting-started/os-hardware/)
+If you'd like to explore HAProxy requirements for heavier workloads, please check out HAProxy's [documentation](https://www.haproxy.com/documentation/hapee/2-0r1/installation/getting-started/os-hardware/)
 
 
 ### Provisioning the cluster VMs
 
-Like with the HAProxy VM, keep the [kots System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements) in mind when provisioning the VMs that will form the cluster. The command below creates a VM that meets those requirements, at least for testing purposes.
+Like with the HAProxy VM, keep the [KOTS System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements) in mind when provisioning the VMs that will form the cluster. The command below creates a VM that meets those requirements, at least for testing purposes.
 
 ```shell
 gcloud compute instances create app-direct-node-01 --boot-disk-size=200GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-4
@@ -122,9 +122,9 @@ Note that another way of accomplishing this is by connecting to the instance via
 
 To create the config file, use the editor of your choice and call it 'haproxy.cfg'. For the purposes of this exercise, we'll create the file in our home folder. Below is an example config file for the sample application. Keep in mind the following when creating your file:
 
-- Replace any IP addresses with the internal IP addresses of your VMs. 
+- Replace any IP addresses with the internal IP addresses of your VMs.
 - If you used a different naming convention for your instance names, you will need to replace 'app-direct-node-0(123)' with your instance names.
-- There are two entries specific to the Application, one for each component (app-direct-frontend/backend & postgres frontend/backend). If you are using a different application, adjust based on the endpoints you want to access through the load balancer. The remaining entries are for the KOTs UI and API and should be left as-is other than the instance names and ip addresses.
+- There are two entries specific to the Application, one for each component (app-direct-frontend/backend & postgres frontend/backend). If you are using a different application, adjust based on the endpoints you want to access through the load balancer. The remaining entries are for the KOTS Admin Console and the Kubernetes API and should be left as-is other than the instance names and ip addresses.
 
 ```shell
 global
@@ -223,9 +223,9 @@ To validate the install, browse to http://<public-ip-of-vm>:8080. Below is a scr
 
 ![haproxy](/images/guides/kots/ha-cluster-ha-proxy.png)
 
-### Run the Kots Installer & Deploy Application
+### Run the KOTS Installer & Deploy Application
 
-The next step is to install Kots on the first node, in our case, app-direct-node-01. It's important to note that in reality, you could run the installer on any of the three nodes.
+The next step is to install KOTS on the first node, in our case, app-direct-node-01. It's important to note that in reality, you could run the installer on any of the three nodes.
 
 To run the installer, ssh into the node and run the 'one line installer'. You can get this command from the Vendor portal as shown below.
 
@@ -239,17 +239,17 @@ curl -sSL https://k8s.kurl.sh/appdirect-unstable | sudo bash -s ha
 
 When you include the '-s ha' option, you will be prompted right away for the load balancer address. As shown in the figure below, we are providing the 'internal' IP address. This address is used by the Kubernetes services in the nodes to talk to each other. Using a public IP address would add extra layers that are not needed. 
 
-This process will take several minutes as it will install a Kubernetes 'stack' that will include the add-ons defined in the Kubernetes Installer, including Kots. Once it is finished, you should see something similar as shown below:
+This process will take several minutes as it will install a Kubernetes 'stack' that will include the add-ons defined in the Kubernetes Installer, including KOTS. Once it is finished, you should see something similar as shown below:
 
 ![Output](/images/guides/kots/ha-cluster-install-output.png)
 
-Highlighted in red in the screenshot above are the Kots Admin URL and password to login. Also highlighted are the commands to run on other nodes to join the cluster. In this exercise we are not going to run these commands yet and instead continue deploying the application. The commands to join the cluster are also available in the Kots Admin UI, which we will cover later in this guide.
+Highlighted in red in the screenshot above are the URL and password to login to the Admin Console. Also highlighted are the commands to run on other nodes to join the cluster. In this exercise we are not going to run these commands yet and instead continue deploying the application. The commands to join the cluster are also available in the Admin Console, which we will cover later in this guide.
 
-Next, we are going to log in to Kots Admin to complete the install and deploy the application. Since this guide assumes you have a level of familiarity with Kots, we are not going to go into detail on every step to get the application deployed.
+Next, we are going to log in to th Admin Console to complete the install and deploy the application. Since this guide assumes you have a level of familiarity with Kots, we are not going to go into detail on every step to get the application deployed.
 
 ![Log-In](/images/guides/kots/ha-cluster-log-in.png)
 
-Log in to the Aplication Administration Console using the address and password from the install. Once you have logged in using the provided password, you will need to provide a license. The license is generated in the Vendor Portal and this guide assumes you already know how to do this. There are no options that need to be enabled or turned on in order to support an HA cluster, so if you already have a development license, it should work for this exercise.
+Log in to the Admin Console using the address and password from the install. Once you have logged in using the provided password, you will need to provide a license. The license is generated in the Vendor Portal and this guide assumes you already know how to do this. There are no options that need to be enabled or turned on in order to support an HA cluster, so if you already have a development license, it should work for this exercise.
 
 ![Add-License](/images/guides/kots/ha-cluster-add-license.png)
 
@@ -278,7 +278,7 @@ The output will show you all the pods running on all namespaces. The output also
 
 ![AllPods](/images/guides/kots/ha-cluster-all-pods-one-node.png)
 
-If you are following along, you should be able to access the application by browsing to http://<ip-address-of-ha-proxy>. The sample app uses flask 'routes' to call various methods to interact with Postgres. To test if it can write to the database, use the  `/sql-check`   route which will check connection to the default database and list the databases that are available to the 'postgres' user. To write to the database, first use the `/sql-create` route which creates a database (appdiretdb) with a table (tblrecords) in it. Finally, use the `/sql-add` route to add a row the table with the timestamp. Once the database and table are created, simply use this route to add more records to the database.
+If you are following along, you should be able to access the application by browsing to http://<ip-address-of-ha-proxy>. The sample app uses flask 'routes' to call various methods to interact with Postgres. To test if it can write to the database, use the  `/sql-check`   route which will check the connection to the default database and list the databases that are available to the 'postgres' user. To write to the database, first use the `/sql-create` route which creates a database (appdirectdb) with a table (tblrecords) in it. Finally, use the `/sql-add` route to add a row to the table with the timestamp. Once the database and table are created, simply use this route to add more records to the database.
 
 To verify that the data is in fact being written to Postgres, use the Postgres client of your choice. The screenshots included in this guide are from pgAdmin with a connection to the database using the Load Balancer's IP address. 
 
@@ -286,7 +286,7 @@ Once connected using the client of your choice, you can retrieve the records by 
 
 `SELECT * FROM tblrecords`
 
-You should see records for each time that the /sql-add route is accessed. Below is a screenshot of what it looks like pgAdmin:
+You should see records for each time that the /sql-add route is accessed. Below is a screenshot of what it looks like in pgAdmin:
 
 ![pgAdmin](/images/guides/kots/ha-cluster-pg-admin.png)
 
@@ -296,17 +296,17 @@ To add the remaining nodes to the clusters, follow these steps:
 
 #### Get the Command to Join the Cluster
 
-Under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node. 
+In the Admin Console, under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node. 
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-cluster-mgmt.png)
 
-To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Primary nodes. For our exercise we will add Primary nodes to give us a proper HA cluster, so we will copy that command.
+To get the command to run on the other nodes, click on the 'Add Node' button. This will display the command to use for Primary and Secondary nodes. For our exercise we will add Primary nodes to give us a proper HA cluster.
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-add-node-cmd.png)
 
 #### SSH into the Nodes & Run the Command
 
-SSH into both nodes and run the commands by pasting it into the terminals.
+SSH into both nodes and run the commands by pasting it into the terminal.
 
 This should run a process similar to the initial install of the cluster and will take a few minutes. Once it is finished you should see something similar to the output below:
 
@@ -358,9 +358,9 @@ This command will schedule a new pod and then terminate the existing one. You ca
 
 ## Shutting Down a Node
 
-The next command will test the stability of the cluster when a node is removed. There are a few things you need to keep in mind:
+There are a few things you need to keep in mind:
 
-- The Postgres instance in this application, and the application itself are not configured or set up for High Availability. This test is meant to show the resiliancy capabilities of the Kubernetes embedded cluster installed by KURL and configured through Kots.
+- The Postgres instance in this application, and the application itself are not configured or set up for High Availability. This test is meant to show the resiliancy capabilities of the Kubernetes embedded cluster installed by KURL and configured through KOTS.
 
 - As described in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/architecture/nodes/#condition), there is a default 5 minute timeout duration. This means that there will be 5 minutes between the time the node goes down and that Kubernetes will finally decide that the node is not coming back and will schedule pods on this node to another node.
 
@@ -368,7 +368,7 @@ To simulate a node becoming unresponsive or simply crashed, you can simply stop 
 
 You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes. 
 
-In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node.
+In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node. 
 
 ## Troubleshooting
 
