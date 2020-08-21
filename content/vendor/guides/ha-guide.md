@@ -42,13 +42,13 @@ The KOTS application we'll use in this guide is available in the [kotsapps repos
 The application consists of two components:
 
 - Python Flask App Deployment - This flask application contains 'routes' to help test connecting, reading and writing to a database. 
-- Postgres StatefulSet - This is the database the for the flask application.
+- Postgres StatefulSet - This is the database for the flask application.
 
 A full description of the application is available in the repository.
 
 ### Configuring Ekco
 
-If you want to follow this example, but with your own application, you may need to modify the Kubernetes Installer to use [ekco](https://kurl.sh/docs/add-ons/ekco). For the purposes of this guide, EKCO can be thought of as a helper service that helps 'move' scheduled pods from a node that is down to ones that are up.
+If you want to follow this example, but with your own application, you may need to modify the Kubernetes Installer to use [EKCO](https://kurl.sh/docs/add-ons/ekco). For the purposes of this guide, EKCO can be thought of as a helper service that helps 'move' scheduled pods from a node that is down to ones that are up.
 
 To add EKCO to your Kubernetes installer, follow the steps below. If you are not familiar with the Kubernetes installer, review [this blog](https://blog.replicated.com/kurl-with-replicated-kots/) first to get familiar with the process.
 
@@ -76,7 +76,7 @@ To stand up the cluster, we will be following the these steps:
 
 ### Provisioning the (Virtual) Hardware
 
-For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HAProxy. The remaining 3 VMs will be the 3 Master Nodes for our cluster. 
+For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HAProxy. The remaining 3 VMs will be the 3 Primary Nodes for our cluster. 
 
 ### Provisioning the HAProxy VM
 
@@ -93,7 +93,7 @@ If you'd like to explore HAProxy requirements for heavier workloads, please chec
 
 ### Provisioning the cluster VMs
 
-Like with the HA Proy VM, keep the [kots System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements) in mind when provisioning the VMs that will form the cluster. The command below creates a VM that meets those requirements, at least for testing purposes.
+Like with the HAProxy VM, keep the [kots System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements) in mind when provisioning the VMs that will form the cluster. The command below creates a VM that meets those requirements, at least for testing purposes.
 
 ```shell
 gcloud compute instances create app-direct-node-01 --boot-disk-size=200GB --labels=app=app-direct --image-project ubuntu-os-cloud --image-family ubuntu-1804-lts --machine-type n1-standard-4
@@ -256,7 +256,7 @@ Log in to the Aplication Administration Console using the address and password f
 Once you upload your license it may take a few minutes to load and continue with the deployment.
 
 
-![License-Load](/images/guides/kots/ha-cluster-license-load.png =250x250)
+![License-Load](/images/guides/kots/ha-cluster-license-load.png)
 
 Once the license is loaded, the next window will depend on the application being deployed as this window renders whatever has been codified in the application's [Config.yaml](https://kots.io/reference/v1beta1/config/).
 
@@ -300,7 +300,7 @@ Under Cluster Management you can view the status of the embedded cluster. At thi
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-cluster-mgmt.png)
 
-To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Master nodes. For our exercise we will add Master nodes to give us a proper HA cluster, so we will copy that command.
+To get the commands to run on the other nodes, click on the 'Add Node' button. From here you can retrieve the command to use on Worker and Primary nodes. For our exercise we will add Primary nodes to give us a proper HA cluster, so we will copy that command.
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-add-node-cmd.png)
 
