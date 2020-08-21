@@ -7,7 +7,8 @@ description: "The Backup resource defines the steps to create and restore snapsh
 weight: 7
 ---
 
-A Backup resource in an application causes the Admin Console to enable [snapshots](/vendor/snapshots/overview/) for the application. This resource is [fully documented](https://velero.io/docs/v1.3.2/api-types/backup/) on velero.io.
+A Backup resource in an application causes the Admin Console to enable [snapshots](/vendor/snapshots/overview/) for the application. 
+This resource is [fully documented](https://velero.io/docs/v1.3.2/api-types/backup/) on velero.io.
 
 This resource supports the [KOTS optional resources](/vendor/packaging/optional-resources/) annotations.
 

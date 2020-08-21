@@ -11,7 +11,9 @@ All template functions are documented in the [template function reference](/refe
 
 ## Using Template Functions
 
-To use a template function, include it as a string in the application. A simple example is using a boolean [custom entitlement field](/vendor/entitlements/custom-entitlements/) to deliver a value for Max Concurrent Users. This value should be available as an environment variable in a pod.
+To use a template function, include it as a string in the application. 
+A simple example is using a boolean [custom entitlement field](/vendor/entitlements/custom-entitlements/) to deliver a value for Max Concurrent Users. 
+This value should be available as an environment variable in a pod.
 
 Given the custom license field named `max_concurrent_users`, this value can be supplied to the pod environment variable like this:
 
@@ -36,9 +38,11 @@ spec:
 
 ### A note on `{{repl` vs `repl{{`
 
-The template function syntax supports delimiters of either `{{repl ...}}` or `repl{{ ... }}`. These are functionally equivalent and both are supported by the KOTS runtime.
+The template function syntax supports delimiters of either `{{repl ...}}` or `repl{{ ... }}`. 
+These are functionally equivalent and both are supported by the KOTS runtime.
 
-However, `{{` is not a valid string beginning in YAML, so to use `{{repl` as the only part of a value, it's required that the YAML attribute be surrounded by quotes. For example:
+However, `{{` is not a valid string beginning in YAML, so to use `{{repl` as the only part of a value, it's required that the YAML attribute be surrounded by quotes. 
+For example:
 
 ```yaml
 env:
@@ -46,7 +50,8 @@ env:
     value: '{{repl LicenseFieldValue "max_concurrent_users"}}'
 ```
 
-This solution is readable and works well for string values. The surrounding `'` characters allow this to be parsed and will render as:
+This solution is readable and works well for string values. 
+The surrounding `'` characters allow this to be parsed and will render as:
 
 ```yaml
 env:
@@ -54,7 +59,8 @@ env:
     value: '100'
 ```
 
-But some Kubernetes API fields require integer values, not strings. For example, replica count. **The following YAML is not valid**:
+But some Kubernetes API fields require integer values, not strings. 
+For example, replica count. **The following YAML is not valid**:
 
 ```yaml
 replicas: '{{repl ConfigOption "replicas"}}`

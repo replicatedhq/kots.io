@@ -24,12 +24,14 @@ spec:
     description: Configure application authentication below.
 ```
 
-**Note:** `description` is only supported in `groups`, see `help_text` property for `items`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
+**Note:** `description` is only supported in `groups`, see `help_text` property for `items`. 
+[Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
 
 ## Items
 
-Items map to input fields and belong to a single group. All items should have `name`, `title`
-and `type` properties. Specific item types can including new types.
+Items map to input fields and belong to a single group. 
+All items should have `name`, `title` and `type` properties. 
+Specific item types can including new types.
 
 ### Available Item Types
 - `bool`
@@ -69,7 +71,8 @@ The `label` type allows you to display an input label.
 ```
 
 ### `heading`
-The `heading` type allows you to display a group heading as a subelement within a group. This is useful when you would like to group items all in one config group but would like to separate the items visually, for instance when using a config group test proc. **Currently, the `heading` item type is not supported**
+The `heading` type allows you to display a group heading as a subelement within a group. 
+This is useful when you would like to group items all in one config group but would like to separate the items visually, for instance when using a config group test proc. **Currently, the `heading` item type is not supported**
 ```yaml
     - name: ldap_settings
       title: LDAP Server Settings
@@ -82,9 +85,10 @@ The `heading` type allows you to display a group heading as a subelement within 
 ```
 
 ### `select`
-Types `select_one` and `select_many` are special cases. These types must have nested items
-that act as options. These types will be displayed as radio buttons (`select_one`) or
-checkboxes (`select_many`) in the Admin Console. **Currently, the `select_many` item type is not supported**
+Types `select_one` and `select_many` are special cases. 
+These types must have nested items that act as options. 
+These types will be displayed as radio buttons (`select_one`) or checkboxes (`select_many`) in the Admin Console. 
+**Currently, the `select_many` item type is not supported**
 
 At this time these two control types do not support the `title` field.
 
@@ -118,7 +122,9 @@ At this time these two control types do not support the `title` field.
 ```
 
 ### `textarea`
-A `textarea` can specify a `props` that will map into the HTML element directly. Examples of available properties are `rows`, `cols` and `wrap`. See https://www.w3schools.com/tags/tag_textarea.asp for reference.
+A `textarea` can specify a `props` that will map into the HTML element directly. 
+Examples of available properties are `rows`, `cols` and `wrap`. 
+See https://www.w3schools.com/tags/tag_textarea.asp for reference.
 
 ```yaml
     - name: custom_key
@@ -136,7 +142,9 @@ A `textarea` can specify a `props` that will map into the HTML element directly.
 ```
 
 ### `file`
-A `file` is a special type of form field that renders an [`<input type="file" />`](https://www.w3schools.com/tags/tag_input.asp) HTML element. It has both a value, which holds the file name, and data, the contents of the file. See the [`ConfigOptionData`](/reference/template-functions/config-context/#configoptiondata) template function for examples on how to use the file contents in your application.
+A `file` is a special type of form field that renders an [`<input type="file" />`](https://www.w3schools.com/tags/tag_input.asp) HTML element. 
+It has both a value, which holds the file name, and data, the contents of the file. 
+See the [`ConfigOptionData`](/reference/template-functions/config-context/#configoptiondata) template function for examples on how to use the file contents in your application.
 
 ```yaml
     - name: certs
@@ -153,11 +161,11 @@ A `file` is a special type of form field that renders an [`<input type="file" />
 ## Properties
 
 ### `default` and `value`
-A default value will be applied to the ConfigOption template function when no value is
-specified. It will appear as placeholder text in the settings section of the On-Prem Console.
+A default value will be applied to the ConfigOption template function when no value is specified. 
+It will appear as placeholder text in the settings section of the On-Prem Console.
 
-A value is data that will be overwritten by user input on non-readonly fields.  It will appear as
-the HTML input value in the settings section of the On-Prem Console.
+A value is data that will be overwritten by user input on non-readonly fields.  
+It will appear as the HTML input value in the settings section of the On-Prem Console.
 
 ```yaml
     - name: custom_key
@@ -178,9 +186,11 @@ A required field will prevent the application from starting until it has a value
 ```
 
 ### `when`
-The when value is used to denote conditional inputs that will only be visible (or required) when the condition evaluates to true. The `when` item can be used on groups, items and select_one or select_many options.
+The when value is used to denote conditional inputs that will only be visible (or required) when the condition evaluates to true. 
+The `when` item can be used on groups, items and select_one or select_many options.
 
-The settings UI will update right away when a field used in a when clause is updated (no need to save) and can be used to used to show optional config sections. The equality check should match exactly without quotes.
+The settings UI will update right away when a field used in a when clause is updated (no need to save) and can be used to used to show optional config sections. 
+The equality check should match exactly without quotes.
 
 ```yaml
     - name: database_settings_group
@@ -204,7 +214,9 @@ The settings UI will update right away when a field used in a when clause is upd
 ```
 
 ### `recommended`
-An item can be recommended. This item will bear the tag "recommended" in the Admin Console. **Presently only works for boolean and text field types**
+An item can be recommended. 
+This item will bear the tag "recommended" in the Admin Console. 
+**Presently only works for boolean and text field types**
 ```yaml
     - name: toggles
       items:
@@ -244,13 +256,16 @@ When used in conjunction with a function that generates value, for example [Rand
 - If not set or set to `false`, the `value` is **persistent** between Config changes. It **can** be modified because its not greyed out in HTML.
 
 ### `affix`
-Items can be affixed left or right. These items will appear in the Admin Console on the same line.
+Items can be affixed left or right. 
+These items will appear in the Admin Console on the same line.
 ```yaml
     affix: left
 ```
 
 ### `help_text`
-This is similar to `description` but for `items`. This property can show a helpful message below `title`. [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.
+This is similar to `description` but for `items`. 
+This property can show a helpful message below `title`. 
+[Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported.
 ```yaml
     - name: toggles
       items:

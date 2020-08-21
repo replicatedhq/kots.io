@@ -11,11 +11,14 @@ With minimal additional to the kots.io Application YAML, it is possible to displ
 
 ![Application Status](/images/kotsadm-dashboard-appstatus.png)
 
-It is necessary to target specific Kubernetes resources for the dashboard to accurately report status. We suggest at least one resource be added. Resources that are currently supported are Deployments, StatefulSets, Services, Ingresses and PersistentVolumeClaims.
+It is necessary to target specific Kubernetes resources for the dashboard to accurately report status. 
+We suggest at least one resource be added. 
+Resources that are currently supported are Deployments, StatefulSets, Services, Ingresses and PersistentVolumeClaims.
 
 ## Kots Application Spec
 
-To add an informer, simply include the `statusInformers` property in the kots.io Application spec. Status informers are in the format `[namespace/]type/name` where namespace is optional and will default to the current namespace.
+To add an informer, simply include the `statusInformers` property in the kots.io Application spec. 
+Status informers are in the format `[namespace/]type/name` where namespace is optional and will default to the current namespace.
 
 ```yaml
 apiVersion: kots.io/v1beta1
@@ -28,7 +31,8 @@ spec:
     - deployment/my-worker
 ```
 
-Entries also support template functions. For example, a specific status informer can be excluded based on an application config value like so:
+Entries also support template functions. 
+For example, a specific status informer can be excluded based on an application config value like so:
 
 ```yaml
 statusInformers:
@@ -38,7 +42,8 @@ statusInformers:
 
 ## Resource Statuses
 
-Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. A [support bundle](/kotsadm/troubleshooting/support-bundle/) will include diagnostic information when state "Missing" is encountered.
+Possible application statuses are "Missing", "Unavailable", "Degraded" and "Ready". "Missing" is a special status that indicates that informers have yet to report back status. 
+A [support bundle](/kotsadm/troubleshooting/support-bundle/) will include diagnostic information when state "Missing" is encountered.
 
 Below is a table of resources that are supported and conditions that contribute to each status:
 

@@ -5,7 +5,9 @@ title: kots admin-console
 weight: 90150
 ---
 
-Opens a proxy so you can connect to the admin console from your machine. Additionally, you may use `kots admin-console upgrade` to upgrade the admin console to the latest version. Requires a running KOTS application with the Admin Console.
+Opens a proxy so you can connect to the admin console from your machine. 
+Additionally, you may use `kots admin-console upgrade` to upgrade the admin console to the latest version. 
+Requires a running KOTS application with the Admin Console.
 
 
 ### Usage
@@ -14,7 +16,8 @@ kubectl kots admin-console [flags]
 kubectl kots admin-console upgrade [flags]
 ```
 
-* _If `upgrade` is not specified, this command opens a proxy to the admin console. Otherwise, it upgrades the admin console to the latest version._
+* _If `upgrade` is not specified, this command opens a proxy to the admin console. 
+Otherwise, it upgrades the admin console to the latest version._
 
 This command supports all [global flags](/kots-cli/global-flags/) and also:
 

@@ -6,7 +6,8 @@ description: "Kots can be used to download and prepare an application to be inst
 weight: 10010
 ---
 
-Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. When doing this, there are a few additional steps and configuration needed.
+Kots can be used to download and prepare an application to be installed onto a secured, airgapped Kubernetes cluster. 
+When doing this, there are a few additional steps and configuration needed.
 
 ## Docker Registry
 To install an application into an airgapped network, you must have a Docker image registry that’s available inside the network.

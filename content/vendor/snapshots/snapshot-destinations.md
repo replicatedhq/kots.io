@@ -6,9 +6,12 @@ weight: 5
 title: Compatible Backend Stores
 ---
 
-A KOTS snapshot supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/). The Admin Console has built-in support for configuring AWS, GCP, Azure and S3-Compatible object stores as destinations.
+A KOTS snapshot supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/). 
+The Admin Console has built-in support for configuring AWS, GCP, Azure and S3-Compatible object stores as destinations.
 
-For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a snapshot destination that is external to the cluster.
+For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. 
+This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
+Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a snapshot destination that is external to the cluster.
 
 ## AWS
 

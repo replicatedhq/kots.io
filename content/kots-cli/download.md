@@ -5,7 +5,8 @@ title: kots download
 weight: 90120
 ---
 
-Retrieves a copy of the application manifests from the cluster, and store them in a specific directory structure on your workstation. Requires a running KOTS application with the Admin Console.
+Retrieves a copy of the application manifests from the cluster, and store them in a specific directory structure on your workstation. 
+Requires a running KOTS application with the Admin Console.
 
 ### Usage
 ```bash

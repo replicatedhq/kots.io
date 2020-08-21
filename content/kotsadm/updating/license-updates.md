@@ -12,7 +12,8 @@ You can check if there are any changes on your license through the "License" tab
 
 #### 1. Online licenses
 
-Click the "Sync license" button at the bottom of the license page to get the latest updates on your current license. This will update your license and create a new release with the new changes.
+Click the "Sync license" button at the bottom of the license page to get the latest updates on your current license. 
+This will update your license and create a new release with the new changes.
 
 ![Online License](/images/online-license-tab.png)
 
@@ -22,7 +23,8 @@ Notes:
 - A "License synced successfully" note will appear when the changes are successfully applied.
 
 #### 2. Airgap licenses
-Click the "Upload license" button at the bottom of the license page and select the latest license from your machine. The Admin Console will then check if there are any updates on your current license and will create a new release with the new changes.
+Click the "Upload license" button at the bottom of the license page and select the latest license from your machine. 
+The Admin Console will then check if there are any updates on your current license and will create a new release with the new changes.
 
 ![Airgap License](/images/airgap-license-tab.png)
 

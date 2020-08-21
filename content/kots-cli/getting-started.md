@@ -6,9 +6,13 @@ description: "KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf s
 weight: 1
 ---
 
-KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support, and upgrade process of third party software in Kubernetes.
+KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software.
+The Kots plugin runs locally, on any computer that has kubectl installed. 
+Kots doesn’t run in a cluster, but it helps manage the preflight, install, support, and upgrade process of third party software in Kubernetes.
 
-KOTS includes an Admin Console that runs alongside the application. The Admin Console is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. The Kots plugin will install and configure the Admin Console during installation and upgrade of a Kots application.
+KOTS includes an Admin Console that runs alongside the application. 
+The Admin Console is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. 
+The Kots plugin will install and configure the Admin Console during installation and upgrade of a Kots application.
 
 ## How To Install
 
@@ -37,7 +41,8 @@ For computers without root access or cannot write to the `/usr/local/bin` direct
 ## Kots Commands
 
 ### kots install
-The install subcommand will install the application directly to a cluster. By default, kots install will include the admin console to provide a web based management console.
+The install subcommand will install the application directly to a cluster. 
+By default, kots install will include the admin console to provide a web based management console.
 
 ### kots pull
 If you’d rather use kubectl or another workflow to deploy to your cluster, you can run kots pull to create a directory on your workstation with the Kots application
@@ -52,7 +57,8 @@ If you have a copy of an application that was created with kots pull or kots dow
 If you’ve deployed an application with the admin console, the kots admin-console command will open a proxy so you can connect to the admin console from your machine.
 
 ### kots admin-console upgrade
-If you've deployed an application with the admin console, the kots admin-admin console upgrade command will upgrade just the admin console to the latest version. The application can be updated from the admin console, not this command.
+If you've deployed an application with the admin console, the kots admin-admin console upgrade command will upgrade just the admin console to the latest version. 
+The application can be updated from the admin console, not this command.
 
 ### kots reset-password
 If you've lost the password to the admin console but still have kubectl access, the kots reset-password command will prompt for a new password and upload it to the cluster.
@@ -64,4 +70,5 @@ Provides wrapper functionality to interface with the upstream source.
 Prints the current version of the kots Kubectl plugin and provides a command for updating if a new version is available.
 
 ## Next Steps
-To give kots a try, head over to the Kots Helm guide. If you want to see what it’s like to distribute a kots application, head to the Kots Vendor guide.
+To give kots a try, head over to the Kots Helm guide.
+If you want to see what it’s like to distribute a kots application, head to the Kots Vendor guide.

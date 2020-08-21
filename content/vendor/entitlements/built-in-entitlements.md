@@ -5,7 +5,8 @@ title: Built-In Entitlements
 weight: 20060
 ---
 
-All KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) include built-in entitlement fields. The application vendor can specify the values for these fields, but these are reserved field names and are available in every license.
+All KOTS applications that are packaged and delivered through the Replicated [Vendor Portal](https://vendor.replicated.com) include built-in entitlement fields. 
+The application vendor can specify the values for these fields, but these are reserved field names and are available in every license.
 
 ## List of Built-In Fields
 
@@ -13,37 +14,44 @@ All KOTS applications that are packaged and delivered through the Replicated [Ve
 
 **Field Name**: `expires_at`
 
-**Description**: If a license has an expiration date, the expiration date will be included in the license here. The date is encoded in ISO 8601 format (e.g., `2026-01-23T00:00:00Z`). If a license does not expire, this field will be missing.
+**Description**: If a license has an expiration date, the expiration date will be included in the license here. 
+The date is encoded in ISO 8601 format (e.g., `2026-01-23T00:00:00Z`). 
+If a license does not expire, this field will be missing.
 
 ### Airgapped Support
 
 **Field Name**: `isAirgapSupported`
 
-**Description**: If a license supports airgapped installations, this field will be present and set to `true`. If airgapped is not supported, this field will be missing.
+**Description**: If a license supports airgapped installations, this field will be present and set to `true`. 
+If airgapped is not supported, this field will be missing.
 
 ### License Type
 
 **Field Name**: `license_type`
 
-**Description**: This field contains a string value that describes the type of the license. This is currently one of `paid`, `trial`, `dev` or `community`.
+**Description**: This field contains a string value that describes the type of the license. 
+This is currently one of `paid`, `trial`, `dev` or `community`.
 
 ### GitOps Support
 
 **Field Name**: `isGitOpsSupported`
 
-**Description**: If a license supports gitops-enablement in the Admin Console, this field will be present and set to `true`. If gitops is not supported, this field is either `false` or missing.
+**Description**: If a license supports gitops-enablement in the Admin Console, this field will be present and set to `true`. 
+If GitOps is not supported, this field is either `false` or missing.
 
 ### License Sequence
 
 **Field Name**: `licenseSequence`
 
-**Description**: Every time a license is updated, its sequence number is incremented.  This value represents the license sequence that client currently has.
+**Description**: Every time a license is updated, its sequence number is incremented.  
+This value represents the license sequence that client currently has.
 
 ### License Signature
 
 **Field Name**: `signature`
 
-**Description**: The base64 encoded license signature.  This value will change when license is updated.
+**Description**: The base64 encoded license signature.  
+This value will change when license is updated.
 
 ### App Slug
 

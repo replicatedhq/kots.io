@@ -5,7 +5,9 @@ title: "Package a Helm Chart"
 weight: "1005"
 ---
 
-In this guide, we'll explore how you can leverage software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. We'll use the Grafana helm chart as an example in this case. The guide is divided into three parts:
+In this guide, we'll explore how you can leverage software bundled using Helm to integrate an off-the-shelf application into your KOTS app bundle. 
+We'll use the Grafana helm chart as an example in this case. 
+The guide is divided into three parts:
 
 - [Adding a Chart to your Application](#adding-a-chart-to-your-application)
 - [Releasing and Testing](#releasing-and-testing)
@@ -13,7 +15,8 @@ In this guide, we'll explore how you can leverage software bundled using Helm to
 
 ### Prerequisites
 
-This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) including having running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests. We'll assume this is checked out in `~/helm-grafana`.
+This guide will assume you've already completed one of the [Getting Started Guides](/vendor/guides/#getting-started) including having running instance of `kotsadm` to iterate against in either an existing or embedded cluster, and a local git checkout of your KOTS app manifests. 
+We'll assume this is checked out in `~/helm-grafana`.
 
 ### Accompanying Code Examples
 
@@ -108,7 +111,8 @@ spec:
 EOF
 ```
 
-You may have noticed that we have also used this opportunity to set just two of the values for this chart: `adminUser` and `adminPassword`. We'll hardcode them to `admin`/`admin` for now, but we'll make these user-configurable later.
+You may have noticed that we have also used this opportunity to set just two of the values for this chart: `adminUser` and `adminPassword`. 
+We'll hardcode them to `admin`/`admin` for now, but we'll make these user-configurable later.
 
 * * *
 
@@ -194,7 +198,8 @@ spec:
 To test this, run `make release`, update the new version, and go to the kotsadm `Config` screen.
 ![Helm Chart Grafana Config Screen](/images/guides/kots/helm-chart-grafana-config-screen.png)
 
-For now, these fields will have no effect. Next, we'll map these user-supplied values to Helm Chart values.
+For now, these fields will have no effect. 
+Next, we'll map these user-supplied values to Helm Chart values.
 
 ### Map to Helm Chart
 

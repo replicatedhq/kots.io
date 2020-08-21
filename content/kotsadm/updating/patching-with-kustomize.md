@@ -15,19 +15,23 @@ Click on `View files` and lets take a look at the directory structure.
 
 ### Upstream
 
-The `upstream` directory mirrors exactly the content pushed to a release. This includes the template functions, preflight checks, support-bundle, config options, license etc. In addition, it has a `userdata` directory which includes the license file, config file, etc.
+The `upstream` directory mirrors exactly the content pushed to a release. 
+This includes the template functions, preflight checks, support-bundle, config options, license etc. 
+In addition, it has a `userdata` directory which includes the license file, config file, etc.
 
 **Note:** With the exception of `upstream/userdata`, no changes should be made in the `upstream` directory as they are overwritten on each new release.
 
 ### Base
 
-After KOTS processes and renders the `upstream`, it puts those files in the `base` directory. Any non-deployable manifests such as template functions, preflight checks, config options, etc. are removed, and only the "deployable" application (i.e. deployable with `kubectl apply`) will be placed here.
+After KOTS processes and renders the `upstream`, it puts those files in the `base` directory. 
+Any non-deployable manifests such as template functions, preflight checks, config options, etc. are removed, and only the "deployable" application (i.e. deployable with `kubectl apply`) will be placed here.
 
 **Note:** No changes should be made in the `base` directory as they are overwritten on each new release.
 
 ### Overlays
 
-The `overlays` directory references the `base` directory and this is where your local kustomize patches should be placed. Unlike `upstream` and `base`, any changes made here will persist between releases.
+The `overlays` directory references the `base` directory and this is where your local kustomize patches should be placed. 
+Unlike `upstream` and `base`, any changes made here will persist between releases.
 
 * * *
 
@@ -49,7 +53,8 @@ kubectl kots download --namespace ${APP_NAMESPACE} --slug ${APP_SLUG} --dest ~/m
 ```
 
 
-Lets patch something simple like the `replicas` count. Create a file in `~/my-kots-app/overlays/downstreams/this-cluster/patch-deployment.yaml` with the following:
+Lets patch something simple like the `replicas` count. 
+Create a file in `~/my-kots-app/overlays/downstreams/this-cluster/patch-deployment.yaml` with the following:
 
 ```shell
 cat <<EOF >>~/my-kots-app/overlays/downstreams/this-cluster/patch-deployment.yaml
