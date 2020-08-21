@@ -45,7 +45,7 @@ This guide is intended as a lightweight checklist to ensure you have explored al
 
 ###### [Deploy an HA Cluster](/vendor/guides/ha-guide)
 
-This guide is intented to guide the reader in setting up a basic 3 master node Kubernetes cluster in an [Embedded Cluster](/vendor/guides/quickstart) scenario for learning and testing purposes.
+This guide is intented to guide the reader in setting up a basic 3 primary node Kubernetes cluster in an [Embedded Cluster](/vendor/guides/quickstart) scenario for learning and testing purposes.
 
 
 <!-- Coming Soon!
