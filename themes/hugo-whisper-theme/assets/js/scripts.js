@@ -202,8 +202,3 @@ if (searchPageInput) {
     }
     searchPageInput.addEventListener("input", onSearchPageInput);
 }
-
-
-
-
-
