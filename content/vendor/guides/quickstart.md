@@ -258,10 +258,10 @@ This should only take a few seconds to deploy.
 You can verify this on the server by running
 
 ```
-kubectl get pod -l app=nginx
+kubectl get pod -l component=nginx
 ```
 
-and you should see at least two pods running.
+You should see two pods running.
 
 Next, you can either check out the [CLI setup guide](#automating-your-workflow) to start managing your KOTS yaml in a git repo with our CLI tools, or you can head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.
 

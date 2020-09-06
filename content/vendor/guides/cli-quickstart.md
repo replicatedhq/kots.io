@@ -396,20 +396,38 @@ Confirm the prompt by hitting Enter, and you should see familiar output:
 
 ### Update the Test Server
 
-To install and test this new release, we need to connect to the Admin Console dashboard on port :8800 using a web browser. At this point, it will likely show that our test application is Up To Date and that No Updates Are Available. kotsadm will check for new updates about every five hours but we can force it to check now.
+To install and test this new release, we need to connect to the Admin Console dashboard on port :8800 using a web browser.
+ At this point, it will likely show that our test application is Up To Date and that No Updates Are Available.
+  kotsadm will check for new updates about every five hours but we can force it to check now.
 
-In the Application or Version History tab click on the Check For Updates button. On the version history page the faded "Deployed" button should become active and say "Deploy." In addition it should say how many files were changed and how many lines are different. You can click on that to view what has changed in the yaml.
+In the Application or Version History tab click on the Check For Updates button.
+ On the version history page the faded "Deployed" button should become active and say "Deploy."
+  You'll also see a diff indicator showing how many lines were changed in the update.
+   You can click the diff numbers to view what has changed in the yaml.
 
 
 ![View Update](/images/guides/kots/view-update.png)
 
-Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. This should only take a few seconds to deploy.
+Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. 
+This should only take a few seconds to deploy.
+You can verify this on the server by running
 
+```
+kubectl get pod -l component=nginx
+```
+
+You should see two pods running.
+
+From here, it's time to start iterating on your application. can explore some of the [intermediate and advanced guides](/vendor/guides), some good next steps might be
+
+- [Integrating your release workflow with CI](/vendor/guides/ci-cd-integration)
+- [Integrating a Helm Chart](/vendor/guides/helm-chart)
+
+<!-- Coming soon
 * * *
 
 ## Appendix: Bootstrapping the Repo
 
-<!-- Coming soon
 
 ### Creating a release from an existing Helm Chart
 
@@ -421,26 +439,3 @@ replicated init-kots-app path/to/chart/root
 
 ### Creating a release from a kustomize repo
 -->
-
-## Appendix: Better Version Labels
-
-A common best practice in automated workflows is to use a git SHA to track versions. If you're running the `replicated release create` command from a git repo, you can use this bash snippet to set the version:
-
-
-```shell script
-export VERSION=$(git rev-parse HEAD | head -c7)$(git diff --no-ext-diff --quiet --exit-code || echo "-dirty")
-
-replicated release create \
-  --yaml-dir manifests \
-  --promote Unstable \
-  --version "${VERSION}" \
-  --release-notes "Release from Git: ${VERSION}"
-```
-
-### Auto-detecting versions
-
-In fact, you can use the `--auto` flag to auto-detect many things about the environment, including discovering a channel name from the git branch and a version tag from the git SHA.:
-
-```shell script
-replicated release create --auto
-```
