@@ -13,6 +13,8 @@ In this guide we'll walk through the following steps:
 - [Installing and Configuring the Replicated CLI](#install-cli)
 - [Creating a Release](#creating-our-first-release)
 - [Creating a Customer License](#creating-a-customer-license)
+- [Installing KOTS](#installing-kots)
+- [Iterating](#iterating)
 
 
 
@@ -43,7 +45,7 @@ $ replicated version
 }
 ```
 
-#### Configuring the CLI
+#### Setting an API Token
 
 Next we'll set up two environment variables. You can export these right in your shell or add them to your favorite dotfiles.
 
@@ -60,9 +62,7 @@ If you haven't already, you'll want to head over to https://vendor.replicated.co
 export REPLICATED_APP=sentry-pro
 ```
 
-
 Then you can create a Read/Write capable API token and export it as well:
-
 
 ![app-slug](/images/guides/kots/cli-setup-api-token.png)
 
