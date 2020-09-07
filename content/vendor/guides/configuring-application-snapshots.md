@@ -1,3 +1,12 @@
+---
+date: "2020-09-06T00:00:00Z"
+lastmod: "2020-09-06T00:00:00Z"
+title: "Configure Application Snapshots"
+weight: "1005"
+---
+
+
+
 Enabling Snaphots in your KOTS applicaiton is requires a few simple steps.
 
 ## Steps
