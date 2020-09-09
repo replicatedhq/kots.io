@@ -15,6 +15,20 @@ LicenseFieldValue returns the value of the entitlement with the provided name.
 '{{repl LicenseFieldValue "numSeats" }}'
 ```
 
+In addition to custom license fields, `LicenseFieldValue` also accepts the following values:
+
+- `appSlug`
+- `channelName`
+- `customerName`
+- `endpoint`
+- `expires_at`
+- `isAirgapSupported`
+- `isGitOpsSupported`
+- `licenseID` or `licenseId`
+- `licenseSequence`
+- `licenseType`
+- `signature`
+
 ## LicenseDockerCfg
 ```go
 func LicenseDockerCfg() string
