@@ -120,7 +120,7 @@ kind: HelmChart
 metadata:
   name: postgresql
 spec:
-  exclude: repl{{ ConfigOptionEquals `postgres_type` `external_postgres` }}
+  exclude: 'repl{{ ConfigOptionEquals `postgres_type` `external_postgres` }}'
   # chart identifies a matching chart from a .tgz
   chart:
     name: postgresql
