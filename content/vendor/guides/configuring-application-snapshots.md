@@ -122,7 +122,7 @@ The documentation also provides an example [here](https://kots.io/vendor/snapsho
 
 ### Optional/Advanced Use Case: Backup Hooks
 
-In the example above, we are simply taking a snapshot of the volume. While that may suffice for certain cases, in other cases you may need perform actions before the snapshot takes place. For this, we have Backup Hooks. Velero provides both pre and post [backup hooks](https://velero.io/docs/v1.4/hooks/#docs)
+In the example above, we are simply taking a snapshot of the volume. While that may suffice for certain cases, in other cases you may need perform actions before the snapshot takes place. For this, we have Backup Hooks. Velero provides both pre and post [backup hooks](https://velero.io/docs/v1.4/hooks/#docs). These can be configured by adding annotations to the pod itself or in the [Backup spec](https://velero.io/docs/v1.2.0/api-types/backup/). For the purposes of this guide, we'll do the former and use label annotations.
 
 In the example above, a more realistic scenario is that we'll probably want to run ```pg_dump``` and only take a snapshot of that backup. To accomplish this we'll need to:
 
