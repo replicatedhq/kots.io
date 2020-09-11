@@ -5,8 +5,8 @@ title: Kubernetes RBAC
 weight: 20240
 ---
 
-When a KOTS application is installed, [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) resources are created to allow the Admin Console to manage the application. 
-By default, the Admin Console will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces. 
+When a KOTS application is installed, [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) resources are created to allow the Admin Console to manage the application.
+By default, the Admin Console will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces.
 This behavior can be controlled by editing the [application](/reference/v1beta1/application/) manifest.
 
 ## Cluster-scoped access
@@ -40,6 +40,8 @@ These tools will continue to function, but will return less data.
 In this situation, the Admin Console will present an option for the user to either proceeed with limited data or a command to execute the Preflight Checks or Support Bnudle remotely, using the user's RBAC authorizations.
 Additionally, the namespace-scoped permission does not currently grant access to the `velero` namespace.
 Applications that are using the [snapshots](/vendor/snapshots/overview) functionality should continue to use cluster-scoped access at this time.
+
+Please note that airgapped installs honor the `requireMinimalRBACPrivileges` flag in [headless mode only](/kotsadm/installing/automating/#airgap-install).
 
 ### Operators and multiple namespaces
 

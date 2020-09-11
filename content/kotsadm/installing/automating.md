@@ -53,3 +53,20 @@ kubectl kots install app-name \
 ```
 
 Once this has completed, visiting http://localhost:8800 will show the configured application dashboard, assuming all required config items were set and any included preflight checks passed.
+
+## Airgap Install
+
+As the first step, Admin Console images must be pushed to a private registry using `kubectl kots admin-console push-images` command as described in [this](/kotsadm/installing/airgap-packages/#kots-install) document.
+
+```shell
+kubectl kots install app-name \
+  --namespace app-name \
+  --shared-password password \
+  --license-file ./license.yaml \
+  --config-values ./configvalues.yaml
+  --airgap-bundle /path/to/application.airgap
+  --kotsadm-registry private.registry.host/app-name \
+  --kotsadm-namespace app-name \
+  --registry-username rw-username \
+  --registry-password rw-password
+```
