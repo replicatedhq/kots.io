@@ -46,3 +46,65 @@ metadata:
 data:
   .dockerconfigjson: repl{{ LicenseDockerCfg }}
 ```
+
+## Sequence
+```go
+func Sequence() int64
+```
+Sequence is the sequence of the application deployed.
+This will start at 0 for each installation, and increase with every app update, config change, license update and registry setting change.
+
+```yaml
+'{{repl Sequence }}'
+```
+
+## Cursor
+```go
+func Cursor() string
+```
+Cursor is the channel sequence of the app.
+For instance, if 5 releases have been promoted to the channel that the app is running, then this would return the string `5`.
+
+```yaml
+'{{repl Cursor }}'
+```
+
+## ChannelName
+```go
+func ChannelName() string
+```
+ChannelName is the name of the deployed channel of the app.
+
+```yaml
+'{{repl ChannelName }}'
+```
+
+## VersionLabel
+```go
+func VersionLabel() string
+```
+VersionLabel is the semantic version of the app, as specified when promoting a release to a channel.
+
+```yaml
+'{{repl VersionLabel }}'
+```
+
+## ReleaseNotes
+```go
+func ReleaseNotes() string
+```
+ReleaseNotes is the release notes of the current version of the app.
+
+```yaml
+'{{repl ReleaseNotes }}'
+```
+
+## IsAirgap
+```go
+func IsAirgap() bool
+```
+IsAirgap is `true` when the app is installed via uploading an airgap package, false otherwise.
+
+```yaml
+'{{repl IsAirgap }}'
+```
