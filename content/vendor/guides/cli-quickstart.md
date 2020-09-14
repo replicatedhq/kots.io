@@ -362,7 +362,7 @@ replicated release create \
   --release-notes "my second release"
 ```
 
-Alternatively, this might also be a good time to explore the `--auto` flag to populate values for Channel, Version, and Release Notes (note that this requires you to be working in a git repo).
+Alternatively, this might also be a good time to try out the `--auto` flag to populate values for Channel, Version, and Release Notes based on your current git status (note that this requires you to be working in a git repo).
 
 ```shell script
 replicated release create --auto
