@@ -5,7 +5,7 @@ title: "CLI Quickstart"
 weight: "1003"
 ---
 
-This power-user's guide will help you get set up with a CLI-based workflow for quickly iterating on your Kubernetes application with KOTS. 
+This power-user's guide will help you get set up with a CLI-based workflow for quickly iterating on your Kubernetes application with KOTS.
 If you'd prefer a more conceptual overview before digging into the CLI tools, you can start with the [standard quickstart](/vendor/guides/quickstart).
 
 In this guide we'll walk through the following steps:
@@ -70,7 +70,7 @@ Then you can create a Read/Write capable API token and export it as well:
 export REPLICATED_API_TOKEN=1366be611e3bf...
 ```
 
-We can verify these are set correctly with 
+We can verify these are set correctly with
 
 ```shell script
 replicated release ls
@@ -85,9 +85,9 @@ SEQUENCE    CREATED    EDITED    ACTIVE_CHANNELS
 
 ### Getting some YAML
 
-Next, we'll need some YAML files from which to create a release. 
-We'll start from the repo at https://github.com/replicatedhq/replicated-starter-kots but you can use any set of Kubernetes YAMLs or a Helm Chart. 
-See [Creating a release from an existing Helm Chart](#creating-a-release-from-an-existing-helm-chart) for steps on how to add the necessary kots YAMLs to your helm chart.
+Next, we'll need some YAML files from which to create a release.
+We'll start from the repo at https://github.com/replicatedhq/replicated-starter-kots but you can use any set of Kubernetes YAMLs or a Helm Chart.
+When you've finshed this guide, you can explore [Creating a release from an existing Helm Chart](/vendor/guides/helm-chart) for steps on how to add the necessary kots YAMLs to your helm chart.
 
 If you don't have any YAML to start with, you can download the [kots default yaml](https://github.com/replicatedhq/kots-default-yaml) to your local repo. If you already have some Kubernetes YAML locally, you can skip this step.
 
@@ -144,10 +144,10 @@ replicated release create \
 You'll see output similar to the following:
 
 ```text
-  • Reading manifests from manifests ✓  
-  • Creating Release ✓  
+  • Reading manifests from manifests ✓
+  • Creating Release ✓
     • SEQUENCE: 1
-  • Promoting ✓  
+  • Promoting ✓
     • Channel VEr0nhJBBUdaWpPvOIK-SOryKZEwa3Mg successfully set to release 1
 ```
 
@@ -226,7 +226,7 @@ Next, let's get the install commands for the Unstable channel with `channel insp
 $ replicated channel inspect Unstable
 ID:             VEr0nhJBBUdaWpPvOIK-SOryKZEwa3Mg
 NAME:           Unstable
-DESCRIPTION:    
+DESCRIPTION:
 RELEASE:        130
 VERSION:        dev
 EXISTING:
@@ -250,7 +250,7 @@ AIRGAP:
 
 From here you can choose whether you'd like to do an [Embedded cluster install](/kotsadm/installing/installing-embedded-cluster/) or an [Existing Cluster install](/kotsadm/installing/online-install/). We'll skip Airgap for now, as it is covered in great depth in [other guides](/vendor/guides). For the sake of simplicity, we'll run with an "embedded cluster" install on a single VM, since those are usually easier to come by than a full Kubernetes cluster.
 
-First we will need a server. We'll use Google Cloud for this example but any cloud provider or local virtual machine will suffice. For this guide, let's create a server with:
+First we will need a server. We'll use Google Cloud for this example but any cloud provider or [local virtual machine](https://github.com/replicatedhq/replicated-automation/tree/master/vendor/vagrant-boxes) will suffice. For this guide, let's create a server with:
 
 - Ubuntu 18.04
 - at least 8 GB of RAM
@@ -371,7 +371,7 @@ replicated release create --auto
 You'l see output with a prompt:
 
 ```text
-  • Reading Environment ✓  
+  • Reading Environment ✓
 
 Prepared to create release with defaults:
 
@@ -381,16 +381,16 @@ Prepared to create release with defaults:
     release-notes   "CLI release by dex on 06 Sep 20 12:09 PDT"
     ensure-channel  true
 
-Create release with these properties? [Y/n] 
+Create release with these properties? [Y/n]
 ```
 
 Confirm the prompt by hitting Enter, and you should see familiar output:
 
 ```text
-  • Reading manifests from ./manifests ✓  
-  • Creating Release ✓  
+  • Reading manifests from ./manifests ✓
+  • Creating Release ✓
     • SEQUENCE: 132
-  • Promoting ✓  
+  • Promoting ✓
     • Channel VEr0nhJBBUdaWpPvOIK-SOryKZEwa3Mg successfully set to release 132
 ```
 
@@ -408,7 +408,7 @@ In the Application or Version History tab click on the Check For Updates button.
 
 ![View Update](/images/guides/kots/view-update.png)
 
-Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. 
+Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas.
 This should only take a few seconds to deploy.
 You can verify this on the server by running
 
