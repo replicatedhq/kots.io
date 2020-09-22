@@ -10,15 +10,17 @@ If you'd prefer a more conceptual overview before digging into the CLI tools, yo
 
 In this guide we'll walk through the following steps:
 
-- [Installing and Configuring the Replicated CLI](#install-cli)
-- [Creating a Release](#creating-our-first-release)
-- [Creating a Customer License](#creating-a-customer-license)
-- [Installing KOTS](#installing-kots)
-- [Iterating](#iterating)
+- [Installing the Replicated CLI](#1-install-cli)
+- [Setting an API Token](#2-setting-an-api-token)
+- [Getting some YAML ready](#3-getting-some-yaml)
+- [Creating a Release](#4-creating-our-first-release)
+- [Creating a Customer License](#5-creating-a-customer-license)
+- [Getting an Install Command](#6-getting-an-install-command)
+- [Installing KOTS](#7-installing-kots)
+- [Installing a License](#8-install-license)
+- [Iterating](#9-iterating)
 
-
-
-### Install CLI
+### 1. Install CLI
 
 To start, you'll want to install the `replicated` CLI. You can install with [homebrew](https://brew.sh) or grab the latest version from [the replicatedhq/replicated releases page](https://github.com/replicatedhq/replicated/releases).
 
@@ -45,21 +47,20 @@ $ replicated version
 }
 ```
 
-#### Setting an API Token
+* * *
+
+#### 2. Setting an API Token
 
 Next we'll set up two environment variables. You can export these right in your shell or add them to your favorite dotfiles.
 
-```shell script
-export REPLICATED_APP=
-export REPLICATED_API_TOKEN=
-```
+If you haven't already, you'll want to head over to https://vendor.replicated.com and create an Application. You can name the app whatever you want, we'll use "CLI Quickstart" in this case. From there you can head to the settings page, grab the Application Slug, and export it:
 
-If you haven't already, you'll want to head over to https://vendor.replicated.com and create an Application. From there you can grab the Application Slug and export it:
+![app-slug](/images/guides/kots/cli-setup-quickstart-settings.png)
 
-![app-slug](/images/guides/kots/cli-setup-app-slug-token.png)
+In this case, we'd run
 
 ```shell script
-export REPLICATED_APP=sentry-pro
+export REPLICATED_APP=cli-quickstart-puma
 ```
 
 Then you can create a Read/Write capable API token and export it as well:
@@ -82,14 +83,18 @@ You'll likely see an empty list of releases, this is okay, we'll create a releas
 SEQUENCE    CREATED    EDITED    ACTIVE_CHANNELS
 ```
 
+* * *
 
-### Getting some YAML
+### 3. Getting some YAML
 
 Next, we'll need some YAML files from which to create a release.
 We'll start from the repo at https://github.com/replicatedhq/replicated-starter-kots but you can use any set of Kubernetes YAMLs or a Helm Chart.
 When you've finshed this guide, you can explore [Creating a release from an existing Helm Chart](/vendor/guides/helm-chart) for steps on how to add the necessary kots YAMLs to your helm chart.
 
-If you don't have any YAML to start with, you can download the [kots default yaml](https://github.com/replicatedhq/kots-default-yaml) to your local repo. If you already have some Kubernetes YAML locally, you can skip this step.
+
+###### 3a. Using the default starter YAML
+
+If you don't have any YAML to start with, you can download the [kots default yaml](https://github.com/replicatedhq/kots-default-yaml) to your local repo. If you've already created at least one release, skip to [Downloading an Existing release](#3b-downloading-an-existing-release).
 
 
 ```shell script
@@ -98,6 +103,26 @@ curl -fSsL https://github.com/replicatedhq/kots-default-yaml/archive/v2020-09-03
   tar xzv --strip-components=1 -C ./manifests \
   --exclude README.md --exclude LICENSE --exclude .gitignore
 ```
+
+######  3b. Downloading an existing release
+
+If you've already created a release in [vendor.replicated.com](https://vendor.replicated.com), you can fetch it with `replicated release download`. First, you'll want to list out your releases, so you can choose which one you want to fetch
+
+```text script
+$ replicated release ls 
+SEQUENCE    CREATED                      EDITED                  ACTIVE_CHANNELS
+2           2020-09-15T10:49:22-05:00    0001-01-01T00:00:00Z
+1           2020-09-15T10:49:22-05:00    0001-01-01T00:00:00Z
+```
+
+In this case, let's download sequence 2 into a folder called `manifests` in the current directory:
+
+```shell script
+export SEQUENCE_NUMBER=2
+replicated release download ${SEQUENCE_NUMBER} --dest ./manifests
+```
+
+#### 3c. Verifying manifests
 
 You should now have a few YAML files in `manifests`:
 
@@ -126,8 +151,9 @@ If there are no errors, you'll an empty list and a zero exit code.
 RULE    TYPE    FILENAME    LINE    MESSAGE
 ```
 
+* * *
 
-### Creating our first release
+### 4. Creating our first release
 
 
 Assuming our YAMLs are in a `manifests` directory, let's create a release and promote it to the `Unstable` channel so we can text it internally. We'll hard code the release notes and version label for now.
@@ -159,8 +185,9 @@ SEQUENCE    CREATED                      EDITED                  ACTIVE_CHANNELS
 1       2020-09-03T11:48:45-07:00    0001-01-01T00:00:00Z    Unstable
 ```
 
+* * *
 
-### Creating a Customer License
+### 5. Creating a Customer License
 
 Now that we've created a release, we need to create a "customer" object. A customer represents a single licensed end user of your application.
 
@@ -183,11 +210,10 @@ ID                             NAME             CHANNELS     EXPIRES            
 You can also verify this with `replicated customer ls`.
 
 ```text
-$ replicated customer ls
+replicated customer ls
 ```
 
-
-Now that we have a cusotmer, we can download a license file
+Now that we have a customer, we can download a license file
 
 ```shell script
 replicated customer download-license \
@@ -218,7 +244,7 @@ spec:
 ```
  * * *
 
-### Getting an install command
+### 6. Getting an install command
 
 Next, let's get the install commands for the Unstable channel with `channel inspect`:
 
@@ -246,7 +272,9 @@ AIRGAP:
     sudo bash ./install.sh airgap
 ```
 
-### Installing KOTS
+* * *
+
+### 7. Installing KOTS
 
 From here you can choose whether you'd like to do an [Embedded cluster install](/kotsadm/installing/installing-embedded-cluster/) or an [Existing Cluster install](/kotsadm/installing/online-install/). We'll skip Airgap for now, as it is covered in great depth in [other guides](/vendor/guides). For the sake of simplicity, we'll run with an "embedded cluster" install on a single VM, since those are usually easier to come by than a full Kubernetes cluster.
 
@@ -257,7 +285,10 @@ First we will need a server. We'll use Google Cloud for this example but any clo
 - 4 CPU cores
 - at least 100GB of disk space
 
-Next, ssh into the server we just created, and run the install script from above:
+
+###### On the Server
+
+Next, ssh into the server we just created, and run the install script from above, using the `EMBEDDED` version:
 
 ```shell
 curl -sSL https://kurl.sh/<your-app-name-and-channel> | sudo bash
@@ -269,7 +300,7 @@ Installation should take about 5-10 minutes.
 
 Once the installation script is completed, it will show the URL you can connect to in order to continue the installation:
 
-```shell
+```text
 
 Kotsadm: http://[ip-address]:8800
 Login with password (will not be shown again): [password]
@@ -291,7 +322,7 @@ To add worker nodes to this installation, run the following script on your other
 Following the instructions on the screen, you can reload the shell and `kubectl` will now work:
 
 ```bash
-dmichaels@david-kots-guide:~$ kubectl get pods
+user@kots-guide:~$ kubectl get pods
 NAME                                  READY   STATUS      RESTARTS   AGE
 kotsadm-585579b884-v4s8m              1/1     Running     0          4m47s
 kotsadm-api-659db65fcd-b7kds          1/1     Running     2          4m47s
@@ -299,10 +330,12 @@ kotsadm-migrations                    0/1     Completed   2          4m47s
 kotsadm-operator-fd9d5d5d7-8rrqg      1/1     Running     0          4m47s
 kotsadm-postgres-0                    1/1     Running     0          4m47s
 kurl-proxy-kotsadm-77c59cddc5-qs5bm   1/1     Running     0          4m46s
-dmichaels@david-kots-guide:~$
+user@kots-guide:~$
 ```
 
-### Install License
+* * *
+
+### 8. Install License
 
 At this point, kotsadm and Kubernetes are running, but the application isn't yet. This is also what your customer would be experiencing when installing your application. To complete the installation, visit the URL that the installation script displayed when completed. [kurl.sh](https://kurl.sh) KOTS clusters provision a self-signed certificate on every installation and detects what browser is being used in order to show users how to bypass this.
 
@@ -314,7 +347,7 @@ Now the installation needs a license file to continue. Until this point, this se
 
 ![Upload License](/images/guides/kots/upload-license.png)
 
-The settings page is here with default configuration items. These can be specified in the `config.yaml` file.
+The settings page is here with default configuration items. For now, if you're using the defaults you'll want to check the "Enable Ingress" box. Later you'll customize this screen to collect configuration your application needs from the customer.
 
 ![Settings Page](/images/guides/kots/configuration.png)
 
@@ -340,7 +373,7 @@ Next, we'll walk through creating and delivering an update to the application we
 
 * * *
 
-### Iterating
+### 9. Iterating
 
 From our local repo, we can update the nginx deployment to test a simple update to the application. If you're using your own YAML or helm chart, you can simulate an application update by adding an annotation or making any other superficial change.
 
@@ -368,7 +401,7 @@ Alternatively, this might also be a good time to try out the `--auto` flag to po
 replicated release create --auto
 ```
 
-You'l see output with a prompt:
+You'll see output with a prompt:
 
 ```text
   • Reading Environment ✓
@@ -412,13 +445,20 @@ Clicking the Deploy button will apply the new YAML which will change the number 
 This should only take a few seconds to deploy.
 You can verify this on the server by running
 
-```
+```shell script
 kubectl get pod -l component=nginx
 ```
 
 You should see two pods running.
 
-From here, it's time to start iterating on your application. can explore some of the [intermediate and advanced guides](/vendor/guides), some good next steps might be
+* * *
+
+### Next Steps
+
+From here, it's time to start iterating on your application. Continue making changes and using `replicated release create --auto` to push them. You can add `-y` to the command to skip the prompt.
+
+
+If you want to learn more about KOTS features, you can explore some of the [intermediate and advanced guides](/vendor/guides), some good next steps might be
 
 - [Integrating your release workflow with CI](/vendor/guides/ci-cd-integration)
 - [Integrating a Helm Chart](/vendor/guides/helm-chart)
