@@ -66,4 +66,6 @@ However, the same secret will be added to those PodSpecs as well.
 
 ## Additional namespaces
 
-When deploying pods to namespaces other than the KOTS application namespace, the namespace must be added to the `additionalNamespaces` attribute of the [Application](/reference/v1beta1/application/) spec. This will ensure that an imagePullSecret named `kotsadm-replicated-registry` exists in the namespace to allow the pod to pull the image. For more information about the `additionalNamespaces` attribute see [this doc](/vendor/operators/additional-namespaces/).
+When deploying pods to namespaces other than the KOTS application namespace, the namespace must be added to the `additionalNamespaces` attribute of the [Application](/reference/v1beta1/application/) spec.
+This will ensure that a secret named `kotsadm-replicated-registry` will get auto-provisioned by KOTS in the namespace to allow the pod to pull the image.
+For more information about the `additionalNamespaces` attribute see [this doc](/vendor/operators/additional-namespaces/).
