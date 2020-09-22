@@ -53,7 +53,9 @@ $ replicated version
 
 Next we'll set up two environment variables. You can export these right in your shell or add them to your favorite dotfiles.
 
-If you haven't already, you'll want to head over to https://vendor.replicated.com and create an Application. You can name the app whatever you want, we'll use "CLI Quickstart" in this case. From there you can head to the settings page, grab the Application Slug, and export it:
+If you haven't already, you'll want to head over to https://vendor.replicated.com and create an Application.
+You can name the app whatever you want, we'll use "CLI Quickstart" in this case.
+From there you can head to the settings page, grab the Application Slug, and export it:
 
 ![app-slug](/images/guides/kots/cli-setup-quickstart-settings.png)
 
@@ -94,7 +96,8 @@ When you've finshed this guide, you can explore [Creating a release from an exis
 
 ###### 3a. Using the default starter YAML
 
-If you don't have any YAML to start with, you can download the [kots default yaml](https://github.com/replicatedhq/kots-default-yaml) to your local repo. If you've already created at least one release, skip to [Downloading an Existing release](#3b-downloading-an-existing-release).
+If you don't have any YAML to start with, you can download the [kots default yaml](https://github.com/replicatedhq/kots-default-yaml) to your local repo.
+If you've already created at least one release, skip to [Downloading an Existing release](#3b-downloading-an-existing-release).
 
 
 ```shell script
@@ -106,7 +109,8 @@ curl -fSsL https://github.com/replicatedhq/kots-default-yaml/archive/v2020-09-03
 
 ######  3b. Downloading an existing release
 
-If you've already created a release in [vendor.replicated.com](https://vendor.replicated.com), you can fetch it with `replicated release download`. First, you'll want to list out your releases, so you can choose which one you want to fetch
+If you've already created a release in [vendor.replicated.com](https://vendor.replicated.com), you can fetch it with `replicated release download`.
+First, you'll want to list out your releases, so you can choose which one you want to fetch
 
 ```text script
 $ replicated release ls 
@@ -156,7 +160,8 @@ RULE    TYPE    FILENAME    LINE    MESSAGE
 ### 4. Creating our first release
 
 
-Assuming our YAMLs are in a `manifests` directory, let's create a release and promote it to the `Unstable` channel so we can text it internally. We'll hard code the release notes and version label for now.
+Assuming our YAMLs are in a `manifests` directory, let's create a release and promote it to the `Unstable` channel so we can text it internally.
+ We'll hard code the release notes and version label for now.
 
 
 ```shell script
@@ -189,9 +194,11 @@ SEQUENCE    CREATED                      EDITED                  ACTIVE_CHANNELS
 
 ### 5. Creating a Customer License
 
-Now that we've created a release, we need to create a "customer" object. A customer represents a single licensed end user of your application.
+Now that we've created a release, we need to create a "customer" object.
+A customer represents a single licensed end user of your application.
 
-In this example, we'll create a customer named `Some Big Bank` with an expiration in 10 days. Since we created our release on the `Unstable` channel, we'll assign the customer to this channel.
+In this example, we'll create a customer named `Some Big Bank` with an expiration in 10 days.
+Since we created our release on the `Unstable` channel, we'll assign the customer to this channel.
 
 ```shell script
 replicated customer create \
@@ -276,7 +283,9 @@ AIRGAP:
 
 ### 7. Installing KOTS
 
-From here you can choose whether you'd like to do an [Embedded cluster install](/kotsadm/installing/installing-embedded-cluster/) or an [Existing Cluster install](/kotsadm/installing/online-install/). We'll skip Airgap for now, as it is covered in great depth in [other guides](/vendor/guides). For the sake of simplicity, we'll run with an "embedded cluster" install on a single VM, since those are usually easier to come by than a full Kubernetes cluster.
+From here you can choose whether you'd like to do an [Embedded cluster install](/kotsadm/installing/installing-embedded-cluster/) or an [Existing Cluster install](/kotsadm/installing/online-install/).
+We'll skip Airgap for now, as it is covered in great depth in [other guides](/vendor/guides).
+For the sake of simplicity, we'll run with an "embedded cluster" install on a single VM, since those are usually easier to come by than a full Kubernetes cluster.
 
 First we will need a server. We'll use Google Cloud for this example but any cloud provider or [local virtual machine](https://github.com/replicatedhq/replicated-automation/tree/master/vendor/vagrant-boxes) will suffice. For this guide, let's create a server with:
 
@@ -337,29 +346,44 @@ user@kots-guide:~$
 
 ### 8. Install License
 
-At this point, kotsadm and Kubernetes are running, but the application isn't yet. This is also what your customer would be experiencing when installing your application. To complete the installation, visit the URL that the installation script displayed when completed. [kurl.sh](https://kurl.sh) KOTS clusters provision a self-signed certificate on every installation and detects what browser is being used in order to show users how to bypass this.
+At this point, kotsadm and Kubernetes are running, but the application isn't yet.
+This is also what your customer would be experiencing when installing your application.
+To complete the installation, visit the URL that the installation script displayed when completed.
+[kurl.sh](https://kurl.sh) KOTS clusters provision a self-signed certificate on every installation and detects what browser is being used in order to show users how to bypass this.
 
-On the next screen, you have the option of uploading a trusted cert and key. For production installations we recommend using a trusted cert. For this demo let's continue with the KOTS-generated self-signed cert. Click the "skip this step" button.
+On the next screen, you have the option of uploading a trusted cert and key.
+For production installations we recommend using a trusted cert.
+For this demo let's continue with the KOTS-generated self-signed cert.
+Click the "skip this step" button.
 
 ![Console TLS](/images/guides/kots/admin-console-tls.png)
 
-Now the installation needs a license file to continue. Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers. Once we put a license file on it the server will install our application. Click the Upload button and select your `.yaml` file to continue.
+Now the installation needs a license file to continue.
+Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers.
+Once we put a license file on it the server will install our application.
+Click the Upload button and select your `.yaml` file to continue.
 
 ![Upload License](/images/guides/kots/upload-license.png)
 
-The settings page is here with default configuration items. For now, if you're using the defaults you'll want to check the "Enable Ingress" box. Later you'll customize this screen to collect configuration your application needs from the customer.
+The settings page is here with default configuration items.
+For now, if you're using the defaults you'll want to check the "Enable Ingress" box.
+Later you'll customize this screen to collect configuration your application needs from the customer.
 
 ![Settings Page](/images/guides/kots/configuration.png)
 
-Preflight checks are designed to ensure this server has the minimum system and software requirements to run the application. Depending on your YAML in `preflight.yaml`, you may see some of the example preflight checks fail. If you have failing checks, you can click continue -- the UI will show a warning that will need to be dismissed before you can continue.
+Preflight checks are designed to ensure this server has the minimum system and software requirements to run the application.
+Depending on your YAML in `preflight.yaml`, you may see some of the example preflight checks fail.
+If you have failing checks, you can click continue -- the UI will show a warning that will need to be dismissed before you can continue.
 
 ![Preflight Checks](/images/guides/kots/preflight.png)
 
-Click the Application link on the top to see the application running. If you are still connected to this server over ssh, `kubectl get pods` will now show the example nginx service we just deployed.
+Click the Application link on the top to see the application running.
+If you are still connected to this server over ssh, `kubectl get pods` will now show the example nginx service we just deployed.
 
 ![Dashboard](/images/guides/kots/dashboard.png)
 
-On the nav bar, there's a link to the application page. Clicking that will show you the Kubernetes services that we just deployed.
+On the nav bar, there's a link to the application page.
+Clicking that will show you the Kubernetes services that we just deployed.
 
 ![Cluster](/images/guides/kots/application.png)
 
@@ -375,9 +399,11 @@ Next, we'll walk through creating and delivering an update to the application we
 
 ### 9. Iterating
 
-From our local repo, we can update the nginx deployment to test a simple update to the application. If you're using your own YAML or helm chart, you can simulate an application update by adding an annotation or making any other superficial change.
+From our local repo, we can update the nginx deployment to test a simple update to the application.
+If you're using your own YAML or helm chart, you can simulate an application update by adding an annotation or making any other superficial change.
 
-In the release YAML, find the nginx image to change. The line is in the `deployment.yaml` file and looks like:
+In the release YAML, find the nginx image to change.
+The line is in the `deployment.yaml` file and looks like:
 
 ```yaml
 replicas: 1
@@ -455,7 +481,9 @@ You should see two pods running.
 
 ### Next Steps
 
-From here, it's time to start iterating on your application. Continue making changes and using `replicated release create --auto` to push them. You can add `-y` to the command to skip the prompt.
+From here, it's time to start iterating on your application.
+Continue making changes and using `replicated release create --auto` to push them.
+You can add `-y` to the command to skip the prompt.
 
 
 If you want to learn more about KOTS features, you can explore some of the [intermediate and advanced guides](/vendor/guides), some good next steps might be
