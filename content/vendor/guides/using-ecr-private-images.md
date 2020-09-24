@@ -286,4 +286,4 @@ Since KOTS is able to detect that it can't pull this image anonymously, it then 
 
 The install of the new version should have created a new pod. If we run ```kubectl describe pod``` on the new nginx pod, we can confirm that the image was in fact pulled from the ECR repository.
 
-![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-ecr-kubctl-describe-rel1.png)
+![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-ecr-kubectl-describe-rel2.png)
