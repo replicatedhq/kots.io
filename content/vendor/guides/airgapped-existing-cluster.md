@@ -141,17 +141,17 @@ echo ${CLUSTER_PRIVATE_IP}
 ```
 
 
-Now, let's ssh into the instance and bootstrap a minimal single-primary kubernetes cluster (details here:  https://kurl.sh/1010f0a  )
+Now, let's ssh into the instance and bootstrap a minimal single-primary kubernetes cluster (details here:  https://kurl.sh/8d4f215  )
 
 ```shell script
-gcloud compute ssh ${AIRGAP_CLUSTER} -- 'curl  https://k8s.kurl.sh/1010f0a  | sudo bash'
+gcloud compute ssh ${AIRGAP_CLUSTER} -- 'curl  https://k8s.kurl.sh/8d4f215  | sudo bash'
 ```
 
 When that completes, we can deploy a minimal registry and verify it's running
 
 ```shell script
 gcloud compute ssh ${AIRGAP_CLUSTER} -- \
-  'kubectl --kubeconfig ./admin.conf apply -f https://gist.githubusercontent.com/dexhorthy/7a3e6eb119d2d90ff7033a78151c3be2/raw/6c67f95367988d1a016635e3da689e2d998d458c/plain-registry.yaml'
+  'kubectl --kubeconfig ./admin.conf apply -f https://raw.githubusercontent.com/replicatedhq/replicated-automation/master/customer/existing-cluster-airgap/plain-registry.yaml'
 ```
 
 This gist configures a basic auth htpasswd that configures a username/password for `kots/kots`, which we'll use later
@@ -173,8 +173,28 @@ docker tag busybox ${CLUSTER_PUBLIC_IP}:32000/busybox
 docker push ${CLUSTER_PUBLIC_IP}:32000/busybox
 ```
 
-You may need to also add an `insecure-registy` entry to your workstation to allow pushing/pulling via http instead of https. 
+You should see `Pushed` if successful.
+```shell
+be8b8b42328a: Pushed
+```
+
+But instead if you see the following error, you may need to also add an `insecure-registries` entry to your workstation to allow pushing/pulling via http instead of https. 
+
+```shell
+Error response from daemon: Get https://<CLUSTER_PUBLIC_IP>:32000/v2/: http: server gave HTTP response to HTTPS client
+```
+
 If you're testing using docker-for-mac, you can add this via the setttings:
+
+```json
+{
+  "debug": true,
+  "experimental": false,
+  "insecure-registries": [
+    "<CLUSTER_PUBLIC_IP>:32000"
+  ]
+}
+```
 
 ![insecure registry](/images/guides/kots/airgap-existing-dfm-insecure-registry.png)
 
