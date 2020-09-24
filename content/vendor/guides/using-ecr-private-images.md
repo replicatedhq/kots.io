@@ -276,7 +276,7 @@ To confirm that the new version was in fact installed, it should look like the s
 ![version-history](/images/guides/kots/priv-reg-ecr-version-history.png)
 
 Now, we can inspect to see the changes in the definition files.
-Looking at the ```deployment.yaml``` upstream file, we see the image path as we set it in the [Update Definition Files](#update-definition-files) section.
+Looking at the ```deployment.yaml``` upstream file, we see the image path as we set it in the [Update Definition Files](#part-4---update-definition-files) section.
 
 ![admin-console-view-files-upstream-release2](/images/guides/kots/priv-reg-ecr-upstream-file-rel2.png)
 
