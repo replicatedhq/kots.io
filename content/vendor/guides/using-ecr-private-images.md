@@ -38,15 +38,16 @@ Once the application is created, click on the *Releases* tab.
 
 ![new-release](/images/guides/kots/priv-reg-ecr-new-release.png)
 
-To create a new release, click on **Create a Release**.
+As you see in the screenshot above, the application does not have any releases.
 
-As shown in the image below, the initial release will pull the public nginx image from Docker Hub.
-We will deploy this application and note the behavior to compare later when we pull from ECR.
+### Create the First Release
 
-![release1](/images/guides/kots/priv-reg-ecr-release1.png)
+Replicated provides several ways to create a release, but the most common way is to automate it as described in our [quickstart guide](https://kots.io/vendor/guides/quickstart/).
+The guide will assume we have created a started repository in GitHub based on the [Kots Started Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action or using the local CLI to create releases and promote to the unstable channel.
 
-To test pulling an image from ECR, we'll need to do an install of the application. 
-Let's first install it pulling from the public registry to ensure we have a proper testing environment. 
+As we can below, the default deployment definition file will deploy the public NGINX container.
+
+![release-2](/images/guides/kots/priv-reg-ecr-default-def-yaml.png)
 
 ### Create a Customer License
 
@@ -261,11 +262,12 @@ Enter the ```AWS Secret Key``` for the user created in the [Setting Up the Servi
 ## Part 4 - Update Definition Files
 
 Last step is to update our defintion manifest to pull the image from the ECR repository.
-To do this, create a new release, and update the ```deployment.yaml``` file by adding the ECR registry URL to the ```image``` value. Below is an example using the registry URL used in this guide.
+To do this, we'll update the ```deployment.yaml``` file by adding the ECR registry URL to the ```image``` value. 
+Below is an example using the registry URL used in this guide.
 
-![release-2](/images/guides/kots/priv-reg-ecr-release-2.png)
+![release-2](/images/guides/kots/priv-reg-ecr-mod-dep-yaml.png)
 
-Save the release and promote it to the *Unstable* channel.
+Save your changes and create the new release and promote it to the *Unstable* channel.
 
 ## Part 5 - Install the New Version
 
