@@ -18,6 +18,7 @@ The guide also assumes the following:
 
 - You have an account for https://vendor.replicated.com
 - You have an account in AWS to pull & push to ECR, as well as the ability to create an account with pull only permissions.
+- You already know how to create and update releases in Replicated using the Command Line Interface (CLI) tools.
 
 
 ## Part 1 - Getting Started
