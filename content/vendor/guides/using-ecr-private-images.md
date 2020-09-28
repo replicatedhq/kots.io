@@ -44,7 +44,7 @@ As you see in the screenshot above, the application does not have any releases.
 ### Create the First Release
 
 Replicated provides several ways to create a release, but the most common way is to automate it as described in our [quickstart guide](https://kots.io/vendor/guides/quickstart/).
-The guide will assume we have created a started repository in GitHub based on the [Kots Started Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action or using the local CLI to create releases and promote to the unstable channel.
+The guide will assume we have created a starter repository in GitHub based on the [Kots Starter Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action or using the local CLI to create releases and promote to the unstable channel.
 
 As we can below, the default deployment definition file will deploy the public NGINX container.
 
