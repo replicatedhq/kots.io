@@ -20,6 +20,16 @@ The guide also assumes the following:
 - You have an account in AWS to pull & push to ECR, as well as the ability to create an account with pull only permissions.
 - You already know how to create and update releases in Replicated using the Command Line Interface (CLI) tools.
 
+## Overview
+
+The guide is divided into the following parts:
+
+- [Part 1 - Getting Started](#part-1---getting-started) - Covers creating an account in Replicated, creating a new application and its first release. 
+- [Part 2 - Install the Application](#part-2---install-the-application) - Covers at a high level the process of installing the first release of the application.
+- [Part 3 - Configuring Private Registries in Replicated](#part-3---configure-private-registries-in-replicated) - Covers the steps to link Replicated with ECR.
+- [Part 4 - Update Definition Files](#part-4---update-definition-files) - Covers updaing the files with the private registry address and port.
+- [Part 5 - Install the New Version ](part-5---install-the-new-version) - Covers updating the installed application to the latest version to verify that we were able to pull the image from the private registry set in the previous steps.
+
 
 ## Part 1 - Getting Started
 
@@ -290,3 +300,9 @@ Since KOTS is able to detect that it can't pull this image anonymously, it then 
 The install of the new version should have created a new pod. If we run ```kubectl describe pod``` on the new nginx pod, we can confirm that the image was in fact pulled from the ECR repository.
 
 ![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-ecr-kubectl-describe-rel2.png)
+
+## Further Reading
+
+- [Kots.io Documenmtation on using Private Images](https://kots.io/vendor/packaging/private-images/)
+
+- [Replicated Community Thread on AWS Roles and Permissions](https://help.replicated.com/community/t/what-are-the-minimal-aws-iam-permissions-needed-to-proxy-images-from-elastic-container-registry-ecr/267)
