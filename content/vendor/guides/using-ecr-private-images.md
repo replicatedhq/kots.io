@@ -12,13 +12,13 @@ This guide is a tutorial on how to configure Replicated to pull images from a pr
 ## Prerquisites/Assumptions
 
 This guide assumes a level of familiarity with Replicated and will not cover in detail the process of creating a release, promoting it to a channel and running an install. 
-There topics are covered in the Getting Started Guide, and should be followed prior to this guide.
+These topics are covered in the [Quickstart Guide](https://kots.io/vendor/guides/quickstart/), and should be reviewed prior to this guide.
 
 The guide also assumes the following:
 
 - You have an account for https://vendor.replicated.com
 - You have an account in AWS to pull & push to ECR, as well as the ability to create an account with pull only permissions.
-- You already know how to create and update releases in Replicated using the Command Line Interface (CLI) tools.
+- You know how to create and update releases in Replicated using the Command Line Interface (CLI) tools.
 
 ## Overview
 
@@ -27,13 +27,13 @@ The guide is divided into the following parts:
 - [Part 1 - Getting Started](#part-1---getting-started) - Covers creating an account in Replicated, creating a new application and its first release. 
 - [Part 2 - Install the Application](#part-2---install-the-application) - Covers at a high level the process of installing the first release of the application.
 - [Part 3 - Configuring Private Registries in Replicated](#part-3---configure-private-registries-in-replicated) - Covers the steps to link Replicated with ECR.
-- [Part 4 - Update Definition Files](#part-4---update-definition-files) - Covers updaing the files with the private registry address and port.
+- [Part 4 - Update Definition Files](#part-4---update-definition-files) - Covers updating the files with the private registry address and port.
 - [Part 5 - Install the New Version ](part-5---install-the-new-version) - Covers updating the installed application to the latest version to verify that we were able to pull the image from the private registry set in the previous steps.
 
 
 ## Part 1 - Getting Started
 
-To get started with this guide, we are going to create a new Application in Replicted and create a release using the default definition files.
+To get started with this guide, we are going to create a new application in Replicted and create a release using the default definition files.
 
 ### Create a New Application in Replicated
 
@@ -53,10 +53,10 @@ As you see in the screenshot above, the application does not have any releases.
 
 ### Create the First Release
 
-Replicated provides several ways to create a release, but the most common way is to automate it as described in our [quickstart guide](https://kots.io/vendor/guides/quickstart/).
-The guide will assume we have created a starter repository in GitHub based on the [Kots Starter Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action or using the local CLI to create releases and promote to the unstable channel.
+Replicated provides several ways to create a release, but the most common way is to automate it as described in our [quickstart guide](https://kots.io/vendor/guides/quickstart/#automating-your-workflow).
+The guide will assume you have created a starter repository in GitHub based on the [Kots Starter Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action workflow file or CLI tools to create releases and promote to the *Unstable* channel.
 
-As we can below, the default deployment definition file will deploy the public NGINX container.
+As we see can below, the default deployment definition file will deploy the public NGINX container.
 
 ![release-2](/images/guides/kots/priv-reg-ecr-default-def-yaml.png)
 
@@ -75,6 +75,12 @@ Create new customer, and assign it to the *Unstable* channel. Once the customer 
 Now we are ready to install the application!
 
 As mentioned earlier in this guide, the following steps and screenshots are for doing an embedded install on a plain VM. However, doing an existing install to a Kubernetes cluster also works.
+
+For this guide, let’s create a server with Ubuntu 18.04 and at least:
+ 
+- 8 GB of RAM
+- 4 CPU cores
+- 100GB of disk space
 
 SSH into the VM and paste the command from the *Unstable* channel:
 
@@ -106,15 +112,6 @@ To configure a Private Registry in Replicated, you need to provide the same info
 - **Password**
 
 ### Determine the endpoint
-
-As described above, to login to any private registry, the syntax is as follows:
-
-```shell
-
-docker login [some.private.registry]:[port]
-
-```
-In this case, the endpoint is the **[some.private.registry]:[port]**
 
 To determine the endpoint for ECR, login to the AWS console and seach for 'ECR', which should bring up Elastic Container Registry as an option as shown below.
 
@@ -189,7 +186,7 @@ If you wish to limit Replicated to only certain images, this policy should be us
 }
 ```
 
-We will need the ```AWS Access Key ID``` and ```AWS Secret Key``` from this user later in this guide as these will map the *Usernam* and *Password* fields. You can obtain these as you create the user or after the user has been created.
+We will need the ```AWS Access Key ID``` and ```AWS Secret Key``` from this user later in this guide as these will map the *Username* and *Password* fields. You can obtain these as you create the user or after the user has been created.
 
 ### Pull Public Image and Push to ECR
 
@@ -219,10 +216,12 @@ docker.io/library/nginx:latest
 ```
 
 Next we need to login to ECR and push this container. 
-To use ```docker login``` with ECR we will need to [install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and  [configure it](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html). 
-As part of this, we will need to provide the ```AWS Access Key ID``` and ```AWS Secret Key``` for a user that has permissions to create and push to a repository. Please refer to [this guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) if you are not familiar using the AWS CLI to work with containers and ECR.
-
-As noted in the guide, you will need to create a repository before you can push an image. If you are unsure about the roles needed for this user, please refer to the [AWS ECR Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecr_managed_policies.html)
+If you don't have it already, you will need to [install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and  [configure it](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html). 
+As part of configuring the AWS CLI, we will need to provide the ```AWS Access Key ID``` and ```AWS Secret Key``` for a user that has permissions to create and push to a repository. 
+**This is not the same Service Account user we created above as that user can only push, but not pull images.**
+ If you are unsure about the roles needed for this user, please refer to the [AWS ECR Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecr_managed_policies.html)
+Please refer to [this guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) if you are not familiar using the AWS CLI to work with containers and ECR.
+As noted in the guide, you will need to create a repository before you can push an image.
 
 To login to ECR we run a command similar to:
 
