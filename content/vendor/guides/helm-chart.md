@@ -122,10 +122,10 @@ Make a new release with the Helm chart in your kots app.
 
 ```shell
 cd ~/helm-grafana
-make release
+replicated release create --auto
 ```
 
-Go to `kotsadm` and click on `Version history -> Check for updates`. Once the update is available click on `Deploy`.
+In the Admin Console, click on `Version history -> Check for updates`. Once the update is available click on `Deploy`.
 
 ![Helm Chart Check for Updates 1](/images/guides/kots/helm-chart-check-for-updates-1.png)
 
@@ -195,7 +195,7 @@ spec:
           default: 'admin'
 ```
 
-To test this, run `make release`, update the new version, and go to the kotsadm `Config` screen.
+To test this, run `replicated release create --auto`, deploy the new version, and go to the Admin Console `Config` screen.
 ![Helm Chart Grafana Config Screen](/images/guides/kots/helm-chart-grafana-config-screen.png)
 
 For now, these fields will have no effect. 
@@ -232,7 +232,7 @@ data:
 Next, we can make a release and get ready to test it out
 
 ```shell
-make release
+replicated release create --auto
 ```
 
 Deploy the new release

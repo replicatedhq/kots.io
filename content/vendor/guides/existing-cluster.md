@@ -212,7 +212,7 @@ replicas: 1
 
 Change the number to `2` or more.
 
-**Note**: If you've worked ahead and already completed the [CLI setup chapter](#automating-your-workflow), you can make this `replicas` change in your locally checked-out git repo, and publish them with `make release`, then skip to [Update the Test Server](#update-the-test-server).
+**Note**: If you've worked ahead and already completed the [CLI setup guide](/vendor/guides/cli-quickstart), you can make this `replicas` change in your locally checked-out git repo, and publish them with `replicated release create --auto`, then skip to [Update the Test Server](#update-the-test-server).
 
 ### Save and Promote the Release
 
@@ -242,75 +242,6 @@ Next, you can either check out the [CLI setup guide](#automating-your-workflow) 
 
 * * *
 
-## Automating Your Workflow
+## Next Steps: Manage YAML in your Git Repo
 
-Now that you've made a release using the [vendor.replicated.com](https://vendor.replicated.com) UI, its time to check your yaml into source control and start collaborating with your team. 
-We'll use the
-[KOTS Starter repository](https://github.com/replicatedhq/replicated-starter-kots/) as a starting point for this.
-
-### Get started
-
-This repo is a [GitHub Template Repository](https://help.github.com/en/articles/creating-a-repository-from-a-template). You can create a private copy by using the "Use this Template" link in the repo:
-
-![Template Repo](https://help.github.com/assets/images/help/repository/use-this-template-button.png)
-
-You should use the template to create a new **private** repo in your org, for example `mycompany/kots-app` or `mycompany/replicated-starter-kots`.
-
-Once you've created a repository from the template, you'll want to `git clone` your new repo and `cd` into it locally.
-
-#### Configure environment
-
-You'll need to set up two environment variables to interact with [vendor.replicated.com](https://vendor.replicated.com):
-
-```shell
-export REPLICATED_APP=...
-export REPLICATED_API_TOKEN=...
-```
-
-`REPLICATED_APP` should be set to the app slug from the Settings page:
-
-![REPLICATED_APP](/images/guides/kots/REPLICATED_APP.png)
-
-Next, create an API token from the [Teams and Tokens](https://vendor.replicated.com/team/tokens) page:
-
-![REPLICATED_API_TOKEN](/images/guides/kots/REPLICATED_API_TOKEN_1.png)
-![REPLICATED_API_TOKEN](/images/guides/kots/REPLICATED_API_TOKEN_2.png)
-
-Ensure the token has "Write" access or you'll be unable create new releases. 
-Once you have the values, set them in your environment.
-
-```shell
-export REPLICATED_APP=...
-export REPLICATED_API_TOKEN=...
-```
-
-You can ensure this is working with
-
-```shell
-make list-releases
-```
-
-#### Iterating on your release
-
-Once you've made changes to one or more files in your `manifests` directory, you can push a new release to a channel with
-
-```shell
-make release
-```
-
-By default the `Unstable` channel will be used. 
-You can override this with `channel`:
-
-```shell
-make release channel=Beta
-```
-
-If you are on a git branch other than `master`, the branch name will be used for the channel name. 
-If a channel does not exist with that name, it will be created.
-
-### Integrating with CI
-
-This repo contains a [GitHub Actions](https://help.github.com/en/github/automating-your-workflow-with-github-actions/about-github-actions) workflow for ci at `./.github/workflows/main.yml`. 
-You'll need to [configure secrets](https://help.github.com/en/github/automating-your-workflow-with-github-actions/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) for `REPLICATED_APP` and `REPLICATED_API_TOKEN`.
-
-
+Now that you're familiar with the basics, you should run through the [CLI Quickstart](/vendor/guides/cli-quickstart) so you can start managing your release YAML in a git repo.
