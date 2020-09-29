@@ -28,7 +28,7 @@ The guide is divided into the following parts:
 - [Part 2 - Install the Application](#part-2---install-the-application) - Covers at a high level the process of installing the first release of the application.
 - [Part 3 - Configuring Private Registries in Replicated](#part-3---configure-private-registries-in-replicated) - Covers the steps to link Replicated with ECR.
 - [Part 4 - Update Definition Files](#part-4---update-definition-files) - Covers updating the files with the private registry address and port.
-- [Part 5 - Install the New Version ](part-5---install-the-new-version) - Covers updating the installed application to the latest version to verify that we were able to pull the image from the private registry set in the previous steps.
+- [Part 5 - Install the New Version ](#part-5---install-the-new-version) - Covers updating the installed application to the latest version to verify that we were able to pull the image from the private registry set in the previous steps.
 
 
 ## Part 1 - Getting Started
