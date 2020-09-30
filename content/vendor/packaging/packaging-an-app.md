@@ -19,9 +19,8 @@ This document starts with an overview on how to package and manage KOTS applicat
 Please refer to our documentation of the [Kots CLI](/kots-cli/getting-started/) to install and manage a KOTS application via the command line, or our [Kotsadm documentation](/kotsadm/installing/installing-a-kots-app/) for managing an application via the admin console.
 
 ## Getting Started as a KOTS Vendor
-It's easy to get started as a KOTS Vendor. 
-Create your Replicated Vendor account at our [Vendor Portal](https://vendor.replicated.com) and follow the prompts to create a new application. 
-It is highly recommended to follow the steps from one of our example applications (such as the [Quickstart for KOTS Sentry](https://github.com/replicatedhq/kots-sentry)) to gain familiarity with how to package and maintain a KOTS application with Vendor.
+It's easy to get started packaging an app in KOTS.
+To start, create a Replicated Vendor account at our [Vendor Portal](https://vendor.replicated.com) and follow one of our [Getting Started Guides](/vendor/guides/#getting-started).
 
 ## Basic Packaging
 KOTS applications are packaged as a set of standard Kubernetes manifests. 
