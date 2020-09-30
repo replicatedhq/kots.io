@@ -15,38 +15,40 @@ It is broken into four sections:
 - [Creating a Release](#creating-a-release)
 - [Installing and Testing](#installing-and-testing)
 - [Iterating and Updating](#iterating-and-updating)
-- [Automating Your Workflow](#automating-your-workflow)
+- [Next Steps](#next-steps-manage-yaml-in-your-git-repo)
 
 * * *
 
 ## Creating a Release
 
-When getting started with the KOTS platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend a lot of time. 
-This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with KOTS. 
+When getting started with the KOTS platform, the [Vendor Portal](https://vendor.replicated.com) will be the place you spend a lot of time.
+This guide is designed to help you get familiar with the concepts and ideas that are important to successfully deploy your application with KOTS.
 If you get stuck or need help, head to our [community](https://help.replicated.com/community/).
 
-This guide will deploy a basic application using KOTS, and show you how to deliver an update to that application. 
+This guide will deploy a basic application using KOTS, and show you how to deliver an update to that application.
 The guide isn't going to teach Kubernetes, rather it will start with a minimal Kubernetes application that deploys a single replica of [nginx](https://www.nginx.com).
 
 ### Create a New Application
 
-To start, log in (or create a new team) on [vendor.replicated.com](https://vendor.replicated.com) and create a new application. After signing up and activating your account, you will be prompted to create a new application. 
+To start, log in (or create a new team) on [vendor.replicated.com](https://vendor.replicated.com) and create a new application. After signing up and activating your account, you will be prompted to create a new application.
 Give it a name like "Starter KOTS application" or "Nginx Example" and click the "Create Application" button.
 
 ![Create Application](/images/guides/kots/create-application.png)
 
 ### Releases
 
-You'll should be at the channels page now. 
-This is a list of your release channels, which are logical stacks for you to stage and promote releases to your customers. 
-We'll explore this in more detail later. 
+You'll should be at the channels page now.
+This is a list of your release channels, which are logical stacks for you to stage and promote releases to your customers.
+We'll explore this in more detail later.
 For now, click on the Releases item on the left menu and then click the "Create a release" button.
 
 ![Create Release](/images/guides/kots/create-release.png)
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (Although if you're itching to hit the command line rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. 
+Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page. 
+If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our  [CLI Quickstart guide](/vendor/guides/cli-quickstart).
 
 {{< notes title="Quickstart" >}}
 Since this guide is intended as a "Hello, World" example, we'll skip editing the YAML right now and just proceed with the defaults. We'll make some changes later on in this guide.
@@ -55,15 +57,15 @@ Since this guide is intended as a "Hello, World" example, we'll skip editing the
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
 
-The default YAML documents above the white line contain information for KOTS, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs. 
+The default YAML documents above the white line contain information for KOTS, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs.
 You can learn about those [in the reference docs](/reference/v1beta1), but for now, let's click the "Save release" button in the bottom right.
 
 
 
 ### Save and Promote Release
 
-Once the release is saved, go ahead and promote it to the Unstable channel to make this release available for installation. 
-To do this, click the "Releases" link in the top left and then click the Promote button on the row we just created. 
+Once the release is saved, go ahead and promote it to the Unstable channel to make this release available for installation.
+To do this, click the "Releases" link in the top left and then click the Promote button on the row we just created.
 In this popup, choose the Unstable channel and click the Promote button.
 
 ![Promote Release](/images/guides/kots/promote-release-button.png)
@@ -81,30 +83,30 @@ Now that we've created a release and promoted it to the Unstable channel, the ne
 
 ### Create License
 
-A customer license (downloadable as a `.yaml` file) is required to install any KOTS application. 
+A customer license (downloadable as a `.yaml` file) is required to install any KOTS application.
 To create a customer license, log in to the [Vendor Portal](https://vendor.replicated.com) and select the "Customers" link on the left. Click the "Create a new customer" button to continue.
 
 ![Customers](/images/guides/kots/customers.png)
 
-On the "Create a new customer" page, fill in your name for the Customer name field, select the "Unstable" channel on the right hand side, and set the Customer Type to "Development". 
+On the "Create a new customer" page, fill in your name for the Customer name field, select the "Unstable" channel on the right hand side, and set the Customer Type to "Development".
 When you've set these, you can click "Create Customer", leaving the rest of the fields set to their defaults.
 
 ![Create Customer](/images/guides/kots/create-customer.png)
 
-After creating the customer, click the "Download license" link in the upper right corner. 
-This will download the file with your customer name and a `.yaml` extension. 
-This is the license file your customer will need to install your application. 
+After creating the customer, click the "Download license" link in the upper right corner.
+This will download the file with your customer name and a `.yaml` extension.
+This is the license file your customer will need to install your application.
 When a customer is installing your software you need to send them two things: the KOTS install script and the license file.
 
 ### Create Test Server and Install KOTS
 
-KOTS can be installed either into an existing Kubernetes cluster or as an embedded cluster. 
+KOTS can be installed either into an existing Kubernetes cluster or as an embedded cluster.
 You can see the installation options at the bottom of each channel on the Channels page.
 
 ![Installation Methods](/images/guides/kots/installation-methods-embedded.png)
 
-We're going to use the embedded cluster option for this guide. 
-First, we will need a server. We'll use Google Cloud for this example, but any cloud provider or local virtual machine will suffice. 
+We're going to use the embedded cluster option for this guide.
+First, we will need a server. We'll use Google Cloud for this example, but any cloud provider or local virtual machine will suffice.
 For this guide, let's create a server with:
 
 - Ubuntu 18.04
@@ -171,7 +173,7 @@ Next, you'll be asked for a password -- you'll want to grab the password from th
 
 ![Log In](/images/guides/kots/admin-console-login.png)
 
-Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers. 
+Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers.
 The next step is to upload a license file so KOTS can pull containers and run your application.
 Click the Upload button and select your `.yaml` file to continue, or drag and drop the license file from your desktop.
 
@@ -213,19 +215,19 @@ Next, we'll walk through creating and delivering an update to the application we
 
 ## Iterating and Updating
 
-This guide will walk you through making a change and delivering an update to an application after it's been deployed. 
-It's assumed you have the environment from parts 1 and 2 of this guide ([creating a release](#creating-a-release) and [installing](#installing-and-testing)). 
+This guide will walk you through making a change and delivering an update to an application after it's been deployed.
+It's assumed you have the environment from parts 1 and 2 of this guide ([creating a release](#creating-a-release) and [installing](#installing-and-testing)).
 If you haven't completed these guides, head back and finish them first.
 
 Now that we have a KOTS application running, a common task is to deliver updates. Let's change the number of nginx replicas to show how to deliver an update.
 
 ### Create a New Release
 
-On the "Releases" page of the [Vendor Portal](https://vendor.replicated.com), click the "Create Release" link on top. 
-Once again, you'll be taken to a YAML editor that shows the contents of the most recently created release. 
+On the "Releases" page of the [Vendor Portal](https://vendor.replicated.com), click the "Create Release" link on top.
+Once again, you'll be taken to a YAML editor that shows the contents of the most recently created release.
 This gives us everything we've done so far, and our task now is to only write the changes needed to increase the number of nginx replicas.
 
-In the release YAML, find the nginx image to change. 
+In the release YAML, find the nginx image to change.
 The line is in the `deployment.yaml` file and looks like:
 
 ```yaml
@@ -238,25 +240,25 @@ Change the number to `2` or more.
 
 ### Save and Promote the Release
 
-Following the same process we did before, click the "Save Release" button, go back one screen and click "Promote" next to the newly created Sequence 2. 
-Choose the Unstable channel again to promote this new release. 
+Following the same process we did before, click the "Save Release" button, go back one screen and click "Promote" next to the newly created Sequence 2.
+Choose the Unstable channel again to promote this new release.
 Now, any license installed from the "Unstable" channel will start with this new release, and any installation already running will be prompted to update to the new release.
 
 ### Update the Test Server
 
-To install and test this new release, we need to connect to the Admin Console dashboard on port :8800 using a web browser. At this point, it will likely show that our test application is "Up To Date" and that "No Updates Are Available". 
+To install and test this new release, we need to connect to the Admin Console dashboard on port :8800 using a web browser. At this point, it will likely show that our test application is "Up To Date" and that "No Updates Are Available".
 The Admin Console will check for new updates about every five hours but we can force it to check now.
 
-In the Application or Version History tab click on the "Check For Updates" button. 
-On the version history page the faded "Deployed" button should become active and say "Deploy." 
-In addition it should say how many files were changed and how many lines are different. 
+In the Application or Version History tab click on the "Check For Updates" button.
+On the version history page the faded "Deployed" button should become active and say "Deploy."
+In addition it should say how many files were changed and how many lines are different.
 You can click on that to view what has changed in the yaml.
 
 
 ![View Update](/images/guides/kots/view-update.png)
 
-Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas. 
-This should only take a few seconds to deploy. 
+Clicking the Deploy button will apply the new YAML which will change the number of nginx replicas.
+This should only take a few seconds to deploy.
 You can verify this on the server by running
 
 ```
@@ -265,11 +267,10 @@ kubectl get pod -l component=nginx
 
 You should see two pods running.
 
-Next, you can either check out the [CLI setup guide](#automating-your-workflow) to start managing your KOTS yaml in a git repo with our CLI tools, or you can head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.
-
-
 * * *
 
 ## Next Steps: Manage YAML in your Git Repo
 
 Now that you're familiar with the basics, you should run through the [CLI Quickstart](/vendor/guides/cli-quickstart) so you can start managing your release YAML in a git repo.
+
+You can also head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.

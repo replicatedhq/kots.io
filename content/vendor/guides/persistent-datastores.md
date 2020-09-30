@@ -88,7 +88,7 @@ For now we'll hard code the DB variable values, in the next sections we'll wire 
 
 ### Deploying the example application
 
- Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `replicated release create --auto` locally. 
+ Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/cli-quickstart/#2-setting-an-api-token) or by running `replicated release create --auto` locally. 
  Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
@@ -204,7 +204,7 @@ As mentioned in the introduction, a full example of the code for this guide can 
 ### Validating Config Changes
 
 Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. 
-Create a release by pushing a commit to your [starter repo copy](/vendor/guides/quickstart#automating-your-workflow) or by running `replicated release create --auto` locally. 
+Create a release by pushing a commit to your [ci-enabled repo](/vendor/guides/ci-cd-integration) or by running `replicated release create --auto` locally. 
 Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)

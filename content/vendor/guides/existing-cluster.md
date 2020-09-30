@@ -13,7 +13,7 @@ It is broken into four sections:
 - [Creating a Release](#creating-a-release)
 - [Installing and Testing](#installing-and-testing)
 - [Iterating and Updating](#iterating-and-updating)
-- [Automating Your Workflow](#automating-your-workflow)
+- [Next Steps](#next-steps-manage-yaml-in-your-git-repo)
 
 ## Creating a Release
 
@@ -44,7 +44,7 @@ For now, click on the "Releases" item on the left menu and then click the "Creat
 ### Create a Release
 
 You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality. 
-Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup chapter](#automating-your-workflow) before coming back to complete this guide).
+Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page (although if you're itching to hit the command line, rather than editing YAML in the browser, you can always run through the [CLI setup guide](/vendor/guides/cli-quickstart/#2-setting-an-api-token) before coming back to complete this guide).
 
 {{< notes title="Quickstart" >}}
 Since this guide is intended as a "Hello, World" example, we'll skip editing the YAML right now and just proceed with the defaults. 
@@ -237,11 +237,10 @@ You can click on that to view what has changed in the yaml.
 Clicking the "Deploy" button will apply the new YAML which will change the number of nginx replicas. 
 This should only take a few seconds to deploy.
 
-Next, you can either check out the [CLI setup guide](#automating-your-workflow) to start managing your KOTS yaml in a git repo with our CLI tools, or you can head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.
-
-
 * * *
 
 ## Next Steps: Manage YAML in your Git Repo
 
 Now that you're familiar with the basics, you should run through the [CLI Quickstart](/vendor/guides/cli-quickstart) so you can start managing your release YAML in a git repo.
+
+You can also head over to [KOTS Documentation](/vendor/packaging/packaging-an-app/) to learn how to integrate your application with other KOTS features.
