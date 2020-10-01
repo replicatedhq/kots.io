@@ -23,7 +23,6 @@ Replicated will store your username and password encrypted and securely, and it 
 
 ![Add External Registry](/images/add-external-registry.png)
 
-
 Your application YAML will reference images that it cannot access. 
 Kots and kotsadm recognize this, and will patch the YAML using Kustomize to change the image name. 
 When kots is attempting to install an application, it will attempt to load image manifest using the image reference from the PodSpec. 
@@ -64,3 +63,9 @@ This secret is based on the customer license, and will be used to pull all image
 
 Images hosted at `registry.replicated.com` will not be rewritten.  
 However, the same secret will be added to those PodSpecs as well.
+
+## Additional namespaces
+
+When deploying pods to namespaces other than the KOTS application namespace, the namespace must be added to the `additionalNamespaces` attribute of the [Application](/reference/v1beta1/application/) spec.
+This will ensure that a secret named `kotsadm-replicated-registry` will get auto-provisioned by KOTS in the namespace to allow the pod to pull the image.
+For more information about the `additionalNamespaces` attribute see [this doc](/vendor/operators/additional-namespaces/).
