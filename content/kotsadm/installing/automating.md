@@ -65,7 +65,7 @@ kubectl kots install app-name \
   --license-file ./license.yaml \
   --config-values ./configvalues.yaml
   --airgap-bundle /path/to/application.airgap
-  --kotsadm-registry private.registry.host/app-name \
+  --kotsadm-registry private.registry.host \
   --kotsadm-namespace app-name \
   --registry-username rw-username \
   --registry-password rw-password
