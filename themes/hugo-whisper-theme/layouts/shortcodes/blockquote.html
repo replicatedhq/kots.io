@@ -1,0 +1,11 @@
+<div class="blockquote-v2">{{ .Get "quote" }}
+<br />
+    <div class="blockquote-speaker">
+        — {{ .Get "speaker" }}
+    <span class="blockquote-link">
+        {{ if and (.Get "link") (.Get "href") }}
+        <a class="blockquote-link" href="{{ .Get "href" }}">{{ .Get "link"}}</a>
+        {{ end }}
+    </div>
+</div>
+</blockquote>

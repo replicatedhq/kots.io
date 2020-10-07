@@ -2,7 +2,7 @@
 baseURL: "https://kots.io"
 languageCode: "en-us"
 title: "Kots.io"
-theme: "hugo-whisper-theme"
+theme: ["hugo-dynamic-tabs", "hugo-whisper-theme"]
 metadataformat: "yaml"
 canonifyurls: true
 relativeurls: true

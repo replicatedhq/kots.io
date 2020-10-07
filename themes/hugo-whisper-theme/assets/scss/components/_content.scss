@@ -70,11 +70,11 @@
     font-size: 0.9rem;
     line-height: 1.4;
     margin: 0;
-    padding: 10px;
-    border-radius: 1px;
+    padding: 20px 25px;
+    border-radius: 8px;
     code {
       font-family: $font-family-mono;
-      font-size: 0.9rem;
+      font-size: 1rem;
       line-height: 1.4;
       border-radius: none;
       padding: 0;
@@ -162,9 +162,9 @@
     margin-bottom: 20px;
   }
   blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #ccc;
-    margin: 1.5em 10px;
+    background: none;
+    border-left: 5px solid #ccc;
+    margin: 3em 10px;
     padding: 0.5em 10px;
     quotes: '\201C''\201D''\2018''\2019';
   }
@@ -179,6 +179,30 @@
   blockquote p {
     display: inline;
   }
+
+  /* BLOCKQUOTE SHORTCODE */
+
+  .blockquote-v2 {
+    font-size: 22px;
+    font-style: italic;
+    font-family: 'NTR', sans-serif; 
+    line-height: 30px;
+    margin: 50px 10% 50px 10% !important;
+    
+  }
+
+  .blockquote-speaker {
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .blockquote-link {
+    display: inline-block;
+    font-size: 14px;
+  }
+
   table {
     @extend .table;
   }
@@ -186,4 +210,45 @@
     max-width: 100%;
     height: auto;
   }
+}
+
+/*-- Copy Code Button --*/ 
+
+.copy-code-button {
+  color: #525252;
+  background-color: rgb(229, 232, 243);
+  border: none;
+  border-radius: 3px 3px 0px 0px;
+
+  /* right-align */
+  display: block;
+  margin-left: auto;
+  margin-right: 13px;
+
+  margin-bottom: -2px;
+  padding: 8px 14px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.copy-code-button:hover {
+  cursor: pointer;
+  background-color: #F2F2F2;
+}
+
+.copy-code-button:focus {
+  /* Avoid an ugly focus outline on click in Chrome,
+     but darken the button for accessibility.
+     See https://stackoverflow.com/a/25298082/1481479 */
+  background-color: #E6E6E6;
+  outline: 0;
+}
+
+.copy-code-button:active {
+  background-color: #D9D9D9;
+}
+
+.highlight pre {
+  /* Avoid pushing up the copy buttons. */
+  margin: 0;
 }

@@ -26,6 +26,40 @@ To start, you'll want to install the `replicated` CLI. You can install with [hom
 brew install replicatedhq/replicated/cli
 ```
 
+### Which scheduler are you using?
+
+{{< tabs tabTotal="3" tabID="1" tabName1="Native" tabName2="Docker" tabName3="Kubernetes" >}}
+{{< tab tabNum="1" >}}
+
+**Tab 1 Content**
+
+```shell script
+brew install replicatedhq/replicated/cli
+```
+
+{{< /tab >}}
+{{< tab tabNum="2" >}}
+
+**Tab 2 Content**
+
+```shell script
+brew install replicatedhq/replicated/cli
+```
+
+{{< /tab >}}
+{{< tab tabNum="3" >}}
+
+**Tab 3 Content**
+
+```shell script
+brew install replicatedhq/replicated/cli
+```
+
+{{< /tab >}}
+{{< /tabs >}}
+
+
+
 You can verify it's installed with `replicated version`:
 
 ```text
