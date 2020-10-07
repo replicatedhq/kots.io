@@ -6,11 +6,11 @@ weight: 10040
 draft: false
 ---
 
-This article refers to installing the Admin Console on an embedded cluster. 
+This article refers to installing the Admin Console on an embedded cluster.
 When running the Admin Console on an existing cluster, refer to the [Installing the Admin Console](/kotsadm/installing/installing-a-kots-app/) documentation.
 
 ### Powered by kURL
-Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support. 
+Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support.
 More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs).
 
 ### Online Installations
@@ -23,7 +23,7 @@ curl -sSL https://kurl.sh/supergoodtool | sudo bash
 
 ### Airgapped Installations
 
-To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script. 
+To install an airgapped embedded cluster, download the airgap bundle, untar it, and run the install.sh script.
 You can construct the URL for the bundle by prefixing the above online URL path with `/bundle` and adding `.tar.gz` to the end.
 
 ```bash
@@ -32,11 +32,20 @@ tar xvf supergoodtool.tar
 cat install.sh | sudo bash -s airgap
 ```
 
-Note that the airgapped installer is not the same as an [airgapped application package](/kotsadm/installing/airgap-packages/).
-A KOTS application may be installed in airgapped mode on clusters installed online and vice versa.
-
 kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
 
+Note that the airgapped installer in the above step is not the application installer.  After this command completes, the application can be installed using the application airgap bundle.
+
+```bash
+kubectl kots install myapp \
+  --airgap-bundle ./myapp-1.0.165.airgap \
+  --license-file ./license.yaml \
+  --config-values ./config.yaml \
+  --namespace default \
+  --shared-password password
+```
+
+Applications can also be installed into existing clusters as described in [this doc](/kotsadm/installing/airgap-packages/).
 
 ### HA Installations
 
