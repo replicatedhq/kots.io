@@ -208,7 +208,7 @@ If both operands are integers, the result will be an integer.
 '{{repl Mult (NodePrivateIPAddressAll "DB" "redis" | len) 2}}'
 ```
 
-If a `ConfigOption` is used, the value must be converted to an integer or a floating point number first:
+If a template function returns a string, the value must be converted to an integer or a floating point number first:
 ```yaml
 '{{repl Mult (ConfigOption "session_cookie_age" | ParseInt) 86400}}'
 ```
