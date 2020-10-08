@@ -88,12 +88,10 @@
               });
 
               var pre = codeBlock.parentNode;
-              if (pre.parentNode.classList.contains('highlight')) {
+              if (codeBlock.classList.contains('language-shell')) {
                   var highlight = pre.parentNode;
                   highlight.parentNode.insertBefore(button, highlight);
-              } else {
-                  pre.parentNode.insertBefore(button, pre);
-              }
+              } 
           });
       }
 
