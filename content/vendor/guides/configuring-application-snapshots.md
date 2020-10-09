@@ -650,10 +650,11 @@ spec:
           storage: 2Gi
 
 ```
+* * *
 ## Further Reading
 
-[Postgres Snapshot Sample Application](https://github.com/replicatedhq/kotsapps/tree/master/postgres-snapshots)For another working example of a KOTS application check the Potgres Snapshot application in GitHub.
+* [Postgres Snapshot Sample Application](https://github.com/replicatedhq/kotsapps/tree/master/postgres-snapshots)For another working example of a KOTS application check the Potgres Snapshot application in GitHub.
 
-[KOTS Snashot Documentation](https://kots.io/vendor/snapshots/overview/) For more details about snapshots in KOTS, please review the docs for KOTS.
+* [KOTS Snashot Documentation](https://kots.io/vendor/snapshots/overview/) For more details about snapshots in KOTS, please review the docs for KOTS.
 
-[Velero Documentation](https://velero.io/docs/)
+* [Velero Documentation](https://velero.io/docs/)
