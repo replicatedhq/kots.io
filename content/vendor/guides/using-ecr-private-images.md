@@ -167,6 +167,8 @@ latest: digest: sha256:794275d96b4ab96eeb954728a7bf11156570e8372ecd5ed0cbc728031
 Our testing environment is all set!
 We are now ready to update Replicated to use the private registry.
 
+* * *
+
 ## 2. Configure Private Registries in Replicated
 
 To configure a Private Registry in Replicated, we need to provide the same information we needed to login to ECR in the previous step:
@@ -264,6 +266,8 @@ Enter the AWS Access Key ID for the user created in the [Setting Up the Service 
 **Password:**
 Enter the AWS Secret Key for the user created in the [Setting Up the Service Account User](#setting-up-the-service-account-user) section.
 
+* * *
+
 ## 3. Update Definition Files
 
 Last step is to update our defintion manifest to pull the image from the ECR repository.
@@ -280,6 +284,8 @@ Below is an example using the registry URL used in this guide.
 ```
 
 Save your changes and create the new release and promote it to the *Unstable* channel.
+
+* * *
 
 ## 4. Install the New Version
 
@@ -301,6 +307,8 @@ Since KOTS is able to detect that it can't pull this image anonymously, it then 
 The install of the new version should have created a new pod. If we run `kubectl describe pod` on the new nginx pod, we can confirm that the image was in fact pulled from the ECR repository.
 
 ![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-ecr-kubectl-describe-rel2.png)
+
+* * *
 
 ## Further Reading
 
