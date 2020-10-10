@@ -46,8 +46,6 @@ kubectl kots install myapp \
   --shared-password password
 ```
 
-Applications can also be installed into existing clusters as described in [this doc](/kotsadm/installing/airgap-packages/).
-
 ### HA Installations
 
 Both online and airgapped installations can be configured in high-availability mode.
