@@ -162,23 +162,49 @@
     margin-bottom: 20px;
   }
   blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #ccc;
-    margin: 1.5em 10px;
-    padding: 0.5em 10px;
-    quotes: '\201C''\201D''\2018''\2019';
+    background: #F0F3FA;
+    border: 1px solid #93B1F7;
+    box-sizing: border-box;
+    margin: 20px 0 20px 0;
+    padding: 18px 18px 18px 50px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  
+    h1, h2, h3, h4 {
+      font-size: 18px !important;
+      line-height: 26px;  
+      color: #163166;
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+  
+    p {
+      font-family: Helvetica Neue;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;  
+      color: #163166;
+      margin-bottom: 0px;
+    }
   }
-  blockquote:before {
-    color: #ccc;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
+  
+  blockquote::before {
+    content: "";
+    background-image: url("/images/callout.png");
+    position: absolute;
+    width: 26px;
+    height: 20px;
+    display: block;
+    top: 22px;
+    left: 18px;
+    background-size: 26px;
+    background-repeat: no-repeat;
   }
-  blockquote p {
-    display: inline;
-  }
+  
   table {
     @extend .table;
   }
