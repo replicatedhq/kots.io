@@ -6,7 +6,7 @@ weight: 10030
 draft: false
 ---
 
-This article refers to upgrading the Admin Console on an embedded cluster. 
+This article refers to upgrading the Admin Console on an embedded cluster.
 When running the Admin Console on an existing cluster, refer to the [Updating the Admin Console](/kotsadm/updating/updating-admin-console/) documentation.
 
 ### Online Installations
@@ -20,12 +20,21 @@ curl -sSL https://kurl.sh/supergoodtool | sudo bash
 
 ### Airgapped Installations
 
-To update an airgapped installation, download the new airgap bundle, untar it, and run the install.sh script.
+To update Admin Console in an airgapped environment, download the new kURL airgap bundle, untar it, and run the install.sh script.
 
 ```bash
 curl -SL -o supergoodtool.tar.gz https://kurl.sh/bundle/supergoodtool.tar.gz
 tar xzvf supergoodtool.tar.gz
 cat install.sh | sudo bash -s airgap
+```
+
+To update the application in an airgapped environment, download the new application airgap bundle and run the following command:
+
+```bash
+kubectl kots upstream upgrade <app slug> \
+  --airgap-bundle new-app-release.airgap \
+  --kotsadm-namespace <registry namespace> \
+  -n default
 ```
 
 ### Updating Kubernetes
