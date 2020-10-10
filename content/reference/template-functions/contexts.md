@@ -21,7 +21,7 @@ At execution time, template functions in this context also can use the static co
 [For a list of all Replicated functions available in the config context, click here.](/reference/template-functions/config-context)
 
 ## License Context
-Template functions in the license context have access to the license data.
+Template functions in the license context have access to license and version data.
 
 [For a list of all Replicated functions available in the license context, click here.](/reference/template-functions/license-context)
 
