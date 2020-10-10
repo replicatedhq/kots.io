@@ -14,7 +14,7 @@ In addition to RBAC policies, clusters running in airgapped environments or clus
 A KOTS application can identify additional namespaces to create during installation time. 
 These are defined in the `additionalNamespaces` attribute of the [Application](/reference/v1beta1/application/) spec. 
 When these are defined, `kots install` will create the namespaces and ensure that the Admin Console has full access to manage resources in these namespaces. 
-This is accomplished by creating a Role abd RoleBinding per namespace, and setting the Subject to the Admin Console service account. 
+This is accomplished by creating a Role and RoleBinding per namespace, and setting the Subject to the Admin Console service account. 
 If the current user account does not have access to create these additional namespaces, the installer will show an error and fail.
 
 ```yaml
