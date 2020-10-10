@@ -34,7 +34,8 @@ cat install.sh | sudo bash -s airgap
 
 kURL currently uses `.tar.gz` extension for a `.tar` file, hence the `-o *.tar`.
 
-Note that the airgapped installer in the above step is not the application installer.  After this command completes, the application can be installed using the application airgap bundle.
+Note that the airgap bundle above only includes the Admin Console components, which are required in order to install the application.
+After this command completes, the application can be installed using the application airgap bundle.
 
 ```bash
 kubectl kots install myapp \
