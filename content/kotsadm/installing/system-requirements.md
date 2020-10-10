@@ -25,7 +25,7 @@ This includes support against all patch releases of the corrersponding Kubernete
 | 1.17 | 2020-07-14 | 1.18, 1.17, and 1.16 |
 | 1.18 | 2020-08-10 | 1.18, 1.17, and 1.16 |
 | 1.19 | 2020-09-11 | 1.18, 1.17, and 1.16 |
-| 1.20 | 2020-10-09 | 1.17, 1.18, and 1.19 |
+| 1.20 | 2020-10-09 | 1.19, 1.18, and 1.17 |
 
 ## Existing Cluster Installation Requirements
 
@@ -39,7 +39,7 @@ Root access on nodes or workstations is *not* required for installations to exis
 
 ### Cluster RBAC
 
-Unless the `requireMinimalRBACPrivileges` attribute is included and set to `true` in the [application.yaml](https://kots.io/reference/v1beta1/application/), KOTS will require:
+Unless the `requireMinimalRBACPrivileges` attribute is included and set to `true` in the [application.yaml](/reference/v1beta1/application/), KOTS will require:
 
 - Existing namespace, and an RBAC binding that allows the `kubectl`-ing user to create workloads, ClusterRoles, and ClusterRoleBindings
 - cluster-admin permissions to create namespaces and assign RBAC roles across the cluster
