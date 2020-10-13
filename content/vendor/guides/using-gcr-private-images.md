@@ -5,102 +5,105 @@ title: "Using GCR for Private Images"
 weight: "1005"
 ---
 
-## About This Guide
+KOTS supports working with private images stored in Google's Container Registry (GCR).
 
-This guide is a tutorial on how to configure Replicated to pull images from a private registry in Google's Container Registry (GCR).
+## Objective
 
-## Prerquisites/Assumptions
+The purpose of this guide is to walk you through a hello-world example on how to configure Replicated to pull images from a private registry in Google's Container Registry (ECR).
 
-This guide assumes a level of familiarity with Replicated and will not cover in detail the process of creating a release, promoting it to a channel and running an install. 
-These topics are covered in the [Quickstart Guide](https://kots.io/vendor/guides/quickstart/), and should be reviewed prior to this guide.
+## Prerequisites & Assumptions
 
-The guide also assumes the following:
+This power-user's guide assumes you have completed the [standard quickstart](https://kots.io/vendor/guides/quickstart/) or the [CLI quickstart](https://kots.io/vendor/guides/cli-quickstart/) guides as this guide is a continuation of those guides.
+As with the previous guides, we will also need a VM to install the application with the following minimum requirements:
 
-- You have an account for https://vendor.replicated.com
-- You have an account in Google Cloud Platform (GCP) to pull & push to GCR, as well as the ability to create an account with pull only permissions.
-- You know how to create and update releases in Replicated using the Command Line Interface (CLI) tools.
+* Ubuntu 18.04
+* At least 8 GB of RAM
+* 4 CPU cores
+* At least 100GB of disk space
+
+In this guide we are going to focus on the difference between using a public image versus a private image in Replicated.
+To do this, we'll pull the public ngnix container and then push it to a private repository in GCR.
+
+This means we'll need:
+
+* A GCR Repository
+* A Google Account to use with Docker to pull and push the public nginx image to the GCR repository
+* Docker
+* The gcloud CLI
+
+Later in the guide we'll configure Replicated to pull from the GCR repository using a read-only account.
+To do this we'll need to make sure the above AWS account can also create this user.
 
 ## Overview
 
-The guide is divided into the following parts:
+The guide is divided into the following steps:
 
-- [Part 1 - Getting Started](#part-1---getting-started) - Covers creating an account in Replicated, creating a new application and its first release. 
-- [Part 2 - Install the Application](#part-2---install-the-application) - Covers at a high level the process of installing the first release of the application.
-- [Part 3 - Configuring Private Registries in Replicated](#part-3---configure-private-registries-in-replicated) - Covers the steps to link Replicated with GCR.
-- [Part 4 - Update Definition Files](#part-4---update-definition-files) - Covers updating the files with the private registry address and port.
-- [Part 5 - Install the New Version ](part-5---install-the-new-version) - Covers updating the installed application to the latest version to verify that we were able to pull the image from the private registry set in the previous steps.
-
-
-## Part 1 - Getting Started
-
-To get started with this guide, we are going to create a new application in Replicted and create a release using the default definition files.
-
-### Create a New Application in Replicated
-
-To create a new application, login to vendor.replicated.com and select *Create new app...* from the *Application* menu.
-
-![new-app](/images/guides/kots/priv-reg-ecr-new-app.png)
-
-For the purpose of this guide we will name this application **MySampleGCRApplication**, but feel free to use a different name.
-
-![new-app-name](/images/guides/kots/priv-reg-gcr-new-app.png)
-
-Once the application is created, click on the *Releases* tab.
-
-![new-release](/images/guides/kots/priv-reg-gcr-no-release.png)
-
-As you see in the screenshot above, the application does not have any releases.
-
-### Create the First Release
-
-Replicated provides several ways to create a release, but the most common way is to automate it as described in our [quickstart guide](https://kots.io/vendor/guides/quickstart/#automating-your-workflow).
-The guide will assume you have created a starter repository in GitHub based on the [Kots Starter Template](https://github.com/replicatedhq/replicated-starter-kots/), and are either using the provided GitHub Action workflow file or CLI tools to create releases and promote to the *Unstable* channel.
-
-As we see can below, the default deployment definition file will deploy the public NGINX container.
-
-![release-2](/images/guides/kots/priv-reg-ecr-default-def-yaml.png)
-
-### Create a Customer License
-
-We will need a license to install the application, so click on **Create a Customer** under the *Customers* tab.
-
-![create-customer](/images/guides/kots/priv-reg-gcr-no-customer.png)
-
-Create new customer, and assign it to the *Unstable* channel. Once the customer is saved, a link to download the license becomes available:
-
-![new-customer](/images/guides/kots/priv-reg-gcr-new-customer.png)
-
-## Part 2 - Install the Application
-
-Now we are ready to install the application!
-
-As mentioned earlier in this guide, the following steps and screenshots are for doing an embedded install on a plain VM. However, doing an existing install to a Kubernetes cluster also works.
-
-For this guide, let’s create a server with Ubuntu 18.04 and at least:
+ 1. [Set Up Testing Environment](#1-set-up-testing-environment) 
  
-- 8 GB of RAM
-- 4 CPU cores
-- 100GB of disk space
+ 2. [Configure Private Registries in Replicated](#2-configure-private-registries-in-replicated)
 
-SSH into the VM and paste the command from the *Unstable* channel:
+ 3. [Update Definition Files](#3-update-definition-files)
 
-![replicated-channels](/images/guides/kots/priv-reg-gcr-channels.png)
+ 4. [Install the New Version](#4-install-the-new-version)
 
-Once the install is complete, browse to the Admin Console, and follow the prompts to enter the password, upload the license file, etc... to get the application deployed. Once the application is deployed, the **Dashboard** on the KOTS Admin Console should look similar to this:
+## 1. Set Up Testing Environment
 
-![admin-console](/images/guides/kots/priv-reg-ecr-admin-console.png)
+For this guide, we are simply going to use the default nginx deployment to create our application and then update it to pull the same container from a private repository in GCR and note the differences.
+
+### Create Sample Application and deploy the first release
+
+In this section, we cover at a high level the steps to create a new application and install it on a VM. As mentioned earlier, it's assumed you have completed the [standard quickstart](https://kots.io/vendor/guides/quickstart/) or the [CLI quickstart](https://kots.io/vendor/guides/cli-quickstart/) guide, which cover these steps in detail.
+
+To create our sample application follow these steps:
+
+* Create a new application in Replicated and call it 'MySampleGCRApp'. 
+* Create the first release using the default definition files and promote it to the *unstable* channel.
+* Create a customer, assign it to the *Unstable* channel and download the license file after creating the customer.
+* Install the application to a Virtual Machine
+
+Once you have installed the first release of the sample application you should arrive at this screen in the Admin Console:
+
+![kots-admin-v1](/images/guides/kots/priv-reg-ecr-after-deploy.png)
 
 To inspect what was deployed let's look at the files under **View Files** from the Admin Console. 
 In the Upstream files (files from the Release created in the Replicated Vendor Portal) show that we are pulling the public image.
 
 ![admin-console-view-files-upstream-release1](/images/guides/kots/priv-reg-ecr-ups-files-rel1.png)
 
-If we switch back to the terminal window and run `kubectl describe pod` on the nginx pod, we can confirm that it was in fact pulled from the public repository.
+We can further validate this if we switch back to the terminal window on the VM where we installed the application.
+If we run `kubectl describe pod <pod-name>` on the nginx pod, we can confirm that it was in fact pulled from the public repository.
 
+![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-ecr-kubctl-describe-rel1.png)
 
-![admin-console-kubectl-describe-release2](/images/guides/kots/priv-reg-gcr-kubctl-describe-rel1.png)
+Now that we have the basic application installed, we are now going to pull the same image but from an GCR repository.
 
-Now that we have the basic application installed, we are now going to pull the same image but from a GCR repository.
+### Pull Public Image and Push to GCR
+
+To keep the changes to a minimum and only focus on using a private registry, we are going to pull the public nginx container (as specified in the `deployment.yaml` file) to our local environment, and then push it to a repository in GCR.
+To use `docker login` with GCR, we will need to configure the gcloud CLI to authenticate and set it to the right project in Google Cloud Platform (GCP).
+
+Let's start by pulling the public image
+
+```shell
+$ docker pull nginx
+```
+
+You should have an output similar to this:
+
+```shell
+Using default tag: latest
+latest: Pulling from library/nginx
+d121f8d1c412: Pull complete 
+ebd81fc8c071: Pull complete 
+655316c160af: Pull complete 
+d15953c0e0f8: Pull complete 
+2ee525c5c3cc: Pull complete 
+Digest: sha256:c628b67d21744fce822d22fdcc0389f6bd763daac23a6b77147d0712ea7102d0
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+```
+
+Next we need to login to ECR and push this container. 
 
 
 ## Part 3 - Configure Private Registries in Replicated
@@ -132,74 +135,12 @@ As you can see from the screenshot above, you can see the endpoints for each rep
 
 ### Setting up the Service Account User
 
-Replicated only needs access to pull images from the private registry. As a best practice, let's create a new user in AWS:
+Replicated only needs access to pull images from the private registry. As a best practice, let's create a new user in 
 
-![aws-new-user](/images/guides/kots/priv-reg-ecr-new-user.png)
-
-As far as permissions go, there are a couple of options, depending on scope of access.
-If exposing all images to Replicated is an acceptable solution, the Amazon-provided [AmazonEC2ContainerRegistryReadOnly](https://docs.aws.amazon.com/AmazonECR/latest/userguide/ecr_managed_policies.html#AmazonEC2ContainerRegistryReadOnly) policy will work:
-
-```shell
-{
-	"Version": "2012-10-17",
-	"Statement": [{
-		"Effect": "Allow",
-		"Action": [
-			"ecr:GetAuthorizationToken",
-			"ecr:BatchCheckLayerAvailability",
-			"ecr:GetDownloadUrlForLayer",
-			"ecr:GetRepositoryPolicy",
-			"ecr:DescribeRepositories",
-			"ecr:ListImages",
-			"ecr:DescribeImages",
-			"ecr:BatchGetImage"
-		],
-		"Resource": "*"
-	}]
-}
-```
-If you wish to limit Replicated to only certain images, this policy should be used instead:
-
-```shell
-{
-    "Version": "2012-10-17",
-    "Statement": [{
-        "Effect": "Allow",
-        "Action": [
-		    "ecr:BatchCheckLayerAvailability",
-		    "ecr:GetDownloadUrlForLayer",
-		    "ecr:GetRepositoryPolicy",
-		    "ecr:DescribeRepositories",
-		    "ecr:ListImages",
-		    "ecr:DescribeImages",
-		    "ecr:BatchGetImage"
-        ],
-        "Resource": [
-            "arn:aws:ecr:us-east-1:<account-id>:repository/<repo1>",
-            "arn:aws:ecr:us-east-1:<account-id>:repository/<repo2>"
-        ]
-    }]
-}{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ecr:GetAuthorizationToken"
-            ],
-            "Resource": "*"
-        },
-    ]
-}
-```
-
-We will need the ```AWS Access Key ID``` and ```AWS Secret Key``` from this user later in this guide as these will map the *Username* and *Password* fields. You can obtain these as you create the user or after the user has been created.
-
-### Pull Public Image and Push to ECR
+### Pull Public Image and Push to GCR
 
 To keep the changes to a minimum and only focus on using a private registry, we are going to pull the public ```nginx``` container (as specified in the ```deployment.yaml``` file) to our local environment, and then push it to a repository in ECR.
-To do this, we will need to have Docker on our local environment, have the AWS CLI installed as well as an account in AWS with with the ability to push the container to the repository.
-To use ```docker login``` with ECR, we will need to configure AWS CLI with the ```AWS Access Key ID``` and ```AWS Secret Key`` for this user.
+To do this, we will need to have Docker on our local environment, have the AWS CLI installed as well as an account in 
 
 Let's start by pulling the public image
 
@@ -223,8 +164,6 @@ docker.io/library/nginx:latest
 ```
 
 Next we need to login to ECR and push this container. 
-If you don't have it already, you will need to [install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and  [configure it](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html). 
-As part of configuring the AWS CLI, we will need to provide the ```AWS Access Key ID``` and ```AWS Secret Key``` for a user that has permissions to create and push to a repository. 
 **This is not the same Service Account user we created above as that user can only push, but not pull images.**
  If you are unsure about the roles needed for this user, please refer to the [AWS ECR Documentation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecr_managed_policies.html)
 Please refer to [this guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) if you are not familiar using the AWS CLI to work with containers and ECR.
