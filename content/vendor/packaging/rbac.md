@@ -42,7 +42,7 @@ Additionally, the namespace-scoped permission does not currently grant access to
 Applications that are using the [snapshots](/vendor/snapshots/overview) functionality should continue to use cluster-scoped access at this time.
 
 Please note that airgapped installs honor the `requireMinimalRBACPrivileges` flag in [headless mode only](/kotsadm/installing/automating/#airgap-install).
-Without access to the internet or the app's `.airgap` package as provided in a headless install, kots does not have the information required to determine whether Minimal RBAC is appropriate, and so defaults to the more permissive RBAC policy. 
+Without access to the internet or the app's `.airgap` package as provided in a headless install, kots does not have the information required to determine whether minimal RBAC is appropriate and so defaults to the more permissive RBAC policy.
 
 ### Operators and multiple namespaces
 
