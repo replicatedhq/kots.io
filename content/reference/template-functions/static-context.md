@@ -199,11 +199,18 @@ func Mult(x interface{}, y interface{}) interface{}
 ```
 Multiplies x and y.
 
+Both operands must be either an integer or a floating point number.
+
 If at least one of the operands is a floating point number, the result will be a floating point number.
 
 If both operands are integers, the result will be an integer.
 ```yaml
 '{{repl Mult (NodePrivateIPAddressAll "DB" "redis" | len) 2}}'
+```
+
+If a template function returns a string, the value must be converted to an integer or a floating point number first:
+```yaml
+'{{repl Mult (ConfigOption "session_cookie_age" | ParseInt) 86400}}'
 ```
 
 ## Div
