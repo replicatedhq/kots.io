@@ -5,7 +5,7 @@ title: "Configure Application Snapshots"
 weight: "1005"
 ---
 
-KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/) by leveraging the [Velero](https://velero.io/) open source project. This is an advanced topic 
+KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/) by leveraging the [Velero](https://velero.io/) open source project. This is an advanced topic that covers a feature that is currently in **Beta**.
 
 ## Objective 
 
@@ -21,6 +21,8 @@ As with the previous guides, we will also need a VM to install the application w
 * At least 8 GB of RAM
 * 4 CPU cores
 * At least 100GB of disk space
+
+**Please note that at this time, the only use case supported is to roll back an Application's data. Currently this features does not support disaster recovery scenarios.**
 
 ## Overview
 
@@ -46,7 +48,7 @@ The guide is divided into the following steps:
 
 ## 1. Set Up Testing Environment
 
-For this guide, we are simply deploying a Postgres `StatefulSet` and then will use `psql` to connect, to create a table and add records.
+For this guide, we are simply deploying a Postgres `StatefulSet` and then will use `psql` to connect, create a table and add records.
 We will also use it to query the table and check for records.
 
 ### Install PSQL
@@ -63,7 +65,8 @@ To create our sample application follow these steps:
 * Create a new application in Replicated and call it 'SnapshotApp'. 
 * Create the first release using the default definition files and promote it to the *unstable* channel.
 * Create a customer, assign it to the *Unstable* channel and download the license file after creating the customer.
-* Install the application to a Virtual Machine
+* This guide does not cover installing Velero on an exisiting cluster.
+
 
 Once you have installed the first release of the sample application you should arrive at this screen in the Admin Console:
 
@@ -72,14 +75,15 @@ Once you have installed the first release of the sample application you should a
 
 ### Update Application to Deploy Postgres
 
-For our second release, remove the default deployment.yaml and add two new files, [postgres-deployment.yaml](#postgres-deploymentyaml) and [postgres-service.yaml](#postgres-serviceyaml) which are included in the Appendix A of this guide.
+For our second release, remove the default deployment.yaml and service.yaml and add two new files, [postgres-deployment.yaml](#postgres-deploymentyaml) and [postgres-service.yaml](#postgres-serviceyaml) which are included in the [Appendix A](#appendix-a---manifest-files) of this guide.
 
-Promote the release and update the install.
+Promote the release to the *Unstable* channel and update the installed application using the Kots Admin Console.
 
 ### Connect to Database and Add Table
 
-Now we are going to use psql to connect to the database.
-Below is an example how to connect to the postgres database created by our deployment. Note that the `hostname or IP address` refers to the VM where you installed the application. 
+Once the changes are deployed, we should now have a Postgres `StatefulSet` for us to use psql to connect to the database.
+
+Below is an example how to connect to the postgres database created by our deployment. Note that the 'hostname or IP address' refers to the VM where you installed the application. 
 It should be the IP address or hostname you use to browse to the Admin Console.
 
 The syntax of the command to connect to the database is:
@@ -175,7 +179,7 @@ For further details on all of the available specs, please check the Velero docum
 ### Configure Volumes
 
 Volumes by default are not part of the snapshot unless they are configured to be included.
-To configure which volumes should be part of the snaphot, add the ```backup.velero.io/backup-volumes: ``` label annotation on the pod itself.
+To configure which volumes should be part of the snaphot, add the *backup.velero.io/backup-volumes:* label annotation on the pod itself.
 
 In the sample Postgres StatefulSet, the `postgresql-vct` Volume is mounted to the Postgres data directory so let's add the label annotation.
 Below shows the addition to make to the file: 
@@ -204,7 +208,7 @@ spec:
 ```
 ### Configuring the Cluster
 
-KOTS uses the [Velero](https://velero.io/) open source project to provide back up capabilities and will need to be added to the cluster. 
+KOTS uses the [Velero](https://velero.io/) open source project to provide snapshot capabilities and will need to be added to the cluster. 
 Since we used KOTS to install the Kubernetes cluster on the VM, we need to update the Kubernetes intaller.
 
 Update the Kubernetes Installer as shown below and promote it to the *Unstable* channel
@@ -236,15 +240,18 @@ Update the Kubernetes Installer as shown below and promote it to the *Unstable* 
 ```
 * * *
 
-## 3. Configure the Deployed Application
 
 Once the updates covered in the previous step have been pushed to a release and promoted, anyone that installs or updates the application to this release will now have the ability to configure Snapshots.
-To update the Kubernetes cluster, we'll need to ssh into the VM again and run the install script from the *Unstable* channel.
 
+To update the Kubernetes cluster, we'll need to ssh into the VM again and run the install script from the *Unstable* channel.
 
 ```shell
 $ curl -sSL https://k8s.kurl.sh/snapshotapp-unstable | sudo bash
 ```
+
+After this completes, log back into the Kots Admin Console and go to **Version History** to ensure you have the version of the application with the latest changes. 
+
+## 3. Configure the Deployed Application
 
 The user will know that Snapshots are now available to configure when the **Snaphot Settings** tab becomes avialabe in the KOTS Admin Console as illustrated below.
 
@@ -298,7 +305,7 @@ This snapshot should include our table 'tbl_records' as well as the one row cont
 
 Now that we have a snapshot, let's add a new row to the table.
 This will give us a way to compare the contents of the table after we restore the snapshot.
-To add a new record, we'll run:
+To add a new record, we'll use psql [as before](#connect-to-database-and-add-table) and run:
 
 ```shell
 postgres=# INSERT INTO tbl_records (sample_field) VALUES ('bye!');
@@ -320,7 +327,7 @@ postgres=# SELECT * FROM tbl_records;
 
 ## 6. Restore the First Snapshot
 
-To access snapshots, adjust settings, etc... go to the **Snapshots** tab in the Admin Console Snaphots tab:
+To access snapshots, adjust settings, etc... go to the *Snapshots* tab in the Admin Console:
 
 ![snapshot_list](/images/guides/kots/snap_guide_snap_list_v.png)
 
@@ -340,7 +347,7 @@ Once the snapshot restore process completes, you will need to login to the Admin
 ## 7. Verify Table Contents
 
 To verify that the restore process actually worked, let's check the database.
-Note that as part of the restore process, the connection to the Postgres database was lost so we'll need to connect to the database again
+Note that as part of the restore process, the connection to the Postgres database was lost so we'll need to [connect to the database](#connect-to-database-and-add-table) again
 
 ```shell
 psql -U postgres -h 35.238.229.162 "dbname=postgres"
@@ -375,10 +382,11 @@ For the purposes of this guide, we'll do the former and use label annotations.
 
 To accomplish this we'll need to:
 
-- Add the ```pre.hook.backup.velero.io/command``` label annotation to execute ```pg_dump``` and put the backup in a new folder.
-- Add the ```pre.hook.backup.velero.io/timeout``` label annotation to give the backup time to run and store the output.
+- Add the *pre.hook.backup.velero.io/command* label annotation to execute `pg_dump` and put the backup in a new folder.
+- Add the *pre.hook.backup.velero.io/timeout* label annotation to give the backup time to run and store the output.
   Per the Velero documentation, "The hook is considered in error if the command exceeds the timeout." so make sure this value exceeds how long you expect the command to take.
-- Add a new volume to the pod and mount it to the new folder containing the ```pg_dump``` output.
+- Add a new volume to the pod and mount it to the new folder containing the `pg_dump` output.
+- Change the *backup.velero.io/backup-volumes:* label to take a snapshot of the new volume.
 
 Below highlights the changes to the Postgres definition file:
 
@@ -406,7 +414,10 @@ Below highlights the changes to the Postgres definition file:
 +         backup.velero.io/backup-volumes: postgresql-backup
       spec:
 ```
-Below show the addition of the Volume mounted to the /backup directory.
+
+The snippet below shows the addition of the backup volume.
+Note that we are using a local [emptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volume for the backup volume.
+Since we only need to use it as a temporary holding place while we take the snapshot, using a persistent volume would be overkill.
 
 ```diff
           volumeMounts:
@@ -415,7 +426,9 @@ Below show the addition of the Volume mounted to the /backup directory.
             subPath: postgresql-db
 +         - name: postgresql-backup
 +           mountPath: /backup
-+           subPath: postgresql-db
++       volumes:
++       - name: postgresql-backup
++         emptyDir: {}
     volumeClaimTemplates:
     - metadata:
         name: postgresql-vct
@@ -425,17 +438,75 @@ Below show the addition of the Volume mounted to the /backup directory.
         resources:
           requests:
             storage: 2Gi
-+   - metadata:
-+       name: postgresql-backup
-+     spec:
-+      accessModes:
-+       - ReadWriteOnce
-+       resources:
-+         requests:
-+           storage: 2Gi
-
  ```
-As of the time of this writing, Restore Hooks are not currently supported in KOTS. 
+
+ The entire file with these changes is also in the [Appendix A](#postgres-deployment-pgdumpyaml).
+
+### Verify the Backup and Restore Output
+
+Create a new release with the above changes and promote it to the *unstable* channel and then update the running application.
+Take a new snapshot and once it completes open it and view the details. It should look something similar to this:
+
+![image](/images/guides/kots/snap_guide_detail_snap.png)
+
+As noted in the image above, we can see under **Scripts** that it ran the command.
+Under **Snapshot timeline** we can see how long this took and under **Volumes** the volume it backed up and the size.
+To further verify that the backup command did in fact run, let's exec into the `postgresql-0` pod and make sure the backup file was in fact created.
+To exec into the pod, ssh into the VM where the application is installed and run:
+
+```shell
+   kubectl exec -it postgresql-0 bash
+```
+once inside the pod let's check if the backup was in fact created:
+
+```shell
+   ls -alh /backup
+
+```
+
+The output should be something similar to this:
+
+```shell
+  total 12K
+  drwxrwxrwx 2 root root 4.0K Oct 13 15:37 .
+  drwxr-xr-x 1 root root 4.0K Oct 13 15:35 ..
+  -rw-r--r-- 1 root root  911 Oct 13 15:37 backup.sql
+```
+Here we can see that the size of the file matches the size shown under **Volumes** in the snapshot details.
+
+Take another snapshot, making sure that at least a couple of minutes have passed since the previous snapshot.
+
+If we check the backup directory again, we should see an updated timestamp on the file:
+
+```shell
+  total 12K
+  drwxrwxrwx 2 root root 4.0K Oct 13 15:37 .
+  drwxr-xr-x 1 root root 4.0K Oct 13 15:35 ..
+  -rw-r--r-- 1 root root  911 Oct 13 15:39 backup.sql
+
+```
+
+Now, let's test the restore.
+In the example above, we are restoring the snapshot taken at 15:37.
+Follow the prompts to start the restore process.
+
+Once the restore process finishes, we will need to log back in to the KOTS Admin Console.
+To verify that the timestamp of the backup file matches the timestamp of the snapshot, run the `ls -alh` command we ran earlier to check the contents of the directory.
+As we can see below, not only has the timestamp changed on the file, but there is also now a `.velero` file.
+
+```shell
+  total 16K
+  drwxrwxrwx 3 root root 4.0K Oct 13 15:40 .
+  drwxr-xr-x 1 root root 4.0K Oct 13 15:40 ..
+  -rw-r--r-- 1 root root  911 Oct 13 15:37 backup.sql
+  drwxr-xr-x 2 root root 4.0K Oct 13 15:40 .velero
+```
+
+### A note on Restore
+
+As of Velero version 1.5.1, there is now support for [restore hooks](https://velero.io/docs/v1.5/restore-hooks/#docs).
+This is a new feature, and while it should work with KOTS, it has not been tested.
+
 This means that the process to restore from the backup file will be a manual one.
 Please refer to [this](https://www.postgresqltutorial.com/postgresql-restore-database/) tutorial to learn more about that process.
 
@@ -630,7 +701,9 @@ spec:
           subPath: postgresql-db
         - name: postgresql-backup
           mountPath: /backup
-          subPath: postgresql-db
+      volumes:
+      - name: postgresql-backup
+        emptyDir: {}  
   volumeClaimTemplates:
   - metadata:
       name: postgresql-vct
@@ -640,15 +713,6 @@ spec:
       resources:
         requests:
           storage: 2Gi
-  - metadata:
-      name: postgresql-backup
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 2Gi
-
 ```
 * * *
 ## Further Reading
