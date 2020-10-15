@@ -28,6 +28,6 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 
 ### Examples
 ```bash
-kots admin-console --namespace kots-sentry
-kots admin-console upgrade --namespace kots-sentry
+kubectl kots admin-console --namespace kots-sentry
+kubectl kots admin-console upgrade --namespace kots-sentry
 ```

@@ -23,10 +23,13 @@ This includes support against all patch releases of the corrersponding Kubernete
 | 1.15 | 2020-05-01 | 1.18, 1.17, and 1.16 |
 | 1.16 | 2020-06-01 | 1.18, 1.17, and 1.16 |
 | 1.17 | 2020-07-14 | 1.18, 1.17, and 1.16 |
+| 1.18 | 2020-08-10 | 1.18, 1.17, and 1.16 |
+| 1.19 | 2020-09-11 | 1.18, 1.17, and 1.16 |
+| 1.20 | 2020-10-09 | 1.19, 1.18, and 1.17 |
 
 ## Existing Cluster Installation Requirements
 
-Existing cluster compatibility is primarily determined through the version of kubernetes running on the cluster. 
+Existing cluster compatibility is primarily determined through the version of Kubernetes the cluster is running.
 Unless otherwise noted on this page, cluster infrastructure having compatibility for a supported version of Kubernetes will be compatible with KOTS.
 This excludes any specific and additional requirements imposed by software vendor.
 
@@ -34,8 +37,15 @@ In additional to a valid Kubernetes version, KOTS requires an existing [storage 
 
 Root access on nodes or workstations is *not* required for installations to existing clusters. To perform an install, the user executing `kubectl kots install` will need either
 
+### Cluster RBAC
+
+Unless the `requireMinimalRBACPrivileges` attribute is included and set to `true` in the [application.yaml](/reference/v1beta1/application/), KOTS will require:
+
 - Existing namespace, and an RBAC binding that allows the `kubectl`-ing user to create workloads, ClusterRoles, and ClusterRoleBindings
 - cluster-admin permissions to create namespaces and assign RBAC roles across the cluster
+
+With the `requireMinimalRBACPrivileges` included and set to `true`, KOTS will not require the ability to create ClusterRoles and ClusterRoleBindings. 
+In this mode, KOTS will use a namespace-scoped Role and RoleBinding
 
 ## Embedded Cluster Installation Requirements
 
