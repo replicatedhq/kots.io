@@ -42,7 +42,7 @@ This is a list of your release channels, which are logical stacks for you to sta
 We'll explore this in more detail later.
 For now, click on the Releases item on the left menu and then click the "Create a release" button.
 
-<img style="float:right; margin: 20px;" src="/images/guides/kots/create-release.png">
+![Create Release](/images/guides/kots/create-release.png)
 
 ### Create a Release
 
