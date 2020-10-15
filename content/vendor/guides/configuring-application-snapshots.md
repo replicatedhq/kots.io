@@ -7,7 +7,7 @@ weight: "1005"
 
 KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/) by leveraging the [Velero](https://velero.io/) open source project. This is an advanced topic that covers a feature that is currently in **Beta**.
 
-## Objective 
+## Objective
 
 The purpose of this guide is to walk you through the nescessary steps to enable and configure snaphots in KOTS. 
 In this guide, we'll use a Postgres `StatefulSet` as this is a common use case.
@@ -238,7 +238,7 @@ Update the Kubernetes Installer as shown below and promote it to the *Unstable* 
 +   velero:
 +     version: latest
 ```
-* * *
+
 
 
 Once the updates covered in the previous step have been pushed to a release and promoted, anyone that installs or updates the application to this release will now have the ability to configure Snapshots.
@@ -250,6 +250,8 @@ $ curl -sSL https://k8s.kurl.sh/snapshotapp-unstable | sudo bash
 ```
 
 After this completes, log back into the Kots Admin Console and go to **Version History** to ensure you have the version of the application with the latest changes. 
+
+* * *
 
 ## 3. Configure the Deployed Application
 
