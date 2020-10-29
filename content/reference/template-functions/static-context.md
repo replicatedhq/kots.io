@@ -342,6 +342,15 @@ Distribution returns the kubernetes distribution detected, such as `kurl`, `open
 repl{{ Distribution }}
 ```
 
+## NodeCount
+```go
+func NodeCount() int
+```
+NodeCount returns the number of nodes detected within the kubernetes cluster.
+```yaml
+repl{{ NodeCount }}
+```
+
 ## HTTPProxy
 ```go
 func HTTPProxy() string
