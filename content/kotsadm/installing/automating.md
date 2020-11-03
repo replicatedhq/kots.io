@@ -24,7 +24,8 @@ Will install the Admin Console to the `app-name` namespace, and when starting, t
 
 ### Config Values
 
-Many applications need configuration. It's possible to also supply the config values at installation time using the `--config-values` flag.
+Many applications need configuration.
+It's possible to also supply the config values at installation time using the `--config-values` flag.
 To do this, create a local YAML file that contains all of the config values.
 The easist way to get a template to start from is to use `kubectl kots download --decrypt-password-values` from an already running instance of the application.
 When KOTS downloads the application from the cluster using this command, a file will be written to `upstream/userdata/config.yaml`.
@@ -33,7 +34,16 @@ This file will be:
 ```yaml
 apiVersion: kots.io/v1beta1
 kind: ConfigValues
-...
+metadata:
+  name: myapp
+spec:
+  values:
+    app_name:
+      value: MyApp
+    gitlab_app_secret:
+      valuePlaintext: password123
+    primary_domain:
+      default: somebigbank.org
 ```
 
 All password type items will be decrypted and the value will be stored in `valuePlaintext`.
