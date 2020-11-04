@@ -1,15 +1,15 @@
 ---
 date: 2019-10-30
-linktitle: "backup create"
-title: kots backup create
+linktitle: "backup"
+title: kots backup
 weight: 90200
 ---
 
-The `kots backup create` creates a new instance backup request for disaster recovery. 
+The `kots backup` creates a new instance backup for disaster recovery. 
 
 ### Usage
 ```bash
-kubectl kots backup create [flags]
+kubectl kots backup [flags]
 ```
 * _Provide `[flags]` according to the table below_
 
@@ -20,5 +20,5 @@ kubectl kots backup create [flags]
 
 ### Example
 ```bash
-kubectl kots backup create --namespace kots-sentry
+kubectl kots backup --namespace kots-sentry
 ```

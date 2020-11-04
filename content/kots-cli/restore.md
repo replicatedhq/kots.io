@@ -1,15 +1,15 @@
 ---
 date: 2019-10-30
-linktitle: "restore create"
-title: kots restore create
+linktitle: "restore"
+title: kots restore
 weight: 90220
 ---
 
-The `kots restore create` creates a new instance restore request from a specified backup for disaster recovery. 
+The `kots restore` restores an instance backup for disaster recovery. 
 
 ### Usage
 ```bash
-kubectl kots restore create [flags]
+kubectl kots restore [flags]
 ```
 * _Provide `[flags]` according to the table below_
 
@@ -20,5 +20,5 @@ kubectl kots restore create [flags]
 
 ### Example
 ```bash
-kubectl kots restore create --from-backup sentry-942kf
+kubectl kots restore --from-backup sentry-942kf
 ```
