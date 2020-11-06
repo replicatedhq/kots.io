@@ -16,7 +16,7 @@ kubectl kots restore [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
-| `--from-backup`| string |     the name of the backup to restore from |
+| `--from-backup`| string |     the name of the backup to restore from _(required)_ |
 
 ### Example
 ```bash

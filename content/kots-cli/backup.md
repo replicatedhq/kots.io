@@ -16,7 +16,7 @@ kubectl kots backup [flags]
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
-| `-n, --namespace`| string |     the namespace where the admin console is running |
+| `-n, --namespace`| string |     the namespace where the admin console is running _(default `"default"`)_ |
 
 ### Example
 ```bash
