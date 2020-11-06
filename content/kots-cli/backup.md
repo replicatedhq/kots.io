@@ -5,7 +5,7 @@ title: kots backup
 weight: 90200
 ---
 
-The `kots backup` creates a new instance backup for disaster recovery. 
+The `kots backup` creates a new instance snapshot for disaster recovery. 
 
 ### Usage
 ```bash

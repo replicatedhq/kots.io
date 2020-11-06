@@ -5,7 +5,7 @@ title: kots backup ls
 weight: 90210
 ---
 
-The `kots backup ls` shows a list of all the available instance backups for disaster recovery. 
+The `kots backup ls` shows a list of all the available instance snapshots for disaster recovery. 
 A namespace can be provided to filter backups based on the namespace the admin console is/was installed in.
 
 ### Usage

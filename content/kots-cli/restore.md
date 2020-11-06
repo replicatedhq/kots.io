@@ -5,7 +5,7 @@ title: kots restore
 weight: 90220
 ---
 
-The `kots restore` restores an instance backup for disaster recovery. 
+The `kots restore` restores an instance snapshot for disaster recovery. 
 
 ### Usage
 ```bash
