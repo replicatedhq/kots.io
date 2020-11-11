@@ -382,7 +382,9 @@ repl{{ KotsVersion }}
 
 `KotsVersion` can be compared to semvers like follows:
 ```yaml
-repl{{SemverGT (KotsVersion) "1.19"}}
+repl{{KotsVersion | semverCompare ">= 1.19"}}
 ```
 
-the above template function will return `true` if `KotsVersion` is greater than `1.19`
+The above template function will return `true` if `KotsVersion` is greater than `1.19`.
+
+For more complex comparisons, please refer to [sprig Semantic Version Functions](https://masterminds.github.io/sprig/semver.html)
