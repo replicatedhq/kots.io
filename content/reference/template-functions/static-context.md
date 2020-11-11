@@ -368,3 +368,21 @@ NoProxy returns the comma-separated list of no-proxy addresses that the Admin Co
 ```yaml
 repl{{ NoProxy }}
 ```
+
+## KotsVersion
+```go
+func KotsVersion() string
+```
+
+KotsVersion returns the current KOTS tag/version the Admin Console is using.
+
+```yaml
+repl{{ KotsVersion }}
+```
+
+`KotsVersion` can be compared to semvers like follows:
+```yaml
+repl{{SemverGT (KotsVersion) "1.19"}}
+```
+
+the above template function will return `true` if `KotsVersion` is greater than `1.19`
