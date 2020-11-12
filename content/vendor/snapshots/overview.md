@@ -24,3 +24,9 @@ Finally, KOTS exposes hooks that can be used to inject scripts to execute both [
 | 1.15 | 1.2.0 |
 | 1.16 | 1.2.0 |
 | 1.17 | 1.2.0 |
+| 1.18 | 1.2.0 |
+| 1.19 | 1.2.0 |
+| 1.20.0 | 1.2.0 |
+| 1.20.3 | 1.5.1 |
+| 1.21 | 1.5.1 |
+| 1.22 | 1.5.1 |
