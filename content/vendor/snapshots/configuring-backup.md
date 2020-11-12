@@ -86,7 +86,3 @@ metadata:
 stringData:
   uri: Secret To Not Include
 ```
-
-By default, the KOTS Admin Console will exclude itself from snapshots so that the Admin Console manifests are not included. 
-This is to allow the Admin Console to control the restore process without being interrupted and replaced with a different version.
-
