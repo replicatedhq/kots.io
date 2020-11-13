@@ -109,3 +109,7 @@ Use`<h2>` tags to separate page content. If there's a need for another `<h1>`, c
 
 - ### None of these rules are absolute
 It's perfectly acceptable (and often reasonable) to break these rules on occasion. No writing style can cover 100% of the possible use cases.
+
+## Testing locally
+
+Run `hugo serve` in the root directory of this repo to view the local version of the site in the browser.
