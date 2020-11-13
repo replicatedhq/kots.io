@@ -19,7 +19,7 @@ kubectl kots upstream upgrade [app-slug] [flags]
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
 | `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
-| `-n, --namespace`| string |     the namespace to upload to _(default `"default"`)_ |
+| `-n, --namespace`| string |     the namespace where the admin console is running _(required)_ |
 | `--deploy`|  |     deploy the latest release if a new update is found |
 
 ### Example
