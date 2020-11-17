@@ -148,8 +148,10 @@ This will allow teams to map git branches to channels in the [Vendor Portal](htt
 
 ###### Tagging Releases for Production
 
-In addition to the starter `Makefile` included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides an [Advanced Makefile](https://github.com/replicatedhq/replicated-starter-kots/tree/main/Makefile.advanced) that builds on the basic one. 
+In addition to the starter GitHub actions workflow included in the [KOTS starter Repo](https://github.com/replicatedhq/replicated-starter-kots), Replicated provides a [tag-based workflow
+](https://github.com/replicatedhq/replicated-starter-kots/tree/main/.github/workflows/main.yml). 
 It adds logic for making production releases using git tags. 
+
 The recommended workflow is:
 
 - On pushes to the `master` branch, create a release on unstable with the name `Unstable-${SHA}`
