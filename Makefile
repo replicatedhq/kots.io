@@ -18,13 +18,13 @@ deps:
 	@echo '-> Downloading Hugo CLI to ./deps '; \
 	mkdir -p deps/; \
 	if [[ "$(distname)" == "Windows" ]]; then \
-	  wget --no-check-certificate -O hugo.zip $(url).zip; \
+	  curl -k $(url).zip -o hugo.zip; \
 	  unzip hugo.zip -d deps; \
 	else \
-	  wget -O hugo.tar.gz $(url).tar.gz; \
+	  echo $(url).tar.gz; \
+	  curl -sL "$(url).tar.gz" -o "hugo.tar.gz"; \
 	  tar xvzf hugo.tar.gz -C deps; \
 	fi
-
 
 .PHONY: index-site
 index-site:
