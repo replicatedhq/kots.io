@@ -67,10 +67,16 @@ An optional array of strings that reference images to be included in airgap bund
 While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
 
 ## kubectlVersion
-This defaults to `latest`.
-Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
-The latest version within the provided range will be used, falling back to the latest version if no version matches.
-Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
+This defaults to `latest` which will use the newest version from the list below.
+Valid values are:
+- 1.14.9
+- 1.16.3
+- 1.17.13 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.18.10 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.19.3 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
+Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`).
+The latest version within the provided range will be used.
+If the specified version or range does not match any supported versions, the latest version from the above list will be used.
 
 ## kustomizeVersion
 This defaults to `latest`, but can be changed to `3.5.4` to use a specific version of kustomize to render your app's yaml.
