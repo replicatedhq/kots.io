@@ -206,6 +206,10 @@ additionalImages:
 
 An optional graph configuration to include custom graphs on the KOTS Admin Console application dashboard. Three graphs are included by default: "Disk Usage", "CPU Usage" and "Memory Usage".
 
+![Graph CPU](/images/graph-disk.png)
+![Graph CPU](/images/graph-cpu.png)
+![Graph CPU](/images/graph-memory.png)
+
 Configuring additional graphs can be done by providing the following values:
 
 * `title` - the graph title.
