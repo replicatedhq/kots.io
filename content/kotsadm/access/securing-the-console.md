@@ -7,7 +7,7 @@ draft: false
 isBeta: true
 ---
 
-Upon initial installation, the KOTS Admin Console is secured with a single shared password for all users. It is possible to further configure the KOTS Admin Console to authenticate users with your organization's user management system.
+Upon initial installation, the KOTS Admin Console is secured with a single shared password for all users. It is possible to further configure the KOTS Admin Console to authenticate users with your organization's user management system. This feature is only available for licenses that have the Identity Service feature enabled.
 
 KOTS leverages the open-source project [Dex](https://dexidp.io/) as an intermediary to control access to the console. Dex implements an array of protocols for querying other user-management systems, known as [connectors](https://dexidp.io/docs/connectors/).
 
