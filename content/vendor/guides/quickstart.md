@@ -46,8 +46,8 @@ For now, click on the Releases item on the left menu and then click the "Create 
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. 
-Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page. 
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality.
+Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page.
 If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our  [CLI Quickstart guide](/vendor/guides/cli-quickstart).
 
 {{< notes title="Quickstart" >}}
@@ -227,14 +227,27 @@ On the "Releases" page of the [Vendor Portal](https://vendor.replicated.com), cl
 Once again, you'll be taken to a YAML editor that shows the contents of the most recently created release.
 This gives us everything we've done so far, and our task now is to only write the changes needed to increase the number of nginx replicas.
 
-In the release YAML, find the nginx image to change.
-The line is in the `deployment.yaml` file and looks like:
+We'll add a line to `deployment.yaml`, right after `spec:`.
+The line to add is
 
 ```yaml
-replicas: 1
+  replicas: 2
 ```
 
-Change the number to `2` or more.
+The first few lines of your file should now look like
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+  labels:
+    app: example
+    component: nginx
+spec:
+  replicas: 2
+  selector:
+```
 
 **Note**: If you've worked ahead and already completed the [CLI setup guide](/vendor/guides/cli-quickstart), you can make this `replicas` change in your locally checked-out git repo, and publish them with `replicated release create --auto`, then skip to [Update the Test Server](#update-the-test-server).
 

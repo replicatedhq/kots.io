@@ -22,7 +22,7 @@ In this guide we'll walk through the following steps:
 
 ### 1. Install CLI
 
-To start, you'll want to install the `replicated` CLI. 
+To start, you'll want to install the `replicated` CLI.
 You can install with [homebrew](https://brew.sh) or grab the latest Linux or macOS version from [the replicatedhq/replicated releases page](https://github.com/replicatedhq/replicated/releases).
 
 ```shell script
@@ -165,26 +165,26 @@ replicated release create --auto
 You'll see output similar to the following:
 
 ```text
-    • Reading Environment ✓  
-  
+    • Reading Environment ✓
+
   Prepared to create release with defaults:
-  
+
       yaml-dir        "./manifests"
       promote         "Unstable"
       version         "Unstable-ba710e5"
       release-notes   "CLI release of master triggered by dex [SHA: ba710e5] [28 Sep 20 09:15 CDT]"
       ensure-channel  true
-  
-  Create with these properties? [Y/n] 
+
+  Create with these properties? [Y/n]
 ```
 
 you can confirm the prompt by pressing Enter/Return. You'll see the release created and promoted:
 
 ```text
-  • Reading manifests from ./manifests ✓  
-  • Creating Release ✓  
+  • Reading manifests from ./manifests ✓
+  • Creating Release ✓
     • SEQUENCE: 1
-  • Promoting ✓  
+  • Promoting ✓
     • Channel VEr0nhJBBUdaWpPvOIK-SOryKZEwa3Mg successfully set to release 1
 ```
 
@@ -364,7 +364,7 @@ Next, you'll be asked for a password -- you'll want to grab the password from th
 
 ![Log In](/images/guides/kots/admin-console-login.png)
 
-Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers. 
+Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers.
 The next step is to upload a license file so KOTS can pull containers and run your application.
 Click the Upload button and select your `.yaml` file to continue, or drag and drop the license file from your desktop.
 
@@ -406,7 +406,8 @@ Next, we'll walk through creating and delivering an update to the application we
 ### 9. Iterating
 
 From our local repo, we can update the nginx deployment to test a simple update to the application.
-We'll add a line to `deployment.yaml`, right after `spec:`. The line to add is
+We'll add a line to `deployment.yaml`, right after `spec:`.
+The line to add is
 
 ```yaml
   replicas: 2
