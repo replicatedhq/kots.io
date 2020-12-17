@@ -23,24 +23,6 @@ kind: Deployment
 ```
 
 
-## IdentityServiceIssuerURL
-
-```go
-func IdentityServiceIssuerURL() string
-```
-
-Returns the issuer URL of the KOTS Identity Service OIDC server.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-...
-          env:
-            - name: ISSUER
-              value: repl{{ IdentityServiceIssuerURL }}
-```
-
-
 ## IdentityServiceClientID
 
 ```go
