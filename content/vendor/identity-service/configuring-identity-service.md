@@ -11,14 +11,15 @@ This feature is only available for licenses that have the Identity Service featu
 
 ![Identity Service License Field](/images/identity-service-license-field.png)
 
-The KOTS Identity custom resource enables and configures the Identity Service for your application. If you prefer, here is an [example application](https://github.com/replicatedhq/kots-idp-example-app) that demonstrates how to configure the Identity Service.
+The KOTS Identity custom resource enables and configures the Identity Service for your application.
+If you prefer, here is an [example application](https://github.com/replicatedhq/kots-idp-example-app) that demonstrates how to configure the Identity Service.
 
 To begin, create a new release on the [Vendor portal](https://vendor.replicated.com).
-Once you are editing the release, create a new [KOTS Identity CRD](https://kots.io/vendor/additional-objects/identity/) file customized for your application.
+Once you are editing the release, create a new [KOTS Identity CRD](/vendor/additional-objects/identity/) file customized for your application.
 
 ![Identity Service CRD](/images/identity-service-crd.png)
 
-The Identity Service has to be accessible from the browser, for that reason, KOTS provides the service name and port to the app through the [identity template functions](https://kots.io/reference/template-functions/identity-context/) so that the app can then configure ingress for the identity service, for example:
+The Identity Service has to be accessible from the browser, for that reason, KOTS provides the service name and port to the app through the [identity template functions](/reference/template-functions/identity-context/) so that the app can then configure ingress for the identity service, for example:
 
 ![Identity Service Ingress](/images/identity-service-ingress.png)
 
