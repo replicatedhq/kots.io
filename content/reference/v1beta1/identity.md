@@ -18,8 +18,9 @@ kind: Identity
 metadata:
   name: my-application
 spec:
+    identityIssuerURL: https://{{repl ConfigOption "ingress_hostname"}}/dex
     oidcRedirectUris:
-      - https://{{repl ConfigOption "ingress_hostname"}}/callback
+      - https://{{repl ConfigOption "ingress_hostname"}}/oidc/login/callback
     supportedProviders: [ oidc ]
     requireIdentityProvider: true
     roles:
@@ -34,8 +35,12 @@ spec:
     idTokensExpiration: 24h
 ```
 
+## identityIssuerURL
+**(required)** This is the canonical URL that all clients MUST use to refer to the OIDC identity service.
+If a path is provided, the HTTP service will listen at a non-root URL.
+
 ## oidcRedirectUris
-A registered set of redirect URIs.
+**(required)** A registered set of redirect URIs.
 When redirecting from the KOTS identity OIDC server to the client, the URI requested to redirect to MUST match one of these values.
 
 ## supportedProviders
@@ -46,13 +51,16 @@ If unspecified, all providers will be available.
 If true, require the identity provider configuration to be set by the customer before the app can be deployed.
 
 ## roles
-A list of roles to be mapped to identity provider groups by the customer on the KOTS Admin Console Identity Service configuration page.
+**(`id` required)** A list of roles to be mapped to identity provider groups by the customer on the KOTS Admin Console Identity Service configuration page.
 
 ## oauth2AlwaysShowLoginScreen
 If true, show the identity provider selection screen even if there's only one configured.
+Default `false`.
 
 ## signingKeysExpiration
 Defines the duration of time after which the SigningKeys will be rotated.
+Default `6h`.
 
 ## idTokensExpiration
 Defines the duration of time for which the IdTokens will be valid.
+Default `24h`.
