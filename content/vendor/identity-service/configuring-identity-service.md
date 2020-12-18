@@ -3,6 +3,7 @@ date: 2020-12-16
 linktitle: "Configuring Identity Service"
 title: Enabling and Configuring Identity Service
 weight: 20020
+isBeta: true
 ---
 
 When enabling the identity service for your application, KOTS will deploy [Dex](https://dexidp.io/) as an intermediary that can be configured to control access to the application.
