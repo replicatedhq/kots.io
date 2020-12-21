@@ -5,7 +5,7 @@ title: kots install
 weight: 90100
 ---
 
-Installs the KOTS application and the Admin Console directly to a cluster. 
+Installs the KOTS application and the Admin Console directly to a cluster.
 The `kots install` command pulls Kubernetes manifests from the remote upstream, deploys the manifests to the specified cluster, installs the admin console, and sets up port forwarding to make the Admin Console accessible.
 
 ### Usage
@@ -34,6 +34,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--https-proxy` | string | sets HTTPS_PROXY environment variable in all KOTS Admin Console components |
 | `--no-proxy` | string | sets NO_PROXY environment variable in all KOTS Admin Console components |
 | `--copy-proxy-env` | bool | copy proxy environment variables from current environment into all KOTS Admin Console components |
+| `--skip-preflights` | bool | set to true to skip preflight checks |
 
 ### Examples
 ```bash
