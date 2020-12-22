@@ -29,7 +29,7 @@ func KubeSeal(certData string, namespace string, name string, value string) stri
 ```go
 func HumanSize(size interface{}) string
 ```
-HumanSize returns a human-readable approximation of a size in bytes capped at 4 valid numbers (eg. "2.746 MB", "796 KB"). 
+HumanSize returns a human-readable approximation of a size in bytes capped at 4 valid numbers (eg. "2.746 MB", "796 KB").
 The size must be a integer or floating point number.
 ```yaml
 '{{repl ConfigOption "min_size_bytes" | HumanSize }}'
@@ -48,7 +48,7 @@ Returns the current timestamp as an RFC3339 formatted string.
 ```go
 func NowFmt(format string) string
 ```
-Returns the current timestamp as a formatted string. 
+Returns the current timestamp as a formatted string.
 See Go's time formatting guidelines [here](https://golang.org/pkg/time/#pkg-constants).
 ```yaml
 '{{repl Now "20060102" }}'
@@ -263,6 +263,12 @@ ParseUint returns the unsigned integer value represented by the string with opti
 ```
 
 ## TLSCert
+
+{{< notes title="Deprecation Notice">}}
+This function has been superseded in KOTS 1.26.0 by [Sprig's crypto](http://masterminds.github.io/sprig/crypto.html) functions.
+Refer to [this example](/vendor/packaging/template-functions/#generating-tls-certs-and-keys-example) for more information.
+{{< /notes >}}
+
 ```go
 func TLSCert(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
@@ -281,6 +287,12 @@ repl{{ TLSCert "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "ba
 ```
 
 ## TLSKey
+
+{{< notes title="Deprecation Notice">}}
+This function has been superseded in KOTS 1.26.0 by [Sprig's crypto](http://masterminds.github.io/sprig/crypto.html) functions.
+Refer to [this example](/vendor/packaging/template-functions/#generating-tls-certs-and-keys-example) for more information.
+{{< /notes >}}
+
 ```go
 func TLSKey(certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
@@ -292,6 +304,12 @@ repl{{ TLSKey "my_custom_cert" "foo.com" (list "10.0.0.1" "10.0.0.2") (list "bar
 ```
 
 ## TLSCACert
+
+{{< notes title="Deprecation Notice">}}
+This function has been superseded in KOTS 1.26.0 by [Sprig's crypto](http://masterminds.github.io/sprig/crypto.html) functions.
+Refer to [this example](/vendor/packaging/template-functions/#generating-tls-certs-and-keys-example) for more information.
+{{< /notes >}}
+
 ```go
 func TLSCACert(caName string, daysValid int) string
 ```
@@ -305,6 +323,12 @@ repl{{ TLSCACert "foo.com" 365 }}
 ```
 
 ## TLSCertFromCA
+
+{{< notes title="Deprecation Notice">}}
+This function has been superseded in KOTS 1.26.0 by [Sprig's crypto](http://masterminds.github.io/sprig/crypto.html) functions.
+Refer to [this example](/vendor/packaging/template-functions/#generating-tls-certs-and-keys-example) for more information.
+{{< /notes >}}
+
 ```go
 func TLSCertFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
@@ -315,6 +339,12 @@ repl{{ TLSCertFromCA "foo.com" "my_custom_cert" "bar.com" (list "10.0.0.1" "10.0
 ```
 
 ## TLSKeyFromCA
+
+{{< notes title="Deprecation Notice">}}
+This function has been superseded in KOTS 1.26.0 by [Sprig's crypto](http://masterminds.github.io/sprig/crypto.html) functions.
+Refer to [this example](/vendor/packaging/template-functions/#generating-tls-certs-and-keys-example) for more information.
+{{< /notes >}}
+
 ```go
 func TLSKeyFromCA(caName string, certName string, cn string, ips []interface{}, alternateDNS []interface{}, daysValid int) string
 ```
