@@ -39,6 +39,13 @@ This is currently one of `paid`, `trial`, `dev` or `community`.
 **Description**: If a license supports gitops-enablement in the Admin Console, this field will be present and set to `true`. 
 If GitOps is not supported, this field is either `false` or missing.
 
+### Identity Service Support
+
+**Field Name**: `isIdentityServiceSupported`
+
+**Description**: If a license supports identity-service enablement, this field will be present and set to `true`. 
+If Identity Service is not supported, this field is either `false` or missing.
+
 ### License Sequence
 
 **Field Name**: `licenseSequence`
