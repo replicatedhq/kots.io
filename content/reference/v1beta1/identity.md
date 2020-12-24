@@ -1,5 +1,5 @@
 ---
-date: 2020-12-16
+date: 2020-12-23
 linktitle: "Identity"
 title: Identity
 description: "The Identity spec contains vendor-supplied configuration for the KOTS Identity Service."
