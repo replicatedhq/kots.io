@@ -29,3 +29,8 @@ Template functions in the license context have access to license and version dat
 Template functions in the kURL context have access to kURL installation information.
 
 [For a list of all Replicated functions available in the kURL context, click here.](/reference/template-functions/kurl-context)
+
+## Identity Context
+Template functions in the Identity context have access to KOTS Identity Service information.
+
+[For a list of all Replicated functions available in the Identity context, click here.](/reference/template-functions/identity-context)
