@@ -33,6 +33,13 @@ spec:
     oauth2AlwaysShowLoginScreen: false
     signingKeysExpiration: 6h
     idTokensExpiration: 24h
+    webConfig:
+      title: My App
+      theme:
+        logoUrl: data:image/png;base64,<encoded_base64_stream>
+        logoBase64: <base64 encoded png file>
+        styleCssBase64: <base64 encoded [styles.css](https://github.com/dexidp/dex/blob/v2.27.0/web/themes/coreos/styles.css) file>
+        faviconBase64: <base64 encoded png file>
 ```
 
 ## identityIssuerURL
@@ -64,3 +71,6 @@ Default `6h`.
 ## idTokensExpiration
 Defines the duration of time for which the IdTokens will be valid.
 Default `24h`.
+
+## webConfig
+Can be used for branding the application identity login screen. 
