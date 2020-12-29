@@ -27,3 +27,16 @@ The Identity Service has to be accessible from the browser, for that reason, KOT
 All the necessary information that your application needs to communicate and integrate with the identity service can be passed through environment variables, for example:
 
 ![Identity Service Application Env](/images/identity-service-app-env.png)
+
+## Role Based Access Control
+
+It is also possible to regulate access to your application resources based on the roles of individual users within the customer's organization.
+
+A list of the available roles within your application can be provided to the customer via the [roles](/reference/v1beta1/identity/#roles) section of the Identity CRD.
+
+![Identity Service CRD Roles](/images/identity-service-crd-roles.png)
+
+Then, using the KOTS Admin Console, the customer will have the ability to create groups and assign specific roles to each group.
+This mapping of roles to groups will then be available to your application via the [IdentityServiceRoles](/reference/template-functions/identity-context/#identityserviceroles) template function.
+
+![Identity Service CRD Roles](/images/identity-service-roles-template-function.png)
