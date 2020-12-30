@@ -21,6 +21,17 @@ Here you can configure access to the KOTS Admin Console, integrating with one of
 
 ![Configure Identity Provider](/images/access-identity.png)
 
+
+## Role Based Access Control
+
+It is also possible to regulate access to the Admin Console resources based on the roles of individual users within your organization.
+
+To begin, click on "Add a group" under the "Role Based Access Control" secion.
+Then, enter a group name that matches one of the group names already established with your identity provider. 
+Next, choose one of the [pre-defined Admin Console roles](/kotsadm/access/admin-console-roles/) to be assigned to that group, and click "Add group".
+
+![Role Based Access Control](/images/identity-service-kotsadm-rbac.png)
+
 ## Supported Providers
 
 **[OpenID Connect](https://openid.net/connect/)**
