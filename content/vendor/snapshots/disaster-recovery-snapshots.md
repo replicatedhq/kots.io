@@ -21,6 +21,12 @@ Once Velero is installed, KOTS CLI can be used to [list backups](/kots-cli/backu
 
 Once the [cluster is setup](/kotsadm/installing/installing-embedded-cluster/#online-installations), the procedure for restoring an online embedded cluster is the same as the one for restoring an existing cluster.
 
+Prior to configuring Velero with the `velero install` command in this case, the `velero` namespace should be deleted:
+
+```bash
+kubectl delete ns velero
+```
+
 ## Airgapped Embedded Cluster Restore
 
 An airgapped embedded kURL cluster can be restored only if the S3 backend used for backups is accessible from the new cluster.
@@ -32,5 +38,11 @@ cat install.sh | sudo bash -s airgap kurl-registry-ip=<ip>
 ```
 
 Please note that the registry from the old cluster does not need to be (and should not be) accessible.
+
+Prior to configuring Velero with the `velero install` command in this case, the `velero` namespace should be deleted:
+
+```bash
+kubectl delete ns velero
+```
 
 For more details refer to the [document about installing an airgapped kURL cluster](/kotsadm/installing/installing-embedded-cluster/#airgapped-installations)
