@@ -15,4 +15,3 @@ Check out the table below to see whether your browser supports KOTS Admin Consol
 | Edge                 | 80+         |
 | Safari (Mac OS only) | 13+         |
 | Internet Explorer    | Unsupported |
-| Yandex               | Unsupported |
