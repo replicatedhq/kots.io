@@ -9,6 +9,19 @@ draft: false
 This page describes the system requirements for executing and installing KOTS applications.
 The requirements for command-line-interfaces (such as the [Vendor CLI](/vendor/cli/getting-started) and the [KOTS CLI](/kots-cli/getting-started)) are described separately, and are not subject to these requirements.
 
+## Supported Browsers 
+
+This section describes the browser requirements for the latest KOTS Admin Console
+
+| Browser              | Support     |
+|----------------------|-------------|
+| Chrome               | 66+         |
+| Firefox              | 58+         |
+| Opera                | 53+         |
+| Edge                 | 80+         |
+| Safari (Mac OS only) | 13+         |
+| Internet Explorer    | Unsupported |
+
 ## Kubernetes Version Compatibility
 
 Each release of KOTS maintains compatability with the current Kubernetes version, and the 2 most recent versions at the time of its release.
