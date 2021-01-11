@@ -1,5 +1,5 @@
 ---
-date: 2019-01-23
+date: 2021-01-11
 linktitle: "Configuring Restore"
 title: Configuring Restore
 isBeta: true
