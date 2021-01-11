@@ -2,7 +2,8 @@
 date: 2021-01-11
 linktitle: "Snapshot Destinations"
 isBeta: true
-weight: 5
+weight: 2
+draft: false
 title: Compatible Backend Stores
 ---
 

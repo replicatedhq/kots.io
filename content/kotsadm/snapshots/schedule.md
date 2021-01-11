@@ -2,7 +2,8 @@
 date: 2021-01-11
 linktitle: "Schedules"
 isBeta: true
-weight: 6
+weight: 4
+draft: false
 title: Schedules
 ---
 
