@@ -20,7 +20,7 @@ Please refer to our documentation of the [Kots CLI](/kots-cli/getting-started/) 
 
 ## Getting Started as a KOTS Vendor
 It's easy to get started packaging an app in KOTS.
-To start, create a Replicated Vendor account at our [Vendor Portal](https://vendor.replicated.com) and follow one of our [Getting Started Guides](/vendor/guides/#getting-started).
+To start, create a Replicated Vendor account at our [Vendor Portal](https://vendor.replicated.com) and follow one of our [Getting Started Guides](/vendor/guides/).
 
 ## Basic Packaging
 KOTS applications are packaged as a set of standard Kubernetes manifests. 

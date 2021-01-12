@@ -9,23 +9,29 @@ draft: false
 This page describes the system requirements for executing and installing KOTS applications.
 The requirements for command-line-interfaces (such as the [Vendor CLI](/vendor/cli/getting-started) and the [KOTS CLI](/kots-cli/getting-started)) are described separately, and are not subject to these requirements.
 
+## Supported Browsers 
+
+This section describes the browser requirements for the latest KOTS Admin Console
+
+| Browser              | Support     |
+|----------------------|-------------|
+| Chrome               | 66+         |
+| Firefox              | 58+         |
+| Opera                | 53+         |
+| Edge                 | 80+         |
+| Safari (Mac OS only) | 13+         |
+| Internet Explorer    | Unsupported |
+
 ## Kubernetes Version Compatibility
 
-Each release of KOTS maintains compatability with the current Kubernetes version, and the 2 most recent versions.
+Each release of KOTS maintains compatability with the current Kubernetes version, and the 2 most recent versions at the time of its release.
 This includes support against all patch releases of the corrersponding Kubernetes version.
 
-| KOTS Version | Release Date | Kubernetes Compatibility |
-|------|------------|-------------|
-| 1.11 | 2020-01-22 | 1.17, 1.16, and 1.15 |
-| 1.12 | 2020-02-04 | 1.17, 1.16, and 1.15 |
-| 1.13 | 2020-02-27 | 1.17, 1.16, and 1.15 |
-| 1.14 | 2020-03-31 | 1.17, 1.16, and 1.15 |
-| 1.15 | 2020-05-01 | 1.18, 1.17, and 1.16 |
-| 1.16 | 2020-06-01 | 1.18, 1.17, and 1.16 |
-| 1.17 | 2020-07-14 | 1.18, 1.17, and 1.16 |
-| 1.18 | 2020-08-10 | 1.18, 1.17, and 1.16 |
-| 1.19 | 2020-09-11 | 1.18, 1.17, and 1.16 |
-| 1.20 | 2020-10-09 | 1.19, 1.18, and 1.17 |
+| KOTS Version(s) | Kubernetes Compatibility |
+|-----------------|-------------|
+| 1.11 to 1.14 | 1.17, 1.16, and 1.15 |
+| 1.15 to 1.19 | 1.18, 1.17, and 1.16 |
+| 1.20+ | 1.19, 1.18, and 1.17 |
 
 ## Existing Cluster Installation Requirements
 

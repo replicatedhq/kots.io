@@ -39,3 +39,9 @@
   to = "/vendor/helm/helm-processing/"
   status = 301
   force = true
+
+  [[redirects]]
+  from = "/kotsadm/snapshots/deduplication/"
+  to = "https://restic.readthedocs.io/en/latest/100_references.html#backups-and-deduplication"
+  status = 301
+  force = true

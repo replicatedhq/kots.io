@@ -2,6 +2,7 @@
 .vscode/
 .idea/
 *.swp
+kots.io.pdf
 
 # Directories
 node_modules/
@@ -19,4 +20,3 @@ hugo
 deps/
 resources/_gen
 hugo.tar.gz
-

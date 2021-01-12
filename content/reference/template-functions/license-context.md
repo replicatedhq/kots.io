@@ -24,6 +24,8 @@ In addition to custom license fields, `LicenseFieldValue` also accepts the follo
 - `expires_at`
 - `isAirgapSupported`
 - `isGitOpsSupported`
+- `isIdentityServiceSupported`
+- `isGeoaxisSupported`
 - `licenseID` or `licenseId`
 - `licenseSequence`
 - `licenseType`
