@@ -18,7 +18,7 @@ The KOTS `Application` custom resource specification contains vendor-supplied ap
 * and displaying custom graphs.
 
 There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects).  
-In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.  
+In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.
 In the meantime, enabling features (such as [dashboard buttons to the application](/vendor/dashboard/open-buttons/)) requires the use of both the KOTS Application spec and the SIG Application spec.
 
 ```yaml
@@ -51,7 +51,7 @@ spec:
       query: 'sum(user_signup_events_total)'
 ```
 
-## `title:`
+## title
 
 The application title. This will be displayed on the **License Upload** screen and in various other places in the KOTS Admin Console.
 
@@ -61,9 +61,10 @@ Example:
 title: My Application Display Name
 ```
 
-## `icon:`
+## icon
 
-The icon to associate with the application. This will be displayed on the license upload screen and in various places in the Admin Console. There are two options for including icons in the application: 
+The icon to associate with the application. This will be displayed on the license upload screen and in various places in the Admin Console. There are two options for including icons in the application:
+
 * A public URL for online installs
 * A base64 encoded string for air-gapped installation bundles.
 
@@ -89,7 +90,7 @@ icon: "data:image/png;base64,iVBORw0KGgoAA -- LOTS OF DATA TRIMMED FOR BREVITY -
 icon: "data:image/jpeg;base64,/9j/4RiDRXhp -- LOTS OF DATA TRIMMED FOR BREVITY -- oElFTkSuQmCC"
 ```
 
-## `releaseNotes`
+## releaseNotes
 
 The release notes for this version. These can also be set when promoting a release.
 
@@ -115,7 +116,7 @@ releaseNotes: |
     First, an important preface:
 ```
 
-## `allowRollback`
+## allowRollback
 
 This defaults to `false` because most applications are tied to roll-forward database schemas.
 
@@ -127,7 +128,7 @@ Example:
 allowRollback: true
 ```
 
-## `statusInformers:`
+## statusInformers
 
 When [statusInformers](/vendor/config/application-status/#kots-application-spec) are specified in the format `[namespace/]type/name` (where namespace is optional), the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use. Multiple informers must be available for a `Ready` status.
 
@@ -150,7 +151,7 @@ statusInformers:
     - '{{repl if ConfigOptionEquals "option" "value"}}deployment/my-worker{{repl else}}{{repl end}}'
 ```
 
-## `ports:` (optional)
+## ports (optional)
 
 When additional ports specified (in addition to the `:8800` admin console port), the KOTS CLI will automatically port-forward connections to the deployed application when running the `kots admin-console` command.
 
@@ -169,18 +170,18 @@ ports:
     applicationUrl: "http://web"
 ```
 
-## `kubectlVersion` (optional)
+## kubectlVersion (optional)
 
 This defaults to `latest`.
 Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your application's yaml.
 
 The latest version within the provided range will be used, falling back to the latest version if no version matches. Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
 
-## `kustomizeVersion` (optional)
+## kustomizeVersion (optional)
 
 This defaults to `latest`, but can be changed to `3.5.4` to use a specific version of kustomize to render your app's yaml. Currently only `3.5.4` is supported, but patch versions may change and newer versions may be added in the future.
 
-## `requireMinimalRBACPrivileges` (optional)
+## requireMinimalRBACPrivileges (optional)
 
 When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding.
 For more information, see the [RBAC](/vendor/packaging/rbac) documentation.
@@ -191,7 +192,7 @@ Example:
 requireMinimalRBACPrivileges: true
 ```
 
-## `additionalImages` (optional)
+## additionalImages (optional)
 
 An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation. While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
 
@@ -202,7 +203,7 @@ additionalImages:
   - jenkins/jenkins:lts
 ```
 
-## `graphs`
+## graphs
 
 An optional graph configuration to include custom graphs on the KOTS Admin Console application dashboard. Three graphs are included by default: "Disk Usage", "CPU Usage" and "Memory Usage".
 
