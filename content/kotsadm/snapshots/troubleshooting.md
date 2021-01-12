@@ -3,7 +3,7 @@ date: 2020-04-10
 linktitle: "Troubleshooting"
 title: Troubleshooting
 isBeta: true
-weight: 8
+weight: 13
 ---
 
 Sometimes things are working right and an installation is not able to start a backup or complete a restore.
