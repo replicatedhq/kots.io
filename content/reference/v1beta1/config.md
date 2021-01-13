@@ -41,7 +41,6 @@ Specific item types can including new types.
 - `password`
 - `text`
 - `textarea`
-- `select_many`
 - `select_one`
 
 ## Examples
@@ -85,28 +84,13 @@ This is useful when you would like to group items all in one config group but wo
 ```
 
 ### `select`
-Types `select_one` and `select_many` are special cases. 
-These types must have nested items that act as options. 
-These types will be displayed as radio buttons (`select_one`) or checkboxes (`select_many`) in the Admin Console. 
-**Currently, the `select_many` item type is not supported**
+Types `select_one` is a special case. 
+This type must have nested items that act as options. 
+This type will be displayed as radio buttons (`select_one`) in the Admin Console. 
 
 At this time these two control types do not support the `title` field.
 
 ```yaml
-    - name: inputs
-      title: Inputs
-      description: ""
-      items:
-      - name: logstash_input_enabled
-        default: ""
-        type: select_many
-        items:
-        - name: logstash_input_file_enabled
-          title: File
-          default: "0"
-        - name: logstash_input_lumberjack_enabled
-          title: Lumberjack
-          default: "0"
     - name: authentication
       title: Authentication
       description: ""
@@ -187,7 +171,7 @@ A required field will prevent the application from starting until it has a value
 
 ### `when`
 The when value is used to denote conditional inputs that will only be visible (or required) when the condition evaluates to true. 
-The `when` item can be used on groups, items and select_one or select_many options.
+The `when` item can be used on groups, items and select_one options.
 
 The settings UI will update right away when a field used in a when clause is updated (no need to save) and can be used to used to show optional config sections. 
 The equality check should match exactly without quotes.
