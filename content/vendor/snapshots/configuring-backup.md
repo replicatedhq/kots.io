@@ -3,7 +3,7 @@ date: 2019-01-23
 linktitle: "Configuring Backup"
 title: Configuring Backup
 isBeta: true
-weight: 8
+weight: 2
 ---
 
 There are 2 required steps to enable snapshots in a KOTS application:

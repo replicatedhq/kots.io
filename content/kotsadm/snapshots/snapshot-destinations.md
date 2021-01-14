@@ -2,7 +2,7 @@
 date: 2019-01-23
 linktitle: "Snapshot Destinations"
 isBeta: true
-weight: 9
+weight: 8
 title: Compatible Backend Stores
 ---
 
