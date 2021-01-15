@@ -1,9 +1,9 @@
 ---
 date: 2019-01-23
-linktitle: "Configuring Restore"
-title: Configuring Restore
+linktitle: "Snapshot Restore"
+title: Snapshot Restore
 isBeta: true
-weight: 4
+weight: 10
 ---
 
 When restoring a Snapshot, the Admin Console will first "undeploy" the correct application.

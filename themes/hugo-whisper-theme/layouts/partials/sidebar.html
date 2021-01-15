@@ -50,12 +50,14 @@
         </li>
         {{ if $currentNode.IsDescendant . }}
           {{ range .Pages }}
-            <li class="is-descendant {{ if eq .File $currentNode.File }}active{{ end }}">
+            <li class="is-descendant {{ if .Params.isHidden }}hidden{{ end }} {{ if eq .File $currentNode.File }}active{{ end }}">
               <a href="{{ .Permalink | relURL }}">
                 {{ if .Params.linktitle }}
                   {{ .Params.linktitle }}
                 {{ else }}
-                  {{ .Title }}
+                  {{ if not .Params.isHidden }}
+                    {{ .Title }}
+                  {{ end }}
                 {{ end }}
               </a>
             </li>
