@@ -45,3 +45,34 @@
   to = "https://restic.readthedocs.io/en/latest/100_references.html#backups-and-deduplication"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/snapshot-destinations/"
+  to = "/kotsadm/snapshots/snapshot-destinations/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/schedule/"
+  to = "/kotsadm/snapshots/schedule/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/configuring-restore/"
+  to = "/kotsadm/snapshots/restore/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/troubleshooting/"
+  to = "/kotsadm/snapshots/troubleshooting/"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/vendor/snapshots/disaster-recovery-snapshots/"
+  to = "/kotsadm/snapshots/disaster-recovery/"
+  status = 301
+  force = true
