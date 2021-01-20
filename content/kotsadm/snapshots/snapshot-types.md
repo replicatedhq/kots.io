@@ -14,7 +14,6 @@ Currently, there are two types of snapshots:
 
 Instance snapshots back up the Admin Console and all application data.
 They can be used for full Disaster Recovery; by restoring over the same instance, or into a new cluster.
-If you only need a partial backup of just application volumes and manifests for rollbacks, use [Application Snapshots](/kotsadm/snapshots/snapshot-types/#application-snapshots).
 
 There are two ways to create an instance snapshot. First, make sure that your license has the snapshots feature enabled, then:
 
