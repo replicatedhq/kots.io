@@ -6,6 +6,8 @@ weight: 9
 title: Snapshot Types
 ---
 
+An important part of the lifecycle of an application is backup and restore. The Admin Console can be used to create and manage your snapshot destination and schedule, and to perform and monitor the backup and restore process. This feature is only available for licenses that have the Allow Snapshots feature enabled.
+
 Currently, there are two types of snapshots:
   * Instance Snapshots
   * Application Snapshots
