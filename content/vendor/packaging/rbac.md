@@ -14,7 +14,6 @@ This behavior can be controlled by editing the [application](/reference/v1beta1/
 For compatibilty with earlier versions of KOTS, the default behavior of a KOTS application is to create a ClusterRole and ClusterRoleBinding with permissions to all namespaces.
 
 Applications that need access to cluster-wide resources should continue to use cluster-scoped access installers.
-Most applications should use namespace-scoped access, and it will be the default in a future release of KOTS.
 
 #### Reference Objects
 
