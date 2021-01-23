@@ -11,6 +11,8 @@ An important part of the lifecycle of an application is backup and restore. The 
 Currently, there are two types of snapshots:
   * Instance Snapshots
   * Application Snapshots
+  
+Snapshots are useful for rollback and disaster recovery scenarios. They are not intended to be used for application migration scenarios. 
 
 ## Instance Snapshots (Recommended)
 
