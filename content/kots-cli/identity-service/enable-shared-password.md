@@ -1,6 +1,6 @@
 ---
 date: 2020-12-08
-linktitle: "identity-service enable-shared-password"
+linktitle: "enable-shared-password"
 title: kots identity-service enable-shared-password
 weight: 90240
 ---
@@ -15,10 +15,9 @@ kubectl kots identity-service enable-shared-password [flags]
 
 This command supports all [global flags](/kots-cli/global-flags/) and also:
 
-
-| Flag             | Type   | Description                                      |
-|:-----------------|--------|--------------------------------------------------|
-| `-n, --namespace`| string | the namespace where the admin console is running |
+| Flag              | Type   | Description                                      |
+| :---------------- | ------ | ------------------------------------------------ |
+| `-n, --namespace` | string | the namespace where the admin console is running |
 
 NOTE: `--namespace` flag is required.
 
