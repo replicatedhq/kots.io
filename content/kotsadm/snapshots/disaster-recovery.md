@@ -15,7 +15,7 @@ Restore must begin with installing a version of Velero compatible with the one t
 Please refer to Velero documnetion for [installing](https://velero.io/docs/v1.5/basic-install/) and [configuring](https://velero.io/plugins/) the plugins.
 Note that Restic is required and `--restic` flag must be used with `velero install` command.
 
-Once Velero is installed, KOTS CLI can be used to [list backups](/kots-cli/backup-ls/) and [create restores](/kots-cli/restore/)
+Once Velero is installed, KOTS CLI can be used to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/)
 
 ## Online Embedded Cluster Restore
 
