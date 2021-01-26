@@ -1,4 +1,4 @@
----
+<!-- ---
 date: 2019-10-09
 linktitle: "Installing a Helm Chart"
 title: Installing a Helm Chart
@@ -10,14 +10,14 @@ draft: false
 
 Software Vendors interested in delivering a Helm chart to customers should consider [delivering their Helm chart as a KOTS application](/vendor/helm/using-helm-charts/).
 
-This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline). 
-The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the internet. 
+This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline).
+The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the internet.
 In this scenario, the container images will be pulled from the upstream registries directly.
 
 **Note:** Currently the only supported source for helm charts are public helm repositories support by helm out-of-the-box.
 
 ## Kots install
-To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/) & then run a `kots install` command to pull the chart and prepare it for deployment. 
+To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/) & then run a `kots install` command to pull the chart and prepare it for deployment.
 In the example, we'll use the `elasticsearch` chart from the `stable` helm repository.
 
 ```shell
@@ -46,8 +46,8 @@ Application name: elasticsearch
   • Go to http://localhost:8800 to access the Admin Console
 ```
 
-Once this has completed, the kots plugin will create a port-forward to the Admin Console interface. 
-The Admin Console API and Web server are exposed over a ClusterIP service in the namespace provided. 
+Once this has completed, the kots plugin will create a port-forward to the Admin Console interface.
+The Admin Console API and Web server are exposed over a ClusterIP service in the namespace provided.
 The port-forward will be active as long as the CLI is running. Pressing Ctrl+C will end the port forward.
 
 Once this has completed, click the link, or visit `http://localhost:8800` to complete the setup using the Admin Console web-based UI.
@@ -62,17 +62,17 @@ At this point, visit `http://localhost:8800` to complete the setup of the applic
 Enter the password provided during the setup, and you'll be redirect to the "Upload License" screen.
 
 ### Config Screen
-Most KOTS applications include some required and some optional configuration. 
-This is used to build the final deployable Kubernetes manifests for the application. 
-The config screen of the setup will prompt for initial values to use in the application. 
-These can be changed later, but must be completed to continue. 
-Note that this section is optional, and depends whether the Helm chart maintainer has included the `kots.io/v1beta` `Config` custom resource. 
+Most KOTS applications include some required and some optional configuration.
+This is used to build the final deployable Kubernetes manifests for the application.
+The config screen of the setup will prompt for initial values to use in the application.
+These can be changed later, but must be completed to continue.
+Note that this section is optional, and depends whether the Helm chart maintainer has included the `kots.io/v1beta` `Config` custom resource.
 In either case, you will still be able to [edit the values.yaml](#viewing-files-and-configuring-chart-values) before deploying the application.
 
 ![Initial Config](/images/initial-config.png)
 
 ### Preflight Checks
-Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application. 
+Finally, Preflight checks (conformance tests) are executed against the target namespace and cluster to ensure that the environment meets the minimum requirements to support the application.
 
 **Note:** As with the `Config` custom resource, not all community Helm charts will include a `kots.io/v1beta` `Preflight` specification, in which case this page will be skipped.
 
@@ -80,7 +80,7 @@ Finally, Preflight checks (conformance tests) are executed against the target na
 
 ### Deploying the Application
 
-At this point, the application is ready, but has not been deployed yet. 
+At this point, the application is ready, but has not been deployed yet.
 You will land on the main "Dashboard" page, where you can review the overall state and [set your Prometheus endpoint to display graphs on the dashboard](/kotsadm/monitoring/existing-prometheus).
 
 
@@ -131,11 +131,11 @@ When you are ready, click "Deploy" to ship the changes.
 
 ### Next Steps: GitOps and Registries
 
-By default, `kotsadm` is set up for a simple click-to-deploy workflow, to enable quick bootstrapping and testing. 
+By default, `kotsadm` is set up for a simple click-to-deploy workflow, to enable quick bootstrapping and testing.
 Once you've iterated on the values file and you're happy with your yaml, you can [configure gitops](/kotsadm/gitops) for the chart, so that upstream chart updates will cause new pull requests to be made into a VCS your choice.
 
 Similarly, you can [configure a private registry](/kotsadm/registries/self-hosted-registry/) so that when a new version of the chart requires a new Docker image, kotsadm can
 
 - Pull that image from the public internet
 - Tag and push it to your internal registry
-- Rewrite the new chart YAML with a [Kustomize](https://kustomize.io) patch to pull the image from your registry instead of the public internet
+- Rewrite the new chart YAML with a [Kustomize](https://kustomize.io) patch to pull the image from your registry instead of the public internet -->
