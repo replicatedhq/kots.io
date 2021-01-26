@@ -15,9 +15,11 @@ Kots will manage rewriting the application image names in all application manife
 When authenticating to the registry, credentials with `push` permissions are required.
 
 A single Kots application expects to use a single “namespace” in the Docker image registry.
+
 The namespace name can be any valid URL-safe string, supplied at installation time.
-Keep in mind that registries typically expect namespace to exist before any images can be pushed into it.
-lso, ECR does not use namespaces.
+Keep in mind that a registry typically expects the namespace to exist before any images can be pushed into it.
+
+NOTE: ECR does not use namespaces.
 
 Kots has been tested for compatibility with the following registries:
 
