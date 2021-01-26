@@ -63,7 +63,7 @@ But some Kubernetes API fields require integer values, not strings.
 For example, replica count. **The following YAML is not valid**:
 
 ```yaml
-replicas: '{{repl ConfigOption "replicas"}}`
+replicas: '{{repl ConfigOption "replicas"}}'
 ```
 
 This is invalid because it will render as:
