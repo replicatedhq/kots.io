@@ -45,3 +45,6 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 kubectl kots install sentry/unstable --license-file ~/license.yaml
 kubectl kots install kots-sentry/stable --shared-password IgqG5OBc9Gp --license-file ~/sentry-license.yaml --namespace sentry-namespace --config-values ~/config-values.yaml
 ```
+
+<!-- Helm example coming soon -->
+<!-- kubectl kots install helm://stable/elasticsearch -->
