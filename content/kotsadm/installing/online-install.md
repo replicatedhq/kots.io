@@ -50,6 +50,7 @@ Enter the password provided during the setup, and you'll be redirected to the "U
 ### Provide a License File
 At this point, the Admin Console is still just an admin console without an application. 
 Providing a license file will include the entitlements necessary to pull the manifest and images and start the application.
+If the license is outdated, the latest license will be fetched and used instead.
 
 ![Upload License](/images/upload-license.png)
 
