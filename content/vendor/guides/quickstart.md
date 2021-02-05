@@ -37,7 +37,7 @@ Give it a name like "Starter KOTS application" or "Nginx Example" and click the 
 
 ### Releases
 
-You'll should be at the channels page now.
+You should be at the channels page now.
 This is a list of your release channels, which are logical stacks for you to stage and promote releases to your customers.
 We'll explore this in more detail later.
 For now, click on the Releases item on the left menu and then click the "Create a release" button.
@@ -46,8 +46,8 @@ For now, click on the Releases item on the left menu and then click the "Create 
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality. 
-Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page. 
+You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality.
+Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page.
 If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our  [CLI Quickstart guide](/vendor/guides/cli-quickstart).
 
 {{< notes title="Quickstart" >}}
