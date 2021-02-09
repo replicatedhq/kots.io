@@ -1,8 +1,7 @@
 ---
 date: 2019-01-23
-linktitle: "Snapshot Destinations"
-isBeta: true
-weight: 8
+linktitle: "Storage Destinations"
+weight: 9
 title: Compatible Backend Stores
 ---
 
@@ -11,7 +10,7 @@ The Admin Console has built-in support for configuring AWS, GCP, Azure and S3-Co
 
 For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. 
 This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
-Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a snapshot destination that is external to the cluster.
+Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a storage destination that is external to the cluster.
 
 ## AWS
 
@@ -66,3 +65,12 @@ When configuring the Admin Console to store snapshots on an S3-Compatible storag
 | Access Key ID (optional) | The AWS IAM Access Key ID that can read from and write to the bucket |
 | Secret Access Key (optional) | The AWS IAM Secret Access Key that is associated with the Access Key ID |
 | Use Instance Role | When enabled, instead of providing an Access Key ID and Secret Access Key, Velero will use an instance IAM role |
+
+## Network File System (NFS)
+
+When configuring the Admin Console to store snapshots on an NFS server, the following fields are available:
+
+| Name | Description |
+|------|-------------|
+| Server | The NFS server IP address |
+| Path | The path to the directory in which to store snapshots |

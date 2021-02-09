@@ -47,8 +47,8 @@
   force = true
 
 [[redirects]]
-  from = "/vendor/snapshots/snapshot-destinations/"
-  to = "/kotsadm/snapshots/snapshot-destinations/"
+  from = "/vendor/snapshots/storage-destinations/"
+  to = "/kotsadm/snapshots/storage-destinations/"
   status = 301
   force = true
 
