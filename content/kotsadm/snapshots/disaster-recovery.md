@@ -2,7 +2,6 @@
 date: 2021-01-04
 linktitle: "Disaster Recovery"
 title: Disaster Recovery
-isBeta: true
 weight: 12
 ---
 

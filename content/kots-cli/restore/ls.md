@@ -5,7 +5,7 @@ title: kots restore ls
 weight: 90230
 ---
 
-The `kots restore ls` shows a list of all the available instance restores for disaster recovery.
+The `kots restore ls` shows a list of all the available full snapshot restores for disaster recovery.
 A namespace can be provided to filter restores based on the namespace the admin console is/was installed in.
 
 ### Usage

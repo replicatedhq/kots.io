@@ -2,7 +2,6 @@
 date: 2019-01-23
 linktitle: "Backup Hooks"
 title: Backup Hooks
-isBeta: true
 weight: 3
 ---
 

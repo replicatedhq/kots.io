@@ -1,7 +1,6 @@
 ---
 date: 2019-01-23
 linktitle: "Schedules"
-isBeta: true
 weight: 10
 title: Schedules
 ---
