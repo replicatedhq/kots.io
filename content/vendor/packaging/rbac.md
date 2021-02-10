@@ -71,11 +71,8 @@ kind: "Role"
 metadata:
   name: "kotsadm-role"
 rules:
-  - apiGroups: [""]
-    resources: ["configmaps"]
-    verb: "*"
-  - apiGroups: [""]
-    resources: ["secrets"]
+  - apiGroups: ["*"]
+    resources: ["*"]
     verb: "*"
 ```
 
