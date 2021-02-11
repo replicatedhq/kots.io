@@ -18,11 +18,15 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 |:----------------------|------|-------------|
 | `-o, --output` | |   output format, supported values: json |
 
-NOTE: `--namespace` flag is required.
+### Resources
 
-`apps` is the only supported resource at this time.
+* `apps` lists installed applications. (Note: `--namespace` flag is required.)
+* `backups` lists available full snapshots (instance).
+* `restores` lists created full snapshot restores.
 
 ### Example
 ```bash
 kubectl kots get apps -n default
+kubectl kots get backups
+kubectl kots get restores
 ```
