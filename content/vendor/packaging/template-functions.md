@@ -7,6 +7,8 @@ weight: 20210
 
 KOTS applications have access to a rich set of template functions that can be used to render the Kubernetes manifests in the customer's environment.
 
+KOTS uses Go's [text/template](https://golang.org/pkg/text/template/) libraries as the basis for the templating. All functionality of Go's templating language can be used in conjuction with KOTS custom functions.
+
 All template functions are documented in the [template function reference](/reference/template-functions) section of these docs.
 
 ## Using Template Functions
