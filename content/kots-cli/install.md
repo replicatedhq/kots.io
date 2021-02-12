@@ -20,23 +20,29 @@ kubectl kots install [upstream uri] [flags]
 
 This command supports all [global flags](/kots-cli/global-flags/) and also:
 
-| Flag                | Type   | Description                                                                                                                          |
-| :------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `-h, --help`        |        | help for install                                                                                                                     |
-| `--license-file`    | string | path to a license file _(required when `[upstream-uri]` points to a replicated app)_                                                 |
-| `--local-path`      | string | specify a local-path to test the behavior of rendering a replicated app locally _(only supported on replicated app types currently)_ |
-| `--name`            | string | name of the application to use in the Admin Console                                                                                  |
-| `-n, --namespace`   | string | the namespace to deploy to                                                                                                           |
-| `--shared-password` | string | shared password to apply                                                                                                             |
-| `--config-values`   | string | path to a manifest containing config values (must be apiVersion: kots.io/v1beta1, kind: ConfigValues                                 |
-| `--http-proxy`      | string | sets HTTP_PROXY environment variable in all KOTS Admin Console components                                                            |
-| `--https-proxy`     | string | sets HTTPS_PROXY environment variable in all KOTS Admin Console components                                                           |
-| `--no-proxy`        | string | sets NO_PROXY environment variable in all KOTS Admin Console components                                                              |
-| `--copy-proxy-env`  | bool   | copy proxy environment variables from current environment into all KOTS Admin Console components                                     |
-| `--skip-preflights` | bool   | set to true to skip preflight checks                                                                                                 |
+| Flag                  | Type   | Description                                                                                                                          |
+| :-------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `--airgap`            | bool   | set to true to run install in airgapped mode. setting --airgap-bundle implies --airgap=true.                                         |
+| `--airgap-bundle`     | string | path to the application airgap bundle where application metadata will be loaded from                                                 |
+| `--config-values`     | string | path to a manifest containing config values (must be apiVersion: kots.io/v1beta1, kind: ConfigValues                                 |
+| `--copy-proxy-env`    | bool   | copy proxy environment variables from current environment into all KOTS Admin Console components                                     |
+| `-h, --help`          |        | help for install                                                                                                                     |
+| `--http-proxy`        | string | sets HTTP_PROXY environment variable in all KOTS Admin Console components                                                            |
+| `--https-proxy`       | string | sets HTTPS_PROXY environment variable in all KOTS Admin Console components                                                           |
+| `--kotsadm-namespace` | string | set to override the namespace of kotsadm images. used for airgapped installations.                                                   |
+| `--kotsadm-registry`  | string | set to override the registry of kotsadm images. used for airgapped installations.                                                    |
+| `--license-file`      | string | path to a license file _(required when `[upstream-uri]` points to a replicated app)_                                                 |
+| `--local-path`        | string | specify a local-path to test the behavior of rendering a replicated app locally _(only supported on replicated app types currently)_ |
+| `--name`              | string | name of the application to use in the Admin Console                                                                                  |
+| `-n, --namespace`     | string | the namespace to deploy to                                                                                                           |
+| `--no-proxy`          | string | sets NO_PROXY environment variable in all KOTS Admin Console components                                                              |
+| `--registry-password` | string | password to use to authenticate with the application registry. used for airgapped installations.                                     |
+| `--registry-username` | string | username to use to authenticate with the application registry. used for airgapped installations.                                     |
+| `--shared-password`   | string | shared password to apply                                                                                                             |
+| `--skip-preflights`   | bool   | set to true to skip preflight checks                                                                                                 |
 
 <!-- Helm Options coming soon -->
-<!-- | `--repo`            | string  | repo uri to use when installing a helm chart                                                                                         | -->
+<!-- | `--repo` | string | repo uri to use when installing a helm chart | -->
 <!-- | `--set` | strings | values to pass to helm when running helm template | -->
 
 ### Examples
