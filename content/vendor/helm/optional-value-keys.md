@@ -10,7 +10,7 @@ It's possible to either remove or include value when certain conditions are met.
 
 ## Removing values
 
-If the `values.yaml` contains a static value that should be removed when deploying using KOTS, add this value to the `<chart-name.yaml>` file, setting the value eaual to the string `"null"` (with the quotes). 
+If the `values.yaml` contains a static value that should be removed when deploying using KOTS, add this value to the `<chart-name.yaml>` file, setting the value equal to the string `"null"` (with the quotes). 
 For additional information on this syntax, refer to the [Helm feature](https://github.com/helm/helm/pull/2648).
 
 ## Including values
