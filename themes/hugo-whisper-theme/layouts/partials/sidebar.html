@@ -8,11 +8,13 @@
       {{ else if eq .Section "release-notes" }}
         Release Notes
       {{ else if eq .Section "all-content" }}
+      {{ else if eq .Section "data-transmission-policy" }}
       {{ else if eq .Section "kotsadm" }}
         Admin Console Docs
       {{ else }}
         {{ .Section | humanize }} Documentation
       {{ end }}
+    </a>
   </h3>
   <ul>
     {{ range .FirstSection.Pages }}
