@@ -44,6 +44,7 @@ Params:
     - reference
     - v1beta1
     - release-notes
+    - data-transmission-policy
 menu:
   main:
     - Identifier: kots-cli
