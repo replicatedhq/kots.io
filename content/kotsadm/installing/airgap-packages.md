@@ -9,11 +9,11 @@ draft: false
 When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster.
 This feature is only available for licenses that have the airgapped feature enabled.
 
-## Kots install
+## KOTS install
 This section only applies to installing the Admin Console into an existing Kubernetes cluster.  
 See [this](https://kots.io/kotsadm/installing/installing-embedded-cluster/) document for embedded installations with kURL.
 
-Begin by [installing the Kots CLI kubectl plugin](/kots-cli/getting-started/).
+Begin by [installing the KOTS CLI kubectl plugin](/kots-cli/getting-started/).
 The Admin Console can be installed using the KOTS plugin and the airgap package that can be downloaded from the [release assets](https://github.com/replicatedhq/kots/releases) named `kotsadm.tar.gz`.
 The asset version must match the KOTS CLI version, which can be determined by running:
 
