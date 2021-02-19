@@ -5,7 +5,7 @@ title: kots pull
 weight: 90110
 ---
 
-If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the Kots application and the Kubernetes manifests. 
+If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the KOTS application and the Kubernetes manifests. 
 This workflow is necessary when managing a KOTS application without the use of the Admin Console.
 
 ### Usage
@@ -23,7 +23,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 |:----------------------|------|-------------|
 | `--downstream` |  strings |  the list of any downstreams to create/update |
 | `--exclude-admin-console` |  bool  |  set to true to exclude the admin console _(only valid when `[upstream-uri]` points to a replicated app)_ |
-| `--exclude-kots-kinds` |  bool  | set to true to exclude rendering kots custom objects to the base directory _(default `true`)_ |
+| `--exclude-kots-kinds` |  bool  | set to true to exclude rendering KOTS custom objects to the base directory _(default `true`)_ |
 | `-h, --help`  |          |  help for pull |
 | `--helm-version` | string | the Helm version with which to render the Helm Chart _(default `"v2"`)_. This is a beta feature |
 | `--image-namespace` |  string  |  the namespace/org in the docker registry to push images to _(required when `--rewrite-images` is set)_ |
