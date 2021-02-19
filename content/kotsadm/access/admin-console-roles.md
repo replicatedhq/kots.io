@@ -1,7 +1,7 @@
 ---
 date: 2020-12-29
 linktitle: "Admin Console Roles"
-title: kots Admin Console Pre-Defined Roles
+title: KOTS Admin Console Pre-Defined Roles
 weight: 2
 draft: false
 isBeta: true
