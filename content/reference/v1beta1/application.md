@@ -10,12 +10,12 @@ aliases:
 
 The KOTS Application custom resource enables features such as branding, release notes, port forwarding, dashboard buttons, app status indicators, and custom graphs.
 
-With ports specified, the kots CLI can establish port-forwarding, to simplify connections to the deployed application.  
+With ports specified, the KOTS CLI can establish port-forwarding, to simplify connections to the deployed application.  
 When [statusInformers](/vendor/config/application-status/#kots-application-spec) are specified, the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use.
 This CR is optional for KOTS applications.
 
-There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects).  
-In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.  
+There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects). In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.
+
 In the meantime, enabling features (such as [dashboard buttons to the application](/vendor/dashboard/open-buttons/)) requires the use of both the KOTS Application spec and the SIG Application spec.
 
 The `Application` spec contains vendor-supplied metadata about the application.
@@ -71,9 +71,9 @@ This defaults to `latest` which will use the newest version from the list below.
 Valid values are:
 - 1.14.9
 - 1.16.3
-- 1.17.13 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.18.10 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.19.3 (added in [kots 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.17.13 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.18.10 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.19.3 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
 Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`).
 The latest version within the provided range will be used.
 If the specified version or range does not match any supported versions, the latest version from the above list will be used.
