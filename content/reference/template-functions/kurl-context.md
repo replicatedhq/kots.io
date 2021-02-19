@@ -7,7 +7,7 @@ weight: 90040
 
 ## kURL Context Functions
 
-For kots apps installed on kURL clusters, we have a new feature that will allow use of template functions to show all options the cluster was installed with.
+For KOTS apps installed on kURL clusters, we have a new feature that will allow use of template functions to show all options the cluster was installed with.
 The creation of the Installer CRD will reflect both install script changes made by posting yaml to the kurl installer api and changes made with -s flags at runtime.
 These functions are not available on the config page.
 
