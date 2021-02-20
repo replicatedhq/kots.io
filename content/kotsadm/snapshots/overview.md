@@ -25,6 +25,11 @@ There are two ways to create a full snapshot. First, make sure that your license
 
 ![Instance Backup UI](/images/snapshot-instance-backup.png)
 
+After a full snapshot is created you can restore it by clicking restore icon on a full snapshot row (check screenshot below).
+There are two available options for restore. You can do a full restore of the application, admin console, and databases or you can do a partial restore of just your application and its data.
+
+![Instance Restore UI](/images/snapshot-instance-restore.png)
+
 ## Partial Snapshots
 
 Partial snapshots only back up applications volumes and application manifests; they do not back up the Admin Console or the metadata about an application.
