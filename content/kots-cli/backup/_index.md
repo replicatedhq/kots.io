@@ -2,7 +2,7 @@
 date: 2019-10-30
 linktitle: "backup"
 title: kots backup
-weight: 90200
+weight: 90210
 ---
 
 The `kots backup` creates a new instance snapshot for disaster recovery.
