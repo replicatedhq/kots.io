@@ -24,9 +24,9 @@ When a license is assigned to multiple channels, the customer will be able to se
 For airgapped installs, the channel can be selected at download time only.
 
 ### Expiration Date
-When you create a license, you can specify how the license will behave when it expires. 
-The policy can ignore expiration, allow a running application to continue but prevent updates, or stop the running application and prevent updates. 
-License expiration to stop running the application is supported in Replicated 2.1.0 or newer.
+When you create a license, you can specify an expiration date. By default an application with an expired license will continue to run, but will be prevented from receiving updates. 
+
+However applications can be instrumented to implement custom behavior by reading the license values and employing custom application logic based on the values for the `expires_at` license field.
 
 ### Airgap Download Enabled
 By default, licenses will be set to disable airgapped installations. 
