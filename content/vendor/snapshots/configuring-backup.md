@@ -2,7 +2,6 @@
 date: 2019-01-23
 linktitle: "Configuring Backup"
 title: Configuring Backup
-isBeta: true
 weight: 2
 ---
 

@@ -1,8 +1,7 @@
 ---
 date: 2019-01-23
-linktitle: "Snapshot Destinations"
-isBeta: true
-weight: 8
+linktitle: "Storage Destinations"
+weight: 9
 title: Compatible Backend Stores
 ---
 
@@ -11,7 +10,7 @@ The Admin Console has built-in support for configuring AWS, GCP, Azure and S3-Co
 
 For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. 
 This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
-Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a snapshot destination that is external to the cluster.
+Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a storage destination that is external to the cluster.
 
 ## AWS
 
