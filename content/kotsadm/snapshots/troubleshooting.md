@@ -44,3 +44,17 @@ time="2020-04-10T14:12:44Z" level=info msg="All Velero custom resource definitio
 time="2020-04-10T14:12:44Z" level=info msg="Checking that all backup storage locations are valid" logSource="pkg/cmd/server/server.go:413"
 An error occurred: some backup storage locations are invalid: backup store for location "default" is invalid: Backup store contains invalid top-level directories: [other-directory]
 ```
+
+## Snapshot restore is failing
+
+#### Service NodePort is already allocated
+
+Example error message:
+
+![Snapshot Troubleshoot Service NodePort](/images/snapshot-troubleshoot-service-nodeport.png)
+
+There is a known issue in older Kubernetes versions (< 1.19) where using a static NodePort for services can collide in multi-master HA setup when recreating the services. you can find more details about the issue here: https://github.com/kubernetes/kubernetes/issues/85894.
+
+This issue has been fixed in Kubernetes version 1.19, you can find more details about the fix here: https://github.com/kubernetes/kubernetes/pull/89937.
+
+Summary: upgrading to Kubernetes version 1.19+ should resolve the issue.
