@@ -30,6 +30,8 @@ There are two available options for doing a restore. You can either do a full re
 
 ![Instance Restore UI](/images/snapshot-instance-restore.png)
 
+If you have multiple applications within the KOTS Admin Console, each application should have a [backup resource](/reference/v1beta1/backup/) in order to be included in the Full Snapshot backup.
+
 ## Partial Snapshots
 
 Partial snapshots only back up applications volumes and application manifests; they do not back up the Admin Console or the metadata about an application.
