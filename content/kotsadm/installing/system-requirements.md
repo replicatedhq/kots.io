@@ -9,7 +9,7 @@ draft: false
 This page describes the system requirements for executing and installing KOTS applications.
 The requirements for command-line-interfaces (such as the [Vendor CLI](/vendor/cli/getting-started) and the [KOTS CLI](/kots-cli/getting-started)) are described separately, and are not subject to these requirements.
 
-## Supported Browsers 
+## Supported Browsers
 
 This section describes the browser requirements for the latest KOTS Admin Console
 
@@ -35,7 +35,7 @@ This includes support against all patch releases of the corrersponding Kubernete
 
 ## Firewall Openings for Online Installations
 
-The following domains need to accessible from servers performing online KOTS installs. 
+The following domains need to accessible from servers performing online KOTS installs.
 IP addresses for these services can be found in [replicatedhq/ips](https://github.com/replicatedhq/ips/blob/master/ip_addresses.json).
 
 | Host                 | Existing Cluster Installation | Embedded Cluster Installation | Description                                                                                                                                                                                                                                                                                                                                                |
@@ -47,6 +47,12 @@ IP addresses for these services can be found in [replicatedhq/ips](https://githu
 | amazonaws.com        | Not Required                  | Required                      | tar.gz packages are downloaded from Amazon S3 during embedded cluster installations. The IP ranges to allowlist for accessing these can be scraped dynamically from the [AWS IP Address](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html#aws-ip-download) Ranges documentation.                                                           |
 
 No outbound internet access is required for airgapped installations.
+
+## Airgapped Installs
+
+When application airgap bundle is uploaded through the Admin Console's UI, application images will be extracted and pushed to the registry from inside the Admin Console's pod.
+This requires extra ephemeral storage available on the node.
+The recommended amount of storage should be no less than the total size of application's images.
 
 ## Existing Cluster Installation Requirements
 
@@ -65,7 +71,7 @@ Unless the `requireMinimalRBACPrivileges` attribute is included and set to `true
 - Existing namespace, and an RBAC binding that allows the `kubectl`-ing user to create workloads, ClusterRoles, and ClusterRoleBindings
 - cluster-admin permissions to create namespaces and assign RBAC roles across the cluster
 
-With the `requireMinimalRBACPrivileges` included and set to `true`, KOTS will not require the ability to create ClusterRoles and ClusterRoleBindings. 
+With the `requireMinimalRBACPrivileges` included and set to `true`, KOTS will not require the ability to create ClusterRoles and ClusterRoleBindings.
 In this mode, KOTS will use a namespace-scoped Role and RoleBinding
 
 ## Embedded Cluster Installation Requirements
@@ -73,4 +79,4 @@ In this mode, KOTS will use a namespace-scoped Role and RoleBinding
 KOTS leverages [kURL](https://kurl.sh/) to embed a new Kubernetes cluster into existing machines.
 As such, any embedded installation includes additional system requirements (see [kURL System Requirements](https://kurl.sh/docs/install-with-kurl/system-requirements)).
 
-Root access *is* required for embedded cluster installations. 
+Root access *is* required for embedded cluster installations.
