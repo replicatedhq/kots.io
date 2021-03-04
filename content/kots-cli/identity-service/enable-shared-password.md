@@ -2,7 +2,7 @@
 date: 2020-12-08
 linktitle: "enable-shared-password"
 title: kots identity-service enable-shared-password
-weight: 90240
+weight: 90250
 ---
 
 Enable the shared password login option in the KOTS Admin Console.

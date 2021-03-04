@@ -65,3 +65,20 @@ When configuring the Admin Console to store snapshots on an S3-Compatible storag
 | Access Key ID (optional) | The AWS IAM Access Key ID that can read from and write to the bucket |
 | Secret Access Key (optional) | The AWS IAM Secret Access Key that is associated with the Access Key ID |
 | Use Instance Role | When enabled, instead of providing an Access Key ID and Secret Access Key, Velero will use an instance IAM role |
+
+## Network File System (NFS)
+
+When configuring the Admin Console to store snapshots on an NFS server, the following fields are available:
+
+| Name | Description |
+|------|-------------|
+| Server | The hostname or IP address of the NFS server |
+| Path | The path that is exported by the NFS server |
+
+## Host Path
+
+When configuring the Admin Console to store snapshots on a local host path, the following fields are available:
+
+| Name | Description |
+|------|-------------|
+| Host Path | A local host path on the node |

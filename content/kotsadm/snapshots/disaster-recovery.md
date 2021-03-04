@@ -2,7 +2,7 @@
 date: 2021-01-04
 linktitle: "Disaster Recovery"
 title: Disaster Recovery
-weight: 12
+weight: 13
 ---
 
 In order to setup disaster recovery snapshots, backups should be configured to use an S3 store that exists outside of the cluster.

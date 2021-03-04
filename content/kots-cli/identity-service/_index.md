@@ -2,7 +2,7 @@
 date: 2020-12-08
 linktitle: "identity-service"
 title: kots identity-service
-weight: 90240
+weight: 90250
 ---
 
 KOTS Identity Service
