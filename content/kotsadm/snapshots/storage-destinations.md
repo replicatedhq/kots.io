@@ -6,7 +6,7 @@ title: Compatible Backend Stores
 ---
 
 A KOTS snapshot supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/). 
-The Admin Console has built-in support for configuring AWS, GCP, Azure and S3-Compatible object stores as destinations.
+The Admin Console has built-in support for configuring AWS, GCP, Azure, S3-Compatible object store, NFS Server, or local host path as destinations.
 
 For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. 
 This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
@@ -75,6 +75,8 @@ When configuring the Admin Console to store snapshots on an NFS server, the foll
 | Server | The hostname or IP address of the NFS server |
 | Path | The path that is exported by the NFS server |
 
+An overview for configuring NFS is available [here](/kotsadm/snapshots/configuring-nfs/).
+
 ## Host Path
 
 When configuring the Admin Console to store snapshots on a local host path, the following fields are available:
@@ -82,3 +84,5 @@ When configuring the Admin Console to store snapshots on a local host path, the 
 | Name | Description |
 |------|-------------|
 | Host Path | A local host path on the node |
+
+An overview for configuring a Host Path is available [here](/kotsadm/snapshots/configuring-hostpath/).
