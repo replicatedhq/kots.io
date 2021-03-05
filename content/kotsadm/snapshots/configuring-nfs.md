@@ -26,6 +26,7 @@ From there, head to the "Settings and Schedule" tab and choose the "Network File
 ![Snapshot Destination Dropdown NFS](/images/snapshot-destination-dropdown-nfs.png)
 
 Enter the NFS server hostname or IP Address, and the path that is exported by the NFS server and click "Update storage settings".
+This step might take a couple of minutes so please be patient.
 
 ![Snapshot Destination NFS Fields](/images/snapshot-destination-nfs-fields.png)
 
@@ -33,7 +34,7 @@ Enter the NFS server hostname or IP Address, and the path that is exported by th
 
 **Note:** If Velero is already installed in the cluster, you can follow the same instructions mentioned in the [Embedded Clusters](/kotsadm/snapshots/configuring-nfs/#embedded-clusters) section.
 
-If Velero is not yet installed in the cluster, then the first step would be to set up and deploy the necessary NFS components that are going to be used to install and set up Velero.
+If Velero is not yet installed in the cluster, then the first step would be to set up and deploy the necessary components that are going to be used to install and set up Velero with NFS.
 This can be done in two ways:
 
 ### Using the KOTS CLI
@@ -44,7 +45,7 @@ After this command has run and completed successfully, it will detect if Velero 
 **Online Installations**
 
 ```bash
-kubectl kots velero configure-nfs --nfs-server 10.128.0.32 --nfs-path /mnt/nfs_share --namespace kots-sentry
+kubectl kots velero configure-nfs --nfs-server <hostname-or-ip> --nfs-path /path/to/directory --namespace <namespace>
 ```
 
 **Airgapped Installations**
@@ -77,6 +78,6 @@ Enter the NFS server hostname or IP Address, and the path that is exported by th
 This step might take a few minutes, so please be patient.
 Once the configuration is successful, you'll be presented with a different dialog which contains a CLI command that will print out instructions on how to set up Velero with the deployed NFS configuration/components (check screenshot below).
 
-![Snapshot Provider NFS Next Steps](/images/snapshot-provider-nfs-next-steps.png)
+![Snapshot Provider File System Next Steps](/images/snapshot-provider-fs-next-steps.png)
 
-After following the instructions from the above CLI command, and Velero has been installed successfully, you can go back to the Admin Console and either click on the "Check for Velero" button to retry detecting Velero, or simple refresh the page.
+After following the instructions from the above CLI command, and Velero has been installed successfully, you can go back to the Admin Console and either click on the "Check for Velero" button to retry detecting Velero, or simply refresh the page.

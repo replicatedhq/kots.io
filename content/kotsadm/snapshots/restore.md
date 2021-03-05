@@ -2,7 +2,7 @@
 date: 2019-01-23
 linktitle: "Partial Snapshots Restore"
 title: Partial Snapshots (Application) Restore
-weight: 12
+weight: 13
 ---
 
 When restoring a partial snapshot, the Admin Console will first "undeploy" the correct application.
