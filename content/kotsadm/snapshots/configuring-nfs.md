@@ -5,6 +5,8 @@ weight: 10
 title: Configuring NFS
 ---
 
+The steps described on this page are only necessary if you wish to configure a Network File System (NFS) as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/). 
+
 Important notes before you begin:
 
 * Make sure that you have the NFS server already set up and configured to allow access from all the nodes in the cluster.
