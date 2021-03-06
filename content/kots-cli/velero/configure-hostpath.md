@@ -24,6 +24,7 @@ kubectl kots velero configure-hostpath [flags]
 | `--kotsadm-registry`  | string | set to override the registry of kotsadm images. used for airgapped installations. |
 | `--registry-password` | string | password to use to authenticate with the provided registry. used for airgapped installations. |
 | `--registry-username` | string | username to use to authenticate with the provided registry. used for airgapped installations. |
+| `--force-reset` | bool | bypass the reset prompt and force resetting the host path directory. _(default `false`)_ |
 | `--output` | string | output format. supported values: json |
 
 ### Examples
