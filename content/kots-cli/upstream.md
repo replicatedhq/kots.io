@@ -20,7 +20,7 @@ kubectl kots upstream upgrade [app-slug] [flags]
 | `-h, --help` | |   help for upstream |
 | `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
 | `-n, --namespace`| string |     the namespace where the admin console is running _(required)_ |
-| `--deploy`| bool |     deploy the latest release if a new update is found |
+| `--deploy`| bool | ensures that the latest available release is deployed. |
 | `--skip-preflights`| bool |     set to true to skip preflight checks |
 
 ### Example
