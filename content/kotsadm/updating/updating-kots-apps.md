@@ -77,13 +77,12 @@ Adding the `--deploy` flag will also automatically deploy this version.
 
 ### Embedded Cluster Airgapped Installs
 
+> Introduced in Kots v1.34.0
+
 In order to install an update from an airgap file, the following command can be used:
 
 ```bash
-kubectl kots upstream upgrade <app slug> \
-  --airgap-bundle new-app-release.airgap \
-  --kotsadm-namespace <app slug> \
-  -n <admin console namespace>
+kubectl kots upstream upgrade <app slug> --airgap-bundle new-app-release.airgap -n <admin console namespace>
 ```
 
 Adding the `--deploy` flag will also automatically deploy this version.
