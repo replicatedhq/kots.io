@@ -5,6 +5,8 @@ weight: 11
 title: Configuring a Host Path
 ---
 
+> Introduced in KOTS v1.33.0
+
 The steps described on this page are only necessary if you wish to configure a Host Path destination as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/). 
 
 **Important note:** Make sure that the host path exists on all the nodes in the cluster.
