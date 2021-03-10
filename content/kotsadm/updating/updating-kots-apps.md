@@ -77,7 +77,7 @@ Adding the `--deploy` flag will also automatically deploy this version.
 
 ### Embedded Cluster Airgapped Installs
 
-> Introduced in Kots v1.34.0
+> Introduced in KOTS v1.34.0
 
 In order to install an update from an airgap file, the following command can be used:
 
