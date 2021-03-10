@@ -7,6 +7,8 @@ weight: 90230
 
 The `kots set config` allows setting values for application config items.
 
+> Introduced in KOTS v1.31.0
+
 ### Usage
 
 ```bash
