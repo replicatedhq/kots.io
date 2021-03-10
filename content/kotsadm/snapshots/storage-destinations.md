@@ -68,6 +68,8 @@ When configuring the Admin Console to store snapshots on an S3-Compatible storag
 
 ## Network File System (NFS)
 
+> Introduced in KOTS v1.33.0
+
 When configuring the Admin Console to store snapshots on an NFS server, the following fields are available:
 
 | Name | Description |
@@ -78,6 +80,8 @@ When configuring the Admin Console to store snapshots on an NFS server, the foll
 An overview for configuring NFS is available [here](/kotsadm/snapshots/configuring-nfs/).
 
 ## Host Path
+
+> Introduced in KOTS v1.33.0
 
 When configuring the Admin Console to store snapshots on a local host path, the following fields are available:
 
