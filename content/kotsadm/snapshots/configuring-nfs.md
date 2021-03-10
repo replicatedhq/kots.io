@@ -5,6 +5,8 @@ weight: 10
 title: Configuring NFS
 ---
 
+> Introduced in KOTS v1.33.0
+
 The steps described on this page are only necessary if you wish to configure a Network File System (NFS) as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/). 
 
 Important notes before you begin:
