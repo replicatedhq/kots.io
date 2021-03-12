@@ -5,7 +5,7 @@ title: kots upload
 weight: 90140
 ---
 
-Upload Kubernetes manifests from the local filesystem, creating a new version of the application that can be deployed. 
+Upload Kubernetes manifests from the local filesystem, creating a new version of the application that can be deployed.
 When you have a copy of an application that was created with `kots pull` or `kots download`, you can upload it back to the Admin Console using the `kots upload` command.
 
 ### Usage
@@ -25,9 +25,11 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `-n, --namespace`| string |     the namespace to upload to _(default `"default"`)_ |
 | `--slug`| string |          the application slug to use. if not present, a new one will be created |
 | `--upstream-uri`| string |  the upstream uri that can be used to check for updates |
+| `--deploy`| bool |  when set, automatically deploy the uploaded version |
+| `--skip-preflights`| bool |  set to true to skip preflight checks |
 
 
-Note: Any `plainText` values in the `upstream/userdata/config.yaml` file will be re-encrypted using the application cipher automatically, if the matching config item is a password type. 
+Note: Any `plainText` values in the `upstream/userdata/config.yaml` file will be re-encrypted using the application cipher automatically, if the matching config item is a password type.
 If both an encrypted and plainText value is provided on a single item, the plainText value will overwrite the encrypted value, if they differ.
 
 ### Examples
