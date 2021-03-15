@@ -23,5 +23,5 @@ kubectl kots restore [flags]
 ### Example
 
 ```bash
-kubectl kots restore --from-backup sentry-942kf
+kubectl kots restore --from-backup instance-942kf
 ```
