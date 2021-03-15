@@ -31,10 +31,7 @@ cat install.sh | sudo bash -s airgap
 To update the application in an airgapped environment, download the new application airgap bundle and run the following command:
 
 ```bash
-kubectl kots upstream upgrade <app slug> \
-  --airgap-bundle new-app-release.airgap \
-  --kotsadm-namespace <registry namespace> \
-  -n default
+kubectl kots upstream upgrade <app slug> --airgap-bundle new-app-release.airgap -n default
 ```
 
 ### Updating Kubernetes
