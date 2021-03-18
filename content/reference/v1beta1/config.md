@@ -27,6 +27,8 @@ spec:
 **Note:** `description` is only supported in `groups`, see `help_text` property for `items`. 
 [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
 
+A group can be hidden from customer view by adding `hidden: true` to the group.
+
 ## Items
 
 Items map to input fields and belong to a single group. 
