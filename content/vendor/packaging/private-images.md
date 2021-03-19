@@ -12,6 +12,7 @@ When delivering a KOTS application through [vendor.replicated.com](https://vendo
 The license file grants revokable image pull access to private images, whether these are stored in the Replicated private registry, or another private registry server that you’ve decided to use.
 
 If your application images are already available in a private, but accessible image registry (such as Docker Hub, quay.io, ECR, GCR, Artifactory or such), then your application licenses can be configured to grant proxy, or pull-through access to the assignee without giving actual credentials to the customer. 
+
 This is useful and recommended because it prevents you from having to modify the process you use to build and push application images, and it gives you the ability to revoke a customer’s ability to pull (such as on trial expiration). 
 This External Registry is shared across all KOTS applications in a team, allowing images to be used across multiple apps.
 
@@ -63,6 +64,9 @@ This secret is based on the customer license, and will be used to pull all image
 
 Images hosted at `registry.replicated.com` will not be rewritten.  
 However, the same secret will be added to those PodSpecs as well.
+
+> KOTS [Application](/reference/v1beta1/application/) deployments are supported via image tags in all use cases. KOTS has limited support for deploying via image digests. Use of image digests are only supported for fully online installs where all images can be pulled from the Replicated registry, a public repo, or proxied from a private repo via the Replicated registry.
+
 
 ## Additional namespaces
 
