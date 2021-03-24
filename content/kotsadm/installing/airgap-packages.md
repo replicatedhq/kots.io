@@ -26,7 +26,7 @@ Registry credentials provided in this step must have push access.
 These credentials will not be stored anywhere or reused later.
 
 ```shell
-kubectl kots admin-console push-images ./kotsadm.tar.gz private.registry.host/application-name \
+kubectl kots admin-console push-images ./kotsadm.tar.gz private-registry-ip/application-name \
   --registry-username rw-username \
   --registry-password rw-password
 ```
@@ -37,7 +37,7 @@ These credentials will be used to pull the images, and will be automatically cre
 
 ```shell
 kubectl kots install \
-  --kotsadm-registry private.registry.host/application-name \
+  --kotsadm-registry private-registry-ip/application-name \
   --registry-username ro-username \
   --registry-password ro-password \
   application-name

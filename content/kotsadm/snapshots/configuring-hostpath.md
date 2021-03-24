@@ -53,7 +53,7 @@ kubectl kots velero configure-hostpath --hostpath /path/to/directory --namespace
 kubectl kots velero configure-hostpath \
   --hostpath /path/to/directory \
   --namespace <namespace> \
-  --kotsadm-registry private.registry.host \
+  --kotsadm-registry private-registry-ip\
   --kotsadm-namespace application-name \
   --registry-username ro-username \
   --registry-password ro-password
