@@ -2,7 +2,11 @@
 
 <div class="docs-menu">
   <h3>
-    <a href="{{ .FirstSection.Params.redirect | relURL }}">
+    {{ if eq .Section "release-notes" }}
+      <a href="/release-notes">
+    {{ else }}
+      <a href="{{ .FirstSection.Params.redirect | relURL }}">
+    {{ end }}
       {{ if eq .Section "kots-cli" }}
         KOTS CLI Documentation
       {{ else if eq .Section "release-notes" }}
