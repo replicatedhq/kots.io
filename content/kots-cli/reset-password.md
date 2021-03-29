@@ -21,6 +21,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 |:----------------------|------|-------------|
 | `-h, --help`   |          |  help for reset-password |
 | `-n, --namespace`| string |     the namespace where the admin console is running |
+| `--new-password`| string |     the new password to be used |
 
 ### Examples
 ```bash
