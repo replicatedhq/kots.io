@@ -136,9 +136,11 @@ For example, when an error in a log file is discovered that should be surfaced t
 For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support-bundle)
 -->
 
-### Adding Prometheus Graphs
+### Bundling Monitoring
 
 If an application exposes Prometheus metrics, we recommend integrating [Custom Graphs](/vendor/config/dashboard-graphs) to expose these metrics to end users.
+
+If you'd like to bundle alerting thresholds and routing with your application ([you should want this]()), the [Prometheus Alerting](https://github.com/replicatedhq/kotsapps/tree/master/prometheus-alerting) application showcases
 
 
 ### Building a Collaborative Workflow
