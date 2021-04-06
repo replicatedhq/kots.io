@@ -148,7 +148,7 @@ See the [`ConfigOptionData`](/reference/template-functions/config-context/#confi
 
 ### `default` and `value`
 A default value will be applied to the ConfigOption template function when no value is specified. 
-It will appear as placeholder text in the settings section of the On-Prem Console.
+If default value is not a password field it will appear in the settings section of the On-Prem Console.
 
 A value is data that will be overwritten by user input on non-readonly fields.  
 It will appear as the HTML input value in the settings section of the On-Prem Console.
