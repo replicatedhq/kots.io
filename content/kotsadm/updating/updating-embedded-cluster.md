@@ -11,7 +11,7 @@ When running the Admin Console on an existing cluster, refer to the [Updating th
 
 ### Online Installations
 
-To update the Admin Console when deployed to an embedded cluster, re-run the installation script on the first master node where the install was initialized.
+To update the Admin Console when deployed to an embedded cluster, re-run the installation script on the first primary node where the install was initialized.
 All flags passed to the script for the initial install must be passed again.
 
 ```bash
@@ -38,15 +38,15 @@ kubectl kots upstream upgrade <app slug> --airgap-bundle new-app-release.airgap 
 
 If the application vendor has updated the version of Kubernetes in the installer since the last time the script was run, it will begin an upgrade of Kubernetes.
 
-The script will first print a prompt to continue with an upgrade of the local master node.
+The script will first print a prompt to continue with an upgrade of the local primary node.
 
 ```bash
     Drain local node and apply upgrade?
 ```
 
-If confirmed, the local master node will be drained and the upgrade to the control plane will be applied.
+If confirmed, the local primary node will be drained and the upgrade to the control plane will be applied.
 
-Then the script will upgrade any remote nodes one at a time, starting with all masters and then continuing to all workers.
+Then the script will upgrade any remote nodes one at a time, starting with all primaries and then continuing to all secondary nodes.
 For each remote node detected, it will drain the node and wait for the drain to complete.
 Then it will print a command that must be run on that node to upgrade the control plane.
 
