@@ -55,7 +55,7 @@ This load balancer should be configured to distribute traffic to all healthy con
 This should be a TCP forwarding load balancer.
 The health check for an apiserver is a TCP check on the port the kube-apiserver listens on (default value :6443).
 For more information on the kube-apiserver load balancer see https://kubernetes.io/docs/setup/independent/high-availability/#create-load-balancer-for-kube-apiserver.
-In the absence of a load balancer, all traffic will be routed to the first master.
+In the absence of a load balancer, all traffic will be routed to the first primary.
 
 ```bash
 curl -sSL https://kurl.sh/supergoodtool | sudo bash -s ha
@@ -73,6 +73,6 @@ Supported operating systems and minimum system requirements are [specified by Re
 
 ## Joining Nodes
 
-Visit the `/cluster/manage` page in the Kotsadm web console to generate scripts for joining additional worker and master nodes.
+Visit the `/cluster/manage` page in the Kotsadm web console to generate scripts for joining additional secondary and primary nodes.
 
 For airgapped installations, the airgap bundle must also be downloaded and extracted on the remote node prior to running the join script.
