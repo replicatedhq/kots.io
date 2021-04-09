@@ -43,7 +43,7 @@ kubectl kots velero configure-nfs \
   --nfs-server 10.128.0.32 \
   --nfs-path /mnt/nfs_share \
   --namespace kots-sentry \
-  --kotsadm-registry private.registry.host \
+  --kotsadm-registry private-registry-ip \
   --kotsadm-namespace kots-sentry \
   --registry-username ro-username \
   --registry-password ro-password
