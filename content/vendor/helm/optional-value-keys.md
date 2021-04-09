@@ -62,6 +62,7 @@ spec:
 
   optionalValues:
     - when: "repl{{ ConfigOptionEquals `postgres_type` `external_postgres`}}"
+      recursiveMerge: false
       values:
         postgresql:
           postgresqlDatabase: "repl{{ ConfigOption `external_postgres_database`}}"
@@ -95,5 +96,6 @@ And the following `values.yaml` if the user has selected `embedded_postgres`:
 postgresql:
   enabled: true
 ```
+> Starting in KOTS v1.38.0 release, a new opt-in feature is introduced where values and optionalValues are recursively merged if the dataset is recursive in nature. A new flag "recursiveMerge" flag is introduced. If the flag is set to True, values and optionalValues are merged if they are mutually exclusive. If the optionalValue key mataches with the values key, optionalValue takes precedence. By default, the flag is set to False. 
 
 Note: this could also be done by modifying the render logic in the Helm chart, but that's not always an easy option.
