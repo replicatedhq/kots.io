@@ -53,7 +53,7 @@ Example error message:
 
 ![Snapshot Troubleshoot Service NodePort](/images/snapshot-troubleshoot-service-nodeport.png)
 
-There is a known issue in older Kubernetes versions (< 1.19) where using a static NodePort for services can collide in multi-master HA setup when recreating the services. you can find more details about the issue here: https://github.com/kubernetes/kubernetes/issues/85894.
+There is a known issue in older Kubernetes versions (< 1.19) where using a static NodePort for services can collide in multi-primary HA setup when recreating the services. you can find more details about the issue here: https://github.com/kubernetes/kubernetes/issues/85894.
 
 This issue has been fixed in Kubernetes version 1.19, you can find more details about the fix here: https://github.com/kubernetes/kubernetes/pull/89937.
 
