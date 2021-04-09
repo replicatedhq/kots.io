@@ -22,6 +22,7 @@ kubectl kots upstream upgrade [app-slug] [flags]
 | `-n, --namespace`| string |     the namespace where the admin console is running _(required)_ |
 | `--deploy`| bool | ensures that the latest available release is deployed. |
 | `--skip-preflights`| bool |     set to true to skip preflight checks |
+| `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry |
 
 ### Example
 ```bash
