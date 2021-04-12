@@ -26,7 +26,7 @@ Registry credentials provided in this step must have push access.
 These credentials will not be stored anywhere or reused later.
 
 ```shell
-kubectl kots admin-console push-images ./kotsadm.tar.gz private.registry.host/application-name \
+kubectl kots admin-console push-images ./kotsadm.tar.gz private.registry.host/app-name \
   --registry-username rw-username \
   --registry-password rw-password
 ```
@@ -36,11 +36,11 @@ Registry credentials provided in this step only need to have read access, and th
 These credentials will be used to pull the images, and will be automatically created as an imagePullSecret on all of the Admin Console pods.
 
 ```shell
-kubectl kots install \
-  --kotsadm-registry private.registry.host/application-name \
+kubectl kots install app-name \
+  --kotsadm-namespace app-name \
+  --kotsadm-registry private.registry.host \
   --registry-username ro-username \
-  --registry-password ro-password \
-  application-name
+  --registry-password ro-password
 ```
 
 Once this has completed, the KOTS will create a port-forward to the Admin Console on port 8800.
