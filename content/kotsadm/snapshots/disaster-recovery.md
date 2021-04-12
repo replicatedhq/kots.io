@@ -10,22 +10,24 @@ This is especially true for [embedded kURL installs](/kotsadm/installing/install
 
 ## Existing Cluster Restore
 
-Restore must begin with installing a version of Velero compatible with the one that was used to make the snapshot.
-If restoring from an [NFS](/kotsadm/snapshots/storage-destinations/#network-file-system-nfs) or a [Host Path](/kotsadm/snapshots/storage-destinations/#host-path) storage destination, please refer to the [Configuring NFS](/kotsadm/snapshots/configuring-nfs/) or [Configuring a Host Path](/kotsadm/snapshots/configuring-hostpath/) documentation for the configuration steps and how to set up Velero.
-Otherwise, please refer to Velero documention for [installing](https://velero.io/docs/v1.5/basic-install/) and [configuring](https://velero.io/plugins/) the plugins.
-Note that Restic is required and `--restic` flag must be used with `velero install` command.
-
-Once Velero is installed, KOTS CLI can be used to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/).
+1. Begin with installing a version of Velero compatible with the one that was used to make the snapshot.
+    1. If restoring from an [NFS](/kotsadm/snapshots/storage-destinations/#network-file-system-nfs) or a [Host Path](/kotsadm/snapshots/storage-destinations/#host-path) storage destination, please refer to the [Configuring NFS](/kotsadm/snapshots/configuring-nfs/) or [Configuring a Host Path](/kotsadm/snapshots/configuring-hostpath/) documentation for the configuration steps and how to set up Velero.
+    1. Otherwise, please refer to Velero documention for [installing](https://velero.io/docs/v1.5/basic-install/) and [configuring](https://velero.io/plugins/) the plugins.
+    1. **Note** that Restic is required and `--restic` flag must be used with `velero install` command.
+1. Use the KOTS CLI to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/).
 
 ## Online Embedded Cluster Restore
 
-Once the [cluster is setup](/kotsadm/installing/installing-embedded-cluster/#online-installations), the procedure for restoring an online embedded cluster is the same as the one for [restoring an existing cluster](/kotsadm/snapshots/disaster-recovery/#existing-cluster-restore).
-
-**Important**: If you're **not** restoring from an [NFS](/kotsadm/snapshots/storage-destinations/#network-file-system-nfs) or a [Host Path](/kotsadm/snapshots/storage-destinations/#host-path) storage destination, then the `velero` namespace should be deleted prior to configuring Velero with the `velero install` command, like so:
-
-```bash
-kubectl delete namespace velero
-```
+1. Setup the [embedded cluster](/kotsadm/installing/installing-embedded-cluster/#online-installations),
+1. Use the KOTS CLI to configure the pre-installed velero setup to point at the snapshot storage destination. 
+    Consult the relevant CLI documentation for your provider:
+    * [AWS S3 Configuration](/kots-cli/velero/configure-aws-s3/)
+    * [Azure Configuration](/kots-cli/velero/configure-azure/)
+    * [GCP Configuration](/kots-cli/velero/configure-gcp/)
+    * [S3-Other Coniguration (e.g. Minio)](/kots-cli/velero/configure-other-s3/)
+    * [NFS Configuration](/kotsadm/snapshots/configuring-nfs/)
+    * [HostPath Configuration](/kotsadm/snapshots/configuring-hostpath/)
+1. Use the KOTS CLI to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/).
 
 ## Airgapped Embedded Cluster Restore
 
@@ -38,12 +40,15 @@ cat install.sh | sudo bash -s airgap kurl-registry-ip=<ip>
 ```
 
 Please note that the registry from the old cluster does not need to be (and should not be) accessible.
-Once the cluster is setup, the procedure for restoring an airgapped embedded cluster is the same as the one for [restoring an existing cluster](/kotsadm/snapshots/disaster-recovery/#existing-cluster-restore).
 
-**Important**: If you're **not** restoring from an [NFS](/kotsadm/snapshots/storage-destinations/#network-file-system-nfs) or a [Host Path](/kotsadm/snapshots/storage-destinations/#host-path) storage destination, then the `velero` namespace should be deleted prior to configuring Velero with the `velero install` command, like so:
+1. Setup the cluster in accordance with the above guidance and [airgap cluster install documentation](/kotsadm/installing/installing-embedded-cluster/#airgapped-installations)
+1. Use the KOTS CLI to configure the pre-installed velero setup to point at the snapshot storage destination. 
+    Consult the relevant CLI documentation for your provider:
+    * [AWS S3 Configuration](/kots-cli/velero/configure-aws-s3/)
+    * [Azure Configuration](/kots-cli/velero/configure-azure/)
+    * [GCP Configuration](/kots-cli/velero/configure-gcp/)
+    * [S3-Other Coniguration (e.g. Minio)](/kots-cli/velero/configure-other-s3/)
+    * [NFS Configuration](/kotsadm/snapshots/configuring-nfs/)
+    * [HostPath Configuration](/kotsadm/snapshots/configuring-hostpath/)
+1. Use the KOTS CLI to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/).
 
-```bash
-kubectl delete namespace velero
-```
-
-For more details refer to the [document about installing an airgapped kURL cluster](/kotsadm/installing/installing-embedded-cluster/#airgapped-installations)

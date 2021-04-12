@@ -17,7 +17,7 @@ kubectl kots velero configure-nfs [flags]
 
 | Flag              | Type   | Description                                                         |
 | ----------------- | ------ | ------------------------------------------------------------------- |
-| `-h, --help`      |        | help for ensure-permissions |
+| `-h, --help`      |        | help for configure-nfs |
 | `-n, --namespace` | string | the namespace of the admin console _(required)_ |
 | `--nfs-server` | string | the hostname or IP address of the NFS server _(required)_ |
 | `--nfs-path` | string | the path that is exported by the NFS server _(required)_ |
