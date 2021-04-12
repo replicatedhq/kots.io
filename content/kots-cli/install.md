@@ -40,6 +40,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--registry-username` | string | username to use to authenticate with the application registry. used for airgapped installations.                                     |
 | `--shared-password`   | string | shared password to apply                                                                                                             |
 | `--skip-preflights`   | bool   | set to true to skip preflight checks                                                                                                 |
+| `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry                                                                                                 |
 
 <!-- Helm Options coming soon -->
 <!-- | `--repo` | string | repo uri to use when installing a helm chart | -->
