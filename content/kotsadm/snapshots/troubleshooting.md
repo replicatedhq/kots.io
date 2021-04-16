@@ -73,6 +73,6 @@ example-mysql-0                       0/1     Init:0/2    0          4m15s  #<- 
 example-nginx-77b878b4f-zwv2h         3/3     Running     0          4m15s
 ```
 
-We've seen this issue with versions of Velero >1.5.1 and <=1.5.4 and opened up [this issue](tbd) with the project to inspect the root cause. However we have not experienced this using Velero 1.6.0 or greater.
+We've seen this issue with Velero version 1.5.4 and opened up [this issue](https://github.com/vmware-tanzu/velero/issues/3686) with the project to inspect the root cause. However we have not experienced this using Velero 1.6.0 or greater.
 
 Summary: Upgrade Velero to 1.6.0 using kURL or the [Velero instructions](https://velero.io/docs/v1.6/upgrade-to-1.6/).
