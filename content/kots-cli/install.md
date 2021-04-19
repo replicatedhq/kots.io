@@ -36,6 +36,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--name`              | string | name of the application to use in the Admin Console                                                                                  |
 | `-n, --namespace`     | string | the namespace to deploy to                                                                                                           |
 | `--no-proxy`          | string | sets NO_PROXY environment variable in all KOTS Admin Console components                                                              |
+| `--port-forward`      | string | set to false to disable automatic port forward (default true).                                                                      |
 | `--registry-password` | string | password to use to authenticate with the application registry. used for airgapped installations.                                     |
 | `--registry-username` | string | username to use to authenticate with the application registry. used for airgapped installations.                                     |
 | `--shared-password`   | string | shared password to apply                                                                                                             |
