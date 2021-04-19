@@ -40,6 +40,19 @@ All password type items will be decrypted and the value will be stored in `value
 All non-password type config items will have their value stored in `value`.
 When this file is uploaded, any `valuePlaintext` will be re-encrypted if the matching config item is a type password.
 
+### Disable Admin Console port-forwarding
+`kots install` by default will open up a port-forward to the Admin Console as part of the installation. To disable this behavior add the following flag to the install command:
+
+```shell
+--port-forward=false
+```
+
+You can later access the Admin Console with the following command:
+
+```shell
+kubectl kots admin-console -n <your app namespace>
+```
+
 ## Example
 
 Given the information above, and a config file named `configvalues.yaml`, a license file named `license.yaml`, the following command might be used to automate the installation of an application:
@@ -49,7 +62,8 @@ kubectl kots install app-name \
   --namespace app-name \
   --shared-password password \
   --license-file ./license.yaml \
-  --config-values ./configvalues.yaml
+  --config-values ./configvalues.yaml \
+  --port-forward=false
 ```
 
 Once this has completed, visiting http://localhost:8800 will show the configured application dashboard, assuming all required config items were set and any included preflight checks passed.
@@ -68,5 +82,6 @@ kubectl kots install app-name \
   --kotsadm-registry private.registry.host \
   --kotsadm-namespace app-name \
   --registry-username rw-username \
-  --registry-password rw-password
+  --registry-password rw-password \
+  --port-forward=false
 ```
