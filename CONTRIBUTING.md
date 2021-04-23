@@ -113,3 +113,7 @@ It's perfectly acceptable (and often reasonable) to break these rules on occasio
 ## Testing locally
 
 Run `hugo serve` in the root directory of this repo to view the local version of the site in the browser.
+
+## Screenshots
+
+License used to produce screenshots for all documents can be downloaded [here](https://kots.io/sample-license)
