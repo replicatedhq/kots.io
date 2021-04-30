@@ -5,7 +5,7 @@ title: kots set config
 weight: 90230
 ---
 
-The `kots set config` allows setting values for application config items.
+The `kots set config` allows setting values for application config items in the latest release version.
 
 > Introduced in KOTS v1.31.0
 
