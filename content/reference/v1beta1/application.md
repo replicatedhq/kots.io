@@ -62,6 +62,12 @@ The release notes for this version. These can also be set when promoting a relea
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
 
+## additionalNamespaces
+An optional array of namespaces as strings.
+In addition to creating these namespaces, the Admin Console will ensure that a secret named `kotsadm-replicated-registry` exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)). 
+For access to dynamically created namespaces, `"*"` can be specified.
+See the [Additional Namespaces](/vendor/operators/additional-namespaces/) documentation for more information.
+
 ## additionalImages
 An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation.
 While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
