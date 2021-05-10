@@ -8,7 +8,7 @@ weight: 90240
 **NOTE**: The following command is only applicabled to embedded kURL kubernetes clusters and NOT recommended for production usage. 
 Please consider setting up one of the other [available storage destinations](/kotsadm/snapshots/storage-destinations).
 
-Configures snapshots to use the internal storage provider, Minio, on embedded clusters as a storage destination. 
+Configures snapshots to use the internal object store on embedded clusters as a storage destination. 
 
 ### Usage
 
