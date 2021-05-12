@@ -37,8 +37,8 @@ When this is set, the KOTS installer will create a Role and RoleBinding, grantin
 Without access to cluster-scoped resources, some Preflight Checks and Support Bundle collectors will not be able to read the resources.
 These tools will continue to function, but will return less data.
 In this situation, the Admin Console will present an option for the user to either proceeed with limited data or a command to execute the Preflight Checks or Support Bundle remotely, using the user's RBAC authorizations.
-Additionally, the namespace-scoped permission does not currently grant access to the `velero` namespace.
-Applications that are using the [snapshots](/vendor/snapshots/overview) functionality should continue to use cluster-scoped access at this time.
+Additionally, the namespace-scoped permission does not grant access to Velero's namespace if installed - Velero is a prerequisite for [Admin Console snapshots](/kotsadm/snapshots/overview/).
+The [`kubectl kots velero ensure-permissions` command](/kots-cli/velero/ensure-permissions/) can be used to create addition roles/rolebindings to allow the necessary cross-namespace access.
 
 Please note that airgapped installs honor the `requireMinimalRBACPrivileges` flag in [headless mode only](/kotsadm/installing/automating/#airgap-install).
 Without access to the internet or the app's `.airgap` package as provided in a headless install, kots does not have the information required to determine whether minimal RBAC is appropriate and so defaults to the more permissive RBAC policy.

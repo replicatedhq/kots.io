@@ -12,6 +12,8 @@ For embedded clusters, the Admin Console is pre-configured to store backups in t
 This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
 Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a storage destination that is external to the cluster.
 
+If the Admin Console is running with [minimal role-based-access-control (RBAC) privileges](/vendor/packaging/rbac/#namespace-scoped-access), the [`kots velero ensure-permissions` command](/kots-cli/velero/ensure-permissions/) will need to be leveraged, as the Admin Console requires access to the namespace in which Velero is installed. 
+
 ## AWS
 
 When configuring the Admin Console to store snapshots on AWS, the following fields are available:
