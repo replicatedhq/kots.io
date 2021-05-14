@@ -46,7 +46,7 @@ For now, click on the Releases item on the left menu and then click the "Create 
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality.
+You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality.
 Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page.
 If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our  [CLI Quickstart guide](/vendor/guides/cli-quickstart).
 
@@ -79,7 +79,7 @@ Now that we've got a release promoted, we can walk through creating a license an
 
 This chapter will give you first-hand experience installing a KOTS application using [kURL](https://kurl.sh) for an embedded Kubernetes cluster.
 
-Now that we've created a release and promoted it to the Unstable channel, the next step is to create a customer license and use this this license to install the application on a test server.
+Now that we've created a release and promoted it to the Unstable channel, the next step is to create a customer license and use this license to install the application on a test server.
 
 ### Create License
 
