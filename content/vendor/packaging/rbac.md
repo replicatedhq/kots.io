@@ -1,5 +1,5 @@
 ---
-date: 2020-08-12
+date: 2021-05-20
 linktitle: "Kubernetes RBAC"
 title: Kubernetes RBAC
 weight: 20240
@@ -9,6 +9,18 @@ When a KOTS application is installed, [Kubernetes RBAC](https://kubernetes.io/do
 By default, the Admin Console will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces.
 This behavior can be controlled by editing the [application](/reference/v1beta1/application/) manifest.
 
+As listed above, an Application may require cluster scoped access across all namespaces on all/wildcard k8 objects or to have access limited to its given namespace. 
+In either case, the user who installs an application via [KOTS install](/kots-cli/install/) CLI must have the wildcard privilges in the cluster.
+If the user has insufficient privileges the following error will be shown when attempting install or upgrade.
+
+```bash
+$  kubectl kots install appslug
+  • Current user has insufficient privileges to install Admin Console.
+For more information, please visit https://kots.io/vendor/packaging/rbac
+To bypass this check, use the --skip-rbac-check flag
+Error: insufficient privileges
+```
+
 ## Cluster-scoped access
 
 For compatibilty with earlier versions of KOTS, the default behavior of a KOTS application is to create a ClusterRole and ClusterRoleBinding with permissions to all namespaces.
@@ -17,7 +29,7 @@ Applications that need access to cluster-wide resources should continue to use c
 
 #### Reference Objects
 
-The following ClusterRole is created for cluster-scoped applications:
+The following ClusterRole and ClusterRoleBinding are created for cluster-scoped applications:
 
 ```yaml
 apiVersion: "rbac.authorization.k8s.io/v1"
@@ -27,7 +39,46 @@ metadata:
 rules:
   - apiGroups: ["*"]
     resources: ["*"]
-    verb: "*"
+    verbs: ["*"]
+```
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kotsadm-role
+subjects:
+- kind: ServiceAccount
+  name: kotsadm
+  namespace: appnamespace
+```
+
+The following Role and RoleBinding are created for namespace-scoped applications.
+
+```yaml
+apiVersion: "rbac.authorization.k8s.io/v1"
+kind: "Role"
+metadata:
+  name: "kotsadm-role"
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+```
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kotsadm-role
+subjects:
+- kind: ServiceAccount
+  name: kotsadm
+  namespace: appnamespace
 ```
 
 ## Namespace-scoped access
