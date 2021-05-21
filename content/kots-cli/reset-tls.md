@@ -2,7 +2,7 @@
 date: 2021-05-21
 linktitle: "reset-tls"
 title: kots reset-tls
-weight: 90170
+weight: 90160
 ---
 
 If a bad TLS certificate is uploaded to the admin console or the kotsadm-tls secret is missing, the `kots reset-tls` command will reapply a default self-signed TLS certificate.
