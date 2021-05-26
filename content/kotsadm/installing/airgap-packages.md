@@ -37,8 +37,7 @@ These credentials will be used to pull the images, and will be automatically cre
 
 ```shell
 kubectl kots install app-name \
-  --kotsadm-namespace app-name \
-  --kotsadm-registry private.registry.host \
+  --kotsadm-registry private.registry.host/app-name \
   --registry-username ro-username \
   --registry-password ro-password
 ```
