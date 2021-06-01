@@ -21,7 +21,6 @@ deps:
 	  curl -k $(url).zip -o hugo.zip; \
 	  unzip hugo.zip -d deps; \
 	else \
-	  echo $(url).tar.gz; \
 	  curl -sL "$(url).tar.gz" -o "hugo.tar.gz"; \
 	  tar xvzf hugo.tar.gz -C deps; \
 	fi
