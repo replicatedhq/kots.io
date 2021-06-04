@@ -21,18 +21,65 @@ replicated release create --yaml-dir YAML_DIR [flags]
 | `--promote` | string |    Channel name to promote this release to (**case sensitive**)|
 | `--ensure-channel` |  |    When used with --promote <channel>, will create the channel if it doesn't exist |
 | `--release-notes` | string |  When used with --promote <channel>, sets the **markdown** release notes |
-| `--required` |  |          When used with --promote <channel>, marks this release as required during upgrades. |
 | `--version` string | When used with --promote <channel>, sets the version label for the release in this channel |
 | `-h, --help`   |  |          help for admin-console |
 
 ### Examples
-```bash
-replicated release create --yaml-dir ./manifests --promote Unstable --ensure-channel --release-notes "CI Release" --version "1.2.3"
-SEQUENCE: 28
-Channel cA7ZWXUjq0BkH8KIoMHZubrHrZoCulWo successfully set to release 28
-```
+
+#### `--yaml-dir`
 
 ```bash
 replicated release create --yaml-dir ./manifests
-SEQUENCE: 29
+
+  • Reading manifests from ./manifests ✓
+  • Creating Release ✓
+    • SEQUENCE: 58
+```
+
+#### `--promote`
+
+```bash
+replicated release create --yaml-dir manifests --promote Unstable
+
+  • Reading manifests from manifests ✓
+  • Creating Release ✓
+    • SEQUENCE: 59
+  • Promoting ✓
+    • Channel Unstable successfully set to release 59
+```
+
+#### `--ensure-channel`
+
+```bash
+replicated release create --yaml-dir ./manifests --promote my-new-channel --ensure-channel
+
+  • Reading manifests from manifests ✓
+  • Creating Release ✓
+    • SEQUENCE: 60
+  • Promoting ✓
+    • Channel my-new-channel successfully set to release 60
+```
+
+#### `--release-notes`
+
+```bash
+replicated release create --yaml-dir ./manifests --promote Unstable --ensure-channel --release-notes "CI Release"
+
+  • Reading manifests from manifests ✓
+  • Creating Release ✓
+    • SEQUENCE: 61
+  • Promoting ✓
+    • Channel Unstable successfully set to release 61
+```
+
+#### `--version`
+
+```bash
+replicated release create --yaml-dir ./manifests --promote Unstable --ensure-channel --release-notes "Beta Release" --version "1.2.3"
+
+  • Reading manifests from manifests ✓
+  • Creating Release ✓
+    • SEQUENCE: 62
+  • Promoting ✓
+    • Channel Unstable successfully set to release 62
 ```

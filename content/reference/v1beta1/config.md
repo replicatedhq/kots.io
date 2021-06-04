@@ -27,7 +27,8 @@ spec:
 **Note:** `description` is only supported in `groups`, see `help_text` property for `items`. 
 [Markdown](https://guides.github.com/features/mastering-markdown/) syntax is supported in this property.
 
-A group can be hidden from customer view by adding `hidden: true` to the group.
+A group can be hidden from customer view and made optional by setting the `when` property on the group to `false`.
+See [below](https://kots.io/reference/v1beta1/config/#when) for more information on the usage of `when`.
 
 ## Items
 
