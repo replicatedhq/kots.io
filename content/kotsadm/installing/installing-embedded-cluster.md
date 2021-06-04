@@ -11,7 +11,7 @@ When running the Admin Console on an existing cluster, refer to the [Installing 
 
 ### Powered by kURL
 Replicated KOTS leverages a [deep integration](https://blog.replicated.com/kurl-with-replicated-kots/) with the [Replicated kURL project](https://github.com/replicatedhq/kurl) in order to provide native embedded Kubernetes cluster support.
-More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs).
+More documentation on installing with kURL (including [advanced install options](https://kurl.sh/docs/install-with-kurl/advanced-options)) is available at [kurl.sh/docs](https://kurl.sh/docs/introduction/).
 
 ### Online Installations
 
