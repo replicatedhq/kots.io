@@ -5,6 +5,10 @@ title: Private Images and Registry Credentials
 weight: 20200
 ---
 
+When building your application, you have the option to use the Replicated private registry, or any supported external private or public registry.
+
+## External Registry Support
+
 When packaging and delivering an enterprise application, a common problem is the need to include private Docker images. 
 Most enterprise applications consist of public images (postgres, mysql, redis, elasticsearch) and private images (the application images).
 
@@ -67,6 +71,16 @@ However, the same secret will be added to those PodSpecs as well.
 
 > KOTS [Application](/reference/v1beta1/application/) deployments are supported via image tags in all use cases. KOTS has limited support for deploying via image digests. Use of image digests are only supported for fully online installs where all images can be pulled from the Replicated registry, a public repo, or proxied from a private repo via the Replicated registry.
 
+## Replicated Private Registry
+
+When using the Replicated Private Registry, you have 2 options to connect with the `registry.replicated.com` container registry
+1. Use `docker login registry.replicated.com` with your Vendor portal email and password credentials
+2. Use `docker login registry.replicated.com` with a Vendor Portal [API token](vendor/guides/cli-quickstart/#2-setting-an-api-token) for both username and password.
+
+Once logged in, you can use `docker push` to push your private image to the Replicated private registry:
+```
+docker push registry.replicated.com/app-slug/image:tag
+```
 
 ## Additional namespaces
 
