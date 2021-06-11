@@ -5,7 +5,7 @@ title: kots docker ensure-secret
 weight: 90261
 ---
 
-Creates an image pull secret that the Admin Console can utilize in case of [rate limiting](/kots-cli/docker/_index.md).
+Creates an image pull secret that the Admin Console can utilize in case of [rate limiting](/kotsadm/registries/dockerhub-rate-limiting.md/).
 Will validate the credentials before creating the image pull secret.
 
 ### Usage
