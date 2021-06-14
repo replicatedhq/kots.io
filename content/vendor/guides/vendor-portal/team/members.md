@@ -12,6 +12,8 @@ Learn how to
 # Prerequisites
 
 * [Admin](rbac.md) access to a [vendor account](todo)
+* An email address used to invite another member.
+    > **WARNING: Currently an email address can only be associated with one vendor team. A [temporary email address](https://www.sharklasers.com/inbox) or [email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) (if supported by your provider) is recommended if just testing this feature.**
 
 # Instructions
 
@@ -34,6 +36,8 @@ Learn how to
 1. Fill out the prompt. Provide the following information:
 
     * **Email address** of the new member
+        > **WARNING: Currently an email address can only be associated with one vendor team. A [temporary email address](https://www.sharklasers.com/inbox) or [email alias](https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html) (if supported by your provider) is recommended when only testing this feature.**
+
     * **Permissions** of the new member - this is the [RBAC policy](rbac.md) assigned to the new member
 
     ![Invite member prompt](img/members/invite-member-prompt.png)
@@ -102,7 +106,7 @@ Learn how to
 
     >Note: You cannot operate on the user you are logged in with.
 
-    ![Edit permissions](img/members/member-list-edit-permissions.png)
+    ![Edit permissions](img/members/edit-permissions-list.png)
 
 1. Click the `Permissions` drop down menu and select the policy you wish to apply to that member
 
