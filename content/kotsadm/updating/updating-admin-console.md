@@ -1,5 +1,5 @@
 ---
-date: 2019-10-09
+date: 2021-06-14
 linktitle: "Updating the Admin Console"
 title: Updating the Admin Console
 weight: 10020
@@ -8,6 +8,12 @@ draft: false
 
 This article refers to upgrading the Admin Console on an existing cluster. 
 When running the Admin Console on an embedded cluster, refer to the [Updating an Embedded Cluster](/kotsadm/updating/updating-embedded-cluster/) documentation.
+
+{{< warning title="Prerequisite" >}}
+As a prerequisite for any admin console upgrade, you should start by upgrading your KOTS CLI to the desired version.
+* For online installs, follow the instructions after running `kubectl kots version` to download the latest binary.
+* For airgapped installs or to use a previous KOTS version, download the the latest KOTS binary from [Github](https://github.com/replicatedhq/kots/releases) or the customer download page in [vendor.replicated.com](https://vendor.replicated.com).
+{{< /warning >}}
 
 ### Online Installations
 
