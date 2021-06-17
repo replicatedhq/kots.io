@@ -35,7 +35,7 @@ We can get the Helm Chart archive in a couple of ways, either using `helm fetch`
 Add a Helm repo
 
 ```text
-$ helm repo add stable https://kubernetes-charts.storage.googleapis.com
+$ helm repo add stable https://charts.helm.sh/stable
 
 "stable" has been added to your repositories
 ```
@@ -46,7 +46,7 @@ Verify the repo has been added
 $ helm repo ls
 
 NAME    URL
-stable  https://kubernetes-charts.storage.googleapis.com
+stable  https://charts.helm.sh/stable
 ```
 
 For this example we'll fetch the grafana helm chart
