@@ -41,10 +41,10 @@ Learn more about [using TLS certs](/vendor/packaging/using-tls-certs) in KOTS.
 ## ConfigOptionData
 
 ```go
-func ConfigOptionData(fileName string) string
+func ConfigOptionData(optionName string) string
 ```
 
-`ConfigOptionData` returns the base64 **decoded** value of the `file` config option.
+`ConfigOptionData` returns the base64 **decoded** value of a `file` config option.
 
 ```yaml
 '{{repl ConfigOptionData "ssl_key"}}'
@@ -62,6 +62,71 @@ data:
 
   tls.key: |
     {{repl ConfigOptionData "tls_private_key_file" | nindent 4 }}
+```
+
+## ConfigOptionFilename
+
+```go
+func ConfigOptionFilename(optionName string) string
+```
+
+`ConfigOptionFilename` returns the filename associated with a `file` config option.
+It will return an empty string if used erroneously with other types.
+
+```yaml
+'{{repl ConfigOptionFilename "pom_file"}}'
+```
+
+As an example, if you have the following Config Spec defined:
+
+```yaml
+apiVersion: kots.io/v1beta1
+kind: Config
+metadata:
+  name: my-application
+spec:
+  groups:
+    - name: java_settings
+      title: Java Settings
+      description: Configures the Java Server build parameters
+      items:
+        - name: pom_file
+          type: file
+          required: true
+```
+
+You can use `ConfigOptionFilename` in a Pod Spec to mount a file like so:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-demo-pod
+spec:
+  containers:
+    - name: some-java-app
+      image: busybox
+      command: ["bash"]
+      args:
+      - "-C"
+      - "cat /config/{{repl ConfigOptionFilename pom_file}}"
+      volumeMounts:
+      - name: config
+        mountPath: "/config"
+        readOnly: true
+  volumes:
+    - name: config
+      configMap:
+        name: demo-configmap
+        items:
+        - key: repl{{ ConfigOptionFilename pom_file }}
+          path: data_key_one
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-configmap
+data:
+  data_key_one: repl{{ ConfigOption pom_file }}
 ```
 
 ## ConfigOptionEquals
