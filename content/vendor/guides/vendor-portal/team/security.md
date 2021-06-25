@@ -1,7 +1,7 @@
 # Security Requirements
 Security is a core principal here at Replicated.  You can help increase the
-security of your team's account by enforcing [strong passwords]() and
-enabling [Two-Factor Authentication]()
+security of your team's account by enforcing [strong passwords](#strong-passwords)
+and enabling [Two-Factor Authentication](#two-factor-authentication)
 
 # Enabling security measures
 1. Log into the [Vendor Portal](https://vendor.replicated.com), if prompted
@@ -37,7 +37,7 @@ Auth" button
 
 >Note:  If SAML authentication is configured for your team, Two-Factor Authentication will be bypassed. You can leave it enabled but you will not be prompted to enter a code when logging in.
 
-## Password complexity
+## Strong Passwords
 You can enforce strong passwords for all your team by requiring that all
 passwords meet customer requirements.
 
