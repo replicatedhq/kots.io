@@ -38,7 +38,7 @@ All images will be retagged and pushed to the target registry.
 During installation, KOTS will prompt for the target namespace to install to. 
 This is the namespace that the Admin Console will be written to, and also where the application will be deployed, unless any manifests have hard-coded namespace names or are overridden using Kustomize. 
 The `kubectl` access used must have read and write access to the namespace. 
-By default, KOTS does not require any access outside of the target namespace, and will not install CRDs or cluster-wide RBAC roles.
+By default, KOTS will create a ClusterRole and ClusterRoleBinding with permissions to all namespaces [unless otherwise specified](/vendor/packaging/rbac/) by the application developer. 
 
 ### Images and Internal Registries
 During install, KOTS can re-tag and push images to a local image registry. 

@@ -6,14 +6,14 @@ weight: 10030
 draft: false
 ---
 
-When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster. 
+When installing an application from an airgap package, the container images and application manifests are provided by the application vendor in an archive that can be used to deliver the artifacts into the cluster.
 This feature is only available for licenses that have the airgapped feature enabled.
 
-## Kots install
+## KOTS install
 This section only applies to installing the Admin Console into an existing Kubernetes cluster.  
 See [this](https://kots.io/kotsadm/installing/installing-embedded-cluster/) document for embedded installations with kURL.
 
-Begin by [installing the Kots CLI kubectl plugin](/kots-cli/getting-started/).
+Begin by [installing the KOTS CLI kubectl plugin](/kots-cli/getting-started/).
 The Admin Console can be installed using the KOTS plugin and the airgap package that can be downloaded from the [release assets](https://github.com/replicatedhq/kots/releases) named `kotsadm.tar.gz`.
 The asset version must match the KOTS CLI version, which can be determined by running:
 
@@ -26,7 +26,7 @@ Registry credentials provided in this step must have push access.
 These credentials will not be stored anywhere or reused later.
 
 ```shell
-kubectl kots admin-console push-images ./kotsadm.tar.gz private.registry.host/application-name \
+kubectl kots admin-console push-images ./kotsadm.tar.gz private.registry.host/app-name \
   --registry-username rw-username \
   --registry-password rw-password
 ```
@@ -36,11 +36,11 @@ Registry credentials provided in this step only need to have read access, and th
 These credentials will be used to pull the images, and will be automatically created as an imagePullSecret on all of the Admin Console pods.
 
 ```shell
-kubectl kots install \
-  --kotsadm-registry private.registry.host/application-name \
+kubectl kots install app-name \
+  --kotsadm-namespace app-name \
+  --kotsadm-registry private.registry.host \
   --registry-username ro-username \
-  --registry-password ro-password \
-  application-name
+  --registry-password ro-password
 ```
 
 Once this has completed, the KOTS will create a port-forward to the Admin Console on port 8800.
@@ -55,17 +55,17 @@ Pressing Ctrl+C will end the port forward.
 
 Once this message is displayed visit `http://localhost:8800` to complete the application setup using the Admin Console.
 
+### Upload Airgap Bundle
 ![Airgap Bundle](/images/airgap-install.png)
 
-### Upload Airgap Bundle
-The software vendor should have delivered a `.airgap` bundle to be used on this screen. 
-The bundle contains the container images and manifests. 
+The software vendor should have delivered a `.airgap` bundle to be used on this screen.
+The bundle contains the container images and manifests.
 Choose the bundle and click continue to start processing.
 
 ![Airgap Uploading](/images/airgap-uploading.png)
 
 ### Processing Images
-Once the bundle has been completely uploaded, the Admin Console will start to process the images and manifests. 
+Once the bundle has been completely uploaded, the Admin Console will start to process the images and manifests.
 Images will be loaded, re-tagged and pushed to the registry provided.
 
 ![Processing Images](/images/processing-images.gif)

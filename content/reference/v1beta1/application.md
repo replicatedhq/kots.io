@@ -10,12 +10,12 @@ aliases:
 
 The KOTS Application custom resource enables features such as branding, release notes, port forwarding, dashboard buttons, app status indicators, and custom graphs.
 
-With ports specified, the kots CLI can establish port-forwarding, to simplify connections to the deployed application.  
-When [statusInformers](/vendor/config/application-status/#kots-application-spec) are specified, the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use. 
+With ports specified, the KOTS CLI can establish port-forwarding, to simplify connections to the deployed application.  
+When [statusInformers](/vendor/config/application-status/#kots-application-spec) are specified, the dashboard can provide timely feedback when the application deployment is complete and the application is ready for use.
 This CR is optional for KOTS applications.
 
-There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects).  
-In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.  
+There is some overlap between the [KOTS Application spec](/reference/v1beta1/application/) and the [Kubernetes SIG Application spec](https://github.com/kubernetes-sigs/application#application-objects). In time, it's likely that the SIG Application spec will grow to include all the necessary metadata to support the full KOTS features.
+
 In the meantime, enabling features (such as [dashboard buttons to the application](/vendor/dashboard/open-buttons/)) requires the use of both the KOTS Application spec and the SIG Application spec.
 
 The `Application` spec contains vendor-supplied metadata about the application.
@@ -62,22 +62,34 @@ The release notes for this version. These can also be set when promoting a relea
 ## allowRollback
 This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
 
+## additionalNamespaces
+An optional array of namespaces as strings.
+In addition to creating these namespaces, the Admin Console will ensure that a secret named `kotsadm-replicated-registry` exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)). 
+For access to dynamically created namespaces, `"*"` can be specified.
+See the [Additional Namespaces](/vendor/operators/additional-namespaces/) documentation for more information.
+
 ## additionalImages
-An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation. 
+An optional array of strings that reference images to be included in airgap bundles and pushed to the local registry during installation.
 While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
 
 ## kubectlVersion
-This defaults to `latest`.
-Set to `1.14.9`, `1.16.3` or a [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`) to use a specific version of kubectl to apply your app's yaml.
-The latest version within the provided range will be used, falling back to the latest version if no version matches.
-Currently `1.14.9` and `1.16.3` are supported, but patch versions may change and newer minor versions may be added in the future.
+This defaults to `latest` which will use the newest version from the list below.
+Valid values are:
+- 1.14.9
+- 1.16.3
+- 1.17.13 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.18.10 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.19.3 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`).
+The latest version within the provided range will be used.
+If the specified version or range does not match any supported versions, the latest version from the above list will be used.
 
 ## kustomizeVersion
-This defaults to `latest`, but can be changed to `2.0.3` or `3.5.4` to use a specific version of kustomize to render your app's yaml.
-Currently `2.0.3` and `3.5.4` are supported, but patch versions may change and newer versions may be added in the future.
+This defaults to `latest`, but can be changed to `3.5.4` to use a specific version of kustomize to render your app's yaml.
+Currently only `3.5.4` is supported, but patch versions may change and newer versions may be added in the future.
 
 ## requireMinimalRBACPrivileges
-When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding. 
+When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding.
 For more information, see the [RBAC](/vendor/packaging/rbac) documentation.
 
 ## ports
@@ -90,16 +102,16 @@ The name of the service that has a `ClusterIP` type that should receive the traf
 The `ClusterIP` port to forward traffic to.
 
 ### localPort
-If set, the port to map on the local workstation. 
+If set, the port to map on the local workstation.
 If not set, this will be the same as `servicePort`.
 
 ### applicationUrl
 This should match a service found in the `k8s.io` Application spec.
 
 ## statusInformers
-Resources to watch and report application status back to the user. 
+Resources to watch and report application status back to the user.
 In the format `[namespace/]type/name` where namespace is optional.
-Entries support template functions. 
+Entries support template functions.
 For example, a specific status informer can be excluded based on an application config value like so:
 
 ```yaml
@@ -118,15 +130,15 @@ The graph title.
 The Prometheus query.
 
 ### legend
-The legend to use for the query line. 
-Can be templated with each element returned from the Prometheus query. 
+The legend to use for the query line.
+Can be templated with each element returned from the Prometheus query.
 Template escape sequence is `{{}}`.
 
 ### queries
 A list of queries containing a query and legend.
 - query: The Prometheus query
-- legend: The legend to use for the query line. 
-Can be templated with each element returned from the Prometheus query. 
+- legend: The legend to use for the query line.
+Can be templated with each element returned from the Prometheus query.
 Template escape sequence is `{{}}`.
 
 ### yAxisFormat

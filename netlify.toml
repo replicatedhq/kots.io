@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "/kotsadm/snapshots/"
+  from = "/kotsadm/snapshots/velero"
   to = "https://velero.io"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/kotsadm/snapshots/troubleshooting/"
+  from = "/kotsadm/snapshots/velero-troubleshooting/"
   to = "https://velero.io/docs/main/troubleshooting/"
   status = 301
   force = true
@@ -28,7 +28,7 @@
   status = 301
   force = true
 
-  [[redirects]]
+[[redirects]]
   from = "/kotsadm/snapshots/basic-install/"
   to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
   status = 301
@@ -37,5 +37,42 @@
 [[redirects]]
   from = "/vendor/helm/helm-v3/"
   to = "/vendor/helm/helm-processing/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kotsadm/snapshots/restic-deduplication/"
+  to = "https://restic.readthedocs.io/en/latest/100_references.html#backups-and-deduplication"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/storage-destinations/"
+  to = "/kotsadm/snapshots/storage-destinations/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/schedule/"
+  to = "/kotsadm/snapshots/schedule/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/configuring-restore/"
+  to = "/kotsadm/snapshots/restore/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/snapshots/troubleshooting/"
+  to = "/kotsadm/snapshots/troubleshooting/"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/vendor/snapshots/disaster-recovery-snapshots/"
+  to = "/kotsadm/snapshots/disaster-recovery/"
   status = 301
   force = true

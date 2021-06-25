@@ -8,10 +8,10 @@ jobs:
 
     steps:
     - name: Checkout Source Code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Build HTML
       uses: srt32/hugo-action@v0.0.3
-      with: 
+      with:
         args: -v -s .
     - name: Check HTML
       uses: austinchambers/htmlproofer@v1.2

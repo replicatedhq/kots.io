@@ -104,7 +104,7 @@ cat install.sh | sudo bash -s airgap
 * Once the install is completed, save the output at the end. 
 Thereafter you should access the Admin Console via `http://<airgap_private_ip>:8800` to continue the installation from the browser to upload the `.airgap` bundle and License file.
 
-* If you do not have direct access to the airgap private IP, you can access it via SSH tunnel using the jumpbox's public IP. Once the tunnel is up you can access the Admin Console via `http://localhost:8800`.
+* If you do not have direct access to the airgap private IP, you can access it via an SSH tunnel using the jumpbox's public IP. Once the tunnel is up you can access the Admin Console via `http://localhost:8800`. On your local workstation run the following commands:
 
 ```shell
 export AIRGAP_PRIVATE_IP=<airgap_private_ip>

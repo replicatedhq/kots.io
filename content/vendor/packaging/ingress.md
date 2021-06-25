@@ -35,27 +35,27 @@ spec:
         - name: enable_ingress
           type: bool
           title: Enable Kuberentes Ingress
-          description: |
+          help_text: |
             Uncheck this box to disable the Kubernetes Ingress resource.
           default: "1"
         - name: hostname
           type: text
           title: Hostname
-          description: |
+          help_text: |
             Use this field to provide a hostname for your Example Application installation.
           required: true
           when: repl{{ ConfigOptionEquals "enable_ingress" "1" }}
         - name: allow_http
           type: bool
           title: Allow Unsecured Access through HTTP
-          description: |
+          help_text: |
             Uncheck this box to disable HTTP traffic between the client and the load balancer.
           default: "1"
           when: repl{{ ConfigOptionEquals "enable_ingress" "1" }}
         - name: annotations
           type: textarea
           title: Annotations
-          description: |
+          help_text: |
             Use this textarea to provide annotations specific to your ingress controller.
             For example, `kubernetes.io/ingress.class: alb` when using the ALB ingress controller.
           when: repl{{ ConfigOptionEquals "enable_ingress" "1" }}

@@ -2,23 +2,26 @@
 date: 2019-10-09
 linktitle: "Getting Started"
 title: Getting Started with KOTS
-description: "KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The Kots plugin runs locally, on any computer that has kubectl installed. Kots doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes."
+description: "KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software. The KOTS plugin runs locally, on any computer that has kubectl installed. KOTS doesn’t run in a cluster, but it helps manage the preflight, install, support and upgrade process of third party software in Kubernetes."
 weight: 1
 ---
 
 KOTS is a kubectl plugin to help manage Kubernetes Off-The-Shelf software.
-The Kots plugin runs locally, on any computer that has kubectl installed. 
-Kots doesn’t run in a cluster, but it helps manage the preflight, install, support, and upgrade process of third party software in Kubernetes.
+The KOTS plugin runs locally, on any computer that has kubectl installed. 
+KOTS doesn’t run in a cluster, but it helps manage the preflight, install, support, and upgrade process of third party software in Kubernetes.
 
 KOTS includes an Admin Console that runs alongside the application. 
-The Admin Console is installed in the cluster and provides a web-based UI to manage the lifecycle of a Kots application. 
-The Kots plugin will install and configure the Admin Console during installation and upgrade of a Kots application.
+The Admin Console is installed in the cluster and provides a web-based UI to manage the lifecycle of a KOTS application. 
+The KOTS plugin will install and configure the Admin Console during installation and upgrade of a KOTS application.
 
 ## How To Install
 
+All installation methods assume you already have [kubectl](https://kubernetes.io/docs/tasks/tools/) installed on your machine. 
+If you're using an [embedded Kubernetes cluster](/kotsadm/installing/installing-embedded-cluster/)), both tools will already be pre-installed.
+
 ### Easy installation script
 
-To start, install Kots using the Krew plugin manager:
+To start, install KOTS using the Krew plugin manager:
 ```bash
 curl https://kots.io/install | bash
 ```
@@ -32,13 +35,13 @@ kubectl kots --help
 
 For computers without root access or cannot write to the `/usr/local/bin` directory, the `kots` plugin can be downloaded using the following steps:
 
-1. Download the release for your Operating System from https://github.com/replicatedhq/kots/releases/latest
+1. Download the release for your Operating System from https://github.com/replicatedhq/kots/releases/latest (Linux and MacOS are supported)
 1. Unpack the release
-1. Rename the `kots` (or `kots.exe`) executable to `kubectl-kots` (or `kubectl-kots.exe`).
-1. Copy the renamed `kubectl-kots` to anywhere on the PATH.
+1. Rename the `kots` executable to `kubectl-kots`.
+1. Copy the renamed `kubectl-kots` to anywhere on the `PATH`.
 
 
-## Kots Commands
+## KOTS Commands
 
 ### kots install
 The install subcommand will install the application directly to a cluster. 
@@ -70,5 +73,5 @@ Provides wrapper functionality to interface with the upstream source.
 Prints the current version of the kots Kubectl plugin and provides a command for updating if a new version is available.
 
 ## Next Steps
-To give kots a try, head over to the Kots Helm guide.
-If you want to see what it’s like to distribute a kots application, head to the Kots Vendor guide.
+To give KOTS a try, head over to the KOTS Helm guide.
+If you want to see what it’s like to distribute a KOTS application, head to the KOTS Vendor guide.

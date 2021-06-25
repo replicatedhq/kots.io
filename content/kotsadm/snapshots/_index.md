@@ -1,8 +1,8 @@
 ---
-date: "2020-04-30T00:00:00Z"
-lastmod: "2020-04-30T00:00:00Z"
+date: "2021-01-11T00:00:00Z"
+lastmod: "2021-01-11T00:00:00Z"
 title: "Snapshots"
-weight: "2"
-redirect: "https://velero.io/"
-isHidden: true
+description: "Snapshots"
+redirect: "/kotsadm/snapshots/overview"
+weight: "8"
 ---

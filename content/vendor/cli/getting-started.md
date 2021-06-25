@@ -37,13 +37,6 @@ export REPLICATED_APP=my_kots_app
 export REPLICATED_API_TOKEN=d5cdf814bae01b211a8e891593dc12e1158238d27932d082a32b98706e576216
 ```
 
-For Windows environments, use: 
-```bash
-set REPLICATED_APP=my_kots_app && setx REPLICATED_APP my_kots_app
-set REPLICATED_API_TOKEN=d5cdf814bae01b211a8e891593dc12e1158238d27932d082a32b98706e576216
-setx REPLICATED_API_TOKEN d5cdf814bae01b211a8e891593dc12e1158238d27932d082a32b98706e576216
-```
-
 ## Installing The Vendor CLI
 
 There are three options for installing the Vendor CLI. 
@@ -91,8 +84,17 @@ To run latest Vendor CLI through a docker container:
 
 ```shell
 docker run \
-  -e $REPLICATED_APP \
-  -e $REPLICATED_API_TOKEN \
+  -e REPLICATED_APP=$REPLICATED_APP \
+  -e REPLICATED_API_TOKEN=$REPLICATED_API_TOKEN \
+  replicated/vendor-cli --help
+```
+
+or on Windows:
+
+```dos
+docker.exe run \
+  -e REPLICATED_APP=%REPLICATED_APP% \
+  -e REPLICATED_API_TOKEN=%REPLICATED_API_TOKEN% \
   replicated/vendor-cli --help
 ```
 

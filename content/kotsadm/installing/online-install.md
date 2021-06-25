@@ -9,8 +9,8 @@ draft: false
 The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the internet. 
 In this scenario, the container images will be pulled from the upstream registries directly.
 
-## Kots install
-To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/) & then run the command that was provided by the application vendor.
+## KOTS install
+To start, first [install the KOTS CLI kubectl plugin](/kots-cli/getting-started/) & then run the command that was provided by the application vendor.
 
 ```shell
 kubectl kots install application-name
@@ -50,6 +50,7 @@ Enter the password provided during the setup, and you'll be redirected to the "U
 ### Provide a License File
 At this point, the Admin Console is still just an admin console without an application. 
 Providing a license file will include the entitlements necessary to pull the manifest and images and start the application.
+If the license is outdated, the latest license will be fetched and used instead.
 
 ![Upload License](/images/upload-license.png)
 

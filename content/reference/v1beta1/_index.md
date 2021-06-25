@@ -22,3 +22,4 @@ The custom resources defined here are included to control the KOTS application e
 | app.k8s.io/v1beta1 | [Application](/reference/v1beta1/sig-application) | Define metadata about the application |
 | kots.io/v1beta1 | [HelmChart](/reference/v1beta1/helmchart/) | Identifies an instantiation of a Helm Chart |
 | velero.io/v1 | [Backup](https://velero.io/docs/v1.3.2/api-types/backup/) | A Velero backup request, triggered when the user initiates a [snapshot](/vendor/snapshots/overview/) |
+| kots.io/v1beta1 | [Identity](/reference/v1beta1/identity) | Contains vendor-supplied configuration for the KOTS Identity Service. |

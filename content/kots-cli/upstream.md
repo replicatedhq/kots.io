@@ -5,7 +5,7 @@ title: kots upstream
 weight: 90180
 ---
 
-The `kots upstream upgrade` fetches the latest version of the upstream application. 
+The `kots upstream upgrade` fetches the latest version of the upstream application.
 It is functionality equivalent to clicking the "Check For Updates" in the Admin Console.
 
 ### Usage
@@ -19,8 +19,10 @@ kubectl kots upstream upgrade [app-slug] [flags]
 |:----------------------|------|-------------|
 | `-h, --help` | |   help for upstream |
 | `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
-| `-n, --namespace`| string |     the namespace to upload to _(default `"default"`)_ |
-| `--deploy`|  |     deploy the latest release if a new update is found |
+| `-n, --namespace`| string |     the namespace where the admin console is running _(required)_ |
+| `--deploy`| bool | ensures that the latest available release is deployed. |
+| `--skip-preflights`| bool |     set to true to skip preflight checks |
+| `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry |
 
 ### Example
 ```bash

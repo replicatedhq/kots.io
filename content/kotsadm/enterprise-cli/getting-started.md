@@ -64,6 +64,11 @@ To run latest Replicated CLI through a docker container:
 docker run replicated/vendor-cli --help
 ```
 
+or on Windows:
+```dos
+docker.exe run replicated/vendor-cli --help
+```
+
 For simplicity, we will represent usage assuming the CLI has been downloaded and installed to the desktop. 
 
 ## Authentication
