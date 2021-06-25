@@ -28,8 +28,8 @@ option enabled in your organization's Account Settings.
 
     ![Account Settings](img/security/account-settings.png)
 
-1. Under the section "Two-factor authentication", click the "Turn on Two-Factor
-Auth" button
+1. Click the "Turn on Two-Factor Auth" button under the section titled
+"Two-factor authentication",
 
     ![Turn on Two-Factor Auth](img/security/enable-2fa-button.png)}
 
