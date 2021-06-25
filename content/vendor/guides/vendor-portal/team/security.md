@@ -35,14 +35,15 @@ Auth" button
 
     ![Configure Device](img/security/configure-device.png)
 
->Note: ### Using SAML?
-- Link to SAML
+>Note:  If SAML authentication is configured for your team, Two-Factor Authentication will be bypassed. You can leave it enabled but you will not be prompted to enter a code when logging in.
 
 ## Password complexity
 You can enforce strong passwords for all your team by requiring that all
 passwords meet customer requirements.
 
 1. Check the box next to "Require custom password complexity for team"
+
+    ![Password Complexity](img/security/password-complexity.png)
 
 1. Use the controls to set a minimum password length and required # of letters,
 digits, and symbols.
