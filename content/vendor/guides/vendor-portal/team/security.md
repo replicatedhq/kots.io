@@ -1,7 +1,13 @@
-# Security Requirements
+# Client Security
 Security is a core principal here at Replicated.  You can help increase the
 security of your team's account by enforcing [strong passwords](#strong-passwords)
 and enabling [Two-Factor Authentication](#two-factor-authentication)
+
+# In this Tutorial
+Learn how to enable strong passwords and enable Two-Factor Authentication
+
+# Prerequisites
+* Logged into a [vendor account](todo) as a member with an `admin` policy
 
 # Enabling security measures
 1. Log into the [Vendor Portal](https://vendor.replicated.com), if prompted
