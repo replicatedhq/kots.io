@@ -40,7 +40,7 @@ install:
 .PHONY: dev 
 dev: 
 	# If dependencies are available via `make deps` use those executables. Otherwise, rely on executables to already be installed. 
-	$(HUGO) serve
+	$(HUGO) serve --theme hugo-whisper-theme
 
 .PHONY: test
 test: 
