@@ -49,6 +49,12 @@ IP addresses for these services can be found in [replicatedhq/ips](https://githu
 
 No outbound internet access is required for airgapped installations.
 
+## Airgapped Installs
+
+When application airgap bundle is uploaded through the Admin Console's UI, application images will be extracted and pushed to the registry from inside the Admin Console's pod.
+This requires extra ephemeral storage available on the node.
+The recommended amount of storage should be no less than the total size of application's images.
+
 ## Existing Cluster Installation Requirements
 
 Existing cluster compatibility is primarily determined through the version of Kubernetes the cluster is running.
