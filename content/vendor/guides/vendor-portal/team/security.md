@@ -39,7 +39,7 @@ Auth" button
 
 ## Strong Passwords
 You can enforce strong passwords for all your team by requiring that all
-passwords meet customer requirements.
+passwords meet certain requirements for complexity.
 
 1. Check the box next to "Require custom password complexity for team"
 
