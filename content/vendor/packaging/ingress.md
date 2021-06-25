@@ -16,7 +16,7 @@ The resource will work in both existing and embedded Kurl clusters.
 ### Config
 
 A config option `enable_ingress` has been provided to allow the end-user to choose whether or not to enable the Ingress resource. 
-In some clusters a custom Ingress resource may be desired — when an ingress controller is not available, other means of exposing services may be preferred.
+In some clusters a custom Ingress resource may be desired, or no ingress controller may not be available and instead there may be another means preferred to expose a service.
 
 An `annotations` textarea has been made available for the end-user to add additional annotations to the ingress. 
 Here, cluster specific annotations can be added to support a variety of ingress controllers. 
