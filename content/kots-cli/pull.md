@@ -5,7 +5,7 @@ title: kots pull
 weight: 90110
 ---
 
-If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the KOTS application and the Kubernetes manifests. 
+If you’d rather use kubectl or another workflow to deploy to your cluster, you can run `kots pull` to create a directory on your workstation with the KOTS application and the Kubernetes manifests.
 This workflow is necessary when managing a KOTS application without the use of the Admin Console.
 
 ### Usage
@@ -45,5 +45,5 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 ### Example
 ```bash
 kubectl kots pull sentry/unstable --license-file ~/license.yaml
-kubectl kots pull helm://stable/elasticsearch --helm-version v3
+kubectl kots pull helm://elastic/elasticsearch --helm-version v3
 ```

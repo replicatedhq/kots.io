@@ -21,13 +21,13 @@ To start, first [install the Kots CLI kubectl plugin](/kots-cli/getting-started/
 In the example, we'll use the `elasticsearch` chart from the `stable` helm repository.
 
 ```shell
-kubectl kots install helm://stable/elasticsearch
+kubectl kots install helm://elastic/elasticsearch
 ```
 
 The kubectl plugin will walk you through the necessary steps to install the application:
 
 ```shell
-$ kubectl kots install helm://stable/elasticsearch
+$ kubectl kots install helm://elastic/elasticsearch
 Enter the namespace to deploy to: elasticsearch
 
   • Pulling upstream ✓

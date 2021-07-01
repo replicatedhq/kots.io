@@ -55,4 +55,4 @@ kubectl kots install kots-sentry/stable --shared-password IgqG5OBc9Gp --license-
 ```
 
 <!-- Helm example coming soon -->
-<!-- kubectl kots install helm://stable/elasticsearch -->
+<!-- kubectl kots install helm://elastic/elasticsearch -->
