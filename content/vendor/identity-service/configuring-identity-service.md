@@ -8,7 +8,11 @@ isBeta: true
 
 When enabling the identity service for your application, KOTS will deploy [Dex](https://dexidp.io/) as an intermediary that can be configured to control access to the application.
 Dex implements an array of protocols for querying other user-management systems, known as [connectors](https://dexidp.io/docs/connectors/).
-This feature is only available for licenses that have the Identity Service feature enabled.
+This feature is only available for licenses that have the Identity Service feature enabled. 
+
+The Identity Service currently has the following limitations:
+* Only available with embedded cluster installations. 
+* Only available via the KOTS Admin UI. 
 
 ![Identity Service License Field](/images/identity-service-license-field.png)
 
