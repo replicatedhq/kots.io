@@ -14,6 +14,10 @@ This feature is only available for licenses that have the Identity Service featu
 KOTS leverages the open-source project [Dex](https://dexidp.io/) as an intermediary to control access to the console.
 Dex implements an array of protocols for querying other user-management systems, known as [connectors](https://dexidp.io/docs/connectors/).
 
+The Identity Service currently has the following limitations:
+* Only available with embedded cluster installations. 
+* Only available via the KOTS Admin UI. 
+
 ## Configuration
 
 To begin, click the Access link at the top of the Admin Console.
