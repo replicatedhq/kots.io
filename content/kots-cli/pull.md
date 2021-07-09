@@ -41,6 +41,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--no-proxy`              | string  | sets NO_PROXY environment variable in all KOTS Admin Console components                                                         |
 | `--copy-proxy-env`        | bool    | copy proxy environment variables from current environment into all KOTS Admin Console components                                |
 | `--config-values`         | string  | path to a manifest containing config values (must be apiVersion: kots.io/v1beta1, kind: ConfigValues)                           |
+| `--with-minio`            | bool    | set to true to include a local minio instance to be used for storage _(default true)_                                           |
 
 ### Example
 ```bash
