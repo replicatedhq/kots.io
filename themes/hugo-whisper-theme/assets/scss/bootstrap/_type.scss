@@ -59,7 +59,6 @@ hr {
   border-top: $hr-border-width solid $hr-border-color;
 }
 
-
 //
 // Emphasis
 //
@@ -109,10 +108,6 @@ mark,
 }
 
 // Blockquotes
-.blockquote {
-  margin-bottom: $spacer;
-  @include font-size($blockquote-font-size);
-}
 
 .blockquote-footer {
   display: block;

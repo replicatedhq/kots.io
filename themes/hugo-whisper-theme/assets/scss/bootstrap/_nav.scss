@@ -33,17 +33,21 @@
 
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  margin: 30px 0;
 
   .nav-item {
     margin-bottom: -$nav-tabs-border-width;
+    color: $gray-500;
   }
 
   .nav-link {
-    border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
+    border: none;
+    text-decoration: none;
 
     @include hover-focus {
       border-color: $nav-tabs-link-hover-border-color;
+      border-bottom: 3px solid $nav-tabs-link-active-color;
+      color: $gray-800;
     }
 
     &.disabled {
@@ -57,7 +61,9 @@
   .nav-item.show .nav-link {
     color: $nav-tabs-link-active-color;
     background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    border-color: transparent;
+    border-bottom: 3px solid $primary;
+    color: $primary;
   }
 
   .dropdown-menu {

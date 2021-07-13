@@ -8,7 +8,12 @@ weight: "1020"
 This is an advanced guide that shows how to install a KOTS app in an Existing Cluster environment where the workstation and the cluster have no outbound internet connectivity ("airgapped"). 
 This guide will assume you've already completed the [Existing Cluster Quickstart](/vendor/guides/existing-cluster) to set up a non-airgapped cluster.   We'll be doing what the Terraform Enterprise team refers to as Modern Airgapped or "2019 Airgapped" in [How Hashicorp delivers On-prem with Replicated](https://blog.replicated.com/hashicorp-recording/)
 
-> We usually deliver 2019 Airgap, which is essentially an AWS VPC without an internet gateway.
+{{< blockquote
+  quote="We usually deliver 2019 Airgap, which is essentially an AWS VPC without an internet gateway."
+  speaker="Evan Phoenix"
+  link="How Hashicorp delivers On-prem with Replicated"
+  href="https://blog.replicated.com/hashicorp-recording"
+>}}
 
 This guide most importantly presents a set of steps for creating a full environment in GCP, including:
 
