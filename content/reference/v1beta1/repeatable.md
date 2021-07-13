@@ -40,12 +40,12 @@ The `yamlPath` field of the `template` must denote index position for arrays usi
 
 `yamlPath` **must** end with an array.
 ```yaml
-	template:
-	- apiVersion: v1
-	  kind: Service
-	  name: my-service
-	  namespace: my-app
-	  yamlPath: 'spec.ports[0]'
+    template:
+    - apiVersion: v1
+      kind: Service
+      name: my-service
+      namespace: my-app
+      yamlPath: 'spec.ports[0]'
 ```
 
 If the `yamlPath` field is blank, the entire yaml document matching the `template` will be replaced with a copy for each of the repeatable item entries.  The `metadata.name` field of the new doc will reflect the repeatable item `key`.
@@ -54,7 +54,7 @@ If the `yamlPath` field is blank, the entire yaml document matching the `templat
 
 The repeat items are called with the delimeters `repl[[ .itemName ]]` or `[[repl .itemName ]]`.  These delimiters can be placed anywhere inside of the `yamlPath` target node.
 ```yaml
-	- port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
+    - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
 ```
 This repeatable templating is not compatible with sprig templating functions.  It is designed for inserting repeatable `keys` into the manifest. Repeatable templating **can** be placed inside of Replicated config templating.
 
@@ -77,12 +77,12 @@ Repeatable items are processed in order of the template targets in the Config Sp
           name: my-service
           namespace: my-app
           yamlPath: 'spec.ports[0]'
-		- apiVersion: v1 #processed second
+        - apiVersion: v1 #processed second
           kind: Service
           name: my-service
           namespace: my-app
           yamlPath:
-	{...}
+    {...}
       - name: other_ports
         title: Other Service Ports
         type: text
@@ -92,7 +92,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           kind: Service
           name: my-other-service
           namespace: my-app
-	{...}
+    {...}
     - name: deployments
       items:
       - name: deployment-name
@@ -100,12 +100,12 @@ Repeatable items are processed in order of the template targets in the Config Sp
         type: text
         repeatable: true
         template:
-		- apiVersion: apps/v1 #processed fourth
+        - apiVersion: apps/v1 #processed fourth
           kind: Deployment
           name: my-deployment
           namespace: my-app
           yamlPath:
-	{...}
+    {...}
 ```
 
 ## Repeatable Item Example for a YamlPath
@@ -139,7 +139,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
       type: NodePort
       ports:
       - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
-	    name: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
+        name: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
       selector:
         app: repeat_example
         component: my-deployment
@@ -156,9 +156,9 @@ Repeatable items are processed in order of the template targets in the Config Sp
       type: NodePort
       ports:
       - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
-	    name: '{{repl ConfigOptionName "port-default-1" }}'
-	  - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
-	    name: '{{repl ConfigOptionName "port-default-2" }}'
+        name: '{{repl ConfigOptionName "port-default-1" }}'
+      - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
+        name: '{{repl ConfigOptionName "port-default-2" }}'
       selector:
         app: repeat_example
         component: my-deployment
@@ -175,9 +175,9 @@ Repeatable items are processed in order of the template targets in the Config Sp
       type: NodePort
       ports:
       - port: 80
-	    name: port-default-1
-	  - port: 443
-	    name: port-default-2
+        name: port-default-1
+      - port: 443
+        name: port-default-2
       selector:
         app: repeat_example
         component: my-deployment
