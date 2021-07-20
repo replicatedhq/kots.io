@@ -34,6 +34,8 @@ Repeatable items do not use the `default` or `value` fields, but instead a `valu
 
 Repeatable items require at least 1 `template` to be provided.  The `template` defines a yaml target in the manifest to duplicate for each repeatable item.
 
+Required fields for a template target are `apiVersion`, `kind`, and `name`.
+
 The entire yaml node at the target will be duplicated, including nested fields.
 
 The `yamlPath` field of the `template` must denote index position for arrays using square brackets.  For example, `spec.ports[0]` to select the first port entry for duplication.  All duplicate yaml will be appended to the final array in the `yamlPath`.
@@ -82,7 +84,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           name: my-service
           namespace: my-app
           yamlPath:
-    {...}
+    {... next item}
       - name: other_ports
         title: Other Service Ports
         type: text
@@ -92,7 +94,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           kind: Service
           name: my-other-service
           namespace: my-app
-    {...}
+    {... next group}
     - name: deployments
       items:
       - name: deployment-name
@@ -105,7 +107,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           name: my-deployment
           namespace: my-app
           yamlPath:
-    {...}
+    {... remainder of the Config Spec}
 ```
 
 ## Repeatable Item Example for a YamlPath
