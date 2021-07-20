@@ -42,7 +42,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--shared-password`      | string | shared password to apply                                                                                                             |
 | `--skip-preflights`      | bool   | set to true to skip preflight checks                                                                                                 |
 | `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry                                                                  |
-| `--wait-duration`        | string | timeout out to be used while waiting for individual components to be ready.  must be in [Go duration](https://pkg.go.dev/time#ParseDuration) format (eg: 10s, 2m).             |
+| `--wait-duration`        | string | timeout out to be used while waiting for individual components to be ready. must be in [Go duration](https://pkg.go.dev/time#ParseDuration) format (eg: 10s, 2m).             |
 | `--with-minio`           | bool   | when set, kots will deploy a local minio instance for storage (default true)                                                         |
 
 <!-- Helm Options coming soon -->
