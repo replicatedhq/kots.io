@@ -8,7 +8,7 @@ weight: 9
 
 ## Repeatable Items
 
-A repeatable config item copies a yaml array entry or yaml document for as many values as are provided. Any number of values can be added to a repeatable item to generate additional copies.
+A repeatable config item copies a YAML array entry or YAML document for as many values as are provided. Any number of values can be added to a repeatable item to generate additional copies.
 
 **Repeatable Items presently only work for text and textarea types**
 
@@ -32,13 +32,13 @@ Repeatable items do not use the `default` or `value` fields, but instead a `valu
 
 ## Template Targets
 
-Repeatable items require at least 1 `template` to be provided.  The `template` defines a yaml target in the manifest to duplicate for each repeatable item.
+Repeatable items require at least 1 `template` to be provided.  The `template` defines a YAML target in the manifest to duplicate for each repeatable item.
 
 Required fields for a template target are `apiVersion`, `kind`, and `name`.
 
-The entire yaml node at the target will be duplicated, including nested fields.
+The entire YAML node at the target will be duplicated, including nested fields.
 
-The `yamlPath` field of the `template` must denote index position for arrays using square brackets.  For example, `spec.ports[0]` to select the first port entry for duplication.  All duplicate yaml will be appended to the final array in the `yamlPath`.
+The `yamlPath` field of the `template` must denote index position for arrays using square brackets.  For example, `spec.ports[0]` to select the first port entry for duplication.  All duplicate YAML will be appended to the final array in the `yamlPath`.
 
 `yamlPath` **must** end with an array.
 ```yaml
@@ -50,7 +50,7 @@ The `yamlPath` field of the `template` must denote index position for arrays usi
       yamlPath: 'spec.ports[0]'
 ```
 
-If the `yamlPath` field is blank, the entire yaml document matching the `template` will be replaced with a copy for each of the repeatable item entries.  The `metadata.name` field of the new doc will reflect the repeatable item `key`.
+If the `yamlPath` field is blank, the entire YAML document matching the `template` will be replaced with a copy for each of the repeatable item entries.  The `metadata.name` field of the new doc will reflect the repeatable item `key`.
 
 ## Templating
 
