@@ -148,6 +148,8 @@ spec:
 ```
 
 **After repeatable config processing**
+
+*Note: this phase is internal to KOTS configuration rendering. This example is only provided to further explain the templating process.*
 ```yaml
 apiVersion: v1
 kind: Service
@@ -222,6 +224,8 @@ spec:
 ```
 
 **After repeatable config processing**
+
+*Note: this phase is internal to KOTS configuration rendering. This example is only provided to further explain the templating process.*
 ```yaml
 apiVersion: v1
 kind: Service
