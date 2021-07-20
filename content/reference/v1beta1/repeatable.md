@@ -130,57 +130,57 @@ Repeatable items are processed in order of the template targets in the Config Sp
 ```
 **Template manifest**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: my-service
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
-        name: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
-      selector:
-        app: repeat_example
-        component: my-deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
+    name: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
+  selector:
+    app: repeat_example
+    component: my-deployment
 ```
 
 **After repeatable config processing**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: my-service
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
-        name: '{{repl ConfigOptionName "port-default-1" }}'
-      - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
-        name: '{{repl ConfigOptionName "port-default-2" }}'
-      selector:
-        app: repeat_example
-        component: my-deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
+    name: '{{repl ConfigOptionName "port-default-1" }}'
+  - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
+    name: '{{repl ConfigOptionName "port-default-2" }}'
+  selector:
+    app: repeat_example
+    component: my-deployment
 ```
 
 **Resulting manifest**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: my-service
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: 80
-        name: port-default-1
-      - port: 443
-        name: port-default-2
-      selector:
-        app: repeat_example
-        component: my-deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    name: port-default-1
+  - port: 443
+    name: port-default-2
+  selector:
+    app: repeat_example
+    component: my-deployment
 ```
 
 ## Repeatable Item Example for an Entire Document
@@ -205,74 +205,74 @@ Repeatable items are processed in order of the template targets in the Config Sp
 ```
 **Template manifest**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: my-service
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
-      selector:
-        app: repeat_example
-        component: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
+  selector:
+    app: repeat_example
+    component: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
 ```
 
 **After repeatable config processing**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: port-default-1
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
-      selector:
-        app: repeat_example
-        component: '{{repl ConfigOptionName "port-default-1" }}'
+apiVersion: v1
+kind: Service
+metadata:
+  name: port-default-1
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
+  selector:
+    app: repeat_example
+    component: '{{repl ConfigOptionName "port-default-1" }}'
 ---
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: port-default-2
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
-      selector:
-        app: repeat_example
-        component: '{{repl ConfigOptionName "port-default-2" }}'
+apiVersion: v1
+kind: Service
+metadata:
+  name: port-default-2
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
+  selector:
+    app: repeat_example
+    component: '{{repl ConfigOptionName "port-default-2" }}'
 ```
 
 **Resulting manifest**
 ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: port-default-1
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: 80
-      selector:
-        app: repeat_example
-        component: port-default-1
+apiVersion: v1
+kind: Service
+metadata:
+  name: port-default-1
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+  selector:
+    app: repeat_example
+    component: port-default-1
 ---
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: port-default-2
-      namespace: my-app
-    spec:
-      type: NodePort
-      ports:
-      - port: 443
-      selector:
-        app: repeat_example
-        component: port-default-2
+apiVersion: v1
+kind: Service
+metadata:
+  name: port-default-2
+  namespace: my-app
+spec:
+  type: NodePort
+  ports:
+  - port: 443
+  selector:
+    app: repeat_example
+    component: port-default-2
 ```
