@@ -56,7 +56,8 @@ If the `yamlPath` field is blank, the entire YAML document matching the `templat
 
 The repeat items are called with the delimeters `repl[[ .itemName ]]` or `[[repl .itemName ]]`.  These delimiters can be placed anywhere inside of the `yamlPath` target node.
 ```yaml
-    - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
+    - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
+      name: '[[repl .service_ports ]]'
 ```
 This repeatable templating is not compatible with sprig templating functions.  It is designed for inserting repeatable `keys` into the manifest. Repeatable templating **can** be placed inside of Replicated config templating.
 
@@ -84,7 +85,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           name: my-service
           namespace: my-app
           yamlPath:
-    {... next item}
+        {other item properties ...}
       - name: other_ports
         title: Other Service Ports
         type: text
@@ -94,7 +95,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           kind: Service
           name: my-other-service
           namespace: my-app
-    {... next group}
+        {other item properties ...}
     - name: deployments
       items:
       - name: deployment-name
@@ -107,7 +108,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           name: my-deployment
           namespace: my-app
           yamlPath:
-    {... remainder of the Config Spec}
+        {other item properties ...}
 ```
 
 ## Repeatable Item Example for a YamlPath
@@ -124,7 +125,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           kind: Service
           name: my-service
           namespace: my-app
-          yamlPath: 'spec.ports[0]'
+          yamlPath: spec.ports[0]
         valuesByGroup:
           ports:
             port-default-1: "80"
@@ -140,8 +141,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
-    name: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
+  - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
+    name: '[[repl .service_ports ]]'
   selector:
     app: repeat_example
     component: my-deployment
@@ -159,10 +160,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
-    name: '{{repl ConfigOptionName "port-default-1" }}'
-  - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
-    name: '{{repl ConfigOptionName "port-default-2" }}'
+  - port: repl{{ ConfigOption "port-default-1" | ParseInt }}
+    name: 'port-default-1'
+  - port: repl{{ ConfigOption "port-default-2" | ParseInt }}
+    name: 'port-default-2'
   selector:
     app: repeat_example
     component: my-deployment
@@ -217,10 +218,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: '{{repl ConfigOption "[[repl .service_ports ]]" | ParseInt }}'
+  - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
   selector:
     app: repeat_example
-    component: '{{repl ConfigOptionName "[[repl .service_ports ]]" }}'
+    component: repl[[ .service_ports ]]
 ```
 
 **After repeatable config processing**
@@ -235,10 +236,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: '{{repl ConfigOption "port-default-1" | ParseInt }}'
+  - port: repl{{ ConfigOption "port-default-1" | ParseInt }}
   selector:
     app: repeat_example
-    component: '{{repl ConfigOptionName "port-default-1" }}'
+    component: port-default-1
 ---
 apiVersion: v1
 kind: Service
@@ -248,10 +249,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: '{{repl ConfigOption "port-default-2" | ParseInt }}'
+  - port: repl{{repl ConfigOption "port-default-2" | ParseInt }}
   selector:
     app: repeat_example
-    component: '{{repl ConfigOptionName "port-default-2" }}'
+    component: port-default-2
 ```
 
 **Resulting manifest**
