@@ -16,8 +16,8 @@ To make an item repeatable, set `repeatable` to true
 ```yaml
     - name: ports
       items:
-      - name: service_ports
-        title: Service Ports
+      - name: service_port
+        title: Service Port
         type: text
         repeatable: true
 ```
@@ -56,8 +56,8 @@ If the `yamlPath` field is blank, the entire YAML document matching the `templat
 
 The repeat items are called with the delimeters `repl[[ .itemName ]]` or `[[repl .itemName ]]`.  These delimiters can be placed anywhere inside of the `yamlPath` target node.
 ```yaml
-    - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
-      name: '[[repl .service_ports ]]'
+    - port: repl{{ ConfigOption "[[repl .service_port ]]" | ParseInt }}
+      name: '[[repl .service_port ]]'
 ```
 This repeatable templating is not compatible with sprig templating functions.  It is designed for inserting repeatable `keys` into the manifest. Repeatable templating **can** be placed inside of Replicated config templating.
 
@@ -70,8 +70,8 @@ Repeatable items are processed in order of the template targets in the Config Sp
 ```yaml
     - name: ports
       items:
-      - name: service_ports
-        title: Service Ports
+      - name: service_port
+        title: Service Port
         type: text
         repeatable: true
         template:
@@ -87,7 +87,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
           yamlPath:
         {other item properties ...}
       - name: other_ports
-        title: Other Service Ports
+        title: Other Service Port
         type: text
         repeatable: true
         template:
@@ -111,13 +111,16 @@ Repeatable items are processed in order of the template targets in the Config Sp
         {other item properties ...}
 ```
 
+# Examples
+
+In this example, the default service port of "80" is included with the release. Port 443 is added as an additional port on the KOTSADM `Config` page, which is stored in the ConfigValues file.
 ## Repeatable Item Example for a YamlPath
 **Config spec**
 ```yaml
     - name: ports
       items:
-      - name: service_ports
-        title: Service Ports
+      - name: service_port
+        title: Service Port
         type: text
         repeatable: true
         template:
@@ -129,8 +132,24 @@ Repeatable items are processed in order of the template targets in the Config Sp
         valuesByGroup:
           ports:
             port-default-1: "80"
-            port-default-2: "443"
 ```
+
+**Config values**
+```yaml
+apiVersion: kots.io/v1beta1
+kind: ConfigValues
+metadata:
+  name: example_app
+spec:
+  values:
+    port-default-1:
+      repeatableItem: service_port
+      value: "80"
+    service_port-8jdn2bgd:
+      repeatableItem: service_port
+      value: "443"
+```
+
 **Template manifest**
 ```yaml
 apiVersion: v1
@@ -141,8 +160,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
-    name: '[[repl .service_ports ]]'
+  - port: repl{{ ConfigOption "[[repl .service_port ]]" | ParseInt }}
+    name: '[[repl .service_port ]]'
   selector:
     app: repeat_example
     component: my-deployment
@@ -162,8 +181,8 @@ spec:
   ports:
   - port: repl{{ ConfigOption "port-default-1" | ParseInt }}
     name: 'port-default-1'
-  - port: repl{{ ConfigOption "port-default-2" | ParseInt }}
-    name: 'port-default-2'
+  - port: repl{{ ConfigOption "service_port-8jdn2bgd" | ParseInt }}
+    name: 'service_port-8jdn2bgd'
   selector:
     app: repeat_example
     component: my-deployment
@@ -182,7 +201,7 @@ spec:
   - port: 80
     name: port-default-1
   - port: 443
-    name: port-default-2
+    name: service_port-8jdn2bgd
   selector:
     app: repeat_example
     component: my-deployment
@@ -193,8 +212,8 @@ spec:
 ```yaml
     - name: ports
       items:
-      - name: service_ports
-        title: Service Ports
+      - name: service_port
+        title: Service Port
         type: text
         repeatable: true
         template:
@@ -206,7 +225,7 @@ spec:
         valuesByGroup:
           ports:
             port-default-1: "80"
-            port-default-2: "443"
+            service_port-8jdn2bgd: "443"
 ```
 **Template manifest**
 ```yaml
@@ -218,10 +237,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: repl{{ ConfigOption "[[repl .service_ports ]]" | ParseInt }}
+  - port: repl{{ ConfigOption "[[repl .service_port ]]" | ParseInt }}
   selector:
     app: repeat_example
-    component: repl[[ .service_ports ]]
+    component: repl[[ .service_port ]]
 ```
 
 **After repeatable config processing**
@@ -244,15 +263,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: port-default-2
+  name: service_port-8jdn2bgd
   namespace: my-app
 spec:
   type: NodePort
   ports:
-  - port: repl{{repl ConfigOption "port-default-2" | ParseInt }}
+  - port: repl{{repl ConfigOption "service_port-8jdn2bgd" | ParseInt }}
   selector:
     app: repeat_example
-    component: port-default-2
+    component: service_port-8jdn2bgd
 ```
 
 **Resulting manifest**
@@ -273,7 +292,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: port-default-2
+  name: service_port-8jdn2bgd
   namespace: my-app
 spec:
   type: NodePort
@@ -281,5 +300,5 @@ spec:
   - port: 443
   selector:
     app: repeat_example
-    component: port-default-2
+    component: service_port-8jdn2bgd
 ```
