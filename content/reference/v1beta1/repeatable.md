@@ -23,7 +23,7 @@ To make an item repeatable, set `repeatable` to true
 ```
 
 Repeatable items do not use the `default` or `value` fields, but instead a `valuesByGroup` field.
-`valuesByGroup` should have an entry for the parent Config Group name, with all default `key:value` pairs nested in the group.  1 default entry is required for the repeatable item.
+`valuesByGroup` should have an entry for the parent Config Group name, with all default `key:value` pairs nested in the group.  At least one default entry is required for the repeatable item.
 ```yaml
     valuesByGroup:
       ports:
@@ -35,6 +35,8 @@ Repeatable items do not use the `default` or `value` fields, but instead a `valu
 Repeatable items require at least 1 `template` to be provided.  The `template` defines a YAML target in the manifest to duplicate for each repeatable item.
 
 Required fields for a template target are `apiVersion`, `kind`, and `name`.
+
+`namespace` is an optional template target field to match a yaml document's `metadata.namespace` property, in case the same filename is used across multiple namespaces.
 
 The entire YAML node at the target will be duplicated, including nested fields.
 
@@ -113,7 +115,7 @@ Repeatable items are processed in order of the template targets in the Config Sp
 
 # Examples
 
-In this example, the default service port of "80" is included with the release. Port 443 is added as an additional port on the KOTSADM `Config` page, which is stored in the ConfigValues file.
+In these examples, the default service port of "80" is included with the release. Port 443 is added as an additional port on the KOTS Admin Console `Config` page, which is stored in the ConfigValues file.
 ## Repeatable Item Example for a YamlPath
 **Config spec**
 ```yaml
@@ -225,8 +227,24 @@ spec:
         valuesByGroup:
           ports:
             port-default-1: "80"
-            service_port-8jdn2bgd: "443"
 ```
+
+**Config values**
+```yaml
+apiVersion: kots.io/v1beta1
+kind: ConfigValues
+metadata:
+  name: example_app
+spec:
+  values:
+    port-default-1:
+      repeatableItem: service_port
+      value: "80"
+    service_port-8jdn2bgd:
+      repeatableItem: service_port
+      value: "443"
+```
+
 **Template manifest**
 ```yaml
 apiVersion: v1
