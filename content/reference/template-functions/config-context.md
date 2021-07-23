@@ -129,19 +129,6 @@ data:
   data_key_one: repl{{ ConfigOption pom_file }}
 ```
 
-## ConfigOptionName
-
-```go
-func ConfigOptionName(optionName string) string
-```
-
-`ConfigOptionName` returns the item name of a config option.  This can be used to reflect a repeatable item name, which is generated dynamically.  For normal items that are not repeatable, this will simply return the optionName input.
-
-```yaml
-'{{repl ConfigOptionName "[[repl .repeatable_configMap ]]" }}'
-```
-
-
 ## ConfigOptionEquals
 
 ```go
