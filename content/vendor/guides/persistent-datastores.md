@@ -134,7 +134,7 @@ Now that our test app is deployed, we'll walk through presenting options to the 
 
 ## User-Facing Configuration
 
-The core of this guide will be around how give your end users the option to either
+The core of this guide will be around how to give your end users the option to either
 
 1. Bring their own PostgreSQL instance for your app to connect to
 1. Use an "embedded" database bundled in with the application
@@ -203,7 +203,7 @@ As mentioned in the introduction, a full example of the code for this guide can 
 
 ### Validating Config Changes
 
-Even thought the options aren't wired, let's create a new release to validate the configuration screen was modified. 
+Even though the options aren't wired, let's create a new release to validate the configuration screen was modified. 
 Create a release by pushing a commit to your [ci-enabled repo](/vendor/guides/ci-cd-integration) or by running `replicated release create --auto` locally. 
 Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
