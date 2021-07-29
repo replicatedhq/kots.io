@@ -5,14 +5,17 @@ title: Embedded kURL registry
 weight: 10020
 ---
 
-Kots can be installed as an add-on on a [kURL](https://kurl.sh/docs/introduction/) cluster, which can also include the [registry add-on](https://kurl.sh/docs/add-ons/registry).
+KOTS can be installed as an add-on on a [kURL](https://kurl.sh/docs/introduction/) cluster, which can also include the [registry add-on](https://kurl.sh/docs/add-ons/registry).
 When installing in [air gap](/kotsadm/installing/installing-embedded-cluster/#airgapped-installations) mode, the embedded registry will be automatically used to host all application images.
 
 ## Image Garbage Collection
-On long running instances, with every application update, new images will be pushed into this registry.
+
+> Introduced in KOTS 1.48.0
+
+With every application update, new images will be pushed into this registry.
 In order to keep the registry from running out of storage, images that are no longer used will be automatically deleted from the registry.
 
-This feature was introduced in kots 1.48.0 and is currently only supported in embedded kURL clusters when using the Registry add-on.
+This feature is currently only supported in embedded kURL clusters when using the Registry add-on.
 Image garbage collection is enabled by default.
 To disable it, execute the following command in the kURL cluster:
 
@@ -35,10 +38,10 @@ Registry address and namespace can be found on the Registry Settings page in Adm
 Registry username and password can be found in the `registry-creds` secret in the default namespace.
 
 ### Limitations
-Currently the image garbage collection feature has following limitations.
+Currently the image garbage collection feature has following limitations:
 
 #### Shared image registries
-The image garbage collection process assumes that the registry is not shared with any other instances of kots nor any external applications.
+The image garbage collection process assumes that the registry is not shared with any other instances of KOTS nor any external applications.
 If the embedded registry is used by another external application, this feature should be disabled to prevent image loss.
 
 #### Customer supplied registries
