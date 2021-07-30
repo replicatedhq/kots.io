@@ -5,13 +5,14 @@ title: kots admin-console generate-manifests
 weight: 90130
 ---
 
-If you’d rather use kubectl or another workflow to deploy to a cluster, run `kots admin-console generate-manifests` to create a directory on the workstation containing the KOTS Admin Console manifests. This workflow enables additional customization of the Admin Console before deploying.
+Running this command will create a directory on the workstation containing the KOTS Admin Console manifests. These assets can be used to deploy KOTS to a cluster through other workflows, such as kubectl, to provide additional customization of the Admin Console before deploying.
 
 ### Usage
 ```bash
 kubectl kots admin-console generate-manifests [flags]
 ```
-* _Provide `[flags]` according to the table below_
+
+This command supports the following flags:
 
 | Flag | Type | Description |
 |:-----|------|-------------|
