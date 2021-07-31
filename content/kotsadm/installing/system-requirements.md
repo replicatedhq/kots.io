@@ -32,7 +32,8 @@ This includes support against all patch releases of the corrersponding Kubernete
 | 1.11 to 1.14    | 1.17, 1.16, and 1.15     |
 | 1.15 to 1.19    | 1.18, 1.17, and 1.16     |
 | 1.20 to 1.35    | 1.19, 1.18, and 1.17     |
-| 1.36+           | 1.20, 1.19, and 1.18     |
+| 1.36 to 1.47    | 1.20, 1.19, and 1.18     |
+| 1.48+           | 1.21, 1.20, and 1.19     |
 
 ## Firewall Openings for Online Installations
 
