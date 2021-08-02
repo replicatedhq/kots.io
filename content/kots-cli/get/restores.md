@@ -1,0 +1,35 @@
+---
+date: 2021-01-07
+linktitle: "restores"
+title: kots get restores
+weight: 90202
+---
+
+The `kots get restores` command lists available full snapshots (instance).
+
+### Usage
+
+```bash
+kubectl kots get restores [flags]
+```
+
+- _Provide `[flags]` according to the table below_
+
+| Flag              | Type   | Description                                                         |
+| :---------------- | ------ | ------------------------------------------------------------------- |
+| `-h, --help`      |        | help for get restores                                               |
+| `-n, --namespace` | string | filter by the namespace in which the admin console is/was installed |
+
+### Examples
+
+Basic
+
+```bash
+kubectl kots get restores
+```
+
+Filtering by a namespace
+
+```bash
+kubectl kots get restores -n default
+```

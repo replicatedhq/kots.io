@@ -22,13 +22,6 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 
 ### Resources
 
-* `apps` lists installed applications. (Note: `--namespace` flag is required.)
+* `apps` lists installed applications.
 * `backups` lists available full snapshots (instance).
 * `restores` lists created full snapshot restores.
-
-### Example
-```bash
-kubectl kots get apps -n default
-kubectl kots get backups
-kubectl kots get restores
-```
