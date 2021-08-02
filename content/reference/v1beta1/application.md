@@ -60,7 +60,7 @@ The icon file for the application. This will be used on the license upload and i
 The release notes for this version. These can also be set when promoting a release.
 
 ## allowRollback
-This defaults to `false`. Enable to create a "Rollback" button on the end-customer Verison History page.
+This defaults to `false`. Enable to create a "Rollback" button on the end-customer Version History page.
 
 ## additionalNamespaces
 An optional array of namespaces as strings.
