@@ -5,7 +5,7 @@ title: kots get restores
 weight: 90202
 ---
 
-The `kots get restores` command lists available full snapshots (instance).
+The `kots get restores` command lists created full snapshot restores.
 
 ### Usage
 
