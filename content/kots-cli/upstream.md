@@ -15,15 +15,19 @@ kubectl kots upstream upgrade [app-slug] [flags]
 * _Replace `[app-slug]` with the app slug for your KOTS application (required)._
 * _Provide `[flags]` according to the table below_
 
-| Flag                 | Type | Description |
-|:----------------------|------|-------------|
-| `-h, --help` | |   help for upstream |
-| `--kubeconfig`| string |    the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_ |
-| `-n, --namespace`| string |     the namespace where the admin console is running _(required)_ |
-| `--deploy`| bool | ensures that the latest available release is deployed. |
-| `--skip-preflights`| bool |     set to true to skip preflight checks |
-| `--airgap-bundle`   | string   | path to the application airgap bundle where application images and metadata will be loaded from |
-| `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry |
+| Flag                     | Type   | Description                                                                                      |
+|:-------------------------|--------|--------------------------------------------------------------------------------------------------|
+| `-h, --help`             |        | help for upstream                                                                                |
+| `--kubeconfig`           | string | the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_          |
+| `-n, --namespace`        | string | the namespace where the admin console is running _(required)_                                    |
+| `--deploy`               | bool   | ensures that the latest available release is deployed.                                           |
+| `--skip-preflights`      | bool   | set to true to skip preflight checks                                                             |
+| `--airgap-bundle`        | string | path to the application airgap bundle where application images and metadata will be loaded from  |
+| `--kotsadm-namespace`    | string | the registry namespace to use for application images                                             |
+| `--kotsadm-registry`     | string | the registry endpoint where application images will be pushed                                    |
+| `--registry-password`    | string | the password to use to authenticate with the registry                                            |
+| `--registry-username`    | string | the username to use to authenticate with the registry                                            |
+| `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry                              |
 
 ### Example
 ```bash
