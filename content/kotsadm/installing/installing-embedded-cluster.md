@@ -27,8 +27,8 @@ To install an airgapped embedded cluster, download the airgap bundle, untar it, 
 You can construct the URL for the bundle by prefixing the above online URL path with `/bundle` and adding `.tar.gz` to the end.
 
 ```bash
-curl -SL -o supergoodtool.tar https://kurl.sh/bundle/supergoodtool.tar.gz
-tar xvf supergoodtool.tar
+curl -LO https://k8s.kurl.sh/bundle/supergoodtool.tar.gz
+tar xvzf supergoodtool.tar
 cat install.sh | sudo bash -s airgap
 ```
 
