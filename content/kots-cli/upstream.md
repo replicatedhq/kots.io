@@ -23,10 +23,10 @@ kubectl kots upstream upgrade [app-slug] [flags]
 | `--deploy`               | bool   | ensures that the latest available release is deployed.                                           |
 | `--skip-preflights`      | bool   | set to true to skip preflight checks                                                             |
 | `--airgap-bundle`        | string | path to the application airgap bundle where application images and metadata will be loaded from  |
-| `--kotsadm-namespace`    | string | set to override the namespace of kotsadm images. used for airgapped installations.               |
-| `--kotsadm-registry`     | string | set to override the registry of kotsadm images. used for airgapped installations.                |
-| `--registry-password`    | string | password to use to authenticate with the application registry. used for airgapped installations. |
-| `--registry-username`    | string | username to use to authenticate with the application registry. used for airgapped installations. |
+| `--kotsadm-namespace`    | string | the registry namespace to use for application images                                             |
+| `--kotsadm-registry`     | string | the registry endpoint where application images will be pushed                                    |
+| `--registry-password`    | string | the password to use to authenticate with the registry                                            |
+| `--registry-username`    | string | the username to use to authenticate with the registry                                            |
 | `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry                              |
 
 ### Example
