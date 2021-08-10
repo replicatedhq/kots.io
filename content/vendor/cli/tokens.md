@@ -20,12 +20,12 @@ Team tokens can be set to Read Only or Read / Write.
 
 ## User Tokens
 
-User tokens are private to each user. User tokens assume the user's account when used, including RBAC permissions.
+User tokens are private to the user creating the token. User tokens assume the user's account when used, including RBAC permissions.
 
 User token names must be unique per user.
 
-User tokens will only be displayed to the user once during creation. The token may never be retrieved again after initial creation. It is highly recommended to store the token in a safe place such as a password vault.
+User tokens will only be displayed once during creation. The token may never be retrieved again after initial creation. It is highly recommended to store the token in a safe place such as a password vault.
 
-User tokens may be revoked by the user at any time. Revoked tokens are immediately invalidated.
+Revoking a user token will immediately invalidate that token.
 
 Updates to a user's RBAC role are applied to the user's tokens. A removed user's tokens are immediately invalidated.
