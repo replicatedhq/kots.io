@@ -9,7 +9,9 @@ Learn how to enable strong passwords and enable Two-Factor Authentication
 # Prerequisites
 * Logged into a [vendor account](todo) as a member with an `admin` policy
 
-# Enabling security measures
+# Instructions
+
+## Enabling security measures
 1. Log into the [Vendor Portal](https://vendor.replicated.com), if prompted
 
 1. Navigate to the Team menu at the top right of the Vendor Portal
@@ -21,6 +23,7 @@ Learn how to enable strong passwords and enable Two-Factor Authentication
     ![Security](img/security/security-menu.png)
 
 ## Two-Factor Authentication
+
 In order to enforce 2FA logins for your team members, you must have the 2FA
 option enabled in your organization's Account Settings.
 
@@ -51,9 +54,7 @@ passwords meet certain requirements for complexity.
 
     ![Password Complexity](img/security/password-complexity.png)
 
-1. Use the controls to set a minimum password length and required # of letters,
-digits, and symbols.
+1. Provide a minimum password length, and required number of letters,
+digits, and symbols
 
 1. Click "Save Changes"
-
-
