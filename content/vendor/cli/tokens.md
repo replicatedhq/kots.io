@@ -24,7 +24,7 @@ User tokens are private to the user creating the token. User tokens assume the u
 
 User token names must be unique per user.
 
-User tokens will only be displayed once during creation. The token may never be retrieved again after initial creation. It is highly recommended to store the token in a safe place such as a password vault.
+User tokens are only displayed once when created. The token may never be retrieved again after initial creation. It is highly recommended to store the token in a safe place, such as a password vault.
 
 Revoking a user token will immediately invalidate that token.
 
