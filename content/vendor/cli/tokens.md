@@ -6,7 +6,7 @@ weight: 90105
 draft: false
 ---
 
-Using the Vendor CLI requires tokens for authentication.  Replicated supports two types of tokens: Team tokens and User tokens.
+Using the Vendor API requires tokens for authentication.  Replicated supports two types of tokens: Team tokens and User tokens.
 
 Tokens may only access a portion of the Vendor API. Administrative tasks such as adding a new user, creating a new token, or changing a password cannot be performed with token authentication.  These administrative tasks must be performed by a logged-in user.
 
