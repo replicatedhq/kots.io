@@ -27,7 +27,7 @@ Team tokens can be set to Read Only or Read / Write.
 
 ## User Tokens
 
-User tokens should be used for REST API authorization.
+User tokens should be used for [REST API](https://help.replicated.com/api/vendor-api/) authorization.
 
 User tokens are private to the user creating the token. User tokens assume the user's account when used, including RBAC permissions.
 
