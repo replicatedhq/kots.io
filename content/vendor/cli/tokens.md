@@ -19,7 +19,7 @@ Tokens are primarily used with vendor CLI commands for automated customer, chann
 
 ## Team Tokens
 
-Team tokens should be used for CLI authorization.
+Team tokens should be used for [Vendor CLI](https://help.replicated.com/api/replicated-vendor-cli/) authorization.
 
 Team tokens are available to all members of the vendor team. These tokens can be created, retrieved, and revoked by any user with the proper RBAC policy.
 
