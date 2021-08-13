@@ -6,7 +6,7 @@ weight: 90105
 draft: false
 ---
 
-Using the Vendor CLI requires a token for authentication.  Replicated supports two types of tokens: Team Tokens and User Tokens.
+Using the Vendor CLI and REST API requires a token for authorization.  Replicated supports two types of tokens: Team Tokens and User Tokens.
 
 Tokens may only access a portion of the Vendor API. The following administrative tasks cannot be performed with token authentication and can only be executed by a logged-in user: 
 - Managing team members
@@ -15,15 +15,19 @@ Tokens may only access a portion of the Vendor API. The following administrative
 - Managing integrations
 - Managing user tokens
 
-Tokens are primarily used with vendor CLI commands for automated customer, channel, and release management.
+Tokens are primarily used with Vendor CLI or REST API commands for automated customer, channel, and release management.
 
 ## Team Tokens
 
+Team tokens are used for [Vendor CLI](https://help.replicated.com/api/replicated-vendor-cli/) authorization.
+
 Team tokens are available to all members of the vendor team. These tokens can be created, retrieved, and revoked by any user with the proper RBAC policy.
 
-Team tokens can be set to Read Only or Read / Write.
+Team tokens can be set to Read Only or Read / Write privileges.
 
 ## User Tokens
+
+User tokens are used for [REST API](https://help.replicated.com/api/vendor-api/) authorization.
 
 User tokens are private to the user creating the token. User tokens assume the user's account when used, including RBAC permissions.
 
