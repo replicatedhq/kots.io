@@ -27,6 +27,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--upstream-uri`| string |  the upstream uri that can be used to check for updates |
 | `--deploy`| bool |  when set, automatically deploy the uploaded version |
 | `--skip-preflights`| bool |  set to true to skip preflight checks |
+| `-o, --output` | string | output format (currently supported: json) _(defaults to plain text if not set)_ |
 
 
 Note: Any `plainText` values in the `upstream/userdata/config.yaml` file will be re-encrypted using the application cipher automatically, if the matching config item is a password type.
