@@ -8,7 +8,12 @@ draft: false
 
 Using the Vendor CLI requires a token for authentication.  Replicated supports two types of tokens: Team Tokens and User Tokens.
 
-Tokens may only access a portion of the Vendor API. Some administrative tasks, such as adding a new user, creating a new token, or changing a password, cannot be performed with token authentication.  These administrative tasks must be performed by a logged-in, privileged user.
+Tokens may only access a portion of the Vendor API. The following administrative tasks cannot be performed with token authentication and can only be executed by a logged-in user: 
+- Managing team members
+- Managing tokens
+- Managing notifications
+- Managing integrations
+- Managing user tokens
 
 Tokens are primarily used with vendor CLI commands for automated customer, channel, and release management.
 
