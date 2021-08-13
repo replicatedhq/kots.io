@@ -15,19 +15,19 @@ Tokens may only access a portion of the Vendor API. The following administrative
 - Managing integrations
 - Managing user tokens
 
-Tokens are primarily used with vendor CLI commands for automated customer, channel, and release management.
+Tokens are primarily used with Vendor CLI or REST API commands for automated customer, channel, and release management.
 
 ## Team Tokens
 
-Team tokens should be used for [Vendor CLI](https://help.replicated.com/api/replicated-vendor-cli/) authorization.
+Team tokens are used for [Vendor CLI](https://help.replicated.com/api/replicated-vendor-cli/) authorization.
 
 Team tokens are available to all members of the vendor team. These tokens can be created, retrieved, and revoked by any user with the proper RBAC policy.
 
-Team tokens can be set to Read Only or Read / Write.
+Team tokens can be set to Read Only or Read / Write privileges.
 
 ## User Tokens
 
-User tokens should be used for [REST API](https://help.replicated.com/api/vendor-api/) authorization.
+User tokens are used for [REST API](https://help.replicated.com/api/vendor-api/) authorization.
 
 User tokens are private to the user creating the token. User tokens assume the user's account when used, including RBAC permissions.
 
