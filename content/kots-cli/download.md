@@ -22,10 +22,11 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `--decrypt-password-values` | bool | decrypt password values to plaintext |
-| `--dest` | string |        the directory to store the application in _(defaults to current working dir)_ |
-| `-h, --help`   |  |           help for download |
-| `-n, --namespace` | string |    the namespace to download from _(default `"default"`)_ |
-| `--overwrite` |   |       overwrite any local files, if present |
+| `--dest` | string | the directory to store the application in _(defaults to current working dir)_ |
+| `-h, --help` | | help for download |
+| `-n, --namespace` | string | the namespace to download from _(default `"default"`)_ |
+| `--overwrite` | | overwrite any local files, if present |
+| `-o, --output` | string | output format (currently supported: json) _(defaults to plain text if not set)_ |
 
 ### Example
 ```bash
