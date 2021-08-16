@@ -43,7 +43,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 | `--skip-preflights`      | bool   | set to true to skip preflight checks                                                                                                 |
 | `--disable-image-push`   | bool   | set to true to disable images from being pushed to private registry                                                                  |
 | `--wait-duration`        | string | timeout out to be used while waiting for individual components to be ready. must be in [Go duration](https://pkg.go.dev/time#ParseDuration) format (eg: 10s, 2m). |
-| `--with-minio`           | bool   | when set, kots will deploy a local minio instance for storage (default true)                                                         |
+| `--with-minio`           | bool   | when set, kots will deploy a local minio instance for storage and use minio for hostpath and NFS snapshot storage (default true)                                                         |
 | `--ensure-rbac`          | bool   | when set, kots will skip RBAC configuration at install time. (default false) if a role spec is needed, use the [generate-manifests](/kots-cli/admin-console/generate-manifests/) command.                                                         |
 
 <!-- Helm Options coming soon -->
