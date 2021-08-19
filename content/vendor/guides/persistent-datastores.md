@@ -220,7 +220,7 @@ Now that we have the configuration screen started, we can proceed to implement t
 
 ## Embedding a Database
 
-To implement the embedded Database option, we'll add a Kubernetes [Statefulset](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), and use the [KOTS annotations for optional resources](/vendor/packaging/optional-resources/) to control when it will be included in the application.
+To implement the embedded Database option, we'll add a Kubernetes [Statefulset](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), and use the [KOTS annotations for optional resources](/vendor/packaging/include-resources/) to control when it will be included in the application.
 
 ### Adding the Secret and StatefulSet
 

@@ -24,7 +24,7 @@ spec: {}
 
 The above YAML will enable snapshots in all instances of the application.
 When a snapshot is executed in the Admin Console or by a schedule, it will simply include all annotated volumes as the archive (more on annotating volumes below).
-This manifest supports the [optional resources](/vendor/packaging/optional-resources/) annotation so that it can be dynamically enabled based on a license field or a config option, if desired.
+This manifest supports the [optional resources](/vendor/packaging/include-resources/) annotation so that it can be dynamically enabled based on a license field or a config option, if desired.
 
 In the case of multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in order to be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
 
