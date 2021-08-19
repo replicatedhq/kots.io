@@ -1,7 +1,7 @@
 ---
 date: 2020-01-06
-linktitle: "Optional Resources"
-title: Optional Kubernetes Resources
+linktitle: "Include Resources"
+title: Including and Excluding Kubernetes Resources
 weight: 20220
 ---
 
