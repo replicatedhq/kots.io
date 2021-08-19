@@ -5,11 +5,11 @@ title: Including and Excluding Kubernetes Resources
 weight: 20220
 ---
 
-Often Vendors need a way to optionally install resources depending on customer choices. A common example is giving the customer the choice of installing a new database, or use their own managed external database. 
+Often, Vendors need a way to optionally install resources depending on customers configuration choices. A common example is giving the customer the choice to install a new database or use an existing database. 
 
 In this scenario, when a customer chooses to bring their own database, it is not desireable to deploy the optional database resources (StatefulSet, Service, etc.). This means that the customer-supplied configuration input values may result in optional Kubernetes manifests that should not be installed.
 
-To provide optional resource installation, KOTS uses [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) and [template functions](/reference/template-functions/) to optionally include or exclude resources.
+To provide optional resource installation, KOTS uses [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) and [template functions](/reference/template-functions/) to conditionally include or exclude resources.
 
 
 ## KOTS Annotations
@@ -66,6 +66,11 @@ metadata:
   name: example-annotation
   annotations:
 ```
+#### Please Note 
+
+By default, if neither `kots.io/exclude` nor `kots.io/include` annotations are present on a resource, the resource will be included.
+
+Only one of the following annotations can be present on a resource. If both are present, the `kots.io/exclude` annotation will be applied, and the `kots.io/when` annotation will be ignored.
 
 ### Exclude A Resource
 
@@ -75,7 +80,7 @@ When this annotation is present on a resource and evaluates to `'true'`, the res
 
 **NOTE**: Kubernetes annotations cannot be booleans and must be strings, so make sure to quote this!
 
-#### Example Exclude
+#### Example
 
 The following example WILL NOT include the postgres StatefulSet when the user has not selected the `install_postgres` checkbox.
 
@@ -113,7 +118,7 @@ When this annotation is present on a resource and evaluates to `'false'`, the re
 
 **NOTE**: Kubernetes annotations cannot be booleans and must be strings, so make sure to quote this!
 
-#### Example Include
+#### Example
 
 The following example WILL include the postgres StatefulSet when the user has selected the `install_postgres` checkbox.
 
@@ -143,12 +148,5 @@ spec:
         imagePullPolicy: ""
 ...
 ```
-
-### Please Note 
-
-By default, if neither `kots.io/exclude` nor `kots.io/include` annotations are present on a resource, the resource will be included.
-
-Only one of the following annotations can be present on a resource. If both are present, the `kots.io/exclude` annotation will be applied, and the `kots.io/when` annotation will be ignored.
-
 
 
