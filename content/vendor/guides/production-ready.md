@@ -53,15 +53,20 @@ Explore ways to give an end user the option to either embed an instance alongsid
 
 If you expect to also install stateful services into existing clusters, you'll likely want to expose [preflight analyzers that check for the existence of a storage class](https://troubleshoot.sh/reference/analyzers/storage-class/).
 
+If you're allowing end users to provide connection details for external databases, you can often use a troubleshoot.sh built-in [collector](https://troubleshoot.sh/docs/collect/) and [analyzer](https://troubleshoot.sh/docs/analyze/) to validate the connection details for [Postgres](https://troubleshoot.sh/docs/analyze/postgresql/), [Redis](https://troubleshoot.sh/docs/collect/redis/), and many other common datastores. These can be included in both `Preflight` and `SupportBundle` specs.
 
 ### Namespaces
 
-It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. This will give the most flexibility when deploying to end user environments. 
-Most notably, it allows you to run with minimal Kubernetes permissions, which can reduce friction when an app runs as a tenant in a large cluster. 
-Don't specify a namespace in your YAML resources, or try to make this user-configurable using the `kots.io` `Config` object, just leave namespace blank.
+It is *strongly* advised that applications be architected to deploy a single application into a single namespace when possible. 
+This will give the most flexibility when deploying to end user environments. 
+Most notably, it allows you to run with [minimal Kubernetes RBAC permissions](https://kots.io/vendor/packaging/rbac/#namespace-scoped-access), which can reduce friction when an app runs as a tenant in a large cluster.
+
+
+The best way to implement this advice is not to specify a namespace in your YAML resources. 
+Avoid making the namespace of resources user-configurable using the `kots.io` `Config` object, just leave it blank.
 
 Letting the end user manage namespaces will be the easiest way to reduce friction. 
-The ability to manage namespaces in the Admin Console will be added in an upcoming KOTS release, so if you intend to  deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
+The ability to manage namespaces in the Admin Console will be added in an upcoming KOTS release, so if you intend to deploy multiple apps using a single Admin Console, it is reasonable to architect your app assuming the end user will manage the Namespaces that each component runs in.
 
 
 ```yaml
@@ -93,6 +98,16 @@ metadata:
 spec:
 ```
 
+```yaml
+# Technically okay, but unnecessary
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spline-reticulator
+  namespace: repl{{ Namespace }}
+spec:
+```
+
 ### Helm
 
 Helm charts are supported by KOTS but not required. 
@@ -101,7 +116,8 @@ If an application does not presently use helm, there's no requirement to use hel
 
 ### Operators
 Operators are good for specific use cases, we've written in-depth about them in our [Operators Blog Post](https://blog.replicated.com/operators-in-kots/). 
-In general, we recommend thinking deeply about the problem space an application solves before going down the operator path. They're really cool and powerful, but take a lot of time to build and maintain.
+In general, we recommend thinking deeply about the problem space an application solves before going down the operator path. 
+They're quite powerful, but take a lot of time to build and maintain.
 
 
 <!-- coming soon, wait for guide
@@ -136,9 +152,11 @@ For example, when an error in a log file is discovered that should be surfaced t
 For a full breakdown check out our [Support Bundle Guide](/vendor/guides/support-bundle)
 -->
 
-### Adding Prometheus Graphs
+### Deep Prometheus Integration
 
 If an application exposes Prometheus metrics, we recommend integrating [Custom Graphs](/vendor/config/dashboard-graphs) to expose these metrics to end users.
+
+A full walkthrough of integrating Prometheus and AlertManager for SMTP or Webhook alerts based on custom application metrics is available in the [Prometheus Alerting KOTS App]().
 
 
 ### Building a Collaborative Workflow
