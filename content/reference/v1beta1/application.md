@@ -64,7 +64,7 @@ This defaults to `false`. Enable to create a "Rollback" button on the end-custom
 
 ## additionalNamespaces
 An optional array of namespaces as strings.
-In addition to creating these namespaces, the Admin Console will ensure that a secret named `kotsadm-replicated-registry` exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)). 
+In addition to creating these namespaces, the Admin Console will ensure that a secret named `kotsadm-replicated-registry` exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)).
 For access to dynamically created namespaces, `"*"` can be specified.
 See the [Additional Namespaces](/vendor/operators/additional-namespaces/) documentation for more information.
 
@@ -80,6 +80,9 @@ Valid values are:
 - 1.17.13 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
 - 1.18.10 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
 - 1.19.3 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.20.4 (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
+- 1.21.2 (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
+
 Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`).
 The latest version within the provided range will be used.
 If the specified version or range does not match any supported versions, the latest version from the above list will be used.
