@@ -9,7 +9,7 @@ title: Configuring a Host Path
 
 The steps described on this page are only necessary if you wish to configure a Host Path destination as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/). 
 
-**Important note:** Make sure that the host path exists on all the nodes in the cluster.
+**Important note:** Make sure that the host path exists and is writable by the user:group 1001:1001 on all the nodes in the cluster.
 
 ## Embedded Clusters
 
