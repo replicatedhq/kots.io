@@ -77,7 +77,19 @@
   force = true
 
 [[redirects]]
-  from = "/vendor/additional-objects/*"
+  from = "/vendor/additional-objects/"
   to = "/vendor/packaging/kots-custom-resources/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/additional-objects/config"
+  to = "/reference/v1beta1/config/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/additional-objects/helmchart"
+  to = "/reference/v1beta1/helmchart/"
   status = 301
   force = true
