@@ -70,9 +70,14 @@
   status = 301
   force = true
 
-
 [[redirects]]
   from = "/vendor/snapshots/disaster-recovery-snapshots/"
   to = "/kotsadm/snapshots/disaster-recovery/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vendor/additional-objects/"
+  to = "/vendor/packaging/kots-custom-resources/"
   status = 301
   force = true
