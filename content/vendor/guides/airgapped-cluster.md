@@ -58,7 +58,7 @@ Click on `Download license` to fetch the airgapped enabled yaml license.
 
 ## Embedded kURL Cluster
 
-Embedded clusters also need a thrid file in addition to the `.airgap` bundle and License file. 
+Embedded clusters also need a third file in addition to the `.airgap` bundle and License file. 
 The kURL bundle provides the open source components to run the cluster: Docker, Kubernetes, KOTS Adm, Weave, Contour, Rook, Registry and a number of other [add-ons](https://kurl.sh/add-ons). 
 The kURL bundle is kept separate from the `.airgap` app bundle for a few reasons.
 
