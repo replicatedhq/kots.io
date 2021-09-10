@@ -11,7 +11,7 @@ If you'd prefer a more conceptual overview before digging into the CLI tools, yo
 In this guide we'll walk through the following steps:
 
 - [Installing the Replicated CLI](#1-install-cli)
-- [Setting an API Token](#2-setting-an-api-token)
+- [Setting a Service Account Token](#2-setting-a-service-account-token)
 - [Getting some YAML ready](#3-getting-some-yaml)
 - [Creating a Release](#4-creating-our-first-release)
 - [Creating a Customer License](#5-creating-a-customer-license)
