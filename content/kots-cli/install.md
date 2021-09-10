@@ -20,7 +20,7 @@ kubectl kots install [upstream uri] [flags]
 
 This command supports all [global flags](/kots-cli/global-flags/) and also:
 
-|  <div style="width:170px">Flag</div>              | Type   | Description                                                                                                                          |
+|  <div style="width:290px">Flag</div>              | Type   | Description                                                                                                                          |
 | :----------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `--airgap`              | bool   | set to true to run install in airgapped mode. setting --airgap-bundle implies --airgap=true.                                         |
 | `--airgap-bundle`       | string | path to the application airgap bundle where application metadata will be loaded from                                                 |
