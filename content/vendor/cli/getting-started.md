@@ -25,8 +25,8 @@ You’ll need to set up two environment variables to interact with https://vendo
 * `REPLICATED_APP` should be set to the name of your KOTS application, as shown in the URL path at https://vendor.replicated.com/apps. _Note that this is **case sensitive**_
 ![Vendor Application Slug](/images/vendor-app-slug.png)
 
-* `REPLICATED_API_TOKEN` should be set to a team token created at [https://vendor.replicated.com/team/tokens](https://vendor.replicated.com/team/tokens), or a user token created at [https://vendor.replicated.com/account-settings](https://vendor.replicated.com/account-settings).
-![Vendor API Token](/images/vendor-team-token.png)
+* `REPLICATED_API_TOKEN` should be set to a service account token created at [https://vendor.replicated.com/team/serviceaccounts](https://vendor.replicated.com/team/serviceaccounts), or a user token created at [https://vendor.replicated.com/account-settings](https://vendor.replicated.com/account-settings).
+![Vendor Service Account Token](/images/vendor-service-account-token.png)
 
 Ensure the token has “Write” access or you’ll be unable create new releases. 
 Once you have the values, set them in your environment. 
@@ -47,13 +47,13 @@ There are three options for installing the Vendor CLI.
 
 ### MacOS
 
-To install latest Vendor CLI on Mac with Brew:
+To install the latest Vendor CLI on Mac with Brew:
 
 ```shell
 brew install replicatedhq/replicated/cli
 ```
 
-To install latest Vendor CLI on Mac without Brew: 
+To install the latest Vendor CLI on Mac without Brew: 
 ```shell
 curl -s https://api.github.com/repos/replicatedhq/replicated/releases/latest \
 | grep "browser_download_url.*darwin_amd64.tar.gz" \

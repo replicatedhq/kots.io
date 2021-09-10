@@ -50,7 +50,7 @@ $ replicated version
 
 * * *
 
-#### 2. Setting an API Token
+#### 2. Setting a Service Account Token
 
 Next we'll set up two environment variables. You can export these right in your shell or add them to your favorite dotfiles.
 
@@ -66,9 +66,9 @@ In this case, we'd run
 export REPLICATED_APP=cli-quickstart-puma
 ```
 
-Then you can create a Read/Write capable API token and export it as well:
+Then you can create a Read/Write capable Service Account token and export it as well:
 
-![app-slug](/images/guides/kots/cli-setup-api-token.png)
+![service-account-token](/images/guides/kots/cli-setup-service-account-token.png)
 
 ```shell script
 export REPLICATED_API_TOKEN=1366be611e3bf...
