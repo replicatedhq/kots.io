@@ -15,7 +15,7 @@ It is broken into three sections:
 
 ## Environment Variables
 
-This section will assume you already have the App slug and API token from the [CLI Quickstart](/vendor/guides/cli-quickstart/#2-setting-an-api-token) guide.
+This section will assume you already have the App slug and API token from the [CLI Quickstart](/vendor/guides/cli-quickstart/#2-setting-a-service-account-token) guide.
 
 - Configure the following 2 environment variables in your CI/CD configuration.
 
