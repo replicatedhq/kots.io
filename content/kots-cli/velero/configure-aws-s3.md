@@ -5,7 +5,7 @@ title: kots velero configure-aws-s3
 weight: 90240
 ---
 
-Configures snapshots to use an AWS S3 Bucket as a storage destination. 
+Configures snapshots to use an AWS S3 Bucket as a storage destination.
 This command supports auth via [IAM User Access Keys](https://github.com/vmware-tanzu/velero-plugin-for-aws#option-1-set-permissions-with-an-iam-user) and IAM Instance Roles for the velero-plugin-for-aws.
 
 Valid Subcommands:
@@ -15,7 +15,7 @@ Valid Subcommands:
 ### Usage
 
 ```bash
-kubectl kots velero configure-aws-3 [subcommand]
+kubectl kots velero configure-aws-s3 [subcommand]
 ```
 
 | Flag         | Type | Description              |
@@ -47,7 +47,7 @@ kubectl kots velero configure-aws-s3 access-key [flags]
 kubectl kots velero configure-aws-s3 access-key --namespace default --region us-east-1 --bucket kots-snaps --access-key-id XXXXXXXJTJB7M2XZUV7D --secret-access-key <secret access key here>
 ```
 
-### instance-role 
+### instance-role
 
 ```bash
 kubectl kots velero configure-aws-s3 instance-role [flags]
