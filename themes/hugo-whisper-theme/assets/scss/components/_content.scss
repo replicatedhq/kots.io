@@ -82,7 +82,7 @@
       background: none;
     }
   }
-  
+
   strong {
     font-weight: bold;
   }
@@ -170,28 +170,28 @@
     display: flex;
     flex-direction: column;
     position: relative;
-  
+
     h1, h2, h3, h4 {
       font-size: 18px !important;
-      line-height: 26px;  
+      line-height: 26px;
       color: #163166;
       display: flex;
       align-items: center;
       margin-bottom: 6px;
       font-weight: bold;
     }
-  
+
     p {
       font-family: Helvetica Neue;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
-      line-height: 24px;  
+      line-height: 24px;
       color: #163166;
       margin-bottom: 0px;
     }
   }
-  
+
   blockquote::before {
     content: "";
     background-image: url("/images/callout.png");
@@ -204,12 +204,16 @@
     background-size: 26px;
     background-repeat: no-repeat;
   }
-  
+
   table {
     @extend .table;
   }
   img {
     max-width: 100%;
     height: auto;
+  }
+
+  table tr td[align="left"] code {
+    white-space: nowrap;
   }
 }
