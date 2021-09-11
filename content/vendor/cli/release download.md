@@ -1,0 +1,37 @@
+---
+date: 2021-09-10
+linktitle: "release download"
+title: "release download"
+weight: 90121
+---
+
+Download the YAML config for a release. Same as 'release inspect' for non-KOTS apps.
+
+### Usage
+```bash
+replicated release download SEQUENCE -d ./appyaml
+```
+
+| Flag                 | Type | Description |
+|:----------------------|------|-------------|
+| `-d, --dest` | string  | Directory to which release manifests should be downloaded |
+| `-h, --help`   |  |          help for admin-console |
+| `--app string` | |   The app slug or app id to use in all calls (default uses `$REPLICATED_APP` env variable) |
+| `--token string` | |  The API token to use to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
+
+### Examples
+```bash
+replicated release download 9 -d ./appyaml
+  • Fetching Release 9 ✓
+  • Writing files to ./appyaml
+    • config-map.yaml
+    • config.yaml
+    • deployment.yaml
+    • fluentd.yaml
+    • nginx2.yaml
+    • preflight.yaml
+    • redis.yaml
+    • replicated-app.yaml
+    • service.yaml
+    • support-bundle.yaml
+```

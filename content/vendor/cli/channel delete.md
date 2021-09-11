@@ -1,17 +1,19 @@
 ---
-date: 2019-10-09
-linktitle: "customer ls"
-title: "customer ls"
-weight: 90117
+date: 2021-09-10
+linktitle: "channel rm"
+title: "channel rm"
+weight: 90110
 draft: false
 ---
 
-List all customers in your app
+Delete (archive) a channel.
 
 ### Usage
 ```bash
-replicated customer ls
+replicated channel rm CHANNEL_ID
 ```
+
+Only the channel ID will work, not the name.
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
@@ -21,8 +23,6 @@ replicated customer ls
 
 ### Examples
 ```bash
-replicated customer ls
-ID                                  NAME                            CHANNELS         EXPIRES    TYPE
-iEgJuVDHy2pi-AqOjLXbZCTX9bqlV6YH    John Smith                      Unstable         Never      
-YAg7ripYbK0tM5MVn_81nMy0YrhBsHrm    Megacorp                        Megacorp_Beta    Never      
+replicated channel rm 1xyB2Mgbg9N7rExShfbdBYIuzeW
+Channel 1xyB2Mgbg9N7rExShfbdBYIuzeW successfully archived
 ```
