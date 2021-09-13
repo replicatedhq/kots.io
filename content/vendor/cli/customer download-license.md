@@ -6,7 +6,7 @@ weight: 90117
 draft: false
 ---
 
-Print the license YAML for a customer
+Print the license YAML for a customer.
 
 ### Usage
 ```bash
@@ -16,9 +16,9 @@ replicated customer download-license
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
 | `--customer` | string | The Customer Name or ID |
-| `-h, --help`   |  |          help for the command |
-| `--app string` | |   The app slug or app id to use in all calls (default uses `$REPLICATED_APP` env variable) |
-| `--token string` | |  The API token to use to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
+| `-h, --help`   |  |          Help for the command |
+| `--app string` | |   The app slug or app id used in all calls (default uses `$REPLICATED_APP` env variable) |
+| `--token string` | |  The API token used to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
 
 ### Examples
 ```bash
@@ -28,7 +28,7 @@ kind: License
 metadata:
   name: cli-customer
 spec:
-  appSlug: laverya-cli-app
+  appSlug: cli-app
   channelID: 1xy9tHhAwHyoc0HEybppxPpbPn6
   channelName: Unstable
   customerName: cli-customer

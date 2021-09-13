@@ -6,7 +6,7 @@ weight: 90110
 draft: false
 ---
 
-Create a new channel in your app, and print the channel on success.
+Create a new channel in your app, and then print the channel.
 
 ### Usage
 ```bash
@@ -17,9 +17,9 @@ replicated channel create --name Beta --description 'New features subject to cha
 |:----------------------|------|-------------|
 | `--description` | string | A longer description of this channel |
 | `--name` | string | The name of this channel (**required**) |
-| `-h, --help`   |  |          help for the command |
-| `--app string` | |   The app slug or app id to use in all calls (default uses `$REPLICATED_APP` env variable) |
-| `--token string` | |  The API token to use to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
+| `-h, --help`   |  |          Help for the command |
+| `--app string` | |   The app slug or app id used in all calls (default uses `$REPLICATED_APP` env variable) |
+| `--token string` | |  The API token used to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
 
 ### Examples
 ```bash
