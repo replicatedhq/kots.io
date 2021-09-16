@@ -8,7 +8,7 @@ draft: false
 
 Using the [Vendor CLI](https://help.replicated.com/api/replicated-vendor-cli/) and [REST API](https://help.replicated.com/api/vendor-api/) requires a token for authorization.  Replicated supports three types of tokens: Team, Service Account and User Tokens.
 
-Some operations can only be performed by a user logged into the vendor portal. The following administrative tasks can only be executed by a logged-in user cannot be maanged with token-based authentication: 
+Some operations can only be performed by a user logged into the vendor portal. The following administrative resources can only be executed by a logged-in user cannot be managed with token-based authentication: 
 - Team members
 - Tokens
 - Notifications
