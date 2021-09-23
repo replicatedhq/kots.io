@@ -43,7 +43,7 @@ apiVersion: v1
 kind: Secret
 type: kubernetes.io/dockerconfigjson
 metadata:
-  name: kotsadm-replicated-registry
+  name: myapp-registry
   namespace: my-other-namespace
 data:
   .dockerconfigjson: repl{{ LicenseDockerCfg }}
