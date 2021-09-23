@@ -15,6 +15,12 @@ kubectl kots admin-console garbage-collect-images -n <namespace>
 
 This command supports all [global flags](/kots-cli/global-flags/).
 
+| Flag                | Type   | Description                                                                      |
+|:--------------------|--------|----------------------------------------------------------------------------------|
+| `-h, --help`        |        | help for admin-console                                                           |
+| `-n, --namespace`   | string | the namespace where the admin console is running _(required)_                    |
+| `--ignore-rollback` | string | force images garbage collection even if rollback is enabled for the application  |
+
 ### Examples
 ```bash
 kubectl kots admin-console garbage-collect-images -n default
