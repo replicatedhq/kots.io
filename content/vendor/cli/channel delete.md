@@ -13,13 +13,13 @@ Delete (archive) a channel.
 replicated channel rm CHANNEL_ID
 ```
 
-Only the channel ID will work, not the name.
+Note: You can only use the channel ID to delete the channel, not the channel name.
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `-h, --help`   |  |          help for the command |
-| `--app string` | |   The app slug or app id to use in all calls (default uses `$REPLICATED_APP` env variable) |
-| `--token string` | |  The API token to use to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
+| `-h, --help`   |  |          Help for the command |
+| `--app string` | |   The app slug or app id used in all calls (default uses `$REPLICATED_APP` env variable) |
+| `--token string` | |  The API token used to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
 
 ### Examples
 ```bash

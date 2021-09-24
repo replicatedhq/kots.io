@@ -5,7 +5,7 @@ title: "installer ls"
 weight: 90115
 ---
 
-List an app's https://kurl.sh Kubernetes Installers
+List the https://kurl.sh Kubernetes Installers for an app.
 
 ### Usage
 ```bash
@@ -14,9 +14,9 @@ replicated installer ls
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `-h, --help`   |  |          help for admin-console |
-| `--app string` | |   The app slug or app id to use in all calls (default uses `$REPLICATED_APP` env variable) |
-| `--token string` | |  The API token to use to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
+| `-h, --help`   |  |          Help for the admin-console |
+| `--app string` | |   The app slug or app id used in all calls (default uses `$REPLICATED_APP` env variable) |
+| `--token string` | |  The API token used to access your app in the Vendor API (default uses `$REPLICATED_API_TOKEN` env variable) |
 
 ### Examples
 
