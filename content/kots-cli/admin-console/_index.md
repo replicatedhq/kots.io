@@ -16,7 +16,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `-h, --help`   |  |          help for admin-console |
+| `-h, --help`   |  |          Help for the admin-console |
 | `-n, --namespace` | string |   the namespace where the admin console is running _(default "default")_ |
 
 ### Examples

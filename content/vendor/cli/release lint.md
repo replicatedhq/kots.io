@@ -19,7 +19,7 @@ replicated release lint --yaml-dir YAML_DIR [flags]
 |:----------------------|------|-------------|
 | `--yaml-dir` | path | The directory containing yaml application manifests for a Kots release. (**required**) |
 | `--fail-on` | string | The minimum severity of a linting rule to cause a non-zero exit code. Supported values are [info, warn, error, none]. (default is error) |
-| `-h, --help`   |  |          help for admin-console |
+| `-h, --help`   |  |          Help for the admin-console |
 
 ### Examples
 ```bash

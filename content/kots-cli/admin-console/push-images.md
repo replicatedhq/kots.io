@@ -17,7 +17,7 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
-| `-h, --help`   |  |          help for admin-console |
+| `-h, --help`   |  |          Help for the admin-console |
 | `--registry-username` | string |   username for the private registry |
 | `--registry-password` | string |   password for the private registry |
 

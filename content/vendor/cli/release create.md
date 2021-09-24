@@ -22,7 +22,7 @@ replicated release create --yaml-dir YAML_DIR [flags]
 | `--ensure-channel` |  |    When used with --promote <channel>, will create the channel if it doesn't exist |
 | `--release-notes` | string |  When used with --promote <channel>, sets the **markdown** release notes |
 | `--version` string | When used with --promote <channel>, sets the version label for the release in this channel |
-| `-h, --help`   |  |          help for admin-console |
+| `-h, --help`   |  |          Help for the admin-console |
 
 ### Examples
 

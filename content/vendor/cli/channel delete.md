@@ -1,17 +1,19 @@
 ---
-date: 2019-10-09
-linktitle: "channel ls"
-title: "channel ls"
+date: 2021-09-10
+linktitle: "channel rm"
+title: "channel rm"
 weight: 90110
 draft: false
 ---
 
-List all channels in your app
+Delete (archive) a channel.
 
 ### Usage
 ```bash
-replicated channel ls
+replicated channel rm CHANNEL_ID
 ```
+
+Note: You can only use the channel ID to delete the channel, not the channel name.
 
 | Flag                 | Type | Description |
 |:----------------------|------|-------------|
@@ -21,9 +23,6 @@ replicated channel ls
 
 ### Examples
 ```bash
-replicated channel ls
-ID                                  NAME        RELEASE    VERSION
-QE1niv46O6RyHyzYp185mt5on1SOoVhn    Stable                     0.0.1
-Ng4EzwjhEdR_XzjOi032qjDKjI4cz3qs    Beta                       0.0.1
-BHrujJ-qAJiKQ2jIe8EP_GNukpegEF1o    Unstable                   0.1.2
+replicated channel rm 1xyB2Mgbg9N7rExShfbdBYIuzeW
+Channel 1xyB2Mgbg9N7rExShfbdBYIuzeW successfully archived
 ```
