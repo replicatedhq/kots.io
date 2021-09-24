@@ -64,8 +64,9 @@ This defaults to `false`. Enable to create a "Rollback" button on the end-custom
 
 ## additionalNamespaces
 An optional array of namespaces as strings.
-In addition to creating these namespaces, the Admin Console will ensure that a secret named `kotsadm-replicated-registry` exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)).
+In addition to creating these namespaces, the Admin Console will ensure that the application secret exists in them, and that this secret has access to pull the application images (both images that are used and [additionalImages](/vendor/operators/additional-images/)).
 For access to dynamically created namespaces, `"*"` can be specified.
+This pull secret will be automatically added to all application specs that use private images.
 See the [Additional Namespaces](/vendor/operators/additional-namespaces/) documentation for more information.
 
 ## additionalImages

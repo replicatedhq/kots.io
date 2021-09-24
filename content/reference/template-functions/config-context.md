@@ -159,7 +159,7 @@ Returns true if the configuration option value is not equal to the supplied valu
 func LocalRegistryAddress() string
 ```
 
-Returns the local registry host or host/namespace that's configured. 
+Returns the local registry host or host/namespace that's configured.
 This will always return everything before the image name and tag.
 
 ## LocalRegistryHost
@@ -168,7 +168,7 @@ This will always return everything before the image name and tag.
 func LocalRegistryHost() string
 ```
 
-Returns the local registry host that's configured. 
+Returns the local registry host that's configured.
 This will include port if one is specified.
 
 ## LocalRegistryNamespace
@@ -185,8 +185,8 @@ Returns the local registry namespace that's configured.
 func LocalImageName(remoteImageName string) string
 ```
 
-This is a wrapper around other functions. 
-Given a `remoteImageName` rewrite it so that it references the local registry. 
+This is a wrapper around other functions.
+Given a `remoteImageName` rewrite it so that it references the local registry.
 If no local registry is set, the `remoteImageName` is returned.
 
 ## LocalRegistryImagePullSecret
@@ -195,8 +195,8 @@ If no local registry is set, the `remoteImageName` is returned.
 func LocalRegistryImagePullSecret() string
 ```
 
-Returns the base64 encoded local registry image pull secret value. 
-This is often needed when an operator is deploying images to a namespace that is not managed by KOTS. 
+Returns the base64 encoded local registry image pull secret value.
+This is often needed when an operator is deploying images to a namespace that is not managed by KOTS.
 Image pull secrets must be present in the namespace of the pod.
 
 ```yaml
@@ -222,11 +222,33 @@ spec:
     - name: my-image-pull-secret
 ```
 
+## ImagePullSecretName
+
+```go
+func ImagePullSecretName() string
+```
+
+Returns the name of the image pull secret that can be added to pod specs that use private images.
+The secret will be automatically created in all application namespaces.
+It will contain authentication information for any private registry used with the application.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+      - name: repl{{ ImagePullSecretName }}
+```
+
 ## HasLocalRegistry
 
 ```go
 func HasLocalRegistry() bool
 ```
 
-Returns true if the environment is configured to rewrite images to a local registry. 
+Returns true if the environment is configured to rewrite images to a local registry.
 This will be true for airgapped installs, and optionally true for online installs.
