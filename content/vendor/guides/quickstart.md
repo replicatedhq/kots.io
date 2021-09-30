@@ -48,7 +48,7 @@ For now, click on the Releases item on the left menu and then click the "Create 
 
 You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality.
 Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page.
-If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our [CLI Quickstart guide](/vendor/guides/cli-quickstart).
+If you prefer to use the command line, rather than editing YAML in the browser, you can always follow our [CLI Quickstart guide](/vendor/guides/cli-quickstart) instead.
 
 {{< notes title="Quickstart" >}}
 Since this guide is intended as a "Hello, World" example, we'll skip editing the YAML right now and just proceed with the defaults. We'll make some changes later on in this guide.
