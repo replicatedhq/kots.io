@@ -63,7 +63,7 @@ From there you can head to the settings page, grab the Application Slug, and exp
 In this case, we'd run
 
 ```shell script
-export REPLICATED_APP=cli-quickstart-puma
+export REPLICATED_APP=cli-quickstart
 ```
 
 Then you can create a Read/Write capable Service Account token and export it as well:
@@ -271,17 +271,17 @@ VERSION:        Unstable-ba710e5
 EXISTING:
 
     curl -fsSL https://kots.io/install | bash
-    kubectl kots install cli-quickstart-puma/unstable
+    kubectl kots install cli-quickstart/unstable
 
 EMBEDDED:
 
-    curl -fsSL https://k8s.kurl.sh/cli-quickstart-puma-unstable | sudo bash
+    curl -fsSL https://k8s.kurl.sh/cli-quickstart-unstable | sudo bash
 
 AIRGAP:
 
-    curl -fSL -o cli-quickstart-puma-unstable.tar.gz https://k8s.kurl.sh/bundle/cli-quickstart-puma-unstable.tar.gz
-    # ... scp or sneakernet cli-quickstart-puma-unstable.tar.gz to airgapped machine, then
-    tar xvf cli-quickstart-puma-unstable.tar.gz
+    curl -fSL -o cli-quickstart-unstable.tar.gz https://k8s.kurl.sh/bundle/cli-quickstart-unstable.tar.gz
+    # ... scp or sneakernet cli-quickstart-unstable.tar.gz to airgapped machine, then
+    tar xvf cli-quickstart-unstable.tar.gz
     sudo bash ./install.sh airgap
 ```
 
@@ -330,7 +330,7 @@ The UIs of Prometheus, Grafana and Alertmanager have been exposed on NodePorts 3
 To access Grafana use the generated user:password of admin:[password] .
 
 To add worker nodes to this installation, run the following script on your other nodes
-    curl -sSL https://kurl.sh/cli-quickstart-puma-unstable/join.sh | sudo bash -s kubernetes-master-address=[ip-address]:6443 kubeadm-token=[token] kubeadm-token-ca-hash=sha256:[sha] kubernetes-version=1.16.4 docker-registry-ip=[ip-address]
+    curl -sSL https://kurl.sh/cli-quickstart-unstable/join.sh | sudo bash -s kubernetes-master-address=[ip-address]:6443 kubeadm-token=[token] kubeadm-token-ca-hash=sha256:[sha] kubernetes-version=1.16.4 docker-registry-ip=[ip-address]
 
 ```
 

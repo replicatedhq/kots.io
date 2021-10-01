@@ -46,9 +46,9 @@ For now, click on the Releases item on the left menu and then click the "Create 
 
 ### Create a Release
 
-You should now see a YAML editor where you can define how you application will work and the integration with KOTS functionality.
+You should now see a YAML editor where you can define how your application will work and the integration with KOTS functionality.
 Once you are familiar with these concepts, you'll probably use our [CLI and API](/vendor/cli) to automate this rather than manually edit YAML on this page.
-If you're itching to hit the command line rather than editing YAML in the browser, you can always switch gears and follow our  [CLI Quickstart guide](/vendor/guides/cli-quickstart).
+If you prefer to use the command line, rather than editing YAML in the browser, you can always follow our [CLI Quickstart guide](/vendor/guides/cli-quickstart) instead.
 
 {{< notes title="Quickstart" >}}
 Since this guide is intended as a "Hello, World" example, we'll skip editing the YAML right now and just proceed with the defaults. We'll make some changes later on in this guide.
@@ -56,11 +56,8 @@ Since this guide is intended as a "Hello, World" example, we'll skip editing the
 
 ![Default YAML](/images/guides/kots/default-yaml.png)
 
-
 The default YAML documents above the white line contain information for KOTS, preflight checks, customer configuration screen options, and support bundle analyzers for troubleshooting installs.
 You can learn about those [in the reference docs](/reference/v1beta1), but for now, let's click the "Save release" button in the bottom right.
-
-
 
 ### Save and Promote Release
 
@@ -141,7 +138,7 @@ The UIs of Prometheus, Grafana and Alertmanager have been exposed on NodePorts 3
 To access Grafana use the generated user:password of admin:[password] .
 
 To add worker nodes to this installation, run the following script on your other nodes
-    curl -sSL https://kurl.sh/cli-quickstart-puma-unstable/join.sh | sudo bash -s kubernetes-master-address=[ip-address]:6443 kubeadm-token=[token] kubeadm-token-ca-hash=sha256:[sha] kubernetes-version=1.16.4 docker-registry-ip=[ip-address]
+    curl -sSL https://kurl.sh/starter-kots-demo-unstable/join.sh | sudo bash -s kubernetes-master-address=[ip-address]:6443 kubeadm-token=[token] kubeadm-token-ca-hash=sha256:[sha] kubernetes-version=1.16.4 docker-registry-ip=[ip-address]
 
 ```
 
