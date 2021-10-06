@@ -37,7 +37,7 @@ This includes support against all patch releases of the corrersponding Kubernete
 
 ## Firewall Openings for Online Installations
 
-The following domains need to accessible from servers performing online KOTS installs.
+The following domains need to be accessible from servers performing online KOTS installs.
 IP addresses for these services can be found in [replicatedhq/ips](https://github.com/replicatedhq/ips/blob/master/ip_addresses.json).
 
 | Host                 | Existing Cluster Installation | Embedded Cluster Installation | Description                                                                                                                                                                                                                                                                                                                                                |
@@ -58,7 +58,7 @@ This excludes any specific and additional requirements imposed by software vendo
 
 In additional to a valid Kubernetes version, KOTS requires an existing [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to be available in the cluster.
 
-Root access on nodes or workstations is *not* required for installations to existing clusters. To perform an install, the user executing `kubectl kots install` will need either
+Root access on nodes or workstations is *not* required for installations to existing clusters. To perform an install, the user executing `kubectl kots install` will need either.
 
 ### Cluster RBAC
 

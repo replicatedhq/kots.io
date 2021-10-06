@@ -21,7 +21,7 @@ When an update has been downloaded (for online) or uploaded (for airgap), a new 
 [![New Version Available](/images/new-version-available.png)](/images/new-version-available.png)
 
 ## Comparing Changes Between Releases
-When there are a multiple versions of KOTS application, you can compare the changes between them by clicking the "Diff versions" in the right corner.
+When there are multiple versions of a KOTS application, you can compare the changes between them by clicking "Diff releases" in the right corner.
 
 [![Diff Releases](/images/diff-releases.png)](/images/diff-releases.png)
 
