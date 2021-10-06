@@ -9,7 +9,7 @@ All KOTS commands support a set of global flags to be used to connect to the clu
 
 | Flag | Type | Description |
 |---|---|---|
-| `-as` | string | Username to impersonate for the operation |
+| `--as` | string | Username to impersonate for the operation |
 | `--as-group` | stringArray | Group to impersonate for the operation, this flag can be repeated to specify multiple groups. |
 | `--cache-dir` | string | Default HTTP cache directory (default "~/.kube/http-cache") |
 | `--certificate-authority` | string  | Path to a cert file for the certificate authority |

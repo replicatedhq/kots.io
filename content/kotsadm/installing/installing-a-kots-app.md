@@ -23,7 +23,7 @@ Install the `kots` plugin for `kubectl` using the [instructions on the Getting S
 Before installing a KOTS application, there are a few considerations.
 
 ### Existing Cluster or Embedded Kubernetes
-KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift etc) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. 
+KOTS is designed to deliver Kubernetes applications to both existing Kubernetes clusters (i.e. GKE, AKS, EKS, OpenShift, etc.) or to modern Linux machines (bare metal or VMs) with an "embedded Kubernetes" option. 
 Most KOTS vendors support both options and require the end customer to determine their preferred method of deployment. 
 This guide will focus on existing cluster installs, with [embedded installations documented separately](/kotsadm/installing/installing-embedded-cluster/).  
 
