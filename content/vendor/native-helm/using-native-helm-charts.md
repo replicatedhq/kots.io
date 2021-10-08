@@ -6,7 +6,7 @@ weight: 70001
 isBeta: true
 ---
 
-Replicated KOTS already supports delivering [Helm charts](/vendor/helm/using-helm-charts/) as components of an application but until now, it did not support certain Helm features. With the new Helm workflow, you can now exercise more control over chart deployment via Helm hooks and weights. Currently, this is a beta feature and is not recommended for production.
+Replicated KOTS already supports delivering [Helm charts](/vendor/helm/using-helm-charts/) as components of an application but until now, it did not support certain Helm features. With the new native Helm workflow, you can now exercise more control over chart deployment via Helm hooks and weights. Currently, this is a beta feature and is not recommended for production.
 
 The native Helm chart support currently has the following limitations:
 * Only available for Helm V3.
