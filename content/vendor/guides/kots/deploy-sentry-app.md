@@ -1,4 +1,4 @@
-# Deploy a sample app
+# Deploy the example Sentry app
 
 Deploying and managing applications at all stages of the lifecycle is what Replicated is all about. Deploying an app is a fundamental step.
 
