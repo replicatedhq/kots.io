@@ -100,6 +100,12 @@ If you want to create another app, see [Creating an App](todo).
 
 1. Enter the password provided from the terminal output at the login screen
 
+1. Click "Choose a license file to upload"
+
+1. Select the license file that was downloaded earlier.
+
+1. Click "Upload License"
+
 ### Configure the application
 
 > The stock Nginx does not require any configuration to be set.
