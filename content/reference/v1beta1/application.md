@@ -74,19 +74,23 @@ An optional array of strings that reference images to be included in airgap bund
 While KOTS detects images from the PodSpecs in the application, some applications (Operators) may need to include additional images that will not be referenced until runtime.
 
 ## kubectlVersion
-This defaults to `latest` which will use the newest version from the list below.
-Valid values are:
-- 1.14.9
-- 1.16.3
-- 1.17.13 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.18.10 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.19.3 (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.20.4 (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
-- 1.21.2 (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
+KOTS maintains up-to-date patch versions of all supported kubelet minor versions.
+When unspecified, KOTS will use the newest version from the list of supported versions below.
 
-Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like  `>1.16.0 <1.17.0`).
+- 1.21.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
+- 1.20.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
+- 1.19.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.18.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.17.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.16.x
+- 1.14.x
+
+Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `1.16.x` or `>=1.16.0 <1.17.0`).
 The latest version within the provided range will be used.
 If the specified version or range does not match any supported versions, the latest version from the above list will be used.
+
+For backwards compatibility, exact versions are also supported.
+When an exact version is specified, KOTS will choose the matching major and minor version.
 
 ## kustomizeVersion
 This defaults to `latest`, but can be changed to `3.5.4` to use a specific version of kustomize to render your app's yaml.
