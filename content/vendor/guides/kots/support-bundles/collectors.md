@@ -1,6 +1,6 @@
 # Support Bundle Collectors
 
-Collectors extend the information captured in a support bundle. This information is useful for traige, especially where access to the environment is limited. By default,
+Collectors extend the information captured in a support bundle. This information is useful for triage, especially where access to the environment is limited.
 
 # In this Tutorial
 

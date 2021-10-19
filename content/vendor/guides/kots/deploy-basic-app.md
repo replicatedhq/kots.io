@@ -80,6 +80,8 @@ If you want to create another app, see [Creating an App](todo).
 
 ### Install and Access the Admin Console
 
+<!-- TODO: add screenshots -->
+
 1. Open a terminal and navigate to the environment where you wish to install the application. This may involve using `ssh` or configuring `kubectl`. See [this doc](todo) for more details
 
 1. Paste in the command copied from the Vendor Portal
