@@ -93,8 +93,17 @@ For backwards compatibility, exact versions are also supported.
 When an exact version is specified, KOTS will choose the matching major and minor version.
 
 ## kustomizeVersion
-This defaults to `latest`, but can be changed to `3.5.4` to use a specific version of kustomize to render your app's yaml.
-Currently only `3.5.4` is supported, but patch versions may change and newer versions may be added in the future.
+KOTS maintains up-to-date minor and patch versions of all supported kustomize major versions.
+When unspecified, KOTS will use the newest version from the list of supported versions below.
+
+- 3.x.x
+
+Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `3.x.x` or `>=3.0.0 <4.0.0`).
+The latest version within the provided range will be used.
+If the specified version or range does not match any supported versions, the latest version from the above list will be used.
+
+For backwards compatibility, exact versions are also supported.
+When an exact version is specified, KOTS will choose the matching major and minor version.
 
 ## requireMinimalRBACPrivileges
 When set to true, this will instruct the KOTS installer to create a namespace-scoped Role and RoleBinding, instead of the default cluster-scoped ClusterRole and ClusterRoleBinding.
