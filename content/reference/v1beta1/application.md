@@ -85,7 +85,7 @@ When unspecified, KOTS will use the newest version from the list of supported ve
 - 1.16.x
 - 1.14.x
 
-Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `1.16.x` or `>=1.16.0 <1.17.0`).
+An optional semver range can be specified, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `1.16.x` or `>=1.16.0 <1.17.0`).
 The latest version within the provided range will be used.
 If the specified version or range does not match any supported versions, the latest version from the above list will be used.
 
@@ -98,7 +98,7 @@ When unspecified, KOTS will use the newest version from the list of supported ve
 
 - 3.x.x
 
-Semver ranges are also supported, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `3.x.x` or `>=3.0.0 <4.0.0`).
+An optional semver range can be specified, as defined in [blang semver range](https://github.com/blang/semver#ranges) (like `3.x.x` or `>=3.0.0 <4.0.0`).
 The latest version within the provided range will be used.
 If the specified version or range does not match any supported versions, the latest version from the above list will be used.
 
