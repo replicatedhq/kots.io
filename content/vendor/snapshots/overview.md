@@ -1,20 +1,19 @@
 ---
 date: 2019-01-23
-linktitle: "Overview"
+linktitle: "Snapshots Overview"
 title: Snapshots
 weight: 1
 aliases:
   - /vendor/snapshots/
 ---
 
-An important part of the lifecycle of an application is backup and restore. 
-A KOTS application can optionally include manifest that define how to execute a snapshot and how to restore a previous snapshot.
+KOTS Snapshots is the backup and restore feature for applications deployed with KOTS. This is an optional feature, and requires that your license has the Allow Snapshots feature enabled.
 
-To enable Snapshots, KOTS uses the [Velero open source project](https://velero.io/). Velero is a mature, fully-featured application that can back up Kubernetes manifests and persistent volumes.
+To enable Snapshots, KOTS uses the [Velero open source project](https://velero.io/) on the backend to back up Kubernetes manifests and persistent volumes. Velero is a mature, fully-featured application.
 
-In addition to the default functionality that Velero provides, KOTS provides a detailed interface in the [Admin Console](/kotsadm/snapshots/overview) that can be used to manage the storage destination and schedule, and to perform and monitor the backup and restore process. This feature is only available for licenses that have the Allow Snapshots feature enabled.
+In addition to the default functionality that Velero provides, KOTS provides a detailed interface in the [admin console](/kotsadm/snapshots/overview) that can be used to manage the storage destination and schedule, and to perform and monitor the backup and restore process. Alternatively, you can manage these details using the KOTS CLI.
 
-Finally, KOTS exposes hooks that can be used to inject scripts to execute both [before and after a backup](/vendor/snapshots/configuring-backup) and [before and after a restore](/kotsadm/snapshots/restore).
+KOTS also exposes hooks that can be used to inject scripts to execute with Snapshots both [before and after a backup](/vendor/snapshots/configuring-backup) and [before and after a restore](/kotsadm/snapshots/restore).
 
 ## Velero version compatibility
 
