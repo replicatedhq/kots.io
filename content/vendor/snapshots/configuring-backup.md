@@ -25,7 +25,7 @@ This procedure explains how to install Snapshots on an existing cluster.
 
 1. To enable snapshots:
 
-  1. Add a backup resource to the application using the Velero manifest. The following minimal example YAML enables Snapshots in all instances of the application. When a snapshot is executed in the admin console or by a schedule based on this example, Snapshots will include all annotated volumes as the archive (see the additional information on annotating volumes later in this task).
+    1. Add a backup resource to the application using the Velero manifest. The following minimal example YAML enables Snapshots in all instances of the application. When a snapshot is executed in the admin console or by a schedule based on this example, Snapshots will include all annotated volumes as the archive (see the additional information on annotating volumes later in this task).
 
       Example:
 
@@ -38,9 +38,9 @@ This procedure explains how to install Snapshots on an existing cluster.
 
       ```
 
-  1. (Optional) Configure the [optional resources](/vendor/packaging/include-resources/) annotation in the manifest so that it can be dynamically enabled based on a license field or a config option, if desired.
+    1. (Optional) Configure the [optional resources](/vendor/packaging/include-resources/) annotation in the manifest so that it can be dynamically enabled based on a license field or a config option, if desired.
 
-    Note: if you are using multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in each application's manifest so that each application can be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
+      Note: if you are using multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in each application's manifest so that each application can be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
 
 1. Configure a backup for any volumes that require backup. By default, no volumes are included in the backup.  If any pods mount a volume that should be backed up, you must configure the backup with an annotation listing the specific volumes to include in the snapshot.
 
