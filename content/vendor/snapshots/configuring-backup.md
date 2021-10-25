@@ -5,27 +5,11 @@ title: Configuring Snapshots
 weight: 2
 ---
 
-The KOTS Snapshots feature is a backup and restore option that lets you define how to execute a snapshot and how to restore a previous snapshot. Snapshots offers additional backup and restore management features through the admin console interface and the KOTS CLI. It also provides hooks to inject scripts. For more information, see Snapshots Overview.
-
-This procedure explains how to install Snapshots on an existing cluster.
-
-**Prerequisites:**
-
-* KOTS licenses that have the Allow Snapshots feature enabled
-
-1. Install Velero. KOTS Snapshots uses the Velero open source project on the backend for backup and restore. The full procedure for this step is in the [Velero documentation](https://velero.io/docs/v1.5/basic-install/).
-
-    1. Requires access to a Kubernetes cluster, v1.12 or later, with DNS and container networking enabled.</li>
-    1. `kubectl` must be installed locally.
-    1. Install the correct version of Velero CLI for your operating system.
-    1. Install and configure the server components.
-    1. (Optional) Install and configure the command line auto-completion tool.
-
-    Note: For information about supported versions of Velero, see [Snapshots Overview](https://kots.io/vendor/snapshots/overview/).
+The KOTS Snapshots feature is a backup and restore option that lets you define a manifest for executing a snapshot and restoring a previous snapshot.
 
 1. To enable snapshots:
 
-    1. Add a backup resource to the application using the Velero manifest. The following minimal example YAML enables Snapshots in all instances of the application. When a snapshot is executed in the admin console or by a schedule based on this example, Snapshots will include all annotated volumes as the archive (see the additional information on annotating volumes later in this task).
+    1. Add a backup resource to the application using the Velero manifest. The following minimal example YAML enables Snapshots in the application. When a snapshot is executed in the admin console or by a schedule based on this example, Snapshots will include all annotated volumes in the archive (see the additional information on annotating volumes later in this task).
 
         Example:
 
@@ -42,7 +26,7 @@ This procedure explains how to install Snapshots on an existing cluster.
 
         Note: if you are using multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in each application's manifest so that each application can be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
 
-1. Configure a backup for any volumes that require backup. By default, no volumes are included in the backup.  If any pods mount a volume that should be backed up, you must configure the backup with an annotation listing the specific volumes to include in the snapshot.
+1. Configure a backup for any volumes that require backup. By default, no volumes are included in the backup. If any pods mount a volume that should be backed up, you must configure the backup with an annotation listing the specific volumes to include in the snapshot.
 
     The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
 
@@ -101,11 +85,9 @@ To exclude any manifest, add a `velero.io/exclude-from-backup` label to the mani
 
     ```
 
-1. (Optional) [Configure backup hooks](https://kots.io/vendor/snapshots/backup-hooks/).
-
-1. [Create a snapshot in the admin console](https://kots.io/kotsadm/snapshots/overview/#full-snapshots-recommended) or using the [KOTS CLI 'backup` command](https://kots.io/kots-cli/backup/).
+Next, you can [configure backup hooks](https://kots.io/vendor/snapshots/backup-hooks/).
 
 ## Resources
-  * [Velero API information](https://velero.io/docs/v1.5/api-types/)
+  * [Snapshots overview](https://kots.io/vendor/snapshots/overview/)
   * [Including and excluding resources](https://kots.io/vendor/packaging/include-resources/)
   * [About backup resources](https://kots.io/reference/v1beta1/backup/)
