@@ -5,7 +5,7 @@ title: Configuring Snapshots
 weight: 2
 ---
 
-The KOTS Snapshots feature is a backup and restore option that lets you define a manifest for executing a snapshot and restoring a previous snapshot.
+The KOTS Snapshots feature is a backup and restore option that lets you define a manifest for executing snapshots and restoring previous snapshots.
 
 1. To enable snapshots:
 
@@ -30,7 +30,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
     The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
 
-    For example, in the following Deployment, only one of the volumes will be backed up (pvc-volume). The volume named `scratch` is not included in the backup because its not listed in annotation on the pod spec.
+    For example, in the following deployment, only one of the volumes will be backed up (pvc-volume). The volume named `scratch` is not included in the backup because its not listed in annotation on the pod spec.
 
     ```yaml
     apiVersion: apps/v1

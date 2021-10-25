@@ -1,7 +1,7 @@
 ---
 date: 2019-01-23
-linktitle: "Snapshots Overview"
-title: Snapshots
+linktitle: "Snapshots overview"
+title: Snapshots overview
 weight: 1
 aliases:
   - /vendor/snapshots/
