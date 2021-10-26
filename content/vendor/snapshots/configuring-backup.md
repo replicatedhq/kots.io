@@ -9,7 +9,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
 1. To enable snapshots:
 
-    1. Add a backup resource to the application using the Velero manifest. The following minimal example YAML enables Snapshots in the application. When a snapshot is executed in the admin console or by a schedule based on this example, Snapshots will include all annotated volumes in the archive (see the additional information on annotating volumes later in this task).
+    1. Add a backup resource to the application using the Velero manifest. The following minimal YAML example enables Snapshots in the application. When a snapshot is executed in the admin console or by a schedule, Snapshots will include all annotated volumes in the archive (see the additional information on annotating volumes later in this task).
 
         Example:
 
@@ -22,7 +22,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
         ```
 
-    1. (Optional) Configure the [optional resources](/vendor/packaging/include-resources/) annotation in the manifest so that it can be dynamically enabled based on a license field or a config option, if desired.
+    1. Optional: Configure the [optional resources](/vendor/packaging/include-resources/) annotation in the manifest so that it can be dynamically enabled based on a license field or a config option.
 
         Note: if you are using multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in each application's manifest so that each application can be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
 
@@ -30,7 +30,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
     The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
 
-    For example, in the following deployment, only one of the volumes will be backed up (pvc-volume). The volume named `scratch` is not included in the backup because its not listed in annotation on the pod spec.
+    For example, in the following deployment, the `pvc-volume` is the only volume that is backed up. The `scratch` volume is not included in the backup because it is not listed in annotation on the pod spec.
 
     ```yaml
     apiVersion: apps/v1
@@ -68,7 +68,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
     ```
 
-1. (Optional) Configure manifest exclusions. By default, Velero also includes snapshots of all of the Kubernetes objects in the namespace.
+1. Optional: Configure manifest exclusions. By default, Velero also includes snapshots of all of the Kubernetes objects in the namespace.
 To exclude any manifest, add a `velero.io/exclude-from-backup` label to the manifest to be excluded.
 
     Example:
