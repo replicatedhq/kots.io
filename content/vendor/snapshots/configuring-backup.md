@@ -30,7 +30,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
 
     The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
 
-    For example, in the following deployment, the `pvc-volume` is the only volume that is backed up. The `scratch` volume is not included in the backup because it is not listed in annotation on the pod spec.
+    For example, in the following deployment, `pvc-volume` is the only volume that is backed up. The `scratch` volume is not included in the backup because it is not listed in annotation on the pod spec.
 
     ```yaml
     apiVersion: apps/v1
