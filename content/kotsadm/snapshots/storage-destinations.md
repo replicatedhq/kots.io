@@ -73,7 +73,14 @@ When configuring the admin console to store snapshots on an S3-Compatible storag
 | Secret Access Key (optional) | The AWS IAM Secret Access Key that is associated with the Access Key ID                                         |
 | Use Instance Role            | When enabled, instead of providing an Access Key ID and Secret Access Key, Velero will use an instance IAM role |
 
-## Additional resources
+## Network File System (NFS)
+
+> Introduced in KOTS v1.33.0
 
 * [Configuring NFS](/kotsadm/snapshots/configuring-nfs/)
+
+## Host Path
+
+> Introduced in KOTS v1.33.0
+
 * [Configuring a host path](/kotsadm/snapshots/configuring-hostpath/)
