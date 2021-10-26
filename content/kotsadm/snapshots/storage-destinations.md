@@ -5,18 +5,21 @@ weight: 9
 title: Compatible Backend Stores
 ---
 
-A KOTS snapshot supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/). 
-The Admin Console has built-in support for configuring AWS, GCP, Azure, S3-Compatible object store, NFS Server, or local host path as destinations.
+The KOTS Snapshot feature supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/).
+The admin console has built-in support for configuring AWS, GCP, Azure, S3-Compatible object store, NFS Server, or local host path as destinations.
 
-For embedded clusters, the Admin Console is pre-configured to store backups in the locally-provisioned object store. 
-This is sufficient for rollbacks and downgrades, but not a suitable configuration for disaster recovery. 
-Embedded cluster installations should visit the "Snapshots" page in the Admin Console and configure a storage destination that is external to the cluster.
+Although embedded clusters from kURL installations are preconfigured in the admin console to store backups in the locally-provisioned object store, this is sufficient for only rollbacks and downgrades. It is not a suitable configuration for disaster recovery. We recommend that you configure a storage destination that is external to the embedded cluster in the admin console.
 
-If the Admin Console is running with [minimal role-based-access-control (RBAC) privileges](/vendor/packaging/rbac/#namespace-scoped-access), the [`kots velero ensure-permissions` command](/kots-cli/velero/ensure-permissions/) will need to be leveraged, as the Admin Console requires access to the namespace in which Velero is installed. 
+If the admin console is running with [minimal role-based-access-control (RBAC) privileges](/vendor/packaging/rbac/#namespace-scoped-access), the [`kots velero ensure-permissions` command](/kots-cli/velero/ensure-permissions/) must be leveraged, as the admin console requires access to the namespace in which Velero is installed.
+
+## Prerequisites for cloud configurations
+
+* **Existing clusters:** Customers must [install Velero](https://velero.io/docs/v1.6/basic-install/) before configuring Snapshots.
+* **Embedded clusters:** The vendor can provide the Velero add-on in the embedded cluster installation. If it is not provided, the Snapshots configuration dialog in the admin console notifies you to [install Velero](https://velero.io/docs/v1.6/basic-install/) before you can proceed with the configuration.
 
 ## AWS
 
-When configuring the Admin Console to store snapshots on AWS, the following fields are available:
+When configuring the admin console to store snapshots on AWS, the following fields are available:
 
 | Name                         | Description                                                                                                     |
 |------------------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -29,7 +32,7 @@ When configuring the Admin Console to store snapshots on AWS, the following fiel
 
 ## GCP
 
-When configuring the Admin Console to store snapshots on GCP, the following fields are available:
+When configuring the admin console to store snapshots on GCP, the following fields are available:
 
 | Name            | Description                                                                                               |
 |-----------------|-----------------------------------------------------------------------------------------------------------|
@@ -39,7 +42,7 @@ When configuring the Admin Console to store snapshots on GCP, the following fiel
 
 ## Azure
 
-When configuring the Admin Console to store snapshots on a Azure, the following fields are available:
+When configuring the admin console to store snapshots on a Azure, the following fields are available:
 
 | Name                       | Description                                                                                                                                |
 |----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,12 +56,12 @@ When configuring the Admin Console to store snapshots on a Azure, the following 
 | Client Secret              | The Client Secret of a Service Principle with access to the target Container (required only for access via Service Principle)              |
 | Cloud Name                 | The Azure cloud for the target storage (options: AzurePublicCloud, AzureUSGovernmentCloud, AzureChinaCloud, AzureGermanCloud)              |
 
-Only connections with Service Principles are supported at this time. 
+Only connections with Service Principles are supported at this time.
 Please see the [Velero Plugin for Microsoft Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure) documentation for more detail on authentication methods and setting up Azure.
 
 ## S3 Compatible
 
-When configuring the Admin Console to store snapshots on an S3-Compatible storage, the following fields are available:
+When configuring the admin console to store snapshots on an S3-Compatible storage, the following fields are available:
 
 | Name                         | Description                                                                                                     |
 |------------------------------|-----------------------------------------------------------------------------------------------------------------|
@@ -70,27 +73,7 @@ When configuring the Admin Console to store snapshots on an S3-Compatible storag
 | Secret Access Key (optional) | The AWS IAM Secret Access Key that is associated with the Access Key ID                                         |
 | Use Instance Role            | When enabled, instead of providing an Access Key ID and Secret Access Key, Velero will use an instance IAM role |
 
-## Network File System (NFS)
+## Additional resources
 
-> Introduced in KOTS v1.33.0
-
-When configuring the Admin Console to store snapshots on an NFS server, the following fields are available:
-
-| Name   | Description                                  |
-|--------|----------------------------------------------|
-| Server | The hostname or IP address of the NFS server |
-| Path   | The path that is exported by the NFS server  |
-
-An overview for configuring NFS is available [here](/kotsadm/snapshots/configuring-nfs/).
-
-## Host Path
-
-> Introduced in KOTS v1.33.0
-
-When configuring the Admin Console to store snapshots on a local host path, the following fields are available:
-
-| Name      | Description                   |
-|-----------|-------------------------------|
-| Host Path | A local host path on the node |
-
-An overview for configuring a Host Path is available [here](/kotsadm/snapshots/configuring-hostpath/).
+* [Configuring NFS](/kotsadm/snapshots/configuring-nfs/)
+* [Configuring a host path](/kotsadm/snapshots/configuring-hostpath/)
