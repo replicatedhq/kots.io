@@ -14,8 +14,8 @@ If the admin console is running with [minimal role-based-access-control (RBAC) p
 
 ## Prerequisites for cloud configurations
 
-* **Existing clusters:** Customers must [install Velero](https://velero.io/docs/v1.6/basic-install/) before configuring Snapshots.
-* **Embedded clusters:** The vendor can provide the Velero add-on in the embedded cluster installation. If it is not provided, the Snapshots configuration dialog in the admin console notifies you to [install Velero](https://velero.io/docs/v1.6/basic-install/) before you can proceed with the configuration.
+* Existing clusters: Customers must [install Velero](https://velero.io/docs/v1.6/basic-install/) before configuring Snapshots.
+* Embedded clusters: The vendor can provide the Velero add-on in the embedded cluster installation. If it is not provided, the Snapshots configuration dialog in the admin console notifies you to [install Velero](https://velero.io/docs/v1.6/basic-install/) before you can proceed with the configuration.
 
 ## AWS
 
