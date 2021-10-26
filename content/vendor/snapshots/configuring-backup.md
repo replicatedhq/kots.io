@@ -1,89 +1,93 @@
 ---
 date: 2019-01-23
-linktitle: "Configuring Backup"
-title: Configuring Backup
+linktitle: "Configuring Snapshots"
+title: Configuring Snapshots
 weight: 2
 ---
 
-There are 2 required steps to enable snapshots in a KOTS application:
-1. Add the [Backup](/reference/v1beta1/backup) resource to your KOTS application
-1. Identify the required volumes to include in the backup
+The KOTS Snapshots feature is a backup and restore option that lets you define a manifest for executing snapshots and restoring previous snapshots.
 
-## Add a Backup Resource
+1. To enable snapshots:
 
-To enable snapshots, add a Backup resource to the application.
-The minimal example of this is:
+    1. Add a backup resource to the application using the Velero manifest. The following minimal YAML example enables Snapshots in the application. When a snapshot is executed in the admin console or by a schedule, Snapshots will include all annotated volumes in the archive (see the additional information on annotating volumes later in this task).
 
-```yaml
-apiVersion: velero.io/v1
-kind: Backup
-metadata:
-  name: backup
-spec: {}
-```
+        Example:
 
-The above YAML will enable snapshots in all instances of the application.
-When a snapshot is executed in the Admin Console or by a schedule, it will simply include all annotated volumes as the archive (more on annotating volumes below).
-This manifest supports the [optional resources](/vendor/packaging/include-resources/) annotation so that it can be dynamically enabled based on a license field or a config option, if desired.
+        ```yaml
+        apiVersion: velero.io/v1
+        kind: Backup
+        metadata:
+          name: backup
+        spec: {}
 
-In the case of multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in order to be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
+        ```
 
-## Identify Volumes
+    1. Optional: Configure the [optional resources](/vendor/packaging/include-resources/) annotation in the manifest so that it can be dynamically enabled based on a license field or a config option.
 
-By default, no volumes will be included in the backup.
-Any pod that mounts a volume that should be backed up must also include an annotation listing which volumes to include in the snapshot.
-The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
+        Note: if you are using multiple applications, each application should have a [backup resource](/reference/v1beta1/backup/) in each application's manifest so that each application can be included in the [Full Snapshot](/kotsadm/snapshots/overview/#full-snapshots-recommended) backup.
 
-For example, in the following Deployment, only one of the volumes will be backed up (pvc-volume).
-The volume named `scratch` is not included in the backup because its not listed in annotation on the pod spec.
+1. Configure a backup for any volumes that require backup. By default, no volumes are included in the backup. If any pods mount a volume that should be backed up, you must configure the backup with an annotation listing the specific volumes to include in the snapshot.
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: sample
-  labels:
-    app: foo
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: foo
-  template:
+    The annotation name is `backup.velero.io/backup-volumes` and the value is a comma separated list of volumes to include in the backup.
+
+    For example, in the following deployment, `pvc-volume` is the only volume that is backed up. The `scratch` volume is not included in the backup because it is not listed in annotation on the pod spec.
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
+      name: sample
       labels:
         app: foo
-      annotations:
-        backup.velero.io/backup-volumes: pvc-volume
     spec:
-      containers:
-      - image: k8s.gcr.io/test-webserver
-        name: test-webserver
-        volumeMounts:
-        - name: pvc-volume
-          mountPath: /volume-1
-        - name: scratch
-          mountPath: /volume-2
-      volumes:
-      - name: pvc-volume
-        persistentVolumeClaim:
-          claimName: test-volume-claim
-      - name: scratch
-        emptyDir: {}
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: foo
+      template:
+        metadata:
+          labels:
+            app: foo
+          annotations:
+            backup.velero.io/backup-volumes: pvc-volume
+        spec:
+          containers:
+          - image: k8s.gcr.io/test-webserver
+            name: test-webserver
+            volumeMounts:
+            - name: pvc-volume
+              mountPath: /volume-1
+            - name: scratch
+              mountPath: /volume-2
+          volumes:
+          - name: pvc-volume
+            persistentVolumeClaim:
+              claimName: test-volume-claim
+          - name: scratch
+            emptyDir: {}
 
-## Application Manifests
+    ```
 
-In addition to volume data, Velero will also snapshot all of the Kubernetes objects in the namespace.
-Any manifest that should not be included in the snapshot should include a `velero.io/exclude-from-backup` label, for example:
+1. Optional: Configure manifest exclusions. By default, Velero also includes snapshots of all of the Kubernetes objects in the namespace.
+To exclude any manifest, add a `velero.io/exclude-from-backup` label to the manifest to be excluded.
 
-```yaml
-apiVersion: apps/v1
-kind: Secret
-metadata:
-  name: sample
-  labels:
-    velero.io/exclude-from-backup: "true"
-stringData:
-  uri: Secret To Not Include
-```
+    Example:
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Secret
+    metadata:
+      name: sample
+      labels:
+        velero.io/exclude-from-backup: "true"
+    stringData:
+      uri: Secret To Not Include
+
+    ```
+
+Next, you can [configure backup hooks](https://kots.io/vendor/snapshots/backup-hooks/).
+
+## Resources
+  * [Snapshots overview](https://kots.io/vendor/snapshots/overview/)
+  * [Including and excluding resources](https://kots.io/vendor/packaging/include-resources/)
+  * [About backup resources](https://kots.io/reference/v1beta1/backup/)
