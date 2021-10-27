@@ -82,7 +82,7 @@ spec:
 The Admin Console runs on the customer's cluster, and provides real-time entitlement information through the following endpoint: 
 >`/license/v1/license`
 
-endpoint. To query entitlements at runtime, simply execute an http request to the following location: 
+To query entitlements at runtime, simply execute an http request to the following location: 
 >`http://kotsadm:3000/license/v1/license`
 
 The response will be returned in YAML format. 
