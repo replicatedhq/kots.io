@@ -79,7 +79,7 @@ spec:
 ```
 
 ### Querying Entitlements at Runtime
-The Admin Console runs on the customer's cluster, and provides real-time entitlement information through the following endpoint: 
+The admin console runs on the customer's cluster, and provides real-time entitlement information through the following endpoint: 
 >`/license/v1/license`
 
 To query entitlements at runtime, simply execute an http request to the following location: 
