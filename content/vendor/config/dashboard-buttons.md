@@ -45,7 +45,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-     app.kubernetes.io/name: "my-appication"
+     app.kubernetes.io/name: "my-application"
   descriptor:
     links:
       - description: "Open My Application"
