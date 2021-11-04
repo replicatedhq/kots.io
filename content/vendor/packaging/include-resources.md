@@ -68,7 +68,7 @@ metadata:
 ```
 #### Please Note 
 
-By default, if neither `kots.io/exclude` nor `kots.io/include` annotations are present on a resource, the resource will be included.
+By default, if neither `kots.io/exclude` nor `kots.io/when` annotations are present on a resource, the resource will be included.
 
 Only one of the following annotations can be present on a resource. If both are present, the `kots.io/exclude` annotation will be applied, and the `kots.io/when` annotation will be ignored.
 
@@ -128,7 +128,7 @@ kind: Statefulset
 metadata:
   name: postgresql
   annotations:
-    "kots.io/include": '{{repl ConfigOptionEquals "install_postgres" "1" }}'
+    "kots.io/when": '{{repl ConfigOptionEquals "install_postgres" "1" }}'
   labels:
     app: postgresql
 spec:
