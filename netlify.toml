@@ -36,7 +36,7 @@
 
 [[redirects]]
   from = "/vendor/helm/helm-v3/"
-  to = "/vendor/helm/helm-processing/"
+  to = "/vendor/replicated-helm/helm-processing/"
   status = 301
   force = true
 

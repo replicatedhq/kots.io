@@ -6,9 +6,11 @@ description: "HelmChart defines an instance of a chart"
 weight: 6
 ---
 
-A KOTS HelmChart custom resource enables KOTS to process and [deploy Helm charts as part of a Vendor distributed application](/vendor/helm/using-helm-charts/). 
+A KOTS HelmChart custom resource enables KOTS to process and deploy Helm charts as part of a Vendor distributed application [using the Replicated Helm workflow for existing applications](/vendor/replicated-helm/using-helm-charts/) or [the native Helm workflow for new applications](/vendor/native-helm/using-native-helm-charts/). 
 HelmChart custom resources are required for KOTS to deploy Helm charts (but not necessary if only raw K8s manifests are being deployed). 
 This spec references a required `.tgz` export of the Helm chart resources and provides the necessary instructions for processing and preparing the chart for deployment.
+
+By default, the HelmChart CR uses the Replicated Helm implementation, which uses KOTS to render and deploy Helm charts. For new installations, you can set `useHelmInstall: true` in the spec to use the native Helm workflow.
 
 **Deploying multiple instance of the same chart**:
 Vendors must provide additional HelmChart CR for each instance of the chart that is to be deployed as part of the application. However, only one `.tgz` of the chart needs to be included in the release.
@@ -29,6 +31,9 @@ spec:
 
   # helmVersion identifies the Helm Version used to render the Chart. Default is v2.
   helmVersion: v2
+
+  # useHelmInstall identifies whether this Helm chart will use the Replicated Helm implementation or native Helm. Default is false.
+  useHelmInstall: true
 
   # values are used in the customer environment, as a pre-render step
   # these values will be supplied to helm template
@@ -88,8 +93,8 @@ For more options here, check out the [Helm pull request](https://github.com/helm
 
 ## exclude
 
-The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/helm/optional-charts). 
-During [processing](/vendor/helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
+The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/replicated-helm/optional-charts). 
+During [processing](/vendor/replicated-helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
 
 ## optionalValues
 
@@ -97,7 +102,7 @@ The `optionalValues` array is provided for advanced use cases to make value over
 Not all charts treat `""` and missing as the same value. 
 If it's required to only optionally have a value set, and an empty string does not provide the same functionality as "not set", then use the values here.
 
-See the guide for using [HelmChart optionalValues](/vendor/helm/optional-value-keys/).
+See the guide for using [HelmChart optionalValues](/vendor/replicated-helm/optional-value-keys/).
 
 ### `optionalValues[].when`
 

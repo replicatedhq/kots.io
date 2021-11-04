@@ -3,10 +3,9 @@ date: 2021-10-06
 linktitle: "Using Native Helm Charts"
 title: Using Native Helm Charts
 weight: 70001
-isBeta: true
 ---
 
-Replicated KOTS already supports delivering [Helm charts](/vendor/helm/using-helm-charts/) as components of an application but until now, it did not support certain Helm features. With the new native Helm workflow, you can now exercise more control over chart deployment via Helm hooks and weights. Currently, this is a beta feature and is not recommended for production.
+Replicated KOTS already supports delivering [Helm charts](/vendor/replicated-helm/using-helm-charts/) as components of an application but until now, it did not support certain Helm features. With the new native Helm workflow, you can now exercise more control over chart deployment via Helm hooks and weights.
 
 The native Helm chart support currently has the following limitations:
 * Only available for Helm V3.
@@ -16,9 +15,13 @@ The native Helm chart support currently has the following limitations:
 * Hook weights below -9999. All hook weights must be set to a value above -9999 to ensure the Replicated image pull secret is deployed before any resources are pulled.
 * Not supported with the [GitOps Workflow](/kotsadm/gitops/).
 
+> Currently, migrating existing applications to the native Helm implementation is not supported. Vendors who are interested in delivering applications using the native Helm workflow can promote releases to a new channel for new customer installations.
+
 ## Enabling and using native Helm chart support
 
-To access this feature, you must first contact Replicated so the feature can be enabled for your team. Once enabled, you can leverage this workflow by setting `useHelmInstall: true` in the `HelmChart` CRD. You can then promote these changes to a channel and install new instances of the application with the new Helm workflow. For any existing installations of the application, you can update these via the Admin Console or KOTS CLI. Once updated, any new helm charts added to the application will be deployed with this feature.
+To leverage this workflow, you can set `useHelmInstall: true` in the `HelmChart` CRD. You can then promote these changes to a channel and install new instances of the application with the new Helm workflow. For any existing installations of the application, you can update these via the Admin Console or KOTS CLI. Once updated, any new helm charts added to the application will be deployed with this feature.
+
+For more information on adding charts to KOTS applications, see our docs on [optional charts](/vendor/replicated-helm/optional-charts) and the [Helm docs](https://helm.sh/docs/topics/charts/).
 
 ![Use Helm Install Flag](/images/vendor-use-helm-install-flag.png)
 

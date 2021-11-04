@@ -31,7 +31,7 @@ Most applications require some amount of customer supplied configuration values.
 These values can be collected during the installation process by specifying a [config KOTS custom resource](/reference/v1beta1/config) to [create a config screen](/vendor/config/config-screen/), and provided to the application by [templating your Kubernetes manifests](/vendor/packaging/template-functions).
 
 ## Helm Chart Packaging
-If your application is already templated and packaged as a Helm chart (or includes Helm charts), then you can follow our documentation on [packaging a Helm chart as a KOTS application](/vendor/helm/using-helm-charts/).
+If your application is already templated and packaged as a Helm chart (or includes Helm charts), then you can follow our documentation on [packaging a Helm chart as a KOTS application](/vendor/native-helm/using-native-helm-charts/).
 
 ## Advanced Features
 KOTS vendors can invoke several other more advanced features by providing additional KOTS custom resources. 

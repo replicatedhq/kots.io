@@ -8,7 +8,7 @@ weight: 20560
 For all Replicated Business & Enterprise Plans, Replicated Vendor Portal automatically builds airgap bundles for every promoted release. 
 This is generally done by processing the application YAML manifests and exporting all of the images listed in the manifests and bundling them with the manifests. 
 In order to ensure that a Helm chart based KOTS application is able to be fully built as an airgapped package, Replicated needs a `helm template` version of the application manifests that include all optional components/images as `enabled`. 
-This can be tricky for Helm chart based KOTS applications as they might have [optional charts](/vendor/helm/optional-charts) that are not included by default.
+This can be tricky for Helm chart based KOTS applications as they might have [optional charts](/vendor/replicated-helm/optional-charts) that are not included by default.
 
 To solve this problem, the KOTS [HelmChart custom resource](/reference/v1beta1/helmchart/) contains a `builder` attribute for vendors to provide values that will `helm template` to the full manifest.
 
