@@ -1,7 +1,7 @@
 ---
 date: 2019-12-27
-linktitle: "Using Helm Charts"
-title: Using Helm Charts
+linktitle: "Using Replicated Helm Charts"
+title: Using Replicated Helm Charts
 aliases:
   - /vendor/replicated-helm/
 weight: 20500
