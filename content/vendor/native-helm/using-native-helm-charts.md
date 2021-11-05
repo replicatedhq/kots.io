@@ -1,7 +1,7 @@
 ---
 date: 2021-10-06
-linktitle: "Using Native Helm Charts"
-title: Using Native Helm Charts
+linktitle: "Installing Native Helm Charts"
+title: Installing Native Helm Charts
 weight: 70001
 ---
 
