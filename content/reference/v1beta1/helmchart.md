@@ -6,11 +6,11 @@ description: "HelmChart defines an instance of a chart"
 weight: 6
 ---
 
-A KOTS HelmChart custom resource enables KOTS to process and deploy Helm charts as part of a Vendor distributed application [using the Replicated Helm workflow for existing applications](/vendor/replicated-helm/using-helm-charts/) or [the native Helm workflow for new applications](/vendor/native-helm/using-native-helm-charts/). 
+A KOTS HelmChart custom resource enables KOTS to process and deploy Helm charts as part of a Vendor distributed application [using the Replicated Helm installation for existing applications](/vendor/replicated-helm/using-helm-charts/) or [the native Helm installation for new applications](/vendor/native-helm/using-native-helm-charts/). 
 HelmChart custom resources are required for KOTS to deploy Helm charts (but not necessary if only raw K8s manifests are being deployed). 
 This spec references a required `.tgz` export of the Helm chart resources and provides the necessary instructions for processing and preparing the chart for deployment.
 
-By default, the HelmChart CR uses the Replicated Helm implementation, which uses KOTS to render and deploy Helm charts. For new installations, you can set `useHelmInstall: true` in the spec to use the native Helm workflow.
+By default, the HelmChart CR uses the Replicated Helm installation, which uses KOTS to render and deploy Helm charts. For new installations, you can set `useHelmInstall: true` in the spec to use the native Helm installation.
 
 **Deploying multiple instance of the same chart**:
 Vendors must provide additional HelmChart CR for each instance of the chart that is to be deployed as part of the application. However, only one `.tgz` of the chart needs to be included in the release.
@@ -32,7 +32,7 @@ spec:
   # helmVersion identifies the Helm Version used to render the Chart. Default is v2.
   helmVersion: v2
 
-  # useHelmInstall identifies whether this Helm chart will use the Replicated Helm implementation or native Helm. Default is false.
+  # useHelmInstall identifies whether this Helm chart will use the Replicated Helm installation (false) or native Helm installation (true). Default is false.
   useHelmInstall: true
 
   # values are used in the customer environment, as a pre-render step
