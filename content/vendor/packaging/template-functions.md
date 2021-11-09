@@ -107,7 +107,7 @@ This example demonstrates how to generate a CA, a cert, and a key using [Sprig](
 
 {{< warning title="Prerequisite" >}}
 * This requires KOTS 1.26.0 or later.
-* Default values are treated as ephemeral. The following certificate chain will be recalculated each time the application config is modified. Be sure your application can handle dynamically updating these parameters.
+* Default values are treated as ephemeral. The following certificate chain is recalculated each time the application configuration is modified. Be sure that your application can handle updating these parameters dynamically.
 {{< /warning >}}
 
 ```yaml
