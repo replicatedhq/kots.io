@@ -20,13 +20,10 @@ Continuing, choose the Git provider and hostname (if applicable), then click on 
 Enter the repo details, and optionally branch and path to commit to in the repo.
 
 Finally, select the action to take when there's an update.
-The Admin Console can either create a new commit to the branch specified, or it can create a Pull/Merge Request (if supported by the provider).
-On this screen, there's an option to choose what type of asset to deliver to the git repo.
+The Admin Console can create a new commit to the branch specified.
 
+On this screen, there's an option to choose what type of asset to deliver to the git repo.
 Selecting "Rendered YAML" will result in a single, multi-doc YAML file being committed to the repo.
-This is useful for legacy clusters, or GitOps deploy tools that don't yet support [Kustomize](https://kustomize.io).
-For modern (> 1.14) Kubernetes clusters and tools that run `kubectl` 1.14 or later, it's recommended to choose the "Full Kustomizable Output" option.
-This will create a `kustomization.yaml` in the commit/pull request that can then be passed to `kubectl apply -k`.
 
 ![GitOps Action](/images/gitops-action.png)
 
