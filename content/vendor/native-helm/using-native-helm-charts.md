@@ -9,7 +9,7 @@ Replicated KOTS already supports delivering [Helm charts](/vendor/replicated-hel
 
 The native Helm chart support currently has the following limitations:
 * Only available for Helm V3.
-* Only supported for new charts added to an existing application or a new application with new charts.
+* Only supported for new installations.
 * Not supported on existing charts deployed on existing applications.
 * The pre-rollback, post-rollback, and test hooks are not supported.
 * Hook weights below -9999. All hook weights must be set to a value above -9999 to ensure the Replicated image pull secret is deployed before any resources are pulled.

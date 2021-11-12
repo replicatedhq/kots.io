@@ -32,7 +32,9 @@ spec:
   # helmVersion identifies the Helm Version used to render the Chart. Default is v2.
   helmVersion: v2
 
-  # useHelmInstall identifies whether this Helm chart will use the Replicated Helm installation (false) or native Helm installation (true). Default is false.
+  # useHelmInstall identifies whether this Helm chart will use the 
+  # Replicated Helm installation (false) or native Helm installation (true). Default is false.
+  # Native Helm installations are only available for Helm v3 charts.
   useHelmInstall: true
 
   # values are used in the customer environment, as a pre-render step
