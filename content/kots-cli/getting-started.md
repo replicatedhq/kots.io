@@ -73,5 +73,5 @@ Provides wrapper functionality to interface with the upstream source.
 Prints the current version of the kots Kubectl plugin and provides a command for updating if a new version is available.
 
 ## Next Steps
-To give KOTS a try, head over to the KOTS Helm guide.
-If you want to see what it’s like to distribute a KOTS application, head to the KOTS Vendor guide.
+To give KOTS a try, head over to the [KOTS Helm guide](/vendor/helm/).
+If you want to see what it’s like to distribute a KOTS application, head to the [KOTS Vendor guide](/vendor/).
