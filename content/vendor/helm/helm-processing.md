@@ -9,7 +9,7 @@ The Replicated Helm installation is compatible with both Helm V2 and Helm V3 as 
 Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool. 
 The Replicated Helm installation creates deployable YAML by leveraging the same functionality that the `helm template` command uses (with some extended functionality for [specific Helm hooks](/vendor/packaging/cleaning-up-jobs/#helm-charts)).
 
-Except in the case of [Helm as KOTS application airgap installations](/vendor/replicated-helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment (via Kots CLI or as part of the Admin Console). 
+Except in the case of [Helm as KOTS application airgap installations](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment (via Kots CLI or as part of the Admin Console). 
 This means that the customer supplied values, license values and existing values can be used to create the deployable manifests. In either scenario the resulting deployment is comprised of raw Kubernetes manifests. 
 By doing this, cluster operator's are always able to view the exact diff between what is currently deployed and what the update will deploy. 
 This level of change management provides the necessary transparency to provide the level of assurance that cluster operators require.

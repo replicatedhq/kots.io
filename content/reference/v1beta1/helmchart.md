@@ -6,7 +6,7 @@ description: "HelmChart defines an instance of a chart"
 weight: 6
 ---
 
-A KOTS HelmChart custom resource enables KOTS to process and deploy Helm charts as part of a Vendor distributed application [using the Replicated Helm installation for existing applications](/vendor/replicated-helm/using-helm-charts/) or [the native Helm installation for new applications](/vendor/native-helm/using-native-helm-charts/). 
+A KOTS HelmChart custom resource enables KOTS to process and deploy Helm charts as part of a Vendor distributed application [using the Replicated Helm installation for existing applications](/vendor/helm/using-replicated-helm-charts/) or [the native Helm installation for new applications](/vendor/native-helm/using-native-helm-charts/). 
 HelmChart custom resources are required for KOTS to deploy Helm charts (but not necessary if only raw K8s manifests are being deployed). 
 This spec references a required `.tgz` export of the Helm chart resources and provides the necessary instructions for processing and preparing the chart for deployment.
 
@@ -95,8 +95,8 @@ For more options here, check out the [Helm pull request](https://github.com/helm
 
 ## exclude
 
-The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/replicated-helm/optional-charts). 
-During [processing](/vendor/replicated-helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
+The `exclude` attribute is a [template-parsable](/reference/template-functions/contexts/) value for making [optional charts](/vendor/helm/optional-charts). 
+During [processing](/vendor/helm/helm-processing), KOTS will render this field and exclude the entire chart if the output of this field can be parsed as a boolean evaluating to `true`.
 
 ## optionalValues
 
@@ -104,7 +104,7 @@ The `optionalValues` array is provided for advanced use cases to make value over
 Not all charts treat `""` and missing as the same value. 
 If it's required to only optionally have a value set, and an empty string does not provide the same functionality as "not set", then use the values here.
 
-See the guide for using [HelmChart optionalValues](/vendor/replicated-helm/optional-value-keys/).
+See the guide for using [HelmChart optionalValues](/vendor/helm/optional-value-keys/).
 
 ### `optionalValues[].when`
 

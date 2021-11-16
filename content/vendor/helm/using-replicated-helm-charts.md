@@ -3,16 +3,11 @@ date: 2019-12-27
 linktitle: "Installing with Replicated KOTS"
 title: Installing with Replicated KOTS
 aliases:
-  - /vendor/replicated-helm/
-weight: 20500
+  - /vendor/helm/
+weight: 20503
 ---
 
-Helm is a popular package manager for Kubernetes applications. Replicated KOTS supports delivering Helm charts as an enterprise application, or including Helm charts as components of an application. A KOTS application can support more than one Helm chart, and can support more than a single instance of any Helm chart.
-
-> The Replicated Helm installation uses KOTS to render and deploy Helm charts. Alternatively, for new applications, the [native Helm installation](/vendor/native-helm/) is the preferred method because it supports more features of Helm, such as hooks and weights.
-
-To include a Helm chart, start by retrieving the chart `.tgz` package. 
-For Helm charts that you do not control, these can be quickly downloaded using the `helm` CLI.
+By default, Replicated KOTS renders Helm chart templates and deploys them as standard Kubernetes manifests. To include a Helm chart, start by retrieving the chart `.tgz` package. For Helm charts that you do not control, these can be quickly downloaded using the `helm` CLI.
 
 ```shell
 helm repo update

@@ -8,7 +8,7 @@ draft: false
 ---
 **Alpha Feature:** *Installing and managing Helm charts via Kotsadm is still an Alpha feature, please open [issues](https://github.com/replicatedhq/kots/issues) with any problems you run into.*
 
-Software Vendors interested in delivering a Helm chart to customers should consider [delivering their Helm chart as a KOTS application](/vendor/replicated-helm/using-helm-charts/).
+Software Vendors interested in delivering a Helm chart to customers should consider [delivering their Helm chart as a KOTS application](/vendor/helm/using-replicated-helm-charts/).
 
 This guide is intended for Cluster Operators interested in using Kotsadm to manage their Helm chart deployments (either directly or through an automated GitOps pipeline).
 The most direct and simple way to install a KOTS application to a Kubernetes cluster is to deploy to an existing cluster that contains nodes that can access the internet.
