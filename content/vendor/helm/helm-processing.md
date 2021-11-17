@@ -1,7 +1,7 @@
 ---
 date: 2020-01-03
-linktitle: "Helm Processing"
-title: Helm Processing
+linktitle: "Replicated Helm Processing"
+title: Replicated Helm Processing
 weight: 20590
 ---
 
