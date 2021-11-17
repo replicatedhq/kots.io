@@ -9,7 +9,7 @@ With the native Helm installation, you can exercise more control over chart depl
 * Only available for Helm V3.
 * Only supported for new installations.
 * Not supported on existing charts deployed on existing applications.
-* The pre-rollback, post-rollback, and test hooks are not supported.
+* The test hook is not supported.
 * Hook weights below -9999. All hook weights must be set to a value above -9999 to ensure the Replicated image pull secret is deployed before any resources are pulled.
 * Not supported with the [GitOps Workflow](/kotsadm/gitops/).
 
@@ -34,6 +34,10 @@ The following hooks are currently supported:
 * post-install - executes after resources are installed.
 * pre-upgrade - executes after resources are rendered but before any resources are upgraded.
 * post-upgrade - executes after resources are upgraded.
+
+The following hooks may be used but no actions will be taken by Replicated:
+* pre-rollback - executes after resources are rendered but before any resources are rolled back.
+* post-rollback - executes after resources are rolled back.
 * pre-delete - executes before any resources are deleted.
 * post-delete - executes after resources are deleted.
 
