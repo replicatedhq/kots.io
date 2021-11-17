@@ -2,7 +2,7 @@
 date: 2021-10-26
 linktitle: "Native Helm Charts Install Ordering"
 title: Native Helm Charts Install Ordering
-weight: 20502
+weight: 20570
 ---
 
 When deploying applications with native Helm charts, your charts are deployed to the cluster in parallel with any other Kubernetes YAML within your application.

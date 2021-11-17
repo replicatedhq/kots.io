@@ -4,7 +4,7 @@ linktitle: "Installing with Replicated KOTS"
 title: Installing with Replicated KOTS
 aliases:
   - /vendor/helm/
-weight: 20503
+weight: 20580
 ---
 
 By default, Replicated KOTS renders Helm chart templates and deploys them as standard Kubernetes manifests. To include a Helm chart, start by retrieving the chart `.tgz` package. For Helm charts that you do not control, these can be quickly downloaded using the `helm` CLI.

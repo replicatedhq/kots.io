@@ -2,7 +2,7 @@
 date: 2021-10-06
 linktitle: "Installing with Native Helm"
 title: Installing with Native Helm
-weight: 20501
+weight: 20560
 ---
 
 With the native Helm installation, you can exercise more control over chart deployment via Helm hooks and weights. The native Helm chart support currently has the following limitations:

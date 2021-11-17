@@ -2,7 +2,7 @@
 date: 2020-01-03
 linktitle: "Helm Processing"
 title: Helm Processing
-weight: 20505
+weight: 20590
 ---
 
 The Replicated Helm installation is compatible with both Helm V2 and Helm V3 as it does not rely on Tiller to deploy the chart into the cluster. 
