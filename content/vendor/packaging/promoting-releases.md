@@ -33,11 +33,16 @@ Additionally, each promoted release must be given a required status (required or
 
 ## Semantic Versioning
 
-This feature is available in Admin Console version 1.57.0 and later.
-The version label given to a release can be in the [semantic version](https://semver.org) format.
-If the label can be parsed as a semantic version, it will be used for sequencing of releases during updates in [Admin Console](/kotsadm/updating/updating-kots-apps/#checking-for-updates).
-The settings of releases with semantic versions will also be editable.
-Releases without semantic versions will be sequenced in the order of their creation.
-As best practice, semantic version labels should be used consistently on any given channel.
-If semantic version behavior is desired on a channel, version label format can be enforced by enabling the `Require semver for releases promoted to this channel` toggle on that channel.
-This toggle is merely a guardrail and is not necessary to use the feature.
+Semantic versioning is available in the admin console version 1.57.0 and later.
+
+You can use the semantic version format for the version label that you assign to a release in the admin console. For more information about semantic versioning, see [Semantic Versioning 2.0.0](https://semver.org). 
+
+If the version label that you assign to a channel is in the semantic version format, the admin console uses the version label for sequencing of releases during updates.
+For releases that do not use semantic versioning, the admin console sequences them in the order of their creation.
+For more information about checking for updates in the admin console, see [Checking for Updates](/kotsadm/updating/updating-kots-apps/#checking-for-updates).
+
+You can also edit the settings of releases that use semantic versioning.
+
+If you use semantic versioning on a channel, we recommend that you always use semantic versioning on that channel.
+To require that a channel always uses semantic versioning, you can enfore the version label format by enabling the `Require semver for releases promoted to this channel` toggle for that channel.
+This toggle is disabled by default.
