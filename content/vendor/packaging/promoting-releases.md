@@ -33,7 +33,7 @@ Additionally, each promoted release must be given a required status (required or
 
 ## Semantic Versioning
 
-Semantic versioning is available in the admin console version 1.57.0 and later.
+Semantic versioning is available in KOTS v1.57.0 and later.
 
 You can use the semantic version format for the version label that you assign to a release in the admin console. For more information about semantic versioning, see [Semantic Versioning 2.0.0](https://semver.org). 
 
