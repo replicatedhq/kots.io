@@ -2,8 +2,10 @@
 date: 2020-01-03
 linktitle: "Helm Airgap Builder"
 title: Helm Airgap Builder
-weight: 20560
+weight: 20550
 ---
+
+> This topic applies to both native Helm and Replicated Helm installations.
 
 For all Replicated Business & Enterprise Plans, Replicated Vendor Portal automatically builds airgap bundles for every promoted release. 
 This is generally done by processing the application YAML manifests and exporting all of the images listed in the manifests and bundling them with the manifests. 

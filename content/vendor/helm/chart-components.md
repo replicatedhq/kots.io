@@ -2,8 +2,10 @@
 date: 2019-12-27
 linktitle: "Charts As Components"
 title: Charts As Components
-weight: 20520
+weight: 20510
 ---
+
+> This topic applies to both native Helm and Replicated Helm installations.
 
 When delivering a modern on-prem installable version of an application, there are frequently IaaS components and services that are needed. 
 For example, an application running in the cloud could be using Amazon RDS for Postgres or a managed Elasticsearch cluster. 
