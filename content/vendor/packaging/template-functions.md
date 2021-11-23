@@ -105,7 +105,10 @@ The result can be accessed using the [ConfigOption](/reference/template-function
 This example demonstrates how to generate a CA, a cert, and a key using [Sprig](http://masterminds.github.io/sprig/) functions.
 `tls_json` is the hidden config item that contains all of the generated values in JSON format.
 
-Note that this requires KOTS 1.26.0 or later.
+{{< warning title="Prerequisite" >}}
+* This requires KOTS 1.26.0 or later.
+* Default values are treated as ephemeral. The following certificate chain is recalculated each time the application configuration is modified. Be sure that your application can handle updating these parameters dynamically.
+{{< /warning >}}
 
 ```yaml
 apiVersion: kots.io/v1beta1
