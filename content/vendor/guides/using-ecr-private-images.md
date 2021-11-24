@@ -19,7 +19,7 @@ As with the previous guides, we will also need a VM to install the application w
 * Ubuntu 18.04
 * At least 8 GB of RAM
 * 4 CPU cores
-* At least 100GB of disk space
+* At least 40GB of disk space
 
 In this guide we are going to focus on the difference between using a public image versus a private image in Replicated.
 To do this, we'll pull the public ngnix container and then push it to a private repository in ECR.

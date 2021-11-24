@@ -20,7 +20,7 @@ As with the previous guides, we will also need a VM to install the application w
 * Ubuntu 18.04
 * At least 8 GB of RAM
 * 4 CPU cores
-* At least 100GB of disk space
+* At least 40GB of disk space
 
 **Please note that at this time, the only use case supported is to roll back an Application's data. Currently this features does not support disaster recovery scenarios.**
 
