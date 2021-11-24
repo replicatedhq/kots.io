@@ -74,4 +74,4 @@ Prints the current version of the kots Kubectl plugin and provides a command for
 
 ## Next Steps
 To give KOTS a try, head over to the [KOTS Helm guide](/vendor/helm/overview).
-If you want to see what it’s like to distribute a KOTS application, head to the [Packaging KOTS Applications](/packaging/packaging-an-app/) guide.
+If you want to see what it’s like to distribute a KOTS application, head to the [Packaging KOTS Applications](/vendor/packaging/packaging-an-app/) guide.
