@@ -33,16 +33,13 @@ Additionally, each promoted release must be given a required status (required or
 
 ## Semantic Versioning
 
-Semantic versioning is available in KOTS v1.57.0 and later.
+Semantic versioning is available in KOTS v1.58.0 and later.
 
 You can use the semantic version format for the version label that you assign to a release in the admin console. For more information about semantic versioning, see [Semantic Versioning 2.0.0](https://semver.org). 
+In order for this label to be used to sequence releases on a channel, semantic versioning must be enabled by turning on the `Require semver for releases promoted to this channel` toggle in the channel settings.
+If you use semantic versioning on a channel, we recommend that you always use semantic versioning on that channel.
+This toggle is disabled by default.
 
 If the version label that you assign to a channel is in the semantic version format, the admin console uses the version label for sequencing of releases during updates.
 For releases that do not use semantic versioning, the admin console sequences them in the order of their creation.
 For more information about checking for updates in the admin console, see [Checking for Updates](/kotsadm/updating/updating-kots-apps/#checking-for-updates).
-
-You can also edit the settings of releases that use semantic versioning.
-
-If you use semantic versioning on a channel, we recommend that you always use semantic versioning on that channel.
-To require that a channel always uses semantic versioning, you can enfore the version label format by enabling the `Require semver for releases promoted to this channel` toggle for that channel.
-This toggle is disabled by default.
