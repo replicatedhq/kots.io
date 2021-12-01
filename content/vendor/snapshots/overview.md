@@ -22,4 +22,4 @@ KOTS also exposes hooks that can be used to inject scripts to execute with Snaps
 | KOTS Version(s) | Velero Version |
 |------|-------------|
 | 1.15 to 1.20.2 | 1.2.0 |
-| 1.20.3+ | 1.5.1 |
+| 1.20.3+ | 1.6.2 |
