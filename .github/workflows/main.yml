@@ -9,12 +9,18 @@ jobs:
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v2
-    - name: Build HTML
-      uses: srt32/hugo-action@v0.0.3
+    
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
       with:
-        args: -v -s .
+        hugo-version: '0.68.3'
+        extended: true
+        
+    - name: Build HTML
+      run: hugo -v -s .
+
     - name: Check HTML
-      uses: austinchambers/htmlproofer@v1.2
+      uses: austinchambers/htmlproofer@v1.2   # `v1` will throw errors
       with:
         # The directory to scan
         directory: "./public"
