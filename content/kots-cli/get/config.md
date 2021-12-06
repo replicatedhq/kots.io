@@ -5,7 +5,7 @@ title: kots get config
 weight: 90202
 ---
 
-The `kots get config` command returns the configValues file for an application.
+The `kots get config` command returns the **configValues** file for an application.
 
 ### Usage
 
@@ -17,8 +17,8 @@ kubectl kots get config [flags]
 
 | Flag              | Type   | Description                                                         |
 | :---------------- | ------ | ------------------------------------------------------------------- |
-| `--appslug`       | string | app slug to retrieve config for _(required)_                        |
-| `--sequence`      | int    | app sequence to retrieve config for _(required)_                    |
+| `--appslug`       | string | The app slug used to retrieve the config for _(required)_                        |
+| `--sequence`      | int    | The app sequence used to retrieve the config for _(required)_                    |
 | `-h, --help`      |        | help for get apps                                                   |
 | `-n, --namespace` | string | the namespace where the admin console is running _(required)_       |
 
