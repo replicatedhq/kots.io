@@ -35,17 +35,61 @@ Replicated's [`HelmChart spec`](https://kots.io/reference/v1beta1/helmchart/) al
 After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure.
 A `kustomization.yaml` file is included in each chart and subchart directory. This is used later to merge kustomization instructions up to the chart resources.
 
+![Base directory example for Native Helm charts](/images/native-helm-base.png)
+
+
+``` base/charts/postgres/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- secrets.yaml
+- statefulset.yaml
+- svc-headless.yaml
+- svc.yaml
+```
+
 3) Write Midstream Files
 The directory structure in `base/charts` is copied to `overlays/midstream/charts`.
 Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized.
 For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`.  This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. (Picture)
 Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
 
+![Midstream directory example for Native Helm charts](/images/native-helm-midstream.png)
+
+``` overlays/midstream/charts/postgres/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+bases:
+- ../../../../base/charts/postgresql
+commonAnnotations:
+  kots.io/app-slug: native-helm-test
+images:
+- name: gcr.io/replicated-qa/postgresql
+  newName: proxy.replicated.com/proxy/native-helm-test/gcr.io/replicated-qa/postgresql
+kind: Kustomization
+patchesStrategicMerge:
+- pullsecrets.yaml
+resources:
+- secret.yaml
+transformers:
+- backup-label-transformer.yaml
+```
+
 4) Write Downstream Files
 Replicated allows last-mile customization on Helm resources using downstream kustomize files.
 As above, the directory structure in `base/charts` is copied to `overlays/downstream/charts`.
 Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3.
 These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
+
+![Downstream directory example for Native Helm charts](/images/native-helm-downstream.png)
+
+
+``` overlays/downstream/charts/postgres/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+bases:
+- ../../../../midstream/charts/postgresql
+kind: Kustomization
+
+```
 
 5) Deploy Helm Chart
 When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, App Manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
