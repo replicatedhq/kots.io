@@ -19,5 +19,35 @@ This level of change management provides the necessary transparency to provide t
 KOTS will check the apiVersion supplied in the Chart.yaml file of the Helm Chart to check if Helm V3 is necessary. By default (if Chart.yaml is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML.
 Optionally, in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource an API version may be specified. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm V3 to process the Helm Chart.
 
-Helm V3 integration is currently a beta feature. 
-In the future, KOTS may be updated to use Helm V3 by default.
+In the future as Helm V2 is removed from Helm support, KOTS may be updated to use Helm V3 by default.
+
+## Native Helm
+
+Our [`Native Helm`](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm Hooks and Weights. Processing Helm charts for Replicated App Manager is accomplished with five high-level steps.
+
+1) Check for Previous Installations of the Chart
+This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. We do not yet support migrating existing app installations to Native Helm installations. If this check fails, the following error will be displayed:
+`Deployment method for chart <chart> has changed`
+Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
+
+2) Write Base Files
+Replicated's [`HelmChart spec`](https://kots.io/reference/v1beta1/helmchart/) allows declaring ConfigOptions to [`overwrite a chart's values`](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's values options inside of the Replicated Config page.
+After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure.
+A `kustomization.yaml` file is included in each chart and subchart directory. This is used later to merge kustomization instructions up to the chart resources.
+
+3) Write Midstream Files
+The directory structure in `base/charts` is copied to `overlays/midstream/charts`.
+Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized.
+For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`.  This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. (Picture)
+Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
+
+4) Write Downstream Files
+Replicated allows last-mile customization on Helm resources using downstream kustomize files.
+As above, the directory structure in `base/charts` is copied to `overlays/downstream/charts`.
+Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3.
+These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
+
+5) Deploy Helm Chart
+When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, App Manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
+
+Replicated finally runs `helm upgrade -i chart.tar.gz`. The helm binary processes hooks and weights, applies manifests to the Kubernetes cluster, and saves a Release secret similar to `sh.helm.release.v1.chart-name.v1`. This secret is how Helm tracks upgrades and rollbacks of applications.
