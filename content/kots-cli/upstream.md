@@ -20,7 +20,8 @@ kubectl kots upstream upgrade [app-slug] [flags]
 | `-h, --help`             |        | help for upstream                                                                                |
 | `--kubeconfig`           | string | the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_          |
 | `-n, --namespace`        | string | the namespace where the admin console is running _(required)_                                    |
-| `--deploy`               | bool   | ensures that the latest available release is deployed.                                           |
+| `--deploy`               | bool   | ensures the latest available release is deployed                                                 |
+| `--deploy-version-label` | string | ensures the release with the provided version label is deployed                                  |
 | `--skip-preflights`      | bool   | set to true to skip preflight checks                                                             |
 | `--airgap-bundle`        | string | path to the application airgap bundle where application images and metadata will be loaded from  |
 | `--kotsadm-namespace`    | string | the registry namespace to use for application images                                             |
