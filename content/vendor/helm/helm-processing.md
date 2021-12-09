@@ -38,7 +38,7 @@ Replicated's [`HelmChart` spec](https://kots.io/reference/v1beta1/helmchart/) al
 After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure of the Helm Chart.  
 A `kustomization.yaml` file is included in each chart and subchart directory. This is used later to merge kustomization instructions up to the chart resources.
 
-* Example base and base/charts/postgresql/kustomization.yaml with the default postgresql chart:
+* Example base and base/charts/postgresql/kustomization.yaml with the default postgresql chart:  
 ![Base directory example for Native Helm charts](/images/native-helm-base.png)
 
 ```yaml
@@ -58,7 +58,7 @@ Replicated searches all manifests for private images. These images are added to 
 For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`.  This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. (Picture)
 Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
 
-* Example midstream and overlays/midstream/charts/postgresql/kustomization.yaml with the default postgresql chart:
+* Example midstream and overlays/midstream/charts/postgresql/kustomization.yaml with the default postgresql chart:  
 ![Midstream directory example for Native Helm charts](/images/native-helm-midstream.png)
 
 ```yaml
@@ -86,7 +86,7 @@ As above, the directory structure in `base/charts` is copied to `overlays/downst
 Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3.  
 These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
 
-* Example downstream and overlays/downstream/this-cluster/charts/postgresql/kustomization.yaml with the default postgresql chart:
+* Example downstream and overlays/downstream/this-cluster/charts/postgresql/kustomization.yaml with the default postgresql chart:  
 ![Downstream directory example for Native Helm charts](/images/native-helm-downstream.png)
 
 ```yaml
