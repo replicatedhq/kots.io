@@ -1,25 +1,25 @@
 ---
 date: 2020-01-03
-linktitle: "Replicated Helm Processing"
-title: Replicated Helm Processing
+linktitle: "Helm Processing"
+title: Helm Processing
 weight: 20590
 ---
 
-The Replicated Helm installation is compatible with both Helm V2 and Helm V3 as it does not rely on Tiller to deploy the chart into the cluster. 
-Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool. 
+The Replicated Helm installation is compatible with both Helm V2 and Helm V3 as it does not rely on Tiller to deploy the chart into the cluster.  
+Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool.  
 The Replicated Helm installation creates deployable YAML by leveraging the same functionality that the `helm template` command uses (with some extended functionality for [specific Helm hooks](/vendor/packaging/cleaning-up-jobs/#helm-charts)).
 
-Except in the case of [Helm as KOTS application airgap installations](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment (via Kots CLI or as part of the Admin Console). 
-This means that the customer supplied values, license values and existing values can be used to create the deployable manifests. In either scenario the resulting deployment is comprised of raw Kubernetes manifests. 
-By doing this, cluster operator's are always able to view the exact diff between what is currently deployed and what the update will deploy. 
+Except in the case of [Helm as KOTS application airgap installations](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment (via Kots CLI or as part of the Admin Console).  
+This means that the customer supplied values, license values and existing values can be used to create the deployable manifests. In either scenario the resulting deployment is comprised of raw Kubernetes manifests.  
+By doing this, cluster operator's are always able to view the exact diff between what is currently deployed and what the update will deploy.  
 This level of change management provides the necessary transparency to provide the level of assurance that cluster operators require.
 
 ## Helm V3
 
-KOTS will check the apiVersion supplied in the Chart.yaml file of the Helm Chart to check if Helm V3 is necessary. By default (if Chart.yaml is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML.
+KOTS will check the apiVersion supplied in the Chart.yaml file of the Helm Chart to check if Helm V3 is necessary. By default (if Chart.yaml is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML.  
 Optionally, in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource an API version may be specified. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm V3 to process the Helm Chart.
 
-In the future as Helm V2 is removed from Helm support, KOTS may be updated to use Helm V3 by default.
+In the future KOTS may be updated to use Helm V3 by default.
 
 ## Native Helm
 
@@ -27,14 +27,14 @@ Our [`Native Helm`](https://kots.io/vendor/helm/using-native-helm-charts/) featu
 
 Processing Helm charts for Replicated App Manager is accomplished with five high-level steps.
 
-1) Check for Previous Installations of the Chart
-This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. We do not yet support migrating existing app installations to Native Helm installations. If this check fails, the following error will be displayed: 
-`Deployment method for chart <chart> has changed` 
+1) Check for Previous Installations of the Chart  
+This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. We do not yet support migrating existing app installations to Native Helm installations. If this check fails, the following error will be displayed:  
+`Deployment method for chart <chart> has changed`  
 Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
 
 2) Write Base Files
-Replicated's [`HelmChart spec`](https://kots.io/reference/v1beta1/helmchart/) allows declaring ConfigOptions to [`overwrite a chart's values`](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's values options inside of the Replicated Config page. 
-After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure. 
+Replicated's [`HelmChart spec`](https://kots.io/reference/v1beta1/helmchart/) allows declaring ConfigOptions to [`overwrite a chart's values`](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's values options inside of the Replicated Config page.  
+After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure.  
 A `kustomization.yaml` file is included in each chart and subchart directory. This is used later to merge kustomization instructions up to the chart resources.
 
 ![Base directory example for Native Helm charts](/images/native-helm-base.png)
@@ -50,8 +50,8 @@ resources:
 ```
 
 3) Write Midstream Files
-The directory structure in `base/charts` is copied to `overlays/midstream/charts`. 
-Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized. 
+The directory structure in `base/charts` is copied to `overlays/midstream/charts`.  
+Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized.  
 For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`.  This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. (Picture)
 Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
 
@@ -76,9 +76,9 @@ transformers:
 ```
 
 4) Write Downstream Files
-Replicated allows last-mile customization on Helm resources using downstream kustomize files. 
-As above, the directory structure in `base/charts` is copied to `overlays/downstream/charts`. 
-Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3. 
+Replicated allows last-mile customization on Helm resources using downstream kustomize files.  
+As above, the directory structure in `base/charts` is copied to `overlays/downstream/charts`.  
+Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3.  
 These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
 
 ![Downstream directory example for Native Helm charts](/images/native-helm-downstream.png)
