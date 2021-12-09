@@ -37,7 +37,6 @@ A `kustomization.yaml` file is included in each chart and subchart directory. Th
 
 ![Base directory example for Native Helm charts](/images/native-helm-base.png)
 
-
 ``` base/charts/postgres/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -81,7 +80,6 @@ Each chart and subchart directory receives a `kustomization.yaml`. These files o
 These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
 
 ![Downstream directory example for Native Helm charts](/images/native-helm-downstream.png)
-
 
 ``` overlays/downstream/charts/postgres/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
