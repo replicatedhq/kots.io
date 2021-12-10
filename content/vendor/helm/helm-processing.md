@@ -22,7 +22,7 @@ In the future KOTS may be updated to use Helm V3 by default.
 
 Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm Hooks and Weights. 
 
-Processing Helm charts for Replicated App Manager is accomplished with five high-level steps.
+Processing Helm charts for the Replicated App Manager is accomplished with five high-level steps:
 
 1) **Check for Previous Installations of the Chart**
 
