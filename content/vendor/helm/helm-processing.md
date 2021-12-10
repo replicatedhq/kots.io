@@ -14,7 +14,7 @@ In either scenario the resulting deployment is comprised of raw Kubernetes manif
 
 ## Helm V3
 
-KOTS will check the apiVersion supplied in the Chart.yaml file of the Helm Chart to check if Helm V3 is necessary. By default (if Chart.yaml is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML. Optionally, in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource an API version may be specified. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm V3 to process the Helm Chart.
+To determine if Helm V3 is necessary, KOTS will check the apiVersion supplied in the `Chart.yaml` file of the Helm Chart. By default (if **Chart.yaml** is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML. Optionally, an API version can be specified in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm V3 to process the Helm Chart.
 
 In the future KOTS may be updated to use Helm V3 by default.
 
