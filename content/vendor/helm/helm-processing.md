@@ -39,7 +39,7 @@ Deployment method for chart <chart> has changed
 
 The Helm manifests are extracted, rendered with Replicated templating, and added to `base/charts`.
 
-Replicated's [`HelmChart` spec](https://kots.io/reference/v1beta1/helmchart/) allows declaring ConfigOptions to [overwrite a chart's values](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's values options inside of the Replicated Config page. After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure of the Helm Chart. A `kustomization.yaml` file is included in each chart and subchart directory. This is used later to merge kustomization instructions up to the chart resources.
+Replicated's [`HelmChart` spec](https://kots.io/reference/v1beta1/helmchart/) can be modified to allow the `ConfigOptions` to [overwrite a chart's values](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's value options inside the Replicated Config page. After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure of the Helm Chart. A `kustomization.yaml` file is included in each chart and sub chart directory. This is used later to merge kustomization instructions up to the chart resources.
 
 * Example base and base/charts/postgresql/kustomization.yaml with the default postgresql chart:
 
