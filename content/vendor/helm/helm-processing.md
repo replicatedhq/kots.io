@@ -62,7 +62,8 @@ Midstream contains Replicated kustomize instructions for all deployed resources,
 
 The directory structure in `base/charts` is copied to `overlays/midstream/charts`. Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized. For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`. This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
 
-* Example midstream and overlays/midstream/charts/postgresql/kustomization.yaml with the default postgresql chart:
+**Example**
+	In this example, a `midstream` directory is illustrated and the `overlays/midstream/charts/postgresql/kustomization.yaml` adds Replicated customization:
 
 ![Midstream directory example for Native Helm charts](/images/native-helm-midstream.png)
 
