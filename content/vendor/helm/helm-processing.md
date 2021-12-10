@@ -28,7 +28,7 @@ Processing Helm charts for the Replicated App Manager is accomplished with five 
 
 Replicated checks previous versions of the installed app, checking if the chart has been installed previously without Native Helm.
 
-This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. We do not yet support migrating existing app installations to Native Helm installations. If this check fails, the following error will be displayed:
+This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. If this check fails, the following error will be displayed:
 ```
 Deployment method for chart <chart> has changed
 ```
