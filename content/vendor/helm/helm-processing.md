@@ -92,7 +92,8 @@ Replicated allows last-mile customization on Helm resources using downstream kus
 
 As above, the directory structure in `base/charts` is copied to `overlays/downstream/this-cluster/charts`. Each chart and subchart directory receives a `kustomization.yaml`. These files only have `bases` defined, which points to the corresponding `midstream` kustomization file from step 3. These downstream `kustomization.yaml` files can be edited before deploying the application. Any kustomize instructions here will take priority over `midstream` and `base` kustomizations.
 
-* Example downstream and overlays/downstream/this-cluster/charts/postgresql/kustomization.yaml with the default postgresql chart:
+**Example**
+	In this example, a `downstream` directory is illustrated and the `overlays/downstream/this-cluster/charts/postgresql/kustomization.yaml` provides a template for last-mile overrides:
 
 ![Downstream directory example for Native Helm charts](/images/native-helm-downstream.png)
 
