@@ -32,7 +32,7 @@ This step ensures the app manager will not attempt a Native Helm install of a ch
 ```
 Deployment method for chart <chart> has changed
 ```
-Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
+**Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
    
    
 2) **Write Base Files**
