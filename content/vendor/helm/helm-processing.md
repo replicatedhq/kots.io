@@ -32,14 +32,14 @@ This step ensures the app manager will not attempt a Native Helm install of a ch
 ```
 Deployment method for chart <chart> has changed
 ```
-**Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
+**Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. PVCs will be removed in the process -- because this will cause data loss, it is strongly encouraged that application maintainers ensure they have an out-of-band backup and restore method before attempting to migrate live production installs from the previous helm implementation to a native helm one. Because Replicated's built-in [snapshot and restore](/vendor/snapshots/overview) tooling also restores deployed application manifests, it is not a suitable solution for this migration problem.
    
    
 2) **Write Base Files**
 
 The Helm manifests are extracted, rendered with Replicated templating, and added to `base/charts`.
 
-Replicated's [`HelmChart` spec](https://kots.io/reference/v1beta1/helmchart/) can be modified to allow the `ConfigOptions` to [overwrite a chart's values](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's value options inside the Replicated Config page. After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure of the Helm Chart. A `kustomization.yaml` file is included in each chart and sub chart directory. This is used later to merge kustomization instructions up to the chart resources.
+Replicated's [`HelmChart` spec](https://kots.io/reference/v1beta1/helmchart/) can be modified to allow the `ConfigOptions` to [overwrite a chart's values](https://kots.io/reference/v1beta1/helmchart/#values). This allows vendors to surface a chart's value options inside the Replicated Config page. After Replicated templating is processed on the `values.yaml` file, all files from the original Helm tarball are written to the `base/charts/` directory, maintaining the original directory structure of the Helm Chart. A `kustomization.yaml` file is included in each chart and sub chart directory. This is used later to merge [kustomization](https://kustomize.io) instructions up to the chart resources.
 
 **Example**
 	In this example, a `base` directory is illustrated and the `base/charts/postgresql/kustomization.yaml` targets chart resources:
@@ -59,7 +59,7 @@ resources:
    
 3) **Write Midstream Files**
 
-Midstream contains Replicated kustomize instructions for all deployed resources, such as imagePullSecrets, image proxies, and backup labels.
+The `midstream` directory contains Replicated kustomize instructions for all deployed resources, such as imagePullSecrets, image proxies, and backup labels.
 
 The directory structure in `base/charts` is copied to `overlays/midstream/charts`. Replicated searches all manifests for private images. These images are added to a `kustomization.yaml` file, which is written at the chart or subchart level matching the resource being kustomized. For example, if the postgres image is found at `base/charts/postgres/templates/deployment.yaml`, the `kustomization.yaml` to overwrite the image will be added to `overlays/midstream/charts/postgres/kustomization.yaml`. This midstream kustomization has a `bases` entry that points to the corresponding `kustomization.yaml` file from `base`. Other midstream kustomizations are processed here as well, such as backup label transformers and image pull secrets. They are appended to the same file as above for each chart and subchart.
 
