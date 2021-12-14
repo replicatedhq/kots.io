@@ -19,6 +19,7 @@ kubectl kots get config [flags]
 | :---------------- | ------ | ------------------------------------------------------------------- |
 | `--appslug`       | string | The app slug used to retrieve the config for _(required)_                        |
 | `--sequence`      | int    | The app sequence used to retrieve the config for _(required)_                    |
+| `--decrypt`       | bool   | Decrypt password items within the config                            |
 | `-h, --help`      |        | help for get apps                                                   |
 | `-n, --namespace` | string | the namespace where the admin console is running _(required)_       |
 
