@@ -37,7 +37,7 @@ See [Removing Minio](https://kurl.sh/docs/install-with-kurl/removing-minio) for 
 ## Existing Clusters
 
 By default, a KOTS installation to an existing cluster will deploy Minio to satisfy the object storage requirement, and nothing further is required during installation.
-When deploying, Minio is configured with a randomly generated AccessKeyID and SecretAccessKey, and only exposed as a ClusterIP on the overlay network.
+When deploying, Minio is configured with a randomly generated `AccessKeyID` and `SecretAccessKey`, and only exposed as a `ClusterIP` on the overlay network.
 
 When the [install command](https://kots.io/kots-cli/install/) flag `--with-minio=false` is used, the installer will not deploy Minio.
 KOTS will deployed as a Statefulset with attached PV instead of a Deployment.
