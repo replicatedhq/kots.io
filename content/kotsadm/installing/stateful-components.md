@@ -42,5 +42,5 @@ When deploying, MinIO is configured with a randomly generated `AccessKeyID` and 
 When the [install command](https://kots.io/kots-cli/install/) flag `--with-minio=false` is used, the installer will not deploy MinIO.
 KOTS will deploy as a Statefulset with attached PV instead of a deployment.
 
-When the [admin-console upgrade command](https://kots.io/kots-cli/upgrade/) flag `--with-minio=false` is used, an existing KOTS admin console will be upgraded to the latest version, the running deployment will be replaced with a Statefulset and MinIO will be removed after a data migration. 
+When the [admin-console upgrade command](https://kots.io/kots-cli/admin-console/upgrade/) flag `--with-minio=false` is used, an existing KOTS admin console will be upgraded to the latest version, the running deployment will be replaced with a Statefulset and MinIO will be removed after a data migration. 
 This will result in temporary downtime for the KOTS admin console, but deployed applications will be unaffected.
