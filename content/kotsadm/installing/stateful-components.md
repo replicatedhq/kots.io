@@ -30,7 +30,7 @@ Embedded Clusters can have optional, indirect dependencies on the S3-compatible 
 
 To deploy an embedded cluster without object storage, set the `disableS3` flag to `true` in the KOTS add-on.
 This will deploy KOTS without object storage, as well as allow the supporting add-ons to use Persistent Volumes (PVs) instead of object storage.
-The behavior of this flag is describe in the [KOTS add-on](https://kurl.sh/docs/add-ons/kotsadm) documentation.
+The behavior of this flag is described in the [KOTS add-on](https://kurl.sh/docs/add-ons/kotsadm) documentation.
 
 See [Removing Minio](https://kurl.sh/docs/install-with-kurl/removing-minio) for documentation regarding migrating a cluster away from object storage.
 
