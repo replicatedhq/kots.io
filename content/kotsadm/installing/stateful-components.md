@@ -20,7 +20,7 @@ By default, KOTS also requires an S3-compatible object store for application arc
 
 ## Embedded Clusters
 
-By default, embedded cluster installers must include a add-on that satisfies the S3-compatible object store.
+By default, embedded cluster installers must include an add-on that satisfies the S3-compatible object store.
 This could be the Rook or Minio add-ons.
 Without one of these add-ons, the installer will fail with an error.
 
