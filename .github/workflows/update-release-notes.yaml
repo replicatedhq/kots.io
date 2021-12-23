@@ -35,8 +35,8 @@ jobs:
           release-notes
           automated
         draft: true
-        base: "master"
-        body: "Automated changes by the [auto-release-notes](https://github.com/replicatedhq/kots.io/blob/master/.github/workflows/update-release-notes.yaml) GitHub action"
+        base: "main"
+        body: "Automated changes by the [auto-release-notes](https://github.com/replicatedhq/kots.io/blob/main/.github/workflows/update-release-notes.yaml) GitHub action"
 
     - name: Check outputs
       run: |
