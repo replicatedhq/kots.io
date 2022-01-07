@@ -108,7 +108,7 @@ The Replicated Helm installation is compatible with both Helm v2 and Helm v3 as 
 
 When a [Helm chart based KOTS application is installed via airgap](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment using either the KOTS CLI or the admin console. This means that the customer supplied values, license values, and existing values can be used to create the deployable manifests. 
 
-In either scenario, the resulting deployment is comprised of raw Kubernetes manifests. Therefore, cluster operators are always able to view the exact difference between what is currently deployed and what the update will deploy. This level of change management provides the necessary transparency to provide the full assurance that cluster operators require.
+In both online and airgap installation scenarios, the resulting deployment is comprised of raw Kubernetes manifests. Therefore, cluster operators are always able to view the exact difference between what is currently deployed and what the update will deploy. This level of change management provides the necessary transparency to provide the full assurance that cluster operators require.
 
 ### Replicated Helm Versioning Considerations
 To determine if Helm v3 is necessary, KOTS will check the apiVersion supplied in the `Chart.yaml` file of the Helm Chart. By default (if **Chart.yaml** is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML. Optionally, an API version can be specified in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm v3 to process the Helm Chart.
