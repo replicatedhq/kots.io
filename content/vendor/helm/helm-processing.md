@@ -7,7 +7,7 @@ weight: 20590
 
 ## Native Helm
 
-Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm Hooks and Weights. 
+Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm hooks and hook weights. 
 
 Processing Helm charts for the Replicated App Manager is accomplished with five high-level steps:
 
@@ -15,11 +15,11 @@ Processing Helm charts for the Replicated App Manager is accomplished with five 
 
 Replicated checks previous versions of the installed app, checking if the chart has been installed previously without Native Helm.
 
-This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. If this check fails, the following error will be displayed:
+This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the app manager without Native Helm. If this check fails, the following error will be displayed:
 ```
 Deployment method for chart <chart> has changed
 ```
-**Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
+**Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated app manager and installing fresh with Native Helm. This will cause data loss as PVCs will be removed in the process.
    
    
 2) **Write Base Files**
@@ -98,7 +98,7 @@ kind: Kustomization
 
 Replicated leverages the Helm binary to install the fully-rendered chart resources.
 
-When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, App Manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
+When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, app manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
 
 Replicated finally runs `helm upgrade -i chart.tar.gz`. The helm binary processes hooks and weights, applies manifests to the Kubernetes cluster, and saves a Release secret similar to `sh.helm.release.v1.chart-name.v1`. This secret is how Helm tracks upgrades and rollbacks of applications.
 
