@@ -5,7 +5,7 @@ title: Helm Processing
 weight: 20590
 ---
 
-## Native Helm Processing
+## Native Helm
 
 Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm Hooks and Weights. 
 
@@ -102,7 +102,7 @@ When deploying the application, Replicated walks the `overlays/downstream/charts
 
 Replicated finally runs `helm upgrade -i chart.tar.gz`. The helm binary processes hooks and weights, applies manifests to the Kubernetes cluster, and saves a Release secret similar to `sh.helm.release.v1.chart-name.v1`. This secret is how Helm tracks upgrades and rollbacks of applications.
 
-## Replicated Helm Processing
+## Replicated Helm
 
 The Replicated Helm installation is compatible with both Helm v2 and Helm v3 as it does not rely on Tiller to deploy the chart into the cluster. Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool. The Replicated Helm installation creates deployable YAML by leveraging the same functionality that the `helm template` command uses, with some extended functionality for [specific Helm hooks](/vendor/packaging/cleaning-up-jobs/#helm-charts).
 
