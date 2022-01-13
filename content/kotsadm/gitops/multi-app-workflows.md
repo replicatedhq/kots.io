@@ -28,7 +28,7 @@ The Admin Console can create a new commit to the branch specified.
 On this screen, there's an option to choose what type of asset to deliver to the git repo.
 Selecting "Rendered YAML" will result in a single, multi-doc YAML file being committed to the repo.
 
-![GitOps Action](/images/gitops-action.png)
+![GitOps Action](/images/gitops-action-new-multi.png)
 
 Once GitOps is set up, the "GitOps" tab will contain a public deploy key.
 The private key will be stored securely in the Admin Console.
