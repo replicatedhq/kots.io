@@ -11,8 +11,6 @@ When using a GitOps workflow, changes from the Admin Console (config changes, up
 
 To begin migrating to a GitOps deployment workflow, click the GitOps link at the top of the Admin Console, then click on "Get started".
 
-![GitOps](/images/gitops.png)
-
 Continuing, choose the Git provider and hostname (if applicable), then click on "Continue to deployment action".
 
 ![GitOps Provider](/images/gitops-provider.png)
