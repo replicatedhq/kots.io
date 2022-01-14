@@ -34,8 +34,6 @@ Once GitOps is set up, the "GitOps" tab will contain a public deploy key.
 The private key will be stored securely in the Admin Console.
 Add the deploy key to the repo, and verify that the Admin Console can connect by clicking the "Try again" button.
 
-![GitOps Action](/images/gitops-no-connection.png)
-
 Once the Admin Console establishes a connection to the repo, the following screen will be displayed.
 
 ![GitOps Action](/images/gitops-connected-multi.png)
