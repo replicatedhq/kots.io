@@ -107,9 +107,9 @@ First, we will need a server. We'll use Google Cloud for this example, but any c
 For this guide, let's create a server with:
 
 - Ubuntu 18.04
-- at least 8 GB of RAM
+- At least 8 GB of RAM
 - 4 CPU cores
-- at least 100GB of disk space
+- At least 40GB of disk space
 
 Next, ssh into the server we just created, and run the install script:
 

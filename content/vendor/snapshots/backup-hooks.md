@@ -17,7 +17,7 @@ Backup hooks should be run inside the container that contains the data to back u
 
 ## Examples
 A common pattern of applications is to include and want to back up a Postgres database.
-Postgres is easy to include from a Helm chart, and the following HelmChart kind can be used to configure Postgres for backups. An exaplanation of the configuration follows the YAML.
+Postgres is easy to include from a Helm chart, and the following HelmChart kind can be used to configure Postgres for backups. An explanation of the configuration follows the YAML.
 
 ```yaml
 apiVersion: kots.io/v1beta1

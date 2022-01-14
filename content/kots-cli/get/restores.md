@@ -2,7 +2,7 @@
 date: 2021-01-07
 linktitle: "restores"
 title: kots get restores
-weight: 90202
+weight: 90203
 ---
 
 The `kots get restores` command lists created full snapshot restores.
