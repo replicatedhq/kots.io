@@ -15,7 +15,7 @@ To begin migrating to a GitOps deployment workflow:
 
     The GitOps Provider page opens.
 
-1. Choose the Git provider and hostname (if applicable), and click on "Continue to deployment action".
+1. Choose the Git provider and hostname (if applicable), and click on **Continue to deployment action**.
 
 1. On the GitOps setting page:
 
