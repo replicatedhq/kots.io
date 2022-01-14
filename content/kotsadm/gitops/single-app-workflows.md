@@ -35,5 +35,5 @@ To begin migrating to a GitOps deployment workflow:
 
 ## First commits
 
-After converting to GitOps, the Admin Console will make a commit/pull request with the current version that's "Deployed".
+After converting to GitOps, the Admin Console will make a commit/pull request with the current version that's **Deployed**.
 Then, it will make separate commits (or a single pull request) with any pending updates that have not been deployed from the Admin Console.
