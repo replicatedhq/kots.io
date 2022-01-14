@@ -19,7 +19,7 @@ To begin migrating to a GitOps deployment workflow:
 
     A screen displaying all of your apps with the status of GitOps integration for each app will show up next.
 
-1. Click the "Enable" button next to the app you want to enable GitOps for.
+1. Click the **Enable** button next to the app you want to enable GitOps for.
 
     ![GitOps Provider](/images/gitops-apps.png)
 
