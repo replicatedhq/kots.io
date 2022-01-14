@@ -31,7 +31,7 @@ To begin migrating to a GitOps deployment workflow:
 
     1. Select the action to take when there's an update. The Admin Console can create a new commit to the branch specified.
 
-    1. On this page, there's an option to choose what type of asset to deliver to the git repo. Selecting "Rendered YAML" will result in a single, multi-doc YAML file being committed to the repo.
+    1. On this page, there's an option to choose what type of asset to deliver to the git repo. Selecting **Rendered YAML** will result in a single, multi-doc YAML file being committed to the repo.
 
     ![GitOps Action](/images/gitops-action-new-multi.png)
 
