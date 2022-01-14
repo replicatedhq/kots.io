@@ -15,7 +15,7 @@ To begin migrating to a GitOps deployment workflow:
 
     The GitOps Provider page opens.
 
-1. Choose the Git provider and hostname (if applicable), then click on "Finish GitOps setup".
+1. Choose the Git provider and hostname (if applicable), then click  **Finish GitOps setup**.
 
     A screen displaying all of your apps with the status of GitOps integration for each app will show up next.
 
