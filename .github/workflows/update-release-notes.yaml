@@ -29,7 +29,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: draft release notes kots ${{ github.event.client_payload.version }}
         title: '[${{ github.event.client_payload.version }}] Triggered Release Notes'
-        branch: automation/release-notes-${ steps.release-notes.outputs.parsed_kots_version }}
+        branch: automation/release-notes-${{ steps.release-notes.outputs.parsed_kots_version }}-${{github.run_id}}  # Create a unique branch to prevent overwrites on re-tag
         delete-branch: true
         labels: |
           release-notes
@@ -42,3 +42,11 @@ jobs:
       run: |
         echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
         echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
+    - name: Slack Notification
+      id: slack
+      uses: slackapi/slack-github-action@v1.16.0
+      with: 
+        payload: "{\"message\":\"Pull request #${{steps.cpr.outputs.pull-request-number }} is ready for KOTS.io release notes: ${{steps.cpr.outputs.pull-request-url}}\",\"version\":\"${{ steps.release-notes.outputs.parsed_kots_version }}\"}" 
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.KOTS_RELEASE_SLACK_WEBHOOK }}
