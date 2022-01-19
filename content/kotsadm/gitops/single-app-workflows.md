@@ -31,7 +31,7 @@ To begin migrating to a GitOps deployment workflow:
 
 When the Admin Console establishes a connection to the repo, the following screen will be displayed.
 
-    ![GitOps Action](/images/gitops-connected.png)
+    ![GitOps Connection](/images/gitops-connected.png)
 
 ## First commits
 
