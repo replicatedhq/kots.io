@@ -33,13 +33,13 @@ To begin migrating to a GitOps deployment workflow:
 
     1. On this page, there's an option to choose what type of asset to deliver to the git repo. Selecting **Rendered YAML** will result in a single, multi-doc YAML file being committed to the repo.
 
-    ![GitOps Action](/images/gitops-action-new-multi.png)
+    ![GitOps Action Multi App](/images/gitops-action-new-multi.png)
 
 1. When GitOps is set up, the **GitOps** tab will contain a public deploy key. The private key will be stored securely in the Admin Console. Add the deploy key to the repo, and verify that the Admin Console can connect by clicking **Try again**.
 
- When the Admin Console establishes a connection to the repo, the following screen will be displayed.
+    When the Admin Console establishes a connection to the repo, the following screen will be displayed.
 
-    ![GitOps Action](/images/gitops-connected-multi.png)
+    ![GitOps Connection](/images/gitops-connected-multi.png)
 
 ## First commits
 
