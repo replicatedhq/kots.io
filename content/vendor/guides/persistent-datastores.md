@@ -525,12 +525,9 @@ spec:
           default: postgres
 ```
 
-Let's save this and create a new release. After deploying the release in the Admin Console, head to "Config" and set the toggle to "External Postgres" to see the new fields:
-
-![External PG Config](/images/guides/kots/external-pg-config.png)
+Let's save this and create a new release. After deploying the release in the Admin Console, head to "Config" and set the toggle to "External Postgres" to see the new fields.
 
 In order to demonstrate that these are working, let's add some values that we know won't work, and just check to confirm that checking "External Postgres" will remove our embedded postgres instance:
-
 
 ![External PG Config Fake](/images/guides/kots/external-pg-config-fake.png)
 
