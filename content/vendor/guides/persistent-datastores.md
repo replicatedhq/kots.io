@@ -5,9 +5,9 @@ title: "Integrating Persistent Datastores"
 weight: "1006"
 ---
 
-In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches. 
-We'll explore ways to give your end user the option to either embed an instance with the application, or connect your appplication to an external instance that they will manage. 
-We'll use a PostgreSQL database as an example, configuring an example app to connect. 
+In this guide, we'll review best practices for integrating persistent stores like databases, queues, and caches.
+We'll explore ways to give your end user the option to either embed an instance with the application, or connect your appplication to an external instance that they will manage.
+We'll use a PostgreSQL database as an example, configuring an example app to connect.
 The latter part of this guide starts to explore advanced topics like custom preflight checks, workload coordination, credential management, and refactoring your application's user-facing configuration.
 
 It is split into 5 sections:
@@ -29,8 +29,8 @@ A full example of the code for this guide can be found in the [kotsapps reposito
 
 ## The Example Application
 
-For demonstration purposes, we'll use a simple app that connects to a postgres database via the `psql` CLI. 
-Once you've finished this guide, you should feel confident replacing it with any Kubernetes workload(s) that need to connect to a database. 
+For demonstration purposes, we'll use a simple app that connects to a postgres database via the `psql` CLI.
+Once you've finished this guide, you should feel confident replacing it with any Kubernetes workload(s) that need to connect to a database.
 The deployment we'll use can be seen below:
 
 ```yaml
@@ -70,7 +70,7 @@ spec:
             - name: DB_HOST
               value: postgres
             - name: DB_PORT
-              value: 5432
+              value: "5432"
             - name: DB_USER
               value: postgres
             - name: DB_PASSWORD
@@ -79,8 +79,8 @@ spec:
               value: postgres
 ```
 
-This app simply connects to the database every 20 seconds and writes the server timestamp to stdout. 
-Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity. 
+This app simply connects to the database every 20 seconds and writes the server timestamp to stdout.
+Even though `psql` supports [default environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) for host, username, etc that can be read transparently, we're intentionally using these generic `DB_` variables for clarity.
 Later, you can change these environment variable names to whatever format your application consumes.
 
 For now we'll hard code the DB variable values, in the next sections we'll wire these up to the user-provided configuration.
@@ -88,7 +88,7 @@ For now we'll hard code the DB variable values, in the next sections we'll wire 
 
 ### Deploying the example application
 
- Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/cli-quickstart/#2-setting-a-service-account-token) or by running `replicated release create --auto` locally. 
+ Once you've added this deployment to you application's `manifests` directory, create a release by pushing a commit to your [starter repo copy](/vendor/guides/cli-quickstart/#2-setting-a-service-account-token) or by running `replicated release create --auto` locally.
  Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
 ![View Update](/images/guides/kots/view-update.png)
@@ -99,7 +99,7 @@ After clicking "Deploy", you should be able to review the logs and see `deployme
 ![Deployed PG Consumer](/images/guides/kots/pg-consumer-deployed.png)
 
 
-Once it's deployed, you can run `kubectl get pods` to inspect the cluster. 
+Once it's deployed, you can run `kubectl get pods` to inspect the cluster.
 We should expect the Pod to be crashlooping at this point, since there's no database to connect to just yet:
 
 ```text
@@ -139,8 +139,8 @@ The core of this guide will be around how to give your end users the option to e
 1. Bring their own PostgreSQL instance for your app to connect to
 1. Use an "embedded" database bundled in with the application
 
-The first step here is to present that option to the user, then we'll walk through implementing each scenario in KOTS. 
-The `kots.io/v1beta1` `Config` resource controls what configuration options are presented to the end user. 
+The first step here is to present that option to the user, then we'll walk through implementing each scenario in KOTS.
+The `kots.io/v1beta1` `Config` resource controls what configuration options are presented to the end user.
 If you followed one of the "Getting Started" guides, you probably have a `config.yaml` in your manifests that looks something like this:
 
 ```yaml
@@ -166,7 +166,7 @@ spec:
           when: repl{{ ConfigOptionEquals "use_ingress" "1" }}
 ```
 
-To add a database section, we'll modify it to include some database settings. 
+To add a database section, we'll modify it to include some database settings.
 In this case we'll remove the Ingress toggle that is included as an example, although you might also choose to leave this in. None of these database settings will have any effect yet, but we'll still be able to preview what the end user will see.
 Modify your yaml to include this database section:
 
@@ -203,13 +203,13 @@ As mentioned in the introduction, a full example of the code for this guide can 
 
 ### Validating Config Changes
 
-Even though the options aren't wired, let's create a new release to validate the configuration screen was modified. 
-Create a release by pushing a commit to your [ci-enabled repo](/vendor/guides/ci-cd-integration) or by running `replicated release create --auto` locally. 
+Even though the options aren't wired, let's create a new release to validate the configuration screen was modified.
+Create a release by pushing a commit to your [ci-enabled repo](/vendor/guides/ci-cd-integration) or by running `replicated release create --auto` locally.
 Then head to the Admin Console instance and click "Check for Updates" on the "Version History" tab to pull the new release:
 
-![View Update](/images/guides/kots/view-update.png)
+![View Update](/images/guides/kots/view-update-2.png)
 
-Once the update is deployed, we can head over to the "Config" tab and review our new toggle. 
+Once the update is deployed, we can head over to the "Config" tab and review our new toggle.
 You might also notice that we've removed the Ingress settings to simplify things for this guide:
 
 ![Database Config](/images/guides/kots/database-config.png)
@@ -236,7 +236,7 @@ data:
   DB_PASSWORD: '{{repl ConfigOption "embedded_postgres_password" | Base64Encode }}'
 ```
 
-Next, create a new YAML file in your `manifests` directory with the following contents. 
+Next, create a new YAML file in your `manifests` directory with the following contents.
 Note the use of `kots.io/when` to only conditionally include this based on end-user inputs.
 
 ```yaml
@@ -319,12 +319,12 @@ spec:
 
 ### Validating the embedded Database
 
-Once you've added these resources, you can push a new release and update in the Admin Console. 
+Once you've added these resources, you can push a new release and update in the Admin Console.
 You should see the following in the deployment logs:
 
 ![Embedded PG Deployed](/images/guides/kots/embedded-pg-deployed.png)
 
-We should now see an instance of postgres running in our namespace as well. 
+We should now see an instance of postgres running in our namespace as well.
 The consumer may still be crashlooping, but we can see the error is different now:
 
 ```text
@@ -332,7 +332,7 @@ $ kubectl logs -l app=pg-consumer
 psql: FATAL:  password authentication failed for user "postgres"
 ```
 
-This is because we still need to deliver the generated password to our workload pod. 
+This is because we still need to deliver the generated password to our workload pod.
 In `pg-consumer.yaml`, we'll remove this section
 
 ```yaml
@@ -400,7 +400,7 @@ spec:
                   key: DB_PASSWORD
 ```
 
-From here, make another release and deploy it. 
+From here, make another release and deploy it.
 You should see the consumer pod is now able to connect to the database:
 
 
@@ -441,7 +441,7 @@ In this section, we'll expand our configuration section to allow end users to br
 
 ### Modifying the Config Screen
 
-Let's update our config screen to allow an end user to input some details about their database. 
+Let's update our config screen to allow an end user to input some details about their database.
 We'll add the following YAML, noting the use of the `when` field to conditionally hide or show fields in the user-facing config screen.
 
 ```yaml
@@ -552,7 +552,7 @@ kotsadm-postgres-0                 1/1     Running   0          12m
 pg-consumer-6bd78594d-n7nmw        0/1     Error     2          29s
 ```
 
-You'll note that it is failing, but it is still using our hardcoded environment variables, not the user-entered config. 
+You'll note that it is failing, but it is still using our hardcoded environment variables, not the user-entered config.
 In the next step, we'll wire the end-user configuration values into our service.
 
 ```text
@@ -562,7 +562,7 @@ psql: could not translate host name "postgres" to address: Name or service not k
 
 ### Mapping User Inputs
 
-To map the user-supplied configuration, we'll start by expanding our secret we created before, adding fields for additional variables, using `{{repl if ... }}` blocks to switch between embedded/external contexts. 
+To map the user-supplied configuration, we'll start by expanding our secret we created before, adding fields for additional variables, using `{{repl if ... }}` blocks to switch between embedded/external contexts.
 To start we'll add a field for hostname, using the yaml `>-` to collapse the multiline string into a single line.
 
 ```yaml
@@ -580,7 +580,7 @@ data:
     {{repl end}}
 ```
 
-Now that we have the value in our Secret, we can modify our deployment to consume it. 
+Now that we have the value in our Secret, we can modify our deployment to consume it.
 Replace
 
 ```yaml
@@ -680,7 +680,7 @@ We'll optionally wire this to a real external postgres database later, but for n
 
 ### Extending this to all fields
 
-Now that we've wired the DB_HOST field all the way through, we'll do the same for the other fields. 
+Now that we've wired the DB_HOST field all the way through, we'll do the same for the other fields.
 In the end, your Secret and Deployment should look like:
 
 ```yaml
@@ -850,7 +850,7 @@ DB_USER=fake
 
 ### Testing Config Changes
 
-Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database. 
+Now let's make some changes to the database credentials. In this case, we'll use a postgres database provisioned in Amazon RDS, but you can use any external database.
 To start, head to the "Config" screen and input your values:
 
 ![Real Postgres Values](/images/guides/kots/real-postgres-values.png)
@@ -866,7 +866,7 @@ DB_HOST=fake
 DB_USER=fake
 ```
 
-Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed. 
+Uh oh, It appears that our values did not get updated! If you've worked with Secrets before, you may know that there's a [long-standing issue in Kubernetes](https://github.com/kubernetes/kubernetes/issues/22368) where pods that load config from Secrets or ConfigMaps won't automatically restart when underlying config is changed.
 There are some tricks to make this work, and in the next step we'll implement one of them, but for now we can delete the pod to verify that the configuration is being piped through to our sample application:
 
 ```text
@@ -874,7 +874,7 @@ $ kubectl delete pod -l app=pg-consumer
 pod "pg-consumer-6df9d5d7fd-bd5z6"" deleted
 ```
 
-If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it. 
+If the pod is crashlooping, you might need to add `--force --grace-period 0` to force delete it.
 In either case, once a new pod starts, we should now see it loading the correct config:
 
 ```text
@@ -888,7 +888,7 @@ DB_USER=postgres
 
 ### Triggering restarts on changes
 
-In order to automate this restart on changes, we're going to use a hash of all database parameters to trigger a rolling update whenever database parameters are changed. 
+In order to automate this restart on changes, we're going to use a hash of all database parameters to trigger a rolling update whenever database parameters are changed.
 We'll use a `hidden`, `readonly` field to store this in our config screen:
 
 ```yaml
