@@ -27,7 +27,7 @@ You can view its contents with `tar -zxvf`.
 **Airgap License**: The Airgapped license enables you to install `.airgap` bundle.
 Without this enabled you will not be able to use the `.airgap` bundle.
 
-During the installation process you'll be asked to upload both of these files, so lets download the `.airgap` bundle and license from [vendor.replicated.com](https://vendor.replicated.com).
+During the installation process you'll be asked to upload both of these files, so let's download the `.airgap` bundle and license from [vendor.replicated.com](https://vendor.replicated.com).
 
 ### Airgap Bundle
 
@@ -45,7 +45,7 @@ Keep this file on your local laptop from where you will be accessing the Admin C
 
 ### Airgap License
 
-Next lets download the license. To download the airgapped license, go to `[App Name] -> Customer -> [Customer Name]`.
+Next let's download the license. To download the airgapped license, go to `[App Name] -> Customer -> [Customer Name]`.
 
 ![Airgap Customers](/images/guides/kots/airgap-customers.png)
 
