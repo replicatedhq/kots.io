@@ -13,7 +13,7 @@ This method works for both online and airgapped installs.
 
 ### Checking for Updates
 The Admin Console automatically checks for updates once every 4 hours.
-To manually check for a more recent version, click the "Check for updates" button at the top of the admin console.
+To manually check for a more recent version, click the "Check for updates" button at the top of the Dashboard tab or Version History tab.
 In airgapped instances this button will be replaced with an `Upload a new version` button.
 Airgapped instances cannot check for updates automatically.
 When an update has been downloaded (for online) or uploaded (for airgap), a new upstream version will show in the list of released versions.
