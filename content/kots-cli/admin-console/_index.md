@@ -5,7 +5,11 @@ title: kots admin-console
 weight: 90000
 ---
 
-Opens a port forward to Admin Console so it can be accessed from localhost.
+Enables access to the admin-console from a local machine.
+
+This command opens localhost port 8800, which forwards to the `kotsadm` service.
+
+To access the console, browse to http://localhost:8800 after running this command.
 
 ### Usage
 ```bash
