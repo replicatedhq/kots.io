@@ -21,18 +21,18 @@ When an update has been downloaded (for online) or uploaded (for airgap), a new 
 [![New Version Available](/images/new-version-available.png)](/images/new-version-available.png)
 
 ## Comparing Changes Between Releases
-When there are multiple versions of a KOTS application, you can compare the changes between them by clicking "Diff releases" in the right corner.
+When there are multiple versions of a KOTS application, you can compare the changes between them by clicking "Diff releases" in the right corner. Changes can be reviewed between any arbitrary release by clicking the icon in the header of the release column. Select the two versions to compare, and click "Diff releases" to show the relative changes between the two releases.
 
 [![Diff Releases](/images/diff-releases.png)](/images/diff-releases.png)
 
-Changes can be reviewed between any arbitrary release by clicking the icon in the header of the release column. Select the two versions to compare, and click "Diff releases" to show the relative changes between the two releases.
+The changes between the two releases are displayed side-by-side.
 
 [![New Changes](/images/new-changes.png)](/images/new-changes.png)
 
 
 ### Preflight Checks
 Click the "Preflight results" link to run the preflight checks defined by the application vendor.
-Based on the outcome of each preflight check, you can decide whether or not to perform the upgrade by clicking the "Continue" button.
+Based on the outcome of each preflight check, you can decide whether or not to perform the upgrade.
 
 [![Preflight Checks](/images/preflight-checks.png)](/images/preflight-checks.png)
 
