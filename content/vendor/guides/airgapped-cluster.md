@@ -37,9 +37,9 @@ To download the `.airgap` bundle, go to `[App Name] -> Channels -> [Channel Name
 
 * Click on `Build` to build the `.airgap` bundle.
 
-* Once you see `Download Bundle`, click to download the `.airgap` bundle.
+![Airgap Download Bundle](/images/guides/kots/airgap-build-bundle.png)
 
-![Airgap Download Bundle](/images/guides/kots/airgap-download-bundle.png)
+* Once you see `Download Bundle`, click to download the `.airgap` bundle.
 
 Keep this file on your local laptop from where you will be accessing the Admin Console UI.
 
