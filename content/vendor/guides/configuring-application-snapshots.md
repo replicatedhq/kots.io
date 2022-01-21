@@ -9,13 +9,13 @@ KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/
 
 ## Objective
 
-The purpose of this guide is to walk you through the nescessary steps to enable and configure snaphots in KOTS.
+The purpose of this guide is to walk you through the necessary steps to enable and configure snapshots in KOTS.
 In this guide, we'll use a Postgres `StatefulSet` as this is a common use case.
 
 ## Prerequisites & Assumptions
 
 This power-user's guide assumes you have completed the [standard quickstart](https://kots.io/vendor/guides/quickstart/) or the [CLI quickstart](https://kots.io/vendor/guides/cli-quickstart/) guides as this guide is a continuation of those guides.
-As with the previous guides, we will also need a VM to install the application with the following minimim requirements:
+As with the previous guides, we will also need a VM to install the application with the following minimum requirements:
 
 * Ubuntu 18.04
 * At least 8 GB of RAM
@@ -127,7 +127,7 @@ To verify that the table was in fact created, we can query for records:
 postgres=# SELECT * FROM tbl_records;
 ```
 
-The output shoulld be similar to this:
+The output should be similar to this:
 
 ```sql
  sample_field
@@ -160,7 +160,7 @@ Now that our table has some data, let's configure snapshots in KOTS.
 
 At a high level, the steps to enable snapshots in the application are:
 
-- [Add Backup Resource File](#add-backup-resource-file) - Adding this file practially enables snapshots in the application
+- [Add Backup Resource File](#add-backup-resource-file) - Adding this file practically enables snapshots in the application
 - [Configure the Volume to backup](#configure-volumes) - Volumes are only part of the snapshot if they are annotated to be included.
 - [Update the Kubernetes Installer](#configuring-the-cluster) - Adds the necessary Add-on for taking snapshots in the cluster.
 
@@ -176,7 +176,7 @@ For further details on all of the available specs, please check the Velero docum
 ### Configure Volumes
 
 Volumes by default are not part of the snapshot unless they are configured to be included.
-To configure which volumes should be part of the snaphot, add the *backup.velero.io/backup-volumes:* label annotation on the pod itself.
+To configure which volumes should be part of the snapshot, add the *backup.velero.io/backup-volumes:* label annotation on the pod itself.
 
 In the sample Postgres StatefulSet, the `postgresql-vct` Volume is mounted to the Postgres data directory so let's add the label annotation.
 Below shows the addition to make to the file:
@@ -206,7 +206,7 @@ spec:
 ### Configuring the Cluster
 
 KOTS uses the [Velero](https://velero.io/) open source project to provide snapshot capabilities and will need to be added to the cluster.
-Since we used KOTS to install the Kubernetes cluster on the VM, we need to update the Kubernetes intaller.
+Since we used KOTS to install the Kubernetes cluster on the VM, we need to update the Kubernetes installer.
 
 Update the Kubernetes Installer as shown below and promote it to the *Unstable* channel
 
@@ -254,7 +254,7 @@ After this completes, log back into the KOTS Admin Console and go to **Version H
 
 The user will know that Snapshots are now available to configure when the **Snaphots** tab becomes available in the KOTS Admin Console as illustrated below.
 
-To configure snapshots in the Admin Console, click on the **Snapshot** tab.
+To configure snapshots in the Admin Console, click on the **Snapshots** tab.
 Here, we'll configure settings that apply to this instance of KOTS which allows you to specify a Storage Option and check the Velero install.
 
 ![storage_opts](/images/guides/kots/snap_guide_storage_conf.png)
@@ -278,12 +278,12 @@ You may see this if you deployed the application without updating the cluster.
 
 * * *
 
-## 4. Take the First Snaphots
+## 4. Take the First Snapshots
 
 Once Snapshots have been properly configured, the Snapshots tile and the Snapshots tab are now visible in the Application Dashboard.
 
-To manage snapshots for the application itself, click on the **Snaphots** tab that just became available.
-The **Snaphots** tab displays the snapshots that have been taken. Since the first time you access this tab, you may not have any snapshots listed yet.
+To manage snapshots for the application itself, click on the **Snapshots** tab that just became available.
+The **Snapshots** tab displays the snapshots that have been taken. Since the first time you access this tab, you may not have any snapshots listed yet.
 
 You can either select to run your first snapshot or configure your backup schedule and retention policy.
 
