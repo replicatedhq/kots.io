@@ -30,11 +30,11 @@ The guide is divided into the following steps:
 
   [1. Set Up Testing Environment](#1-set-up-testing-environment)
 
-  [2. Enable Snapshots in KOTS](#2-enable-snashots-in-kots)
+  [2. Enable Snapshots in KOTS](#2-enable-snapshots-in-kots)
 
   [3. Configure the Deployed Application](#3-configure-the-deployed-application)
 
-  [4. Take the First Snapshots](#4-take-the-first-snaphots)
+  [4. Take the First Snapshots](#4-take-the-first-snapshots)
 
   [5. Add Another Record to the Table](#5-add-another-record-to-the-table)
 
@@ -102,7 +102,7 @@ The password set in the Postgres StatefulSet Definition file is 'postgres'.
 Password for user postgres:
 ```
 
-A succesful connection should return something similar to this:
+A successful connection should return something similar to this:
 ```sql
 psql (12.4, server 9.6.19)
 Type "help" for help.
