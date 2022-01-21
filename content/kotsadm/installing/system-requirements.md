@@ -24,7 +24,7 @@ This section describes the browser requirements for the latest KOTS Admin Consol
 
 ## Kubernetes Version Compatibility
 
-Each release of KOTS maintains compatibility with the versions of Kubernetes supported by [kURL](https://kurl.sh) at the time of the KOTS release.
+Each release of KOTS maintains compatibility with the versions of Kubernetes that are supported by [kURL](https://kurl.sh) at the time of the KOTS release.
 This includes support for all patch releases of the corresponding Kubernetes version.
 
 | KOTS Version(s) | Kubernetes Compatibility |
