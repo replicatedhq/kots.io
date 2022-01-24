@@ -10,9 +10,10 @@ The `kots get versions` command lists all versions of an application.
 ### Usage
 
 ```bash
-kubectl kots get versions [flags]
+kubectl kots get versions [app-slug] [flags]
 ```
 
+- _Replace `[app-slug]` with the app slug for your KOTS application (required)._
 - _Provide `[flags]` according to the table below_
 
 | Flag              | Type   | Description                                                         |
@@ -23,5 +24,5 @@ kubectl kots get versions [flags]
 ### Example
 
 ```bash
-kubectl kots get versions -n default
+kubectl kots get kots-sentry -n default
 ```
