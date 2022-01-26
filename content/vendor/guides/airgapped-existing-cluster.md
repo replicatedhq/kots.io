@@ -350,7 +350,7 @@ We'll follow the instructions at [Installing from an Airgap Package](https://kot
 Let's start by downloading the `kots` plugin and the airgap bundle to our workstation:
 
 ```shell script
-gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- 'curl https://kots.io/install | bash'
+gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- 'curl https://kots.io/install/version/<your approved version here> | bash'
 ```
 
 Next, let's copy the binary to our airgapped workstation from there

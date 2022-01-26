@@ -26,6 +26,11 @@ To start, install KOTS using the Krew plugin manager:
 curl https://kots.io/install | bash
 ```
 
+You can install a specific version of KOTS, like one that has been QA'ed by your team, using the versioned install URL:
+```bash
+curl https://kots.io/install/version/v1.50.0 | bash
+```
+
 This will give you a new kubectl command.
 ```bash
 kubectl kots --help
