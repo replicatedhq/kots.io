@@ -33,7 +33,8 @@ This section describes the versions of Kubernetes that are compatible with each 
 | 1.20 to 1.35    | 1.19, 1.18, and 1.17     |
 | 1.36 to 1.47    | 1.20, 1.19, and 1.18     |
 | 1.48 to 1.59.2  | 1.21, 1.20, and 1.19     |
-| 1.59.3+         | 1.22, 1.21, and 1.20     |
+| 1.59.3 to 1.60  | 1.22, 1.21, and 1.20     |
+| 1.61+           | 1.23, 1.22, 1.21, and 1.20     |
 
 ## Firewall Openings for Online Installations
 
