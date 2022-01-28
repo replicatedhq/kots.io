@@ -25,5 +25,5 @@ kubectl kots get versions [app-slug] [flags]
 ### Example
 
 ```bash
-kubectl kots get kots-sentry -n default
+kubectl kots get versions kots-sentry -n default
 ```
