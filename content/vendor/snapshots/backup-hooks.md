@@ -6,7 +6,7 @@ weight: 3
 ---
 
 For many application workloads, additional processing or scripts need to be run before and/or after a backup is taken to prepare the system for a backup.
-Velero has support for this, using [Backup Hooks](https://velero.io/docs/main/backup-hooks/).
+Velero has support for this, using [Backup Hooks](https://velero.netlify.app/docs/main/backup-hooks/).
 
 Some common examples of how a Hook can be used to create successful backups are:
 - Run `pg_dump` to export a postgres database prior to backup
@@ -35,9 +35,9 @@ spec:
 
     master:
       podAnnotations:
-        backup.velero.io/backup-volumes: backup
-        pre.hook.backup.velero.io/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U username -d dbname -h 127.0.0.1 > /scratch/backup.sql"]'
-        pre.hook.backup.velero.io/timeout: 3m
+        backup.velero.netlify.app/backup-volumes: backup
+        pre.hook.backup.velero.netlify.app/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U username -d dbname -h 127.0.0.1 > /scratch/backup.sql"]'
+        pre.hook.backup.velero.netlify.app/timeout: 3m
 
       extraVolumes:
         - name: backup
@@ -69,11 +69,11 @@ The annotations are:
 
 | annotation | description |
 |------------|-------------|
-| `backup.velero.io/backup-volumes` | a comma separated list of volumes from the pod to include in the backup.
+| `backup.velero.netlify.app/backup-volumes` | a comma separated list of volumes from the pod to include in the backup.
 Note, we are not including the primary data volume here |
-| `pre.hook.backup.velero.io/command` | a stringified json array containing the pre backup hook command.
+| `pre.hook.backup.velero.netlify.app/command` | a stringified json array containing the pre backup hook command.
 This command is a pg_dump from the running database to the backup volume |
-| `pre.hook.backup.velero.io/timeout` | a duration for the maximum time to let this script run for |
+| `pre.hook.backup.velero.netlify.app/timeout` | a duration for the maximum time to let this script run for |
 
 `spec.master.extraVolumes`: this is a new volume that we inject into the postgres pod. It's an empty volume, stored in memory (does not require a PVC or storage).
 We mount this into the `/scratch` directory of the master pod, and use it as a destination when running `pg_dump` above (in the hooks).

@@ -12,7 +12,7 @@ This is especially true for [embedded kURL installs](/kotsadm/installing/install
 
 1. Begin with installing a version of Velero compatible with the one that was used to make the snapshot.
     1. If restoring from an [NFS](/kotsadm/snapshots/storage-destinations/#network-file-system-nfs) or a [Host Path](/kotsadm/snapshots/storage-destinations/#host-path) storage destination, please refer to the [Configuring NFS](/kotsadm/snapshots/configuring-nfs/) or [Configuring a Host Path](/kotsadm/snapshots/configuring-hostpath/) documentation for the configuration steps and how to set up Velero.
-    1. Otherwise, please refer to Velero documention for [installing](https://velero.io/docs/v1.5/basic-install/) and [configuring](https://velero.io/plugins/) the plugins.
+    1. Otherwise, please refer to Velero documention for [installing](https://velero.netlify.app/docs/v1.5/basic-install/) and [configuring](https://velero.netlify.app/plugins/) the plugins.
     1. **Note** that Restic is required and `--restic` flag must be used with `velero install` command.
 1. Use the KOTS CLI to [list backups](/kots-cli/backup/ls/) and [create restores](/kots-cli/restore/).
 
