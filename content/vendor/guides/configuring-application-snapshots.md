@@ -176,7 +176,7 @@ For further details on all of the available specs, please check the Velero docum
 ### Configure Volumes
 
 Volumes by default are not part of the snapshot unless they are configured to be included.
-To configure which volumes should be part of the snapshot, add the *backup.velero.netlify.app/backup-volumes:* label annotation on the pod itself.
+To configure which volumes should be part of the snapshot, add the *backup.velero.io/backup-volumes:* label annotation on the pod itself.
 
 In the sample Postgres StatefulSet, the `postgresql-vct` Volume is mounted to the Postgres data directory so let's add the label annotation.
 Below shows the addition to make to the file:
@@ -199,7 +199,7 @@ spec:
       labels:
         app: postgresql
 +     annotations:
-+       backup.velero.netlify.app/backup-volumes: postgresql-vct # this volume will be included in snapshot
++       backup.velero.io/backup-volumes: postgresql-vct # this volume will be included in snapshot
     spec:
       containers:
 ```
@@ -373,11 +373,11 @@ For the purposes of this guide, we'll do the former and use label annotations.
 
 To accomplish this we'll need to:
 
-- Add the *pre.hook.backup.velero.netlify.app/command* label annotation to execute `pg_dump` and put the backup in a new folder.
-- Add the *pre.hook.backup.velero.netlify.app/timeout* label annotation to give the backup time to run and store the output.
+- Add the *pre.hook.backup.velero.io/command* label annotation to execute `pg_dump` and put the backup in a new folder.
+- Add the *pre.hook.backup.velero.io/timeout* label annotation to give the backup time to run and store the output.
   Per the Velero documentation, "The hook is considered in error if the command exceeds the timeout." so make sure this value exceeds how long you expect the command to take.
 - Add a new volume to the pod and mount it to the new folder containing the `pg_dump` output.
-- Change the *backup.velero.netlify.app/backup-volumes:* label to take a snapshot of the new volume.
+- Change the *backup.velero.io/backup-volumes:* label to take a snapshot of the new volume.
 
 Below highlights the changes to the Postgres definition file:
 
@@ -399,10 +399,10 @@ Below highlights the changes to the Postgres definition file:
         labels:
           app: postgresql
         annotations:
--         backup.velero.netlify.app/backup-volumes: postgresql-vct # this volume will be included in snapshot
-+         pre.hook.backup.velero.netlify.app/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U $POSTGRES_USER -d postgres -h 127.0.0.1 > /backup/backup.sql"]'
-+         pre.hook.backup.velero.netlify.app/timeout: 3m
-+         backup.velero.netlify.app/backup-volumes: postgresql-backup
+-         backup.velero.io/backup-volumes: postgresql-vct # this volume will be included in snapshot
++         pre.hook.backup.velero.io/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U $POSTGRES_USER -d postgres -h 127.0.0.1 > /backup/backup.sql"]'
++         pre.hook.backup.velero.io/timeout: 3m
++         backup.velero.io/backup-volumes: postgresql-backup
       spec:
 ```
 
@@ -610,7 +610,7 @@ spec:
 ### backup.yaml
 
 ```yaml
-apiVersion: velero.netlify.app/v1
+apiVersion: velero.io/v1
 kind: Backup
 metadata:
   name: backup
@@ -637,9 +637,9 @@ spec:
       labels:
         app: postgresql
       annotations:
-        pre.hook.backup.velero.netlify.app/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U $POSTGRES_USER -d postgres -h 127.0.0.1 > /backup/backup.sql"]'
-        pre.hook.backup.velero.netlify.app/timeout: 3m
-        backup.velero.netlify.app/backup-volumes: postgresql-backup
+        pre.hook.backup.velero.io/command: '["/bin/bash", "-c", "PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U $POSTGRES_USER -d postgres -h 127.0.0.1 > /backup/backup.sql"]'
+        pre.hook.backup.velero.io/timeout: 3m
+        backup.velero.io/backup-volumes: postgresql-backup
     spec:
       containers:
       - name: app-direct-postgresql

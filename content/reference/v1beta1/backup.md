@@ -13,7 +13,7 @@ This resource is [fully documented](https://velero.netlify.app/docs/v1.5/api-typ
 This resource supports the [KOTS optional resources](/vendor/packaging/include-resources/) annotations.
 
 ```yaml
-apiVersion: velero.netlify.app/v1
+apiVersion: velero.io/v1
 kind: Backup
 metadata:
   name: backup
