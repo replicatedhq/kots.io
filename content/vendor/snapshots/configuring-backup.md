@@ -69,7 +69,7 @@ The KOTS Snapshots feature is a backup and restore option that lets you define a
     ```
 
 1. Optional: Configure manifest exclusions. By default, Velero also includes snapshots of all of the Kubernetes objects in the namespace.
-To exclude any manifest, add a `velero.netlify.app/exclude-from-backup` label to the manifest to be excluded.
+To exclude any manifest, add a `velero.io/exclude-from-backup` label to the manifest to be excluded.
 
     Example:
 
@@ -79,7 +79,7 @@ To exclude any manifest, add a `velero.netlify.app/exclude-from-backup` label to
     metadata:
       name: sample
       labels:
-        velero.netlify.app/exclude-from-backup: "true"
+        velero.io/exclude-from-backup: "true"
     stringData:
       uri: Secret To Not Include
 
