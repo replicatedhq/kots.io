@@ -5,7 +5,7 @@ title: "Configure Application Snapshots"
 weight: "1005"
 ---
 
-KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/) by leveraging the [Velero](https://velero.io/) open source project. This is an advanced topic that covers a feature that is currently in **Beta**.
+KOTS provides [snapshot capabilities](https://kots.io/vendor/snapshots/overview/) by leveraging the [Velero](https://velero.netlify.app/) open source project. This is an advanced topic that covers a feature that is currently in **Beta**.
 
 ## Objective
 
@@ -171,7 +171,7 @@ The first step is to add a backup resource file.
 Like the Postgres StatefulSet Definition file, the file contents are available in the [Appendix A]
 Create a new release and add the [backup.yaml](#backupyaml) file to the application manifests.
 This contains the minimal configuration and will suffice.
-For further details on all of the available specs, please check the Velero documentation [here](https://velero.io/docs/v1.3.2/api-types/backup/)
+For further details on all of the available specs, please check the Velero documentation [here](https://velero.netlify.app/docs/v1.3.2/api-types/backup/)
 
 ### Configure Volumes
 
@@ -205,7 +205,7 @@ spec:
 ```
 ### Configuring the Cluster
 
-KOTS uses the [Velero](https://velero.io/) open source project to provide snapshot capabilities and will need to be added to the cluster.
+KOTS uses the [Velero](https://velero.netlify.app/) open source project to provide snapshot capabilities and will need to be added to the cluster.
 Since we used KOTS to install the Kubernetes cluster on the VM, we need to update the Kubernetes installer.
 
 Update the Kubernetes Installer as shown below and promote it to the *Unstable* channel
@@ -329,7 +329,7 @@ The process may take several minutes and KOTS will first undeploy the current ap
 This means that all existing application manifests will be removed from the cluster and all PersistentVolumeClaims will be deleted.
 All Application Manifests will then be redeployed to the namespace along with initContainers used by Velero in the restore process.
 
-For mote details on the restore process, please check [this](https://velero.io/docs/v1.2.0/restic/#how-backup-and-restore-work-with-restic) documentation page from Velero.
+For mote details on the restore process, please check [this](https://velero.netlify.app/docs/v1.2.0/restic/#how-backup-and-restore-work-with-restic) documentation page from Velero.
 
 Once the snapshot restore process completes, you will need to login to the Admin Console again.
 
@@ -367,8 +367,8 @@ In many cases, simply taking a snapshot of a volume is not enough.
 For example, the recommend way to backup Postgres is to use `pg_dump` and only take a snapshot of the backup.
 A similar approach would also be needed for applications that use an 'in memory' database that requires a service shut down before any backup is taken.
 
-Velero provides both pre and post [backup hooks](https://velero.io/docs/v1.4/hooks/#docs).
-These can be configured by adding annotations to the pod itself or in the [Backup spec](https://velero.io/docs/v1.2.0/api-types/backup/).
+Velero provides both pre and post [backup hooks](https://velero.netlify.app/docs/v1.4/hooks/#docs).
+These can be configured by adding annotations to the pod itself or in the [Backup spec](https://velero.netlify.app/docs/v1.2.0/api-types/backup/).
 For the purposes of this guide, we'll do the former and use label annotations.
 
 To accomplish this we'll need to:
@@ -495,7 +495,7 @@ As we can see below, not only has the timestamp changed on the file, but there i
 
 ### A note on Restore
 
-As of Velero version 1.5.1, there is now support for [restore hooks](https://velero.io/docs/v1.5/restore-hooks/#docs).
+As of Velero version 1.5.1, there is now support for [restore hooks](https://velero.netlify.app/docs/v1.5/restore-hooks/#docs).
 This is a new feature, and while it should work with KOTS, it has not been tested.
 
 This means that the process to restore from the backup file will be a manual one.
@@ -712,4 +712,4 @@ spec:
 
 * [KOTS Snapshots Documentation](https://kots.io/vendor/snapshots/overview/) For more details about snapshots in KOTS, please review the docs for KOTS.
 
-* [Velero Documentation](https://velero.io/docs/)
+* [Velero Documentation](https://velero.netlify.app/docs/)

@@ -5,7 +5,7 @@ weight: 9
 title: Compatible Backend Stores
 ---
 
-The KOTS Snapshot feature supports any compatible [Velero storage provider](https://velero.io/docs/main/supported-providers/).
+The KOTS Snapshot feature supports any compatible [Velero storage provider](https://velero.netlify.app/docs/main/supported-providers/).
 The admin console has built-in support for configuring AWS, GCP, Azure, S3-Compatible object store, NFS Server, or local host path as destinations.
 
 Although embedded clusters from kURL installations are preconfigured in the admin console to store backups in the locally-provisioned object store, this is sufficient for only rollbacks and downgrades. It is not a suitable configuration for disaster recovery. We recommend that you configure a storage destination that is external to the embedded cluster in the admin console.
@@ -14,8 +14,8 @@ If the admin console is running with [minimal role-based-access-control (RBAC) p
 
 ## Prerequisites for cloud configurations
 
-* Existing clusters: Customers must [install Velero](https://velero.io/docs/v1.6/basic-install/) before configuring Snapshots.
-* Embedded clusters: The vendor can provide the Velero add-on in the embedded cluster installation. If it is not provided, the Snapshots configuration dialog in the admin console notifies you to [install Velero](https://velero.io/docs/v1.6/basic-install/) before you can proceed with the configuration.
+* Existing clusters: Customers must [install Velero](https://velero.netlify.app/docs/v1.6/basic-install/) before configuring Snapshots.
+* Embedded clusters: The vendor can provide the Velero add-on in the embedded cluster installation. If it is not provided, the Snapshots configuration dialog in the admin console notifies you to [install Velero](https://velero.netlify.app/docs/v1.6/basic-install/) before you can proceed with the configuration.
 
 ## AWS
 

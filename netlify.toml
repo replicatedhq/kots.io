@@ -1,36 +1,36 @@
 [[redirects]]
   from = "/kotsadm/snapshots/velero"
-  to = "https://velero.io"
+  to = "https://velero.netlify.app"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kotsadm/snapshots/velero-troubleshooting/"
-  to = "https://velero.io/docs/main/troubleshooting/"
+  to = "https://velero.netlify.app/docs/main/troubleshooting/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kotsadm/snapshots/restic/"
-  to = "https://velero.io/docs/v1.3.2/restic/"
+  to = "https://velero.netlify.app/docs/v1.3.2/restic/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kotsadm/snapshots/restic-troubleshooting/"
-  to = "https://velero.io/docs/main/restic/#troubleshooting"
+  to = "https://velero.netlify.app/docs/main/restic/#troubleshooting"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kotsadm/snapshots/supported-providers/"
-  to = "https://velero.io/docs/v1.3.2/supported-providers/"
+  to = "https://velero.netlify.app/docs/v1.3.2/supported-providers/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/kotsadm/snapshots/basic-install/"
-  to = "https://velero.io/docs/v1.3.2/basic-install/#install-the-cli"
+  to = "https://velero.netlify.app/docs/v1.3.2/basic-install/#install-the-cli"
   status = 301
   force = true
 
