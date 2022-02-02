@@ -17,6 +17,9 @@ To solve this problem, the KOTS [HelmChart custom resource](/reference/v1beta1/h
 The values passed in `builder` should be the bare minimum [Helm Values](https://helm.sh/docs/chart_template_guide/values_files/) to be able to template out the Helm chart so that it will have the correct image tags. 
 Upon promotion to a release channel, on the back-end Airgap Builder will, template the chart with the builder values, render the resulting YAML manifests and export any images referenced to build the airgap package. 
 
+Values passed in `builder` are only used to determine the images used within the helm chart.
+These values should not be templates, because they are never used within a customer installation and do not change.
+
 ## Builder Attribute
 ```yaml
 # builder values provide a way to render the chart with all images
