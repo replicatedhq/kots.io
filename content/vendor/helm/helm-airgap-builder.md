@@ -19,6 +19,7 @@ Upon promotion to a release channel, on the back-end Airgap Builder will, templa
 
 Values passed in `builder` are only used to determine the images used within the helm chart.
 These values should not be templates, because they are never used within a customer installation and do not change.
+For things like a required namespace, you should include a hardcoded entry in `builder` - "default" works fine - and a templated entry in `values` as shown [here](/reference/v1beta1/helmchart/#values).
 
 ## Builder Attribute
 ```yaml
