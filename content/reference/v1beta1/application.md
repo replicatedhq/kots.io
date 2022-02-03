@@ -171,6 +171,6 @@ The KOTS version that is targeted by the release.
 
 Specifying this in the application spec of the release will enforce compatibility checks for new installations and block the installation if the KOTS version being used is greater than the targeted KOTS version.
 
-For channels that have the release active, the install command for existing clusters - which displayed on the channel card - will include that specific version of KOTS.
+If the latest release in a channel specifies a target KOTS version, the install command for existing clusters—which is displayed on the channel card in the vendor portal—will be modified to install that specific version of KOTS.
 
 Specifying a target KOTS version will not prevent an end user from upgrading to a higher version of KOTS after the initial installation. Similarly, if a new version of the application specifies a higher target KOTS version than what is currently installed, the end user will not be prevented from deploying that version of the application. Instead, if an end-user's admin console is running a version of KOTS that is less than the target version specified in the version of the application that they have deployed, a message will be displayed in the footer of the admin console to indicate that a newer supported version of KOTS is available.
