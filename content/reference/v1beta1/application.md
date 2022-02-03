@@ -32,6 +32,7 @@ spec:
   allowRollback: false
   kubectlVersion: latest
   kustomizeVersion: latest
+  targetKotsVersion: "1.60.0"
   requireMinimalRBACPrivileges: false
   additionalImages:
     - jenkins/jenkins:lts
@@ -164,3 +165,14 @@ The format of the Y axis labels with support for all Grafana [units](https://gra
 
 ### yAxisTemplate
 Y axis labels template. Use `{{ value }}`.
+
+## targetKotsVersion
+The KOTS version that is targeted by the release.
+
+Specifying this in the application spec of the release will enforce compatibility checks for new installations and block the installation if the KOTS version being used is greater than the targetted KOTS version.
+
+For channels that have the release active, the install command for existing clusters - which displayed on the channel card - will include that specific version of KOTS.
+
+When bumping up the target KOTS version, a message will show up in the KOTS admin console letting the end user know that there is a new supported KOTS version available.
+
+The target KOTS version will not block the end user from upgrading to a higher version of KOTS after the initial installation.
