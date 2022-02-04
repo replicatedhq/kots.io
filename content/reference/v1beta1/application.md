@@ -181,6 +181,6 @@ For embedded cluster installs, it is important to keep the version of the [KOTS 
 ## minKotsVersion (Beta)
 The minimum KOTS version that is required by the release.
 
-Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block if the KOTS version being used is less than the minimum KOTS version.
+Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block if the currently deployed KOTS version is less than the specified minimum KOTS version.
 
 This feature is not currently supported for channels that have [semantic versioning](/vendor/packaging/promoting-releases/#semantic-versioning) enabled.
