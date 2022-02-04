@@ -33,6 +33,7 @@ spec:
   kubectlVersion: latest
   kustomizeVersion: latest
   targetKotsVersion: "1.60.0"
+  minKotsVersion: "1.40.0"
   requireMinimalRBACPrivileges: false
   additionalImages:
     - jenkins/jenkins:lts
@@ -176,3 +177,10 @@ If the latest release in a channel specifies a target KOTS version, the install 
 Specifying a target KOTS version will not prevent an end user from upgrading to a higher version of KOTS after the initial installation. Similarly, if a new version of the application specifies a higher target KOTS version than what is currently installed, the end user will not be prevented from deploying that version of the application. If an end-user's admin console is running a version of KOTS that is less than the target version specified in the new version of the application, a message will be displayed in the footer of the admin console to indicate that a newer supported version of KOTS is available.
 
 For embedded cluster installs, it is important to keep the version of the [KOTS add-on](https://kurl.sh/docs/add-ons/kotsadm) in sync with the target KOTS version specified in the application spec. If the KOTS add-on version is greater than the target KOTS version, the initial installation will fail.
+
+## minKotsVersion (Beta)
+The minimum KOTS version that is required by the release.
+
+Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block if the KOTS version being used is less than the minimum KOTS version.
+
+This feature is not currently supported for channels that have [semantic versioning](/vendor/packaging/promoting-releases/#semantic-versioning) enabled.
