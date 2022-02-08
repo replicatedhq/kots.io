@@ -74,7 +74,7 @@ However, the same secret will be added to those PodSpecs as well.
 ## Replicated Private Registry
 
 When using the Replicated Private Registry, you have 3 options to connect with the `registry.replicated.com` container registry:
-1. Use `docker login registry.replicated.com` with a Vendor portal [Service account](/vendor/cli/tokens/#service-accounts) or [Team](/vendor/cli/tokens/#team-tokens) token as the credentials.
+1. Use `docker login registry.replicated.com` with a Vendor portal [Service account](/vendor/cli/tokens/#service-accounts) or [Team](/vendor/cli/tokens/#team-tokens) token as the password (any username will be accepted here).
 2. Use `docker login registry.replicated.com` with your Vendor portal email as the username and a Vendor portal [User token](/vendor/cli/tokens/#user-tokens) as the password.
 3. Use `docker login registry.replicated.com` with your Vendor portal email and password as the credentials
 
