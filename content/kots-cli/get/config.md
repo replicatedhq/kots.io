@@ -17,11 +17,11 @@ kubectl kots get config [flags]
 
 | Flag              | Type   | Description                                                                                       |
 | :---------------- | ------ |---------------------------------------------------------------------------------------------------|
-| `--appslug`       | string | The app slug for which the config will be retrieved _(required if more than one app is deployed)_ |
-| `--sequence`      | int    | The app sequence for which the config will be retrieved _(default: latest)_                       |
-| `--decrypt`       | bool   | Decrypt password items within the config                                                          |
-| `-h, --help`      |        | help for get config                                                                               |
-| `-n, --namespace` | string | the namespace where the admin console is running _(required)_                                     |
+| `--appslug`       | string | The app slug of the application from which to retrieve the configValues file. Required if more than one app is deployed. |
+| `--sequence`      | int    | The app sequence from which to retrieve the configValues file. Default: latest.                       |
+| `--decrypt`       | bool   | Decrypt password items within the config.                                                          |
+| `-h, --help`      |        | Help for get config.                                                                               |
+| `-n, --namespace` | string | (Required) The namespace where the admin console is running.                                 |
 
 ### Example
 
