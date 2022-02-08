@@ -73,9 +73,10 @@ However, the same secret will be added to those PodSpecs as well.
 
 ## Replicated Private Registry
 
-When using the Replicated Private Registry, you have 2 options to connect with the `registry.replicated.com` container registry:
-1. Use `docker login registry.replicated.com` with your Vendor portal email and password credentials
-2. Use `docker login registry.replicated.com` with a Vendor Portal [API token](/vendor/guides/cli-quickstart/#2-setting-a-service-account-token) for both username and password.
+When using the Replicated Private Registry, you have 3 options to connect with the `registry.replicated.com` container registry:
+1. Use `docker login registry.replicated.com` with a Vendor portal [Service account](/vendor/cli/tokens/#service-accounts) or [Team](/vendor/cli/tokens/#team-tokens) token as the credentials.
+2. Use `docker login registry.replicated.com` with your Vendor portal email as the username and a Vendor portal [User token](/vendor/cli/tokens/#user-tokens) as the password.
+3. Use `docker login registry.replicated.com` with your Vendor portal email and password as the credentials
 
 Once logged in, you will need to tag your image. Replicated accepts images in the standard Docker format: `registry.replicated.com/<application-slug>/<image-name>:<version>`. You can find your application slug on the Images page of the [Replicated Vendor Portal](https://vendor.replicated.com/#/images).
 
