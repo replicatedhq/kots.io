@@ -183,6 +183,19 @@ The minimum KOTS version that is required by the release.
 
 Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block if the currently deployed KOTS version is less than the specified minimum KOTS version.
 
-This feature is not currently supported for channels that have [semantic versioning](/vendor/packaging/promoting-releases/#semantic-versioning) enabled, nor is it supported in general if the minimum version increases and then decreases from one release to the next. In both cases this is because the intermediate releases will get lost and only the most recent release will be retrieved.
+### Limitations
 
-When promoting a new release that specifies a minimum KOTS version that is greater than what an end user currently has deployed, that release will not appear in the version history of the admin console after checking for updates. An error message will be displayed temporarily, but it will disappear after a few minutes. This error is also displayed when checking for updates using the [`kots upstream upgrade` command](/kots-cli/upstream/). End users must update their admin console to at least the minimum version in order to fetch the update without error. KOTS cannot update itself automatically, and there is no way to update KOTS from the admin console. When promoting a new release that increases the minimum KOTS version, vendors can inform their end users of the need to update KOTS, if they are concerned end users will not see the error message or will not know how to proceed.
+`minKotsVersion` is not supported in the following cases:
+
+* Channels that have [semantic versioning](/vendor/packaging/promoting-releases/#semantic-versioning) enabled.
+* The minimum version increases and then decreases from one release to the next.
+
+`minKotsVersion` is not supported in these cases because KOTS retrieves only the most recent release. This means that any intermediate releases are lost.
+
+### Guidance for informing users of the need to update
+
+After promoting a new release that specifies a minimum KOTS version that is later than what an end user currently has deployed, that release does not appear in the version history of the admin console after checking for updates. The admin console displays an error message temporarily, but it disappears after a few minutes. The admin console also displays this error when the user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/).
+
+End users must update their admin console to the minimum KOTS version or later in order to fetch the update without error. KOTS cannot update itself automatically, and users cannot update KOTS from the admin console.
+
+When promoting a new release that changes the minimum KOTS version to a later version, vendors can inform their end users of the need to update KOTS if they are concerned end users will not see the error message or will not know how to proceed.
