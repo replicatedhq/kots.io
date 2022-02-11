@@ -5,22 +5,9 @@ title: Helm Processing
 weight: 20590
 ---
 
-The Replicated Helm installation is compatible with both Helm v2 and Helm v3 as it does not rely on Tiller to deploy the chart into the cluster. Instead, KOTS treats a Helm Chart as the packaging spec rather than the deployment tool. The Replicated Helm installation creates deployable YAML by leveraging the same functionality that the `helm template` command uses (with some extended functionality for [specific Helm hooks](/vendor/packaging/cleaning-up-jobs/#helm-charts)).
-
-When a [Helm chart based KOTS application is installed via airgap](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment (via the KOTS CLI or as part of the Admin Console). This means that the customer supplied values, license values, and existing values can be used to create the deployable manifests. 
-
-
-In either scenario the resulting deployment is comprised of raw Kubernetes manifests. Therefore, cluster operator's are always able to view the exact diff between what is currently deployed and what the update will deploy. This level of change management provides the necessary transparency to provide the level of assurance that cluster operators require.
-
-## Helm v3
-
-To determine if Helm v3 is necessary, KOTS will check the apiVersion supplied in the `Chart.yaml` file of the Helm Chart. By default (if **Chart.yaml** is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML. Optionally, an API version can be specified in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm v3 to process the Helm Chart.
-
-In the future KOTS may be updated to use Helm v3 by default.
-
 ## Native Helm
 
-Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm Hooks and Weights. 
+Our [Native Helm](https://kots.io/vendor/helm/using-native-helm-charts/) feature utilizes the Helm binary to deploy charts instead of `kubectl apply`. This helps support Helm lifecycle instruments such as Helm hooks and hook weights. 
 
 Processing Helm charts for the Replicated App Manager is accomplished with five high-level steps:
 
@@ -28,11 +15,13 @@ Processing Helm charts for the Replicated App Manager is accomplished with five 
 
 Replicated checks previous versions of the installed app, checking if the chart has been installed previously without Native Helm.
 
-This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the App Manager without Native Helm. If this check fails, the following error will be displayed:
+This step ensures the app manager will not attempt a Native Helm install of a chart that has already been deployed by the app manager without Native Helm. If this check fails, the following error will be displayed:
 ```
 Deployment method for chart <chart> has changed
 ```
+
 **Note:** We do not yet support migrating existing app installations to Native Helm installations. Until migrations are supported, the recommended path is removing the application from the Replicated App Manager and installing fresh with Native Helm. PVCs will be removed in the process -- because this will cause data loss, it is strongly encouraged that application maintainers ensure they have an out-of-band backup and restore method before attempting to migrate live production installs from the previous helm implementation to a native helm one. Because Replicated's built-in [snapshot and restore](/vendor/snapshots/overview) tooling also restores deployed application manifests, it is not a suitable solution for this migration problem.
+
    
    
 2) **Write Base Files**
@@ -111,6 +100,21 @@ kind: Kustomization
 
 Replicated leverages the Helm binary to install the fully-rendered chart resources.
 
-When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, App Manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
+When deploying the application, Replicated walks the `overlays/downstream/charts` directory looking for `kustomization.yaml` files. Upon finding them, app manager will run `kustomize build` on the files. The resulting manifests are packaged together into a new tarball for Helm to consume.
 
 Replicated finally runs `helm upgrade -i chart.tar.gz`. The helm binary processes hooks and weights, applies manifests to the Kubernetes cluster, and saves a Release secret similar to `sh.helm.release.v1.chart-name.v1`. This secret is how Helm tracks upgrades and rollbacks of applications.
+
+## Replicated KOTS
+
+The Replicated KOTS installation is compatible with both Helm v2 and Helm v3 as it does not rely on Tiller to deploy the chart into the cluster. Instead, KOTS treats a Helm chart as the packaging spec rather than the deployment tool. The Replicated KOTS installation creates deployable YAML by leveraging the same functionality that the `helm template` command uses, with some extended functionality for [specific Helm hooks](/vendor/packaging/cleaning-up-jobs/#helm-charts).
+
+
+Replicated finally runs the following command: `helm upgrade -i chart.tar.gz --timeout 60m -n {namespace}`. The helm binary processes hooks and weights, applies manifests to the Kubernetes cluster, and saves a Release secret similar to `sh.helm.release.v1.chart-name.v1`. This secret is how Helm tracks upgrades and rollbacks of applications.
+
+When a [Helm chart based KOTS application is installed via airgap](/vendor/helm/helm-airgap-builder), the processing of the chart is managed in the end customer environment using either the KOTS CLI or the admin console. This means that the customer supplied values, license values, and existing values can be used to create the deployable manifests. 
+
+In both online and airgap installation scenarios, the resulting deployment is comprised of raw Kubernetes manifests. Therefore, cluster operators are always able to view the exact difference between what is currently deployed and what the update will deploy. This level of change management provides the necessary transparency to provide the full assurance that cluster operators require.
+
+### Replicated KOTS Versioning Considerations
+To determine if Helm v3 is necessary, KOTS will check the apiVersion supplied in the `Chart.yaml` file of the Helm Chart. By default (if **Chart.yaml** is not supplied or apiVersion is not present), KOTS will use Helm V2 to process all Helm Charts to create deployable YAML. Optionally, an API version can be specified in the KOTS [`HelmChart`](https://kots.io/reference/v1beta1/helmchart/) resource. When the `helmVersion` property is set to `"v3"`, KOTS will use Helm v3 to process the Helm Chart.
+

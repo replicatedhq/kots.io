@@ -32,6 +32,8 @@ spec:
   allowRollback: false
   kubectlVersion: latest
   kustomizeVersion: latest
+  targetKotsVersion: "1.60.0"
+  minKotsVersion: "1.40.0"
   requireMinimalRBACPrivileges: false
   additionalImages:
     - jenkins/jenkins:lts
@@ -77,6 +79,7 @@ While KOTS detects images from the PodSpecs in the application, some application
 KOTS maintains up-to-date patch versions of all supported kubelet minor versions.
 When unspecified, KOTS will use the newest version from the list of supported versions below.
 
+- 1.22.x (added in [KOTS 1.59.3](https://kots.io/release-notes/1.59.3/))
 - 1.21.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
 - 1.20.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
 - 1.19.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
@@ -163,3 +166,36 @@ The format of the Y axis labels with support for all Grafana [units](https://gra
 
 ### yAxisTemplate
 Y axis labels template. Use `{{ value }}`.
+
+## targetKotsVersion
+The KOTS version that is targeted by the release.
+
+Specifying this in the application spec of the release will enforce compatibility checks for new installations and block the installation if the KOTS version being used is greater than the targeted KOTS version.
+
+If the latest release in a channel specifies a target KOTS version, the install command for existing clusters is modified to install that specific version of KOTS. The install command for existing clusters can be found on the channel card in the [vendor portal](https://vendor.replicated.com). 
+
+Specifying a target KOTS version will not prevent an end user from upgrading to a higher version of KOTS after the initial installation. Similarly, if a new version of the application specifies a higher target KOTS version than what is currently installed, the end user will not be prevented from deploying that version of the application. If an end-user's admin console is running a version of KOTS that is less than the target version specified in the new version of the application, a message will be displayed in the footer of the admin console to indicate that a newer supported version of KOTS is available.
+
+For embedded cluster installs, it is important to keep the version of the [KOTS add-on](https://kurl.sh/docs/add-ons/kotsadm) in sync with the target KOTS version specified in the application spec. If the KOTS add-on version is greater than the target KOTS version, the initial installation will fail.
+
+## minKotsVersion (Beta)
+The minimum KOTS version that is required by the release.
+
+Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block the installation or update if the currently deployed KOTS version is less than the specified minimum KOTS version.
+
+### Limitations
+
+`minKotsVersion` is not supported in the following cases:
+
+* Channels that have [semantic versioning](/vendor/packaging/promoting-releases/#semantic-versioning) enabled.
+* The minimum version increases and then decreases from one release to the next.
+
+`minKotsVersion` is not supported in these cases because when the minimum version increases, the admin console can error when retrieving it (described [below](#guidance-for-informing-users-of-the-need-to-update)). If the minimum KOTS version then decreases in the next release, KOTS will successfully retrieve that release, which means the intermediate release is lost.
+
+### Guidance for informing users of the need to update
+
+After promoting a new release that specifies a minimum KOTS version that is later than what an end user currently has deployed, that release does not appear in the version history of the admin console after checking for updates. The admin console displays an error message temporarily, but it disappears after a few minutes. The admin console also displays this error when the user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/).
+
+End users must update their admin console to the minimum KOTS version or later in order to fetch the update without error. KOTS cannot update itself automatically, and users cannot update KOTS from the admin console.
+
+When promoting a new release that changes the minimum KOTS version to a later version, vendors can inform their end users of the need to update KOTS if they are concerned end users will not see the error message or will not know how to proceed.

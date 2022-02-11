@@ -5,7 +5,7 @@ title: "Deploy an HA Cluster"
 weight: "1005"
 ---
 
-In this guide, we'll walk through the steps needed to take enable Kubernetes' high availability capabilities with a cluster installed by kURL and managed by KOTS. 
+In this guide, we'll walk through the steps needed to take enable Kubernetes' high availability capabilities with a cluster installed by kURL and managed by KOTS.
 This only applies to 'embedded' cluster installs using Kurl.
 
 ## Objective
@@ -22,13 +22,13 @@ The guide is broken into two parts. The [first part](#part-i---setting-up-the-cl
 
 There are a few things to keep in mind about this guide:
 
-- While the VMs are going to be created in Google Cloud Platform (GCP), nothing in this guide is dependent on GCP specific services. 
-- The Load Balancer we'll use for this exercise is [HAProxy](http://www.haproxy.org/). 
+- While the VMs are going to be created in Google Cloud Platform (GCP), nothing in this guide is dependent on GCP specific services.
+- The Load Balancer we'll use for this exercise is [HAProxy](http://www.haproxy.org/).
 - The sample application has a database component as described [here](#sample-application), which will help us validate data retention in our testing scenarios.
 
 ## Prerequisites
 
-- This exercise will need 4 VMs that will need to communicate with each other. Please refer to the [Procuring the (virtual) hardware](#provisioning-the-virtual-hardware) section for guidance on system requirements for these. 
+- This exercise will need 4 VMs that will need to communicate with each other. Please refer to the [Procuring the (virtual) hardware](#provisioning-the-virtual-hardware) section for guidance on system requirements for these.
 
 - In the example commands and screenshots, we are using a sample application called 'AppDirect'. Please refer to the [Sample Application](#sample-application) section for more details if you wish to follow along and use it.
 
@@ -37,11 +37,11 @@ There are a few things to keep in mind about this guide:
 
 ### Sample Application
 
-The KOTS application we'll use in this guide is available in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/app-direct). 
+The KOTS application we'll use in this guide is available in the [kotsapps repository](https://github.com/replicatedhq/kotsapps/tree/master/app-direct).
 
 The application consists of two components:
 
-- Python Flask App Deployment - This flask application contains 'routes' to help test connecting, reading and writing to a database. 
+- Python Flask App Deployment - This flask application contains 'routes' to help test connecting, reading and writing to a database.
 - Postgres StatefulSet - This is the database for the flask application.
 
 A full description of the application is available in the repository.
@@ -76,7 +76,7 @@ To stand up the cluster, we will be following these steps:
 
 ### Provisioning the (Virtual) Hardware
 
-For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HAProxy. The remaining 3 VMs will be the 3 Primary Nodes for our cluster. 
+For this exercise, we are going to create 4 Virtual Machines. One of the VMs will be used to install, configure and run HAProxy. The remaining 3 VMs will be the 3 Primary Nodes for our cluster.
 
 ### Provisioning the HAProxy VM
 
@@ -106,7 +106,7 @@ Also note the VMs public and private ip addresses as each VM is provisioned. We'
 
 The main purpose of the load balancer is to give us a single point of access. All end-user interactions (i.e., access the web UI of the deployed application) should go through the load balancer.
 
-For this guide, HAProxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HAProxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'. 
+For this guide, HAProxy will be the load balancer and will be running on its own VM, provisioned already in the previous step. HAProxy is configured by editing the haproxy.cfg file that by default resides in '/etc/haproxy'.
 
 Here are the high level steps we'll take to install & configure HAProxy.
 
@@ -116,7 +116,7 @@ We will:
 - Use SCP to copy the file in the VM running HAProxy.
 - Install HAProxy.
 - Copy the config file to the proper location.
-- Restart HAProxy. 
+- Restart HAProxy.
 
 Note that another way of accomplishing this is by connecting to the instance via SSH and creating the file and editing from the command line inside the VM.
 
@@ -198,7 +198,7 @@ To copy the config file into the VM, we are going to use scp. The command below 
 gcloud compute scp haproxy.cfg app-direct-ha-proxy:~/
 ```
 
-Now we install HAProxy using apt. 
+Now we install HAProxy using apt.
 
 
 ```shell
@@ -237,7 +237,7 @@ However, in order to enable High Availability we are going to add the '-s ha' [a
 curl -sSL https://k8s.kurl.sh/appdirect-unstable | sudo bash -s ha
 ```
 
-When you include the '-s ha' option, you will be prompted right away for the load balancer address. As shown in the figure below, we are providing the 'internal' IP address. This address is used by the Kubernetes services in the nodes to talk to each other. Using a public IP address would add extra layers that are not needed. 
+When you include the '-s ha' option, you will be prompted right away for the load balancer address. As shown in the figure below, we are providing the 'internal' IP address. This address is used by the Kubernetes services in the nodes to talk to each other. Using a public IP address would add extra layers that are not needed.
 
 This process will take several minutes as it will install a Kubernetes 'stack' that will include the add-ons defined in the Kubernetes Installer, including KOTS. Once it is finished, you should see something similar as shown below:
 
@@ -262,7 +262,7 @@ Once the license is loaded, the next window will depend on the application being
 
 After the configuration window, you should see the preflight checks and eventually land on a window similar to what is shown below
 
-![KotsAdmin](/images/guides/kots/ha-cluster-app-dployed.png)
+![KotsAdmin](/images/guides/kots/ha-cluster-app-deployed.png)
 
 
 ### Verify the Deployment
@@ -280,7 +280,7 @@ The output will show you all the pods running on all namespaces. The output also
 
 If you are following along, you should be able to access the application by browsing to http://<ip-address-of-ha-proxy>. The sample app uses flask 'routes' to call various methods to interact with Postgres. To test if it can write to the database, use the  `/sql-check`   route which will check the connection to the default database and list the databases that are available to the 'postgres' user. To write to the database, first use the `/sql-create` route which creates a database (appdirectdb) with a table (tblrecords) in it. Finally, use the `/sql-add` route to add a row to the table with the timestamp. Once the database and table are created, simply use this route to add more records to the database.
 
-To verify that the data is in fact being written to Postgres, use the Postgres client of your choice. The screenshots included in this guide are from pgAdmin with a connection to the database using the Load Balancer's IP address. 
+To verify that the data is in fact being written to Postgres, use the Postgres client of your choice. The screenshots included in this guide are from pgAdmin with a connection to the database using the Load Balancer's IP address.
 
 Once connected using the client of your choice, you can retrieve the records by running a query like this:
 
@@ -296,13 +296,11 @@ To add the remaining nodes to the clusters, follow these steps:
 
 #### Get the Command to Join the Cluster
 
-In the Admin Console, under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node. 
+In the Admin Console, under Cluster Management you can view the status of the embedded cluster. At this time, it only has one node.
 
 ![ClusterManagement](/images/guides/kots/ha-cluster-cluster-mgmt.png)
 
 To get the command to run on the other nodes, click on the 'Add Node' button. This will display the command to use for Primary and Secondary nodes. For our exercise we will add Primary nodes to give us a proper HA cluster.
-
-![ClusterManagement](/images/guides/kots/ha-cluster-add-node-cmd.png)
 
 #### SSH into the Nodes & Run the Command
 
@@ -335,7 +333,7 @@ There are various testing scenarios for an HA Cluster. For starters we are focus
 
 This section assumes you followed the above steps in order and are using the sample application. Since we are testing data retention, make sure to use the routes described in the [Verify the Deployment](#verify-the-deployment) section.
 
-To verify that data is not lost, you will need a postgres client. As mentioned already in thid guide, you can use the Postgres client of your choice. The screenshots in this guide are from pgAdmin. 
+To verify that data is not lost, you will need a postgres client. As mentioned already in thid guide, you can use the Postgres client of your choice. The screenshots in this guide are from pgAdmin.
 
 To observe how the pods are scheduled as we conduct our test scenarions, ssh into Node 1 and run:
 
@@ -364,11 +362,11 @@ There are a few things you need to keep in mind:
 
 - As described in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/architecture/nodes/#condition), there is a default 5 minute timeout duration. This means that there will be 5 minutes between the time the node goes down and that Kubernetes will finally decide that the node is not coming back and will schedule pods on this node to another node.
 
-To simulate a node becoming unresponsive or simply crashed, you can simply stop the VM corresponding to the node. The only caveat here is that you are not running the watch command on the node you are planning to take down. 
+To simulate a node becoming unresponsive or simply crashed, you can simply stop the VM corresponding to the node. The only caveat here is that you are not running the watch command on the node you are planning to take down.
 
-You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes. 
+You are likely not to see much change in the pods during the first five minutes, other than some pods erroring out. After 5 minutes or so, you will start to see pods being terminated and scheduled on the remaining nodes.
 
-In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node. 
+In this scenario, the downtime for Postgres was about 6 - 7 minutes. This includes the Kubernetes time out of 5 minutes, 1 minute for EKCO to delete the node and remove it from the ceph cluster, and some remaining time is for Postgres to start up on a new node.
 
 ## Troubleshooting
 
@@ -376,7 +374,7 @@ As you go through this exercise, you may run into some of the issues below:
 
 ### Postgres pod will not come up after deleting the pod
 
-In the first test above, after deleting the Postgres pod, the new one would not come up. After looking at the logs of the pod found errors like 
+In the first test above, after deleting the Postgres pod, the new one would not come up. After looking at the logs of the pod found errors like
 
 ```shell
 find: ‘/var/lib/postgresql/data/pgdata/pg_stat_tmp/global.stat’: Structure needs cleaning
@@ -390,19 +388,19 @@ On one occassions when I shut down the node that Postgres was running on, the ne
 
 ![PostgresDesribe](/images/guides/kots/ha-cluster-postgres-describe.png)
 
-It turned out that I did not have my EKCO configuration set up correctly. To resolve the issue, I updated my Kubernetes installer as described in the [configuring ekco](#configuring-ekco) section. 
+It turned out that I did not have my EKCO configuration set up correctly. To resolve the issue, I updated my Kubernetes installer as described in the [configuring ekco](#configuring-ekco) section.
 
 ### Other Persistent Data Issues
 
-The default configuration of the Kurl installer includes the [rook add-on](https://kurl.sh/docs/add-ons/rook), which creates and manages a [Ceph cluster](https://docs.ceph.com/docs/master/rados/) along with a storage class for provisioning Persistent Volume Claims (PVCs). If you are running into other issues with persistent storage, following are some commands that were helpful when I ran into the issues mentioned above. 
+The default configuration of the Kurl installer includes the [rook add-on](https://kurl.sh/docs/add-ons/rook), which creates and manages a [Ceph cluster](https://docs.ceph.com/docs/master/rados/) along with a storage class for provisioning Persistent Volume Claims (PVCs). If you are running into other issues with persistent storage, following are some commands that were helpful when I ran into the issues mentioned above.
 
-These commands check the health of ceph in your cluster. Keep in mind that the screenshots below show a `healthy` cluster that has all nodes up and running. 
+These commands check the health of ceph in your cluster. Keep in mind that the screenshots below show a `healthy` cluster that has all nodes up and running.
 
 All related pods are runnning in the rook-ceph namespace, and a are good place to start to troubleshoot any issues. By running `kubectl get pods -n rook-ceph` you should get an output similar to the one below:
 
 ![PostgresDesribe](/images/guides/kots/ha-cluster-rook-ceph-pods.png)
 
-One thing to note here is that you will see pods running on all three nodes. Orchestrating all of the data accross all nodes is the `rook-ceph-operator-...` pod. To troubleshoot issues, we'll need to exec into this pod in order to run some commands. For example, to exec into the pod on the screenshot above, I would run `kubectl exec -it rook-ceph-operator-6fbfdccc57-p477z`. 
+One thing to note here is that you will see pods running on all three nodes. Orchestrating all of the data accross all nodes is the `rook-ceph-operator-...` pod. To troubleshoot issues, we'll need to exec into this pod in order to run some commands. For example, to exec into the pod on the screenshot above, I would run `kubectl exec -it rook-ceph-operator-6fbfdccc57-p477z`.
 
 The check the status of ceph, run `ceph status`:
 
@@ -423,5 +421,5 @@ To get another look at the OSDs, run `ceph osd tree`
 The guide covers a basic 3 node HA cluster. However, there are other layers of complexity that could be added depending on your use case:
 
 - Add worker nodes to the cluster and run the same tests.
-- Set up https access 
+- Set up https access
 - Set up Postgres in HA mode and compare down time against a single Postgres deployment.

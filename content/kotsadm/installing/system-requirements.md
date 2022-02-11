@@ -24,8 +24,7 @@ This section describes the browser requirements for the latest KOTS Admin Consol
 
 ## Kubernetes Version Compatibility
 
-Each release of KOTS maintains compatability with the current Kubernetes version, and the 2 most recent versions at the time of its release.
-This includes support against all patch releases of the corrersponding Kubernetes version.
+This section describes the versions of Kubernetes that are compatible with each KOTS version.
 
 | KOTS Version(s) | Kubernetes Compatibility |
 |-----------------|--------------------------|
@@ -33,7 +32,9 @@ This includes support against all patch releases of the corrersponding Kubernete
 | 1.15 to 1.19    | 1.18, 1.17, and 1.16     |
 | 1.20 to 1.35    | 1.19, 1.18, and 1.17     |
 | 1.36 to 1.47    | 1.20, 1.19, and 1.18     |
-| 1.48+           | 1.21, 1.20, and 1.19     |
+| 1.48 to 1.59.2  | 1.21, 1.20, and 1.19     |
+| 1.59.3 to 1.60  | 1.22, 1.21, and 1.20     |
+| 1.61+           | 1.23, 1.22, 1.21, and 1.20     |
 
 ## Firewall Openings for Online Installations
 
