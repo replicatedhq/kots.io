@@ -79,12 +79,13 @@ While KOTS detects images from the PodSpecs in the application, some application
 KOTS maintains up-to-date patch versions of all supported kubelet minor versions.
 When unspecified, KOTS will use the newest version from the list of supported versions below.
 
-- 1.22.x (added in [KOTS 1.59.3](https://kots.io/release-notes/1.59.3/))
-- 1.21.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
-- 1.20.x (added in [KOTS 1.48.0](https://kots.io/release-notes/1.48.0/))
-- 1.19.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.18.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
-- 1.17.x (added in [KOTS 1.22.0](https://kots.io/release-notes/1.22.0/))
+- 1.23.x (added in [KOTS 1.61.0](/release-notes/1.61.0/))
+- 1.22.x (added in [KOTS 1.59.3](/release-notes/1.59.3/))
+- 1.21.x (added in [KOTS 1.48.0](/release-notes/1.48.0/))
+- 1.20.x (added in [KOTS 1.48.0](/release-notes/1.48.0/))
+- 1.19.x (added in [KOTS 1.22.0](/release-notes/1.22.0/))
+- 1.18.x (added in [KOTS 1.22.0](/release-notes/1.22.0/))
+- 1.17.x (added in [KOTS 1.22.0](/release-notes/1.22.0/))
 - 1.16.x
 - 1.14.x
 
