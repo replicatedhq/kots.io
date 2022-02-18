@@ -53,7 +53,7 @@ We will also use it to query the table and check for records.
 
 ### Install PSQL
 
-To install `psql` and not the PostgreSQL database, follow [this Blog](https://blog.timescale.com/tutorials/how-to-install-psql-on-mac-ubuntu-debian-windows/), which covers installing just the psql client on all Operating Systems.
+To install `psql` and not the PostgreSQL database, follow [this Blog](https://www.timescale.com/blog/how-to-install-psql-on-mac-ubuntu-debian-windows/), which covers installing just the psql client on all Operating Systems.
 The steps for MAC OS X and Linux are basically the same, update the installer/package manager and then install it.
 
 ### Create Sample Application and deploy the first release
