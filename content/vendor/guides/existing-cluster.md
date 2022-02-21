@@ -110,7 +110,7 @@ Once the cluster is launched set the local `kubectl` context.
 gcloud container clusters get-credentials kots-app
 ```
 
-Install latest KOTS version as `kubectl` plugin.
+Install the latest version of KOTS as a `kubectl` plugin.
 ```shell
 curl https://kots.io/install | bash
 ```
