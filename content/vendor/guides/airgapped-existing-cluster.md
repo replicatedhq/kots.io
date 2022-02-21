@@ -347,14 +347,8 @@ exit
 
 We'll follow the instructions at [Installing from an Airgap Package](https://kots.io/kotsadm/installing/airgap-packages/).
 
-Let's start by downloading the `kots` plugin and the airgap bundle to our workstation.
+Let's start by downloading the `kots` plugin and the airgap bundle to our workstation:
 
-If the application specifies a particular version of KOTS:
-```shell script
-gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- 'curl https://kots.io/install/version/<your approved version here> | bash'
-```
-
-If the application doesn't specify a particular version of KOTS:
 ```shell script
 gcloud compute ssh --ssh-flag=-A ${AIRGAP_JUMP} -- 'curl https://kots.io/install | bash'
 ```
