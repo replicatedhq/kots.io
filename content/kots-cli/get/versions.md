@@ -7,6 +7,8 @@ weight: 90203
 
 The `kots get versions` command lists all versions of an application.
 
+> Introduced in KOTS v1.61.0
+
 ### Usage
 
 ```bash
