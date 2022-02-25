@@ -195,7 +195,7 @@ Specifying this in the application spec of the release will enforce compatibilit
 
 ### Guidance for informing users of the need to update
 
-After promoting a new release that specifies a minimum KOTS version that is later than what an end user currently has deployed, that release does not appear in the version history of the admin console after checking for updates. The admin console displays an error message temporarily, but it disappears after a few minutes. The admin console also displays this error when the user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/).
+After promoting a new release that specifies a minimum KOTS version that is later than what an end user currently has deployed, that release does not appear in the version history of the admin console after checking for updates. The admin console displays an error message temporarily, but it disappears after a few minutes. The admin console also displays this error when the user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/upgrade/).
 
 End users must update their admin console to the minimum KOTS version or later in order to fetch the update without error. KOTS cannot update itself automatically, and users cannot update KOTS from the admin console.
 
