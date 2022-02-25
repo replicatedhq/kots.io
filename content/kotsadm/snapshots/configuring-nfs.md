@@ -7,7 +7,7 @@ title: Configuring NFS
 
 > Introduced in KOTS v1.33.0
 
-The steps described on this page are only necessary if you wish to configure a Network File System (NFS) as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/). 
+The steps described on this page are only necessary if you wish to configure a Network File System (NFS) as your KOTS Snapshots [storage destination](/kotsadm/snapshots/storage-destinations/).
 
 Important notes before you begin:
 
@@ -22,7 +22,7 @@ Embedded clusters set up using installers that include the [Velero](https://kurl
 There are two ways to change this configuration to use NFS:
 
 * Using the KOTS CLI [velero configure-nfs](/kots-cli/velero/configure-nfs/) command.
-* Using the Admin Console (Check screenshots below):
+* Using the admin console (Check screenshots below):
 
 First, head to the "Snapshots" tab.
 From there, head to the "Settings and Schedule" tab and choose the "Network File System (NFS)" dropdown option.
@@ -33,6 +33,13 @@ Enter the NFS server hostname or IP Address, and the path that is exported by th
 This step might take a couple of minutes so please be patient.
 
 ![Snapshot Destination NFS Fields](/images/snapshot-destination-nfs-fields.png)
+
+When configuring the admin console to store snapshots on an NFS server, the following fields are available:
+
+| Name   | Description                                  |
+|--------|----------------------------------------------|
+| Server | The hostname or IP address of the NFS server |
+| Path   | The path that is exported by the NFS server  |
 
 ## Existing Clusters
 
@@ -65,7 +72,7 @@ kubectl kots velero configure-nfs \
   --registry-password ro-password
 ```
 
-### Using the Admin Console
+### Using the admin console
 
 First, head to the “Snapshots” tab.
 From there, head to the “Settings and Schedule” tab.
@@ -84,4 +91,4 @@ Once the configuration is successful, you'll be presented with a different dialo
 
 ![Snapshot Provider File System Next Steps](/images/snapshot-provider-fs-next-steps.png)
 
-After following the instructions from the above CLI command, and Velero has been installed successfully, you can go back to the Admin Console and either click on the "Check for Velero" button to retry detecting Velero, or simply refresh the page.
+After following the instructions from the above CLI command, and Velero has been installed successfully, you can go back to the admin console and either click on the "Check for Velero" button to retry detecting Velero, or simply refresh the page.

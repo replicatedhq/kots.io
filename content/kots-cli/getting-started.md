@@ -21,9 +21,14 @@ If you're using an [embedded Kubernetes cluster](/kotsadm/installing/installing-
 
 ### Easy installation script
 
-To start, install KOTS using the Krew plugin manager:
+To start, install the latest version of KOTS using the Krew plugin manager:
 ```bash
 curl https://kots.io/install | bash
+```
+
+You can also install a specific version of KOTS, like one that has been QA'ed by your team, using the versioned install URL:
+```bash
+curl https://kots.io/install/<version> | bash
 ```
 
 This will give you a new kubectl command.
@@ -73,5 +78,5 @@ Provides wrapper functionality to interface with the upstream source.
 Prints the current version of the kots Kubectl plugin and provides a command for updating if a new version is available.
 
 ## Next Steps
-To give KOTS a try, head over to the KOTS Helm guide.
-If you want to see what it’s like to distribute a KOTS application, head to the KOTS Vendor guide.
+To give KOTS a try, head over to the [KOTS Helm guide](/vendor/helm/overview).
+If you want to see what it’s like to distribute a KOTS application, head to the [Packaging KOTS Applications](/vendor/packaging/packaging-an-app/) guide.

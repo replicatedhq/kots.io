@@ -5,6 +5,8 @@ title: Optional Value Keys
 weight: 20540
 ---
 
+> This topic applies to both native Helm and Replicated Helm installations.
+
 The `values.yaml` is not a static mapping in a KOTS application. 
 It's possible to either remove or include value when certain conditions are met.
 

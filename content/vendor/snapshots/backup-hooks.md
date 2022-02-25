@@ -6,7 +6,7 @@ weight: 3
 ---
 
 For many application workloads, additional processing or scripts need to be run before and/or after a backup is taken to prepare the system for a backup.
-Velero has support for this, using [Backup Hooks](https://velero.io/docs/main/backup-hooks/).
+Velero has support for this, using [Backup Hooks](https://velero.netlify.app/docs/main/backup-hooks/).
 
 Some common examples of how a Hook can be used to create successful backups are:
 - Run `pg_dump` to export a postgres database prior to backup
@@ -17,7 +17,7 @@ Backup hooks should be run inside the container that contains the data to back u
 
 ## Examples
 A common pattern of applications is to include and want to back up a Postgres database.
-Postgres is easy to include from a Helm chart, and the following HelmChart kind can be used to configure Postgres for backups. An exaplanation of the configuration follows the YAML.
+Postgres is easy to include from a Helm chart, and the following HelmChart kind can be used to configure Postgres for backups. An explanation of the configuration follows the YAML.
 
 ```yaml
 apiVersion: kots.io/v1beta1

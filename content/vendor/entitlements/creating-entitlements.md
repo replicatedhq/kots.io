@@ -18,7 +18,7 @@ KOTS securely delivers these entitlement values to the application, and makes th
 ## Built-In Entitlement Fields
 See [Built-In Entitlements](/vendor/entitlements/built-in-entitlements), for a list of the entitlement fields that are included by default for every license.  
 
-## Creating Entitlement Fields
+## Creating Entitlement License Fields
 To create new entitlement fields, first click the "License Fields" section in the Vendor UI with your application selected. 
 
 ![License Fields](/images/license-fields.png)
@@ -34,7 +34,7 @@ This is the name used to reference the field, and as such, is generally not chan
 * **Title** The display name of the field. 
 This is how the field will appear in the Vendor UI and the Admin Console (if visible). Easily changed through Vendor UI. 
 * **Type** The type of the field. 
-We presently support integer, string, text (multi-line string), and boolean values. 
+We presently support integer, string, text (multi-line string), and boolean values. Cannot be changed.
 * **Default** The default value to set for the field on existing customers, or when a new customer is created. 
 It is generally considered good practice to provide a default, where possible. 
 * **Required** If set, this will prevent the creation of customers unless this field is explicitly set with a value. 
@@ -46,6 +46,30 @@ After the license field has been created, it will be shown for all customers cre
 If the field is not hidden, it will additionally shown under the "Licenses" tab for customers within the Admin Console. 
  ![License Fields](/images/license-fields-customer.png)
 
+### Updating Entitlement License Fields
+To update a custom license field:
+1. Log in to the vendor portal and select the application.
+1. On the **License Fields** page, click **Edit Field** icon on the right side of the target row.
+
+The following attributes of the custom license fields can be updated.
+   * **Title** This can be changed without any special behavior.
+   * **Default** Updating the default will update each customer record that hasn't overridden the default value.
+   * **Is this field is required?** When updated to on, this field will become required on all existing licenses. If you do not set a default, you'll need to update each license manually.
+   * **Is this field hidden?** This can be changed without any special behavior.
+
+## Deleting Entitlement License Fields
+To delete a custom license field:
+1. Log in to the vendor portal and select the application.
+1. On the **License Fields** page, click **Edit Field** icon on the right side of the target row.
+1. Select delete on the bottom left of the modal and follow the instructions on the following screen to confirm.
+
+License fields can be deleted, but this should be carefully considered. OUtages can occur when existing deployments where your application or the app manager config screen are expecting a license to provide a required value. As such, we have limited the RBAC policy to administrators and added several levels of warnings on deletion.
+
+Deleted license fields and their values do not show up in the customer's license in any location (such as your view in the vendor portal, the downloaded YAML version of the license or the app manager license screen).
+
+By default, deleting a license field also deletes all of the values associated with that field in each customer record. 
+
+When the Preserve License Values option is selected, the values for the field not set by the default are orphaned in each customer record (this is not visible to you or your customer). If you recreate a field with this exact name, the orphaned values are reinstated. To bring default values back to licenses that didn't override the value, use the same default value during recreation. 
 
 ### Writing Entitlements to Manifests
 The [LicenseFieldValue](/reference/template-functions/license-context) template function exists to access entitlements when installing or updating the application. 
@@ -79,8 +103,11 @@ spec:
 ```
 
 ### Querying Entitlements at Runtime
-The Admin Console runs on the customer's cluster, and provides real-time entitlement information through the `/license/v1/license` endpoint. 
-To query entitlements at runtime, simply execute an http response to the following location: `http://kotsadm:3000/license/v1/license`
+The admin console runs on the customer's cluster, and provides real-time entitlement information through the following endpoint: 
+>`/license/v1/license`
+
+To query entitlements at runtime, execute an http request to the following location: 
+>`http://kotsadm:3000/license/v1/license`
 
 The response will be returned in YAML format. 
 For example: 
