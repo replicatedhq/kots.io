@@ -186,11 +186,11 @@ Specifying this in the application spec of the release will enforce compatibilit
 
 ### Guidance for informing users of the need to update
 
-After promoting a new release that specifies a minimum KOTS version that is greater than what an end user currently has deployed, that application version appears in the version history of the admin console after checking for updates, but the application version is not downloaded. The admin console temporarily displays an error message inline with this new version, informing the end user that they must update KOTS in order to download this application version. This error is also displayed when the end user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/upgrade/).
+After promoting a new release that specifies a minimum KOTS version that is later than what an end user currently has deployed, that application version appears in the version history of the admin console after checking for updates, but the application version is not downloaded. The admin console temporarily displays an error message inline with this new version, informing the end user that they must update KOTS in order to download this application version. This error is also displayed when the end user checks for updates with the [`kots upstream upgrade` command](/kots-cli/upstream/upgrade/).
 
 End users must update their admin console to the minimum KOTS version or later in order to download the version without error. KOTS cannot update itself automatically, and users cannot update KOTS from the admin console.
 
-After updating KOTS to an appropriate version, end users can return to the admin console and click the "Download" button next to the version in order to download it. You can also use the [`kots upstream download` command](/kots-cli/upstream/download/) to do this. Once the version is downloaded, end users can proceed normally.
+After updating KOTS to the minimum version or later, end users can return to the admin console and click the "Download" button next to the version in order to download it. You can also use the [`kots upstream download` command](/kots-cli/upstream/download/) to do this. Once the version is downloaded, end users can proceed normally.
 
 When promoting a new release that changes the minimum KOTS version to a later version, vendors can inform their end users of the need to update KOTS if they are concerned end users will not know how to proceed.
 
