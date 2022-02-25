@@ -18,7 +18,7 @@ kubectl kots upstream download [app-slug] [flags]
 
 | Flag                              | Type   | Description                                                                                      |
 |:----------------------------------|--------|--------------------------------------------------------------------------------------------------|
-| `-h, --help`                      |        | Help for upstream download.                                                                       |
+| `-h, --help`                      |        | Help for `upstream download`.                                                                       |
 | `--kubeconfig`                    | string | The kubeconfig to use. **Default**: `$KUBECONFIG`. If unset, then `$HOME/.kube/config`.          |
 | `-n, --namespace`                 | string | (Required) The namespace where the admin console is running.                                    |
 | `--sequence`                      | int    | (Required) The local app sequence for the version to retry downloading.                         |
