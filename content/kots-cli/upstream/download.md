@@ -18,14 +18,14 @@ kubectl kots upstream download [app-slug] [flags]
 
 | Flag                              | Type   | Description                                                                                      |
 |:----------------------------------|--------|--------------------------------------------------------------------------------------------------|
-| `-h, --help`                      |        | help for upstream download                                                                       |
-| `--kubeconfig`                    | string | the kubeconfig to use _(default is `$KUBECONFIG`. If unset, then `$HOME/.kube/config`)_          |
-| `-n, --namespace`                 | string | the namespace where the admin console is running _(required)_                                    |
-| `--sequence`                      | int    | The local app sequence for the version to retry downloading _(required)_                         |
-| `--skip-preflights`               | bool   | set to true to skip preflight checks                                                             |
-| `--skip-compatibility-check`      | bool   | set to true to skip compatibility checks between the current kots version and the update         |
-| `--wait`                          | bool   | set to false to download the update in the background (defaults to true)                         |
-| `-o, --output`                    | string | output format (currently supported: json) _(defaults to plain text if not set)_                  |
+| `-h, --help`                      |        | Help for upstream download.                                                                       |
+| `--kubeconfig`                    | string | The kubeconfig to use. **Default**: `$KUBECONFIG`. If unset, then `$HOME/.kube/config`.          |
+| `-n, --namespace`                 | string | (Required) The namespace where the admin console is running.                                    |
+| `--sequence`                      | int    | (Required) The local app sequence for the version to retry downloading.                         |
+| `--skip-preflights`               | bool   | Set to `true` to skip preflight checks.                                                             |
+| `--skip-compatibility-check`      | bool   | Set to `true` to skip compatibility checks between the current kots version and the update.         |
+| `--wait`                          | bool   | Set to `false` to download the update in the background. **Default**: `true`.                         |
+| `-o, --output`                    | string | Output format. **Supported formats**: `json`. **Default**: Plain text.                  |
 
 ### Example
 ```bash
