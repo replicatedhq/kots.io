@@ -24,4 +24,6 @@ This command supports all [global flags](/kots-cli/global-flags/) and also:
 
 * `apps` lists installed applications.
 * `backups` lists available full snapshots (instance).
+* `config` lists the **configValues** for an application.
 * `restores` lists created full snapshot restores.
+* `versions` lists the versions available for a given `app-slug`.

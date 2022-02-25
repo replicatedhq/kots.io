@@ -169,7 +169,7 @@ The format of the Y axis labels with support for all Grafana [units](https://gra
 Y axis labels template. Use `{{ value }}`.
 
 ## targetKotsVersion
-The KOTS version that is targeted by the release.
+The KOTS version that is targeted by the release. Introduced in KOTS v1.62.0.
 
 Specifying this in the application spec of the release will enforce compatibility checks for new installations and block the installation if the KOTS version being used is greater than the targeted KOTS version.
 
@@ -180,7 +180,7 @@ Specifying a target KOTS version will not prevent an end user from upgrading to 
 For embedded cluster installs, it is important to keep the version of the [KOTS add-on](https://kurl.sh/docs/add-ons/kotsadm) in sync with the target KOTS version specified in the application spec. If the KOTS add-on version is greater than the target KOTS version, the initial installation will fail.
 
 ## minKotsVersion (Beta)
-The minimum KOTS version that is required by the release.
+The minimum KOTS version that is required by the release. Introduced in KOTS v1.62.0.
 
 Specifying this in the application spec of the release will enforce compatibility checks for both new installations and application updates, and will block the installation or update if the currently deployed KOTS version is less than the specified minimum KOTS version.
 
