@@ -22,5 +22,5 @@ replicated channel enable-semantic-versioning CHANNEL_ID
 ### Examples
 ```bash
 replicated channel enable-semantic-versioning 1xyB2Mgbg9N7rExShfbdBYIuzeW
-Semver successfully enabled for channel 1xyB2Mgbg9N7rExShfbdBYIuzeW
+Semantic versioning successfully enabled for channel 1xyB2Mgbg9N7rExShfbdBYIuzeW
 ```

@@ -22,5 +22,5 @@ replicated channel disable-semantic-versioning CHANNEL_ID
 ### Examples
 ```bash
 replicated channel disable-semantic-versioning 1xyB2Mgbg9N7rExShfbdBYIuzeW
-Semver successfully disabled for channel 1xyB2Mgbg9N7rExShfbdBYIuzeW
+Semantic versioning successfully disabled for channel 1xyB2Mgbg9N7rExShfbdBYIuzeW
 ```
