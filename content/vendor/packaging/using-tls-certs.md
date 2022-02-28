@@ -78,7 +78,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCyiGNuHw2LY3Rv
 Another way `kotsadm-tls` secret can be used is by passing it directly to the `Ingress` resource so TLS can be terminated at the contour layer.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
@@ -93,8 +93,10 @@ spec:
       paths:
         - path: /
           backend:
-            serviceName: nginx
-            servicePort: 80
+            service:
+              name: nginx
+              port:
+                number: 80
 ```
 **Note:** `tls.foo.com` must resolve to a valid IP and must also match the CN or Subjective Alternative Name (SAN) of the TLS cert.
 
