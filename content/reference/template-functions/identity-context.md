@@ -85,7 +85,7 @@ func IdentityServiceName() string
 Returns the Service name for the KOTS Identity Service OIDC server.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 ...
           - path: /dex
@@ -104,7 +104,7 @@ func IdentityServicePort() string
 Returns the Service port number for the KOTS Identity Service OIDC server.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 ...
           - path: /dex

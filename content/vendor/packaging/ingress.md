@@ -68,7 +68,7 @@ The first of which will be deployed to existing cluster installations while the 
 Both of these resources are selectively excluded with the [`kots.io/exclude` annotation](/vendor/packaging/include-resources/).
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-application-ingress
@@ -89,7 +89,7 @@ spec:
 ```
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-application-ingress-embedded

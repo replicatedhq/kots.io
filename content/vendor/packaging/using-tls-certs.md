@@ -78,7 +78,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCyiGNuHw2LY3Rv
 Another way `kotsadm-tls` secret can be used is by passing it directly to the `Ingress` resource so TLS can be terminated at the contour layer.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
