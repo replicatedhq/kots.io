@@ -93,8 +93,10 @@ spec:
       paths:
         - path: /
           backend:
-            serviceName: nginx
-            servicePort: 80
+            service:
+              name: nginx
+              port:
+                number: 80
 ```
 **Note:** `tls.foo.com` must resolve to a valid IP and must also match the CN or Subjective Alternative Name (SAN) of the TLS cert.
 

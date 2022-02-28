@@ -90,8 +90,10 @@ kind: Ingress
 ...
           - path: /dex
             backend:
-              serviceName: repl{{ IdentityServiceName }}
-              servicePort: repl{{ IdentityServicePort }}
+              service:
+                name: repl{{ IdentityServiceName }}
+                port:
+                  number: repl{{ IdentityServicePort }}
 ```
 
 
@@ -109,6 +111,8 @@ kind: Ingress
 ...
           - path: /dex
             backend:
-              serviceName: repl{{ IdentityServiceName }}
-              servicePort: repl{{ IdentityServicePort }}
+              service:
+                name: repl{{ IdentityServiceName }}
+                port:
+                  number: repl{{ IdentityServicePort }}
 ```
