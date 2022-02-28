@@ -37,16 +37,14 @@ Semantic versioning is available in KOTS v1.58.0 and later.
 
 ### Enabling Semantic Versioning
 
-Semantic versioning must be enabled on a per-channel basis. It can be enabled for existing channels by turning on the "Enable Semantic Versioning" toggle in the channel settings in the vendor portal. When creating a new channel in the vendor portal, select the "Prevent promoting releases with an invalid semantic version to this channel" toggle.
+Semantic versioning must be enabled on a per-channel basis. It can be enabled for existing channels by turning on the "Enable Semantic Versioning" toggle in the channel settings in the vendor portal. When creating a new channel in the vendor portal, select the "Prevent promoting releases with an invalid semantic version to this channel" toggle. Semantic versioning can also be enabled and disabled for an existing channel with the [`kots channel enable-semantic-versioning`](/vendor/cli/channel-enable-semantic-versioning) and [`kots channel disable-semantic-versioning`](/vendor/cli/channel-disable-semantic-versioning) commands, respectively.
 
 When semantic versioning is enabled for a channel, the version label for a release promoted to that channel will be validated to ensure that it is a valid semantic version. For more information about semantic versioning, see [Semantic Versioning 2.0.0](https://semver.org). In the end user environment, the admin console will sequence releases by their semantic versions rather than by their creation dates, assuming the available versions use the semantic versioning format. If releases that don't use a valid semantic version are already promoted to the channel, those releases will be sequenced by the order of their creation.
-
-Semantic versioning can also be enabled and disabled for a channel with the [`kots channel enable-semantic-versioning`](/vendor/cli/channel-enable-semantic-versioning) and [`kots channel disable-semantic-versioning`](/vendor/cli/channel-disable-semantic-versioning) commands, respectively.
 
 If you enable semantic versioning for a channel and then promote releases to it, we recommend that you do not later disable semantic versioning for that channel.
 
 ### Default Behavior
 
-For new applications created in the vendor portal, the Stable and Beta channels will have semantic versioning enabled by default, while the Unstable channel will have semantic versioning disabled by default. New channels created for the application will also have semantic versioning enabled by default. For applications created before semantic versioning became the default, no change in original behavior will be observed, and new channels will continue to have semantic versioning disabled by default.
+For new applications created in the vendor portal, the Stable and Beta channels will have semantic versioning enabled by default, while the Unstable channel will have semantic versioning disabled by default. New channels created for the application will also have semantic versioning enabled by default. For applications created before semantic versioning became the default, no change in original behavior is observed, and new channels continue to have semantic versioning disabled by default.
 
 For more information about checking for updates in the admin console, see [Checking for Updates](/kotsadm/updating/updating-kots-apps/#checking-for-updates).
