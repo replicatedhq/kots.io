@@ -22,6 +22,7 @@ kubectl kots restore [flags]
 | `--exclude-admin-console`   | bool   | exclude restoring the admin console and only restore the application(s) _(defaults to false)_ |
 | `--exclude-apps`            | bool   | exclude restoring the application(s) and only restore the admin console _(defaults to false)_ |
 | `--wait-for-apps`           | bool   | wait for all applications to be restored _(defaults to true)_                                 |
+| `--velero-namespace`        | string | the namespace in which Velero is installed                                                    |
 | `-o, --output`              | string | output format (currently supported: json) _(defaults to plain text if not set)_               |
 
 ### Example
