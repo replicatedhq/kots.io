@@ -9,7 +9,7 @@ aliases:
 
 KOTS Snapshots is the backup and restore feature for applications deployed with KOTS. This is an optional feature, and it requires that licenses have the Allow Snapshots feature enabled.
 
-To enable Snapshots, KOTS uses the [Velero open source project](https://velero.io/) on the backend to back up Kubernetes manifests and persistent volumes. Velero is a mature, fully-featured application.
+To enable Snapshots, KOTS uses the [Velero open source project](https://velero.netlify.app/) on the backend to back up Kubernetes manifests and persistent volumes. Velero is a mature, fully-featured application.
 
 In addition to the default functionality that Velero provides, KOTS provides a detailed interface in the [admin console](/kotsadm/snapshots/overview) where end users can manage the storage destination and schedule, and perform and monitor the backup process. These details can also be managed using the KOTS CLI.
 
@@ -22,4 +22,4 @@ KOTS also exposes hooks that can be used to inject scripts to execute with Snaps
 | KOTS Version(s) | Velero Version |
 |------|-------------|
 | 1.15 to 1.20.2 | 1.2.0 |
-| 1.20.3+ | 1.5.1 |
+| 1.20.3+ | 1.6.2 |

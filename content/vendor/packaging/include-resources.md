@@ -27,7 +27,7 @@ When the placeholder evaluates to `true`, it will be replaced with the value of 
 When the placeholder evaluates to `false`, the annotation will not appear at all in the final rendered YAML.
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-annotation
@@ -38,7 +38,7 @@ metadata:
 will result in the final rendered YAML:
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-annotation
@@ -49,7 +49,7 @@ metadata:
 Similarly:
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-annotation
@@ -60,7 +60,7 @@ metadata:
 will result in no annotations appearing in the final rendered YAML:
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-annotation

@@ -22,7 +22,7 @@ In this guide we'll walk through the following steps:
 
 ### 1. Install CLI
 
-To start, you'll want to install the `replicated` CLI. 
+To start, you'll want to install the `replicated` CLI.
 You can install with [homebrew](https://brew.sh) or grab the latest Linux or macOS version from [the replicatedhq/replicated releases page](https://github.com/replicatedhq/replicated/releases).
 
 ```shell script
@@ -166,16 +166,16 @@ You'll see output similar to the following:
 
 ```text
     • Reading Environment ✓  
-  
+
   Prepared to create release with defaults:
-  
+
       yaml-dir        "./manifests"
       promote         "Unstable"
       version         "Unstable-ba710e5"
       release-notes   "CLI release of master triggered by dex [SHA: ba710e5] [28 Sep 20 09:15 CDT]"
       ensure-channel  true
-  
-  Create with these properties? [Y/n] 
+
+  Create with these properties? [Y/n]
 ```
 
 you can confirm the prompt by pressing Enter/Return. You'll see the release created and promoted:
@@ -296,9 +296,9 @@ For the sake of simplicity, we'll run with an "embedded cluster" install on a si
 First we will need a server. We'll use Google Cloud for this example but any cloud provider or [local virtual machine](https://github.com/replicatedhq/replicated-automation/tree/master/vendor/vagrant-boxes) will suffice. For this guide, let's create a server with:
 
 - Ubuntu 18.04
-- at least 8 GB of RAM
+- At least 8 GB of RAM
 - 4 CPU cores
-- at least 100GB of disk space
+- At least 40GB of disk space
 
 
 ###### On the Server
@@ -362,13 +362,9 @@ For production installations we recommend using a trusted cert, but for this tut
 
 Next, you'll be asked for a password -- you'll want to grab the password from the CLI output and use it to log in to the console.
 
-![Log In](/images/guides/kots/admin-console-login.png)
-
-Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers. 
+Until this point, this server is just running Docker, Kubernetes, and the kotsadm containers.
 The next step is to upload a license file so KOTS can pull containers and run your application.
 Click the Upload button and select your `.yaml` file to continue, or drag and drop the license file from your desktop.
-
-![Upload License](/images/guides/kots/upload-license.png)
 
 The settings page is here with default configuration items.
 For now, if you're using the defaults you'll want to check the "Enable Ingress" box.
@@ -381,12 +377,8 @@ Preflight checks are designed to ensure this server has the minimum system and s
 Depending on your YAML in `preflight.yaml`, you may see some of the example preflight checks fail.
 If you have failing checks, you can click continue -- the UI will show a warning that will need to be dismissed before you can continue.
 
-![Preflight Checks](/images/guides/kots/preflight.png)
-
 You should now be on the version history page, which will show the initial version that was check deployed.
 Later, we'll come back to this page to deploy an update to the application.
-
-![Dashboard](/images/guides/kots/dashboard.png)
 
 Click the Application link on the top to see the status of the application and some basic monitoring stats (CPU, memory, disk space).
 If you are still connected to this server over ssh, `kubectl get pods` will now show the example nginx service we just deployed.

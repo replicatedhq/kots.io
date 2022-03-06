@@ -17,7 +17,7 @@ By default, metrics graphs that are included monitor cluster disk usage, pod cpu
 
 ### Kots Application Spec
 
-To add custom graphs, use the `graphs` property of the kots.io Application spec. 
+To add custom graphs, use the `graphs` property of the kots.io Application spec. Adding custom graphs will replace the default graphs. 
 A minimal graph includes only a title and a Prometheus query:
 
 ```yaml
