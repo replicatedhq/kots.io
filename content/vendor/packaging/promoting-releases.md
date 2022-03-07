@@ -41,7 +41,9 @@ Semantic versioning must be enabled on a per-channel basis. In the vendor portal
 
 When semantic versioning is enabled for a channel, the version label for a release promoted to that channel is validated to ensure that it is a valid semantic version. For more information about semantic versioning, see [Semantic Versioning 2.0.0](https://semver.org). 
 
-In the end user environment, the admin console sequences releases by their semantic versions instead of their creation dates, assuming the available versions use the semantic versioning format. If releases that do not use a valid semantic version are already promoted to the channel, those releases are sequenced by the order of their creation.
+In the end user environment, the admin console sequences releases by their semantic versions instead of their creation dates.
+
+If releases that do not use a valid semantic version are already promoted to the channel, the admin console will sort any releases that do use a semantic version, but it will not sort versions that do not use a semantic version. Starting with the oldest version and proceeding to the most recent, semantic versions will bubble down to their appropriate location in the list. For example, if 1.0.0, abc, 0.1.0, xyz, and 2.0.0 are promoted in that order, the version history will be sequenced as follows after semantic versioning is enabled for the channel: 0.1.0, 1.0.0, abc, xyz, 2.0.0.
 
 If you enable semantic versioning for a channel and then promote releases to it, we recommend that you do not later disable semantic versioning for that channel.
 
