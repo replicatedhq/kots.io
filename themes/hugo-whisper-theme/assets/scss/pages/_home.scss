@@ -70,6 +70,24 @@ h3 .label {
   background-color: #073551;
   color: #ffffff;
 
+  &.deprecated {
+    background-color: #FFF1DA;
+    span {
+      color: #4A4A4A;
+      width: 100%;
+      text-align: center;
+      margin: 5px auto;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    a {
+      color: #326DE6;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
   .repl-logo-white {
     width: 83px;
     height: 20px;
