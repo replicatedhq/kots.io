@@ -71,6 +71,17 @@ Finally, Preflight checks (conformance tests) are executed against the target na
 
 ![Preflight Checks](/images/preflight-checks.png)
 
+#### Strict Preflight Checks
+Strict Preflight can used to block deployments when the cluster resources are not met with application requirements
+When Strict Preflight Checks are present and fail, application installation cannot be continued.
+In order to continue application installation, the failed strict Preflight errors should be fixed in environment and run Preflight again and pass.
+
+If Preflight are running and strict Preflight are present, Deployment button will be disabled on GUI and will wait for Preflight to be passed and automatically button will be enabled once the results have passed.
+
+During minimal RBAC installations, Preflight can be run and results can be uploaded using CLI command. GUI will recognize if Preflight fail due to RBAC issues and provide a modal with CLI command which can be used to run and upload Preflight results.
+
+For Automatic installs, Preflight will be run and results will be evaluated before deploying the application
+
 ### Proxies
 
 When installing behind a proxy, Admin Console needs to be able to use the proxy to communicate with the APIs on the internet as well as local services.
