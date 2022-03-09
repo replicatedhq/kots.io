@@ -1,5 +1,7 @@
 # kots.io
 
+As of March 8, 2022, the kots.io documentation is no longer maintained on this site. For up-to-date documentation, see docs.replicated.com
+
 ## Running the docs
 * Run `hugo serve`
 
