@@ -84,3 +84,11 @@
     bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
   }
 }
+
+
+// print styles for PDF gen
+@media print {
+  p, ul li {
+    page-break-inside: avoid;
+  }
+}
