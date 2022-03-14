@@ -88,7 +88,5 @@
 
 // print styles for PDF gen
 @media print {
-  p, ul li {
-    page-break-inside: avoid;
-  }
+  p,li,h3,h3 span,a,code,blockquote{break-inside: avoid;}
 }
