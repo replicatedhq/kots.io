@@ -84,9 +84,3 @@
     bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
   }
 }
-
-
-// print styles for PDF gen
-@media print {
-  p,li,h3,h3 span,a,code,blockquote{break-inside: avoid;}
-}
