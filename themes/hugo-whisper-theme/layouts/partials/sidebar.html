@@ -2,17 +2,16 @@
 
 <div class="docs-menu">
   <h3>
-    {{ if eq .Section "release-notes" }}
+    {{ if or (eq .Section "release-notes") (eq .Section "all-release-notes") }}
       <a href="/release-notes">
     {{ else }}
       <a href="{{ .FirstSection.Params.redirect | relURL }}">
     {{ end }}
       {{ if eq .Section "kots-cli" }}
         KOTS CLI Documentation
-      {{ else if eq .Section "release-notes" }}
+      {{ else if or (eq .Section "release-notes") (eq .Section "all-release-notes") }}
         Release Notes
       {{ else if eq .Section "all-content" }}
-      {{ else if eq .Section "all-release-notes"}}
       {{ else if eq .Section "data-transmission-policy" }}
       {{ else if eq .Section "kotsadm" }}
         Admin Console Docs
@@ -26,7 +25,7 @@
       {{ if .IsPage }}
         <li class="{{ if eq .File $currentNode.File }}active{{ end }}">
           <a href="{{ .Permalink | relURL }}">
-            {{ if eq .Section "release-notes" }}
+            {{ if or (eq .Section "release-notes") (eq .Section "all-release-notes") }}
               {{ if .Params.linktitle }}
                 {{ .Params.linktitle }} - {{ dateFormat "Jan 02 2006" .Params.date }}
               {{ else }}
