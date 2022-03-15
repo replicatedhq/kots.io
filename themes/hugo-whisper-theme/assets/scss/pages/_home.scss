@@ -2,6 +2,19 @@
   .header,.suite-banner {
     display: none
   }
+  body {
+    margin: 40px
+  }
+  div.title-page {
+    text-align: center;
+    page-break-after: always;
+  }
+  .sidebar h2 {
+    padding-bottom: 20px;
+  }
+  div.sidebar {
+    page-break-after: always;
+  }
 }
 
 /*
