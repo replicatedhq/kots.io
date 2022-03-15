@@ -3,6 +3,7 @@
 .idea/
 *.swp
 kots.io.pdf
+kots.io-releaes-notes.pdf
 
 # Directories
 node_modules/
