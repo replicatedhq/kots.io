@@ -1,3 +1,9 @@
+@media print {
+  .header,.suite-banner {
+    display: none
+  }
+}
+
 /*
  * Blog name and description
  */
