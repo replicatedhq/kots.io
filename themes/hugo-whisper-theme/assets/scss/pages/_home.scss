@@ -1,8 +1,28 @@
+@page {
+  size: letter;
+  margin: 100px;
+}
 @media print {
   .header,.suite-banner {
     display: none
   }
+  .all-releases-page.title-page {
+    page-break-after: always;
+   }
+  .sidebar {
+    page-break-after: always;
+  }
 }
+
+.all-releases-page.title-page {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+ }
 
 /*
  * Blog name and description
