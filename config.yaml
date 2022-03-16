@@ -47,24 +47,8 @@ Params:
     - data-transmission-policy
 menu:
   main:
-    - Identifier: kots-cli
-      Name: KOTS CLI
-      Weight: 1
-      URL: /kots-cli/getting-started
-    - Identifier: kotsadm
-      Name: Admin Console
-      Weight: 2
-      URL: /kotsadm/installing/installing-a-kots-app/
-    - Identifier: reference
-      Name: Reference
-      Weight: 4
-      URL: /reference/v1beta1/
-    - Identifier: vendor
-      Name: Vendor
-      Weight: 3
-      URL: /vendor/packaging/packaging-an-app
     - Identifier: release-notes
-      Name: Release Notes
+      Name: KOTS Changelog
       Weight: 5
-      URL: /release-notes/
+      URL: https://github.com/replicatedhq/kots/releases
 ---

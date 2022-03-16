@@ -2,27 +2,29 @@
 {{ define "body_classes" }}page-default-list{{ end }}
 {{ define "header_classes" }}{{ end }}
 {{ define "main" }}
-  <h1 class="current-section">All release notes</h1>
+<div class="all-releases-page title-page">
+  <h1 class="current-section">App Manager Release Notes</h1>
+  <h2 class="current-section">v1.9.0 - v1.65.0</h2>
+</div>
+<div class="sidebar">
+  <h2>Table of Contents</h2>
+  <ul>
+    {{ range $.Site.RegularPages }}
+      {{ if eq .Section "release-notes" }}
+        <li>
+          <a href="{{ .Permalink | relURL }}">
+            {{ if .Params.linktitle }}
+              {{ .Params.linktitle }} - {{ dateFormat "Jan 02 2006" .Params.date }}
+            {{ else }}
+              {{ .Params.Title }} - {{ dateFormat "Jan 02 2006" .Params.date }}
+            {{end }}
+          </a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</div>
   <div class="row">
-    <div class="col-12 col-md-3 mb-3">
-      <div class="sidebar">
-        <ul>
-          {{ range $.Site.RegularPages }}
-            {{ if eq .Section "release-notes" }}
-              <li>
-                <a href="{{ .Permalink | relURL }}">
-                  {{ if .Params.linktitle }}
-                    {{ .Params.linktitle }} - {{ dateFormat "Jan 02 2006" .Params.date }}
-                  {{ else }}
-                    {{ .Params.Title }} - {{ dateFormat "Jan 02 2006" .Params.date }}
-                  {{end }}
-                </a>
-              </li>
-            {{ end }}
-          {{ end }}
-        </ul>
-      </div>
-    </div>
     <div class="col-12 col-md-9">
       {{ range $page := $.Site.RegularPages }}
       {{ if eq $page.Section "release-notes" }}
