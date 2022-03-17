@@ -3,7 +3,7 @@
 {{ define "header_classes" }}{{ end }}
 {{ define "main" }}
 <div class="all-releases-page title-page">
-  <h1 class="current-section">App Manager Release Notes</h1>
+  <h1 class="current-section">Replicated App Manager Release Notes</h1>
   <h2 class="current-section">v1.9.0 - v1.65.0</h2>
 </div>
 <div class="sidebar">
@@ -12,7 +12,7 @@
     {{ range $.Site.RegularPages }}
       {{ if eq .Section "release-notes" }}
         <li>
-          <a href="{{ .Permalink | relURL }}">
+          <a href='#{{ replace .Params.linktitle "." "" }}'>
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }} - {{ dateFormat "Jan 02 2006" .Params.date }}
             {{ else }}
