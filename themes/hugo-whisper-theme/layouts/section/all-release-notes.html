@@ -12,7 +12,7 @@
     {{ range $.Site.RegularPages }}
       {{ if eq .Section "release-notes" }}
         <li>
-          <a href="{{ .Permalink | relURL }}">
+          <a href='#{{ replace .Params.linktitle "." "" }}'>
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }} - {{ dateFormat "Jan 02 2006" .Params.date }}
             {{ else }}
